@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package com.google.android.traceur;
+package com.android.traceur;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -22,6 +22,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.support.v4.content.FileProvider;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.SystemProperties;
@@ -34,41 +35,27 @@ import java.io.File;
  */
 public class FileSender {
 
-    private static final String AUTHORITY = "com.android.shell";
-
-    public static void postCaptureNotification(Context context, File file) {
-        final Notification.Builder builder = new Notification.Builder(context)
-                .setSmallIcon(R.drawable.stat_sys_adb)
-                .setContentTitle("Dumping systrace")
-                .setTicker("Dumping systrace")
-                .setLocalOnly(true)
-                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setProgress(1, 0, true)
-                .setColor(context.getColor(
-                        com.android.internal.R.color.system_notification_accent_color));
-
-        NotificationManager.from(context).notify(file.getName(), 0, builder.build());
-    }
+    private static final String AUTHORITY = "com.android.traceur.files";
 
     public static void postNotification(Context context, File file) {
         // Files are kept on private storage, so turn into Uris that we can
         // grant temporary permissions for.
-        final Uri bugreportUri = getUriForFile(context, file);
+        final Uri traceUri = getUriForFile(context, file);
 
-        Intent sendIntent = buildSendIntent(context, bugreportUri);
+        Intent sendIntent = buildSendIntent(context, traceUri);
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        final Notification.Builder builder = new Notification.Builder(context)
+        final Notification.Builder builder =
+            new Notification.Builder(context, Receiver.NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.stat_sys_adb)
-                .setContentTitle("Systrace captured")
-                .setTicker("Systrace captured")
-                .setContentText("Touch to share your systrace")
+                .setContentTitle(context.getString(R.string.trace_saved))
+                .setTicker(context.getString(R.string.trace_saved))
+                .setContentText(context.getString(R.string.tap_to_share))
                 .setContentIntent(PendingIntent.getActivity(
-                        context, bugreportUri.hashCode(), sendIntent, PendingIntent.FLAG_ONE_SHOT
+                        context, traceUri.hashCode(), sendIntent, PendingIntent.FLAG_ONE_SHOT
                                 | PendingIntent.FLAG_CANCEL_CURRENT))
                 .setAutoCancel(true)
                 .setLocalOnly(true)
-                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setColor(context.getColor(
                         com.android.internal.R.color.system_notification_accent_color));
 
@@ -78,33 +65,30 @@ public class FileSender {
     public static void send(Context context, File file) {
         // Files are kept on private storage, so turn into Uris that we can
         // grant temporary permissions for.
-        final Uri bugreportUri = getUriForFile(context, file);
+        final Uri traceUri = getUriForFile(context, file);
 
-        Intent sendIntent = buildSendIntent(context, bugreportUri);
+        Intent sendIntent = buildSendIntent(context, traceUri);
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         context.startActivity(sendIntent);
     }
 
     private static Uri getUriForFile(Context context, File file) {
-        // Encode the tag and path separately
-        String path = Uri.encode("bugreports") + '/' + Uri.encode(file.getName(), "/");
-        return new Uri.Builder().scheme("content")
-                .authority(AUTHORITY).encodedPath(path).build();
+        return FileProvider.getUriForFile(context, AUTHORITY, file);
     }
 
     /**
      * Build {@link Intent} that can be used to share the given bugreport.
      */
-    private static Intent buildSendIntent(Context context, Uri bugreportUri) {
+    private static Intent buildSendIntent(Context context, Uri traceUri) {
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setType("application/vnd.android.systrace");
 
-        intent.putExtra(Intent.EXTRA_SUBJECT, bugreportUri.getLastPathSegment());
+        intent.putExtra(Intent.EXTRA_SUBJECT, traceUri.getLastPathSegment());
         intent.putExtra(Intent.EXTRA_TEXT, SystemProperties.get("ro.build.description"));
-        intent.putExtra(Intent.EXTRA_STREAM, bugreportUri);
+        intent.putExtra(Intent.EXTRA_STREAM, traceUri);
 
         final Account sendToAccount = findSendToAccount(context);
         if (sendToAccount != null) {

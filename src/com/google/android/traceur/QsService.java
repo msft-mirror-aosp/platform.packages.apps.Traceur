@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package com.google.android.traceur;
+package com.android.traceur;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -23,21 +23,15 @@ import android.graphics.drawable.Icon;
 import android.preference.PreferenceManager;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
-import android.widget.Toast;
 
 public class QsService extends TileService {
 
     private static QsService sListeningInstance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        setTheme(android.R.style.Theme_DeviceDefault_Light);
-    }
-
-    @Override
-    public void onTileAdded() {
-        update();
+    public static void updateTile() {
+        if (sListeningInstance != null) {
+            sListeningInstance.update();
+        }
     }
 
     @Override
@@ -54,10 +48,14 @@ public class QsService extends TileService {
     }
 
     private void update() {
-        boolean tracingOn = AtraceUtils.isTracingOn();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean tracingOn = prefs.getBoolean(getString(R.string.pref_key_tracing_on), false);
+
+        String titleString = getString(tracingOn ? R.string.stop_tracing: R.string.record_trace);
+
         getQsTile().setIcon(Icon.createWithResource(this, R.drawable.stat_sys_adb));
         getQsTile().setState(tracingOn ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
-        getQsTile().setLabel(tracingOn ? "Tracing" : "Start Tracing");
+        getQsTile().setLabel(titleString);
         getQsTile().updateTile();
     }
 
@@ -65,30 +63,10 @@ public class QsService extends TileService {
      *  If tracing is being turned off, dump and offer to share. */
     @Override
     public void onClick() {
-        boolean tracingOn = AtraceUtils.isTracingOn();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean newTracingState = !prefs.getBoolean(getString(R.string.pref_key_tracing_on), false);
+        prefs.edit().putBoolean(getString(R.string.pref_key_tracing_on), newTracingState).apply();
 
-        prefs.edit().putBoolean(getString(R.string.pref_key_tracing_on), !tracingOn).apply();
-
-        if (tracingOn) {
-            Toast.makeText(getApplicationContext(), "Stopping trace...", Toast.LENGTH_SHORT).show();
-            AtraceUtils.atraceDumpAndSendInBackground(this,
-                    Receiver.getActiveTags(this, prefs, true));
-        } else {
-            Toast.makeText(getApplicationContext(), "Starting trace...", Toast.LENGTH_SHORT).show();
-        }
-
-        Receiver.updateTracing(this, true);
-        Receiver.updateQs(this);
-        requestListeningState(this);
-        update();
-    }
-
-    public static void requestListeningState(Context context) {
-        if (sListeningInstance != null) {
-            sListeningInstance.update();
-        } else {
-            requestListeningState(context, new ComponentName(context, QsService.class));
-        }
+        Receiver.updateTracing(this);
     }
 }

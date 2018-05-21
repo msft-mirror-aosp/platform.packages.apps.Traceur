@@ -16,41 +16,80 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.google.android.traceur"
-          android:sharedUserId="android.uid.shell"
+          package="com.android.traceur"
           android:versionCode="2"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="23"/>
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="26"/>
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <application android:label="Traceur">
+    <!-- Used for adding the Quick Settings tile to the status bar. -->
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+
+    <application android:label="@string/system_tracing"
+        android:theme="@style/Theme.Settings">
+
         <activity android:name=".MainActivity"
-                  android:theme="@android:style/Theme.Material.Light.DarkActionBar"
-                  android:label="Traceur"
+                  android:description="@string/record_system_activity"
+                  android:label="@string/system_tracing"
                   android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.INFO"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
+
+            <!-- Mark this activity as a dynamic setting in the development category. -->
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+              android:value="com.android.settings.category.ia.development" />
+            <meta-data android:name="com.android.settings.summary" android:value="@string/record_system_activity" />
+            <meta-data android:name="com.android.settings.order" android:value="10" />
         </activity>
+
         <receiver android:name=".Receiver" android:permission="android.permission.DUMP">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
+        <service android:name=".AtraceService" />
+
         <service
             android:name=".QsService"
-            android:label="Traceur"
+            android:enabled="false"
             android:icon="@drawable/stat_sys_adb"
+            android:label="@string/record_trace"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.android.traceur.files"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <provider
+            android:name=".SearchProvider"
+            android:authorities="com.android.traceur"
+            android:multiprocess="false"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.READ_SEARCH_INDEXABLES"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
+            </intent-filter>
+        </provider>
     </application>
 </manifest>
