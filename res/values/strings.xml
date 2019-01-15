@@ -58,6 +58,23 @@
     <!-- This is the confirmation button indicating that the user does want to clear, or delete, all of the saved traces from their device. -->
     <string name="clear">Clear</string>
 
+    <!-- This is the title for the directory holding the system traces. The user sees this when using a directory browsing app like the Files app. -->
+    <string name="system_traces_storage_title">System traces</string>
+
     <!-- These are keywords that the user can use to search for this app. 'systrace' should not be translated, as it is an app name. -->
     <string name="keywords">systrace, trace, performance</string>
+
+    <!-- Title of a dialog asking the user to confirm whether they want to share the trace. -->
+    <string name="share_trace">Share trace?</string>
+
+    <!-- Text informing user about contents of a trace file. This string appears when users share a trace file or reveal the System Traces directory in a directory browsing app like Files. -->
+    <string name="system_trace_sensitive_data">System Tracing files may include sensitive system and app data (such as app usage). Only share system traces with people and apps you trust.</string>
+
+    <!-- Button on a dialog asking the user to confirm whether they want to share the trace. Clicking this button confirms that the user does want to share the trace. -->
+    <string name="share">Share</string>
+
+    <!-- Checkbox that indicates this dialog should not be shown again when the next trace is taken. -->
+    <string name="dont_show_again">Don\'t show again</string>
+    <!-- Checkbox that indicates that we should use Perfetto to take traces. This feature is in beta. -->
+    <string name="use_perfetto_beta">Use Perfetto (beta)</string>
 </resources>

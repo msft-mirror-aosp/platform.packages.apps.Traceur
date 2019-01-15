@@ -16,8 +16,6 @@
 
 package com.android.traceur;
 
-import com.google.android.collect.Sets;
-
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -37,12 +35,14 @@ import android.os.ServiceManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.internal.statusbar.IStatusBarService;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
-import java.util.TreeMap;
 
 public class Receiver extends BroadcastReceiver {
 
@@ -51,19 +51,20 @@ public class Receiver extends BroadcastReceiver {
 
     public static final String NOTIFICATION_CHANNEL = "system-tracing";
 
-    private static final Set<String> ATRACE_TAGS = Sets.newArraySet(
+    private static final List<String> TRACE_TAGS = Arrays.asList(
             "am", "binder_driver", "camera", "dalvik", "freq", "gfx", "hal",
             "idle", "input", "irq", "res", "sched", "sync", "view", "wm",
             "workq");
 
     /* The user list doesn't include workq, irq, or sync, because the user builds don't have
      * permissions for them. */
-    private static final Set<String> ATRACE_TAGS_USER = Sets.newArraySet(
+    private static final List<String> TRACE_TAGS_USER = Arrays.asList(
             "am", "binder_driver", "camera", "dalvik", "freq", "gfx", "hal",
             "idle", "input", "res", "sched", "view", "wm");
 
     private static final String TAG = "Traceur";
 
+    private static Set<String> mDefaultTagList = null;
     private static ContentObserver mDeveloperOptionsObserver;
 
     @Override
@@ -72,8 +73,7 @@ public class Receiver extends BroadcastReceiver {
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             createNotificationChannel(context);
-            updateDeveloperOptionsWatcher(context,
-                prefs.getBoolean(context.getString(R.string.pref_key_quick_setting), false));
+            updateDeveloperOptionsWatcher(context);
             updateTracing(context);
         } else if (STOP_ACTION.equals(intent.getAction())) {
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on), false).apply();
@@ -93,12 +93,13 @@ public class Receiver extends BroadcastReceiver {
         boolean prefsTracingOn =
                 prefs.getBoolean(context.getString(R.string.pref_key_tracing_on), false);
 
-        if (prefsTracingOn != AtraceUtils.isTracingOn()) {
+        if (prefsTracingOn != TraceUtils.isTracingOn()) {
             if (prefsTracingOn) {
                 // Show notification if the tags in preferences are not all actually available.
-                String activeAvailableTags = getActiveTags(context, prefs, true);
-                String activeTags = getActiveTags(context, prefs, false);
-                if (!TextUtils.equals(activeAvailableTags, activeTags)) {
+                Set<String> activeAvailableTags = getActiveTags(context, prefs, true);
+                Set<String> activeTags = getActiveTags(context, prefs, false);
+
+                if (!activeAvailableTags.equals(activeTags)) {
                     postCategoryNotification(context, prefs);
                 }
 
@@ -108,9 +109,9 @@ public class Receiver extends BroadcastReceiver {
 
                 boolean appTracing = prefs.getBoolean(context.getString(R.string.pref_key_apps), true);
 
-                AtraceService.startTracing(context, activeAvailableTags, bufferSize, appTracing);
+                TraceService.startTracing(context, activeAvailableTags, bufferSize, appTracing);
             } else {
-                AtraceService.stopTracing(context);
+                TraceService.stopTracing(context);
             }
         }
 
@@ -151,58 +152,58 @@ public class Receiver extends BroadcastReceiver {
         }
 
         QsService.updateTile();
-
-        updateDeveloperOptionsWatcher(context, quickSettingsEnabled);
     }
 
     /*
+     * When Developer Options are toggled, also toggle the Storage Provider that
+     * shows "System traces" in Files.
      * When Developer Options are turned off, reset the Show Quick Settings Tile
      * preference to false to hide the tile. The user will need to re-enable the
      * preference if they decide to turn Developer Options back on again.
      */
-    private static void updateDeveloperOptionsWatcher(Context context,
-            boolean quickSettingsEnabled) {
-
+    private static void updateDeveloperOptionsWatcher(Context context) {
         Uri settingUri = Settings.Global.getUriFor(
             Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
 
-        if (quickSettingsEnabled) {
-            mDeveloperOptionsObserver =
-                new ContentObserver(new Handler()) {
-                    @Override
-                    public void onChange(boolean selfChange) {
-                        super.onChange(selfChange);
+        ContentObserver developerOptionsObserver =
+            new ContentObserver(new Handler()) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    super.onChange(selfChange);
 
-                        boolean developerOptionsEnabled = (1 ==
-                            Settings.Global.getInt(context.getContentResolver(),
-                                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
+                    boolean developerOptionsEnabled = (1 ==
+                        Settings.Global.getInt(context.getContentResolver(),
+                            Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
 
-                        if (!developerOptionsEnabled) {
-                            SharedPreferences prefs =
-                                PreferenceManager.getDefaultSharedPreferences(context);
-                            prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_quick_setting), false)
-                                .apply();
-                            updateQuickSettings(context);
-                        }
+                    ComponentName name = new ComponentName(context,
+                        StorageProvider.class);
+                    context.getPackageManager().setComponentEnabledSetting(name,
+                       developerOptionsEnabled
+                            ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                            : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        PackageManager.DONT_KILL_APP);
+
+                    if (!developerOptionsEnabled) {
+                        SharedPreferences prefs =
+                            PreferenceManager.getDefaultSharedPreferences(context);
+                        prefs.edit().putBoolean(
+                            context.getString(R.string.pref_key_quick_setting), false)
+                            .apply();
+                        updateQuickSettings(context);
                     }
-                };
+                }
+            };
 
-            context.getContentResolver().registerContentObserver(settingUri,
-                false, mDeveloperOptionsObserver);
-
-        } else if (mDeveloperOptionsObserver != null) {
-            context.getContentResolver().unregisterContentObserver(
-                mDeveloperOptionsObserver);
-            mDeveloperOptionsObserver = null;
-        }
+        context.getContentResolver().registerContentObserver(settingUri,
+            false, developerOptionsObserver);
+        developerOptionsObserver.onChange(true);
     }
 
     private static void postCategoryNotification(Context context, SharedPreferences prefs) {
         Intent sendIntent = new Intent(context, MainActivity.class);
 
         String title = context.getString(R.string.tracing_categories_unavailable);
-        String msg = getActiveUnavailableTags(context, prefs);
+        String msg = TextUtils.join(", ", getActiveUnavailableTags(context, prefs));
         final Notification.Builder builder =
             new Notification.Builder(context, NOTIFICATION_CHANNEL)
                 .setSmallIcon(R.drawable.stat_sys_adb)
@@ -238,44 +239,36 @@ public class Receiver extends BroadcastReceiver {
         notificationManager.createNotificationChannel(channel);
     }
 
-    public static String getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
+    public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
                 getDefaultTagList());
-        StringBuilder sb = new StringBuilder(10 * tags.size());
-        TreeMap<String, String> available =
-                onlyAvailable ? AtraceUtils.atraceListCategories() : null;
+        Set<String> available = TraceUtils.listCategories().keySet();
 
-        for (String s : tags) {
-            if (onlyAvailable && !available.containsKey(s)) continue;
-            if (sb.length() > 0) {
-                sb.append(' ');
-            }
-            sb.append(s);
+        if (onlyAvailable) {
+            tags.retainAll(available);
         }
-        String s = sb.toString();
-        Log.v(TAG, "getActiveTags(onlyAvailable=" + onlyAvailable + ") = \"" + s + "\"");
-        return s;
+
+        Log.v(TAG, "getActiveTags(onlyAvailable=" + onlyAvailable + ") = \"" + tags.toString() + "\"");
+        return tags;
     }
 
-    public static String getActiveUnavailableTags(Context context, SharedPreferences prefs) {
+    public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
                 getDefaultTagList());
-        StringBuilder sb = new StringBuilder(10 * tags.size());
-        TreeMap<String, String> available = AtraceUtils.atraceListCategories();
+        Set<String> available = TraceUtils.listCategories().keySet();
 
-        for (String s : tags) {
-            if (available.containsKey(s)) continue;
-            if (sb.length() > 0) {
-                sb.append(' ');
-            }
-            sb.append(s);
-        }
-        String s = sb.toString();
-        Log.v(TAG, "getActiveUnavailableTags() = \"" + s + "\"");
-        return s;
+        tags.removeAll(available);
+
+        Log.v(TAG, "getActiveUnavailableTags() = \"" + tags.toString() + "\"");
+        return tags;
     }
 
     public static Set<String> getDefaultTagList() {
-        return Build.TYPE.equals("user") ? ATRACE_TAGS_USER : ATRACE_TAGS;
+        if (mDefaultTagList == null) {
+            mDefaultTagList = new ArraySet<String>(Build.TYPE.equals("user")
+                ? TRACE_TAGS_USER : TRACE_TAGS);
+        }
+
+        return mDefaultTagList;
     }
 }

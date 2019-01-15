@@ -28,13 +28,13 @@ import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v14.preference.MultiSelectListPreference;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.preference.PreferenceScreen;
-import android.support.v14.preference.SwitchPreference;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +55,7 @@ import java.util.TreeMap;
 
 public class MainFragment extends PreferenceFragment {
 
-    static final String TAG = AtraceUtils.TAG;
+    static final String TAG = TraceUtils.TAG;
 
     public static final String ACTION_REFRESH_TAGS = "com.android.traceur.REFRESH_TAGS";
 
@@ -67,6 +67,8 @@ public class MainFragment extends PreferenceFragment {
     private MultiSelectListPreference mTags;
 
     private ListPreference mBufferSize;
+
+    private SwitchPreference mUsePerfetto;
 
     private boolean mRefreshing;
 
@@ -96,7 +98,7 @@ public class MainFragment extends PreferenceFragment {
                     return true;
                 }
                 Set<String> set = (Set<String>) newValue;
-                TreeMap<String, String> available = AtraceUtils.atraceListCategories();
+                TreeMap<String, String> available = TraceUtils.listCategories();
                 ArrayList<String> clean = new ArrayList<>(set.size());
 
                 for (String s : set) {
@@ -146,7 +148,7 @@ public class MainFragment extends PreferenceFragment {
                             .setPositiveButton(R.string.clear,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        AtraceUtils.clearSavedTraces();
+                                        TraceUtils.clearSavedTraces();
                                     }
                                 })
                             .setNegativeButton(android.R.string.no,
@@ -160,6 +162,21 @@ public class MainFragment extends PreferenceFragment {
                         return true;
                     }
                 });
+
+        mUsePerfetto = (SwitchPreference) findPreference(getActivity().getString(R.string.pref_key_use_perfetto));
+        mUsePerfetto.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                boolean shouldUsePerfetto = (boolean)newValue;
+                boolean success = TraceUtils.switchTraceEngine(
+                    shouldUsePerfetto ? PerfettoUtils.NAME : AtraceUtils.NAME);
+
+                if (success) {
+                    mUsePerfetto.setChecked(shouldUsePerfetto);
+                }
+                return false;
+            }
+        });
 
         refreshTags();
 
@@ -221,8 +238,11 @@ public class MainFragment extends PreferenceFragment {
         mTracingOn.setChecked(mTracingOn.getPreferenceManager().getSharedPreferences().getBoolean(
                 mTracingOn.getKey(), false));
 
-        // Update category list to match the categories available on the system from atrace.
-        Set<Entry<String, String>> availableTags = AtraceUtils.atraceListCategories().entrySet();
+        // Grey out the toggle to change the trace engine if a trace is in progress.
+        mUsePerfetto.setEnabled(!mTracingOn.isChecked());
+
+        // Update category list to match the categories available on the system.
+        Set<Entry<String, String>> availableTags = TraceUtils.listCategories().entrySet();
         ArrayList<String> entries = new ArrayList<String>(availableTags.size());
         ArrayList<String> values = new ArrayList<String>(availableTags.size());
         for (Entry<String, String> entry : availableTags) {

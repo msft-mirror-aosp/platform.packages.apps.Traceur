@@ -22,7 +22,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -43,8 +43,15 @@ public class FileSender {
         // grant temporary permissions for.
         final Uri traceUri = getUriForFile(context, file);
 
+        // Intent to send the file
         Intent sendIntent = buildSendIntent(context, traceUri);
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
+
+        // This dialog will show to warn the user about sharing traces, then will execute
+        // the above file-sharing intent.
+        final Intent intent = new Intent(context, UserConsentActivityDialog.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
+        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
 
         final Notification.Builder builder =
             new Notification.Builder(context, Receiver.NOTIFICATION_CHANNEL)
@@ -53,7 +60,7 @@ public class FileSender {
                 .setTicker(context.getString(R.string.trace_saved))
                 .setContentText(context.getString(R.string.tap_to_share))
                 .setContentIntent(PendingIntent.getActivity(
-                        context, traceUri.hashCode(), sendIntent, PendingIntent.FLAG_ONE_SHOT
+                        context, traceUri.hashCode(), intent, PendingIntent.FLAG_ONE_SHOT
                                 | PendingIntent.FLAG_CANCEL_CURRENT))
                 .setAutoCancel(true)
                 .setLocalOnly(true)

@@ -16,7 +16,6 @@
 
 package com.android.traceur;
 
-import com.google.android.collect.Sets;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -27,10 +26,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
-public class AtraceService extends IntentService {
+public class TraceService extends IntentService {
 
     private static String INTENT_ACTION_START_TRACING = "com.android.traceur.START_TRACING";
     private static String INTENT_ACTION_STOP_TRACING = "com.android.traceur.STOP_TRACING";
@@ -44,31 +46,33 @@ public class AtraceService extends IntentService {
     private static int SAVING_TRACE_NOTIFICATION = 2;
 
     public static void startTracing(final Context context,
-            String tags, int bufferSizeKb, boolean apps) {
-        Intent intent = new Intent(context, AtraceService.class);
+            Collection<String> tags, int bufferSizeKb, boolean apps) {
+        Intent intent = new Intent(context, TraceService.class);
         intent.setAction(INTENT_ACTION_START_TRACING);
-        intent.putExtra(INTENT_EXTRA_TAGS, tags);
+        intent.putExtra(INTENT_EXTRA_TAGS, new ArrayList(tags));
         intent.putExtra(INTENT_EXTRA_BUFFER, bufferSizeKb);
         intent.putExtra(INTENT_EXTRA_APPS, apps);
         context.startService(intent);
     }
 
     public static void stopTracing(final Context context) {
-        Intent intent = new Intent(context, AtraceService.class);
+        Intent intent = new Intent(context, TraceService.class);
         intent.setAction(INTENT_ACTION_STOP_TRACING);
-        intent.putExtra(INTENT_EXTRA_FILENAME, AtraceUtils.getOutputFilename());
+        intent.putExtra(INTENT_EXTRA_FILENAME, TraceUtils.getOutputFilename());
         context.startService(intent);
     }
 
-    public AtraceService() {
-        super("AtraceService");
+    public TraceService() {
+        super("TraceService");
         setIntentRedelivery(true);
     }
 
     @Override
     public void onHandleIntent(Intent intent) {
+        setupTraceEngine();
+
         if (intent.getAction().equals(INTENT_ACTION_START_TRACING)) {
-            startTracingInternal(intent.getStringExtra(INTENT_EXTRA_TAGS),
+            startTracingInternal(intent.getStringArrayListExtra(INTENT_EXTRA_TAGS),
                 intent.getIntExtra(INTENT_EXTRA_BUFFER,
                     Integer.parseInt(getApplicationContext()
                         .getString(R.string.default_buffer_size))),
@@ -78,7 +82,7 @@ public class AtraceService extends IntentService {
         }
     }
 
-    private void startTracingInternal(String tags, int bufferSizeKb, boolean appTracing) {
+    private void startTracingInternal(Collection<String> tags, int bufferSizeKb, boolean appTracing) {
         Context context = getApplicationContext();
         Intent stopIntent = new Intent(Receiver.STOP_ACTION,
             null, context, Receiver.class);
@@ -106,12 +110,12 @@ public class AtraceService extends IntentService {
 
         startForeground(TRACE_NOTIFICATION, notification.build());
 
-        if (AtraceUtils.atraceStart(tags, bufferSizeKb, appTracing)) {
+        if (TraceUtils.traceStart(tags, bufferSizeKb, appTracing)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
             // Starting the trace was unsuccessful, so ensure that tracing
             // is stopped and the preference is reset.
-            AtraceUtils.atraceStop();
+            TraceUtils.traceStop();
             PreferenceManager.getDefaultSharedPreferences(context)
                 .edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).apply();
@@ -143,12 +147,21 @@ public class AtraceService extends IntentService {
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
-        File file = AtraceUtils.getOutputFile(outputFilename);
+        File file = TraceUtils.getOutputFile(outputFilename);
 
-        if (AtraceUtils.atraceDump(file)) {
+        if (TraceUtils.traceDump(file)) {
             FileSender.postNotification(getApplicationContext(), file);
         }
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
+    }
+
+    private void setupTraceEngine() {
+        Context context = getApplicationContext();
+        boolean usePerfetto =
+            PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(context.getString(R.string.pref_key_use_perfetto), false);
+        TraceUtils.switchTraceEngine(
+            usePerfetto ? PerfettoUtils.NAME : AtraceUtils.NAME);
     }
 }
