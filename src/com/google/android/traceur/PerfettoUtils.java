@@ -42,6 +42,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final String PERFETTO_TAG = "traceur";
     private static final String MARKER = "PERFETTO_ARGUMENTS";
     private static final int STARTUP_TIMEOUT_MS = 300;
+    private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
+    private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
     public String getName() {
         return NAME;
@@ -51,7 +53,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         return OUTPUT_EXTENSION;
     }
 
-    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps) {
+    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
+            boolean longTrace, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
             return false;
@@ -67,9 +70,34 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         // Build the perfetto config that will be passed on the command line.
         StringBuilder config = new StringBuilder()
             .append("write_into_file: true\n")
-            // Arbitrarily long flush period, practically meaning "never flush"
-            .append("file_write_period_ms: 1000000000\n")
-            .append("buffers {\n")
+            // Ensure that we flush ftrace data every 30s even if cpus are idle.
+            .append("flush_period_ms: 30000\n");
+
+            // If we have set one of the long trace parameters, we must also
+            // tell Perfetto to notify Traceur when the long trace is done.
+            if (longTrace) {
+                config.append("notify_traceur: true\n");
+
+                if (maxLongTraceSizeMb != 0) {
+                    config.append("max_file_size_bytes: "
+                        + (maxLongTraceSizeMb * MEGABYTES_TO_BYTES) + "\n");
+                }
+
+                if (maxLongTraceDurationMinutes != 0) {
+                    config.append("duration_ms: "
+                        + (maxLongTraceDurationMinutes * MINUTES_TO_MILLISECONDS)
+                        + "\n");
+                }
+
+                // Default value for long traces to write to file.
+                config.append("file_write_period_ms: 2500\n");
+            } else {
+                // For short traces, we don't write to the file.
+                // So, always use the maximum value here: 7 days.
+                config.append("file_write_period_ms: 604800000\n");
+            }
+
+            config.append("buffers {\n")
             .append("  size_kb: " + bufferSizeKb + "\n")
             .append("  fill_policy: RING_BUFFER\n")
             .append("} \n")
@@ -82,7 +110,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         for (String tag : tags) {
             // Tags are expected to be all lowercase letters and underscores.
             String cleanTag = tag.replaceAll("[^a-z_]", "");
-            if (cleanTag.equals(tag)) {
+            if (!cleanTag.equals(tag)) {
                 Log.w(TAG, "Attempting to use an invalid tag: " + tag);
             }
             config.append("      atrace_categories: \"" + cleanTag + "\"\n");
@@ -167,6 +195,12 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     public boolean traceDump(File outFile) {
         traceStop();
+
+        // Short-circuit if the file we're trying to dump to doesn't exist.
+        if (!Files.exists(Paths.get(TEMP_TRACE_LOCATION))) {
+            Log.e(TAG, "In-progress trace file doesn't exist, aborting trace dump.");
+            return false;
+        }
 
         Log.v(TAG, "Saving perfetto trace to " + outFile);
 
