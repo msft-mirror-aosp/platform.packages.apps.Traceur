@@ -29,8 +29,6 @@ import android.support.test.uiautomator.Until;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
-import java.util.regex.Pattern;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -99,8 +97,8 @@ public class TraceurAppTests {
         assertNotNull("Restore default categories element not found.",
                 mDevice.wait(Until.findObject(By.text("Restore default categories")),
                 TIMEOUT));
-        assertNotNull("Buffer size element not found.",
-                mDevice.wait(Until.findObject(By.text("Buffer size")),
+        assertNotNull("Per-CPU buffer size element not found.",
+                mDevice.wait(Until.findObject(By.text("Per-CPU buffer size")),
                 TIMEOUT));
         assertNotNull("Clear saved traces element not found.",
                 mDevice.wait(Until.findObject(By.text("Clear saved traces")),
