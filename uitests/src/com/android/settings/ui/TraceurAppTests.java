@@ -24,9 +24,6 @@ import android.os.RemoteException;
 import android.platform.test.annotations.Presubmit;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
-import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.support.test.uiautomator.UiSelector;
-import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.Until;
 
 import androidx.test.InstrumentationRegistry;
@@ -103,14 +100,6 @@ public class TraceurAppTests {
         assertNotNull("Per-CPU buffer size element not found.",
                 mDevice.wait(Until.findObject(By.text("Per-CPU buffer size")),
                 TIMEOUT));
-
-        UiScrollable mainScreen = new UiScrollable(new UiSelector().scrollable(true));
-        try {
-            mainScreen.scrollToEnd(2);
-        } catch (UiObjectNotFoundException e) {
-          // if the screen is not scrollable, all elements should be visible already
-        }
-
         assertNotNull("Clear saved traces element not found.",
                 mDevice.wait(Until.findObject(By.text("Clear saved traces")),
                 TIMEOUT));
