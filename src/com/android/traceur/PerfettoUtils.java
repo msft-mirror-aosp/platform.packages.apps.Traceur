@@ -16,7 +16,6 @@
 
 package com.android.traceur;
 
-import android.sysprop.TraceProperties;
 import android.system.Os;
 import android.util.Log;
 
@@ -46,6 +45,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
+    private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
@@ -60,16 +60,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
             boolean longTrace, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
-        // If setprop persist.traced.enable isn't set, the perfetto traced service
-        // is not enabled on this device. If the user wants to trace, we should enable
-        // this service. Since it's such a low-overhead service, we will leave it enabled
-        // subsequently.
-        boolean perfettoEnabled = TraceProperties.enable().orElse(false);
-        if (!perfettoEnabled) {
-            Log.e(TAG, "Starting the traced service to allow Perfetto to trace.");
-            TraceProperties.enable(true);
-        }
-
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
             return false;
@@ -119,7 +109,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         config.append("incremental_state_config {\n")
             .append("  clear_period_ms: 15000\n")
             .append("} \n")
-            // This is target_buffer: 0, which is used for ftrace.
+            // This is target_buffer: 0, which is used for ftrace and the ftrace-derived
+            // android.gpu.memory.
             .append("buffers {\n")
             .append("  size_kb: " + bufferSizeKb * numCpus + "\n")
             .append("  fill_policy: RING_BUFFER\n")
@@ -163,6 +154,16 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             .append("  }\n")
             .append("}\n")
             .append(" \n");
+
+        // Captures initial counter values, updates are captured in ftrace.
+        if (tags.contains(MEMORY_TAG) || tags.contains(GFX_TAG)) {
+             config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.gpu.memory\"\n")
+                .append("    target_buffer: 0\n")
+                .append("  }\n")
+                .append("}\n");
+        }
 
         // For process association. If the memory tag is enabled,
         // poll periodically instead of just once at the beginning.
@@ -289,15 +290,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     }
 
     public boolean isTracingOn() {
-        // If setprop persist.traced.enable isn't set, the perfetto traced service
-        // is not enabled on this device. When we start a trace for the first time,
-        // we'll enable it; if it's not enabled we know tracing is not on.
-        // Without this property set we can't query perfetto for an existing trace.
-        boolean perfettoEnabled = TraceProperties.enable().orElse(false);
-        if (!perfettoEnabled) {
-            return false;
-        }
-
         String cmd = "perfetto --is_detached=" + PERFETTO_TAG;
 
         try {
