@@ -174,21 +174,6 @@ public class MainFragment extends PreferenceFragment {
                     }
                 });
 
-        // Unset stop_on_bugreport to make it clear that it and attach_to_bugreport are mutually
-        // exclusive.
-        findPreference(getString(R.string.pref_key_attach_to_bug_report))
-            .setOnPreferenceClickListener(
-                new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        mPrefs.edit().putBoolean(
-                                getString(R.string.pref_key_stop_on_bugreport),
-                                false).commit();
-                        refreshUi();
-                        return true;
-                    }
-                });
-
         findPreference("trace_link_button")
             .setOnPreferenceClickListener(
                 new Preference.OnPreferenceClickListener() {
@@ -199,6 +184,24 @@ public class MainFragment extends PreferenceFragment {
                             startActivity(intent);
                         } catch (ActivityNotFoundException e) {
                             return false;
+                        }
+                        return true;
+                    }
+                });
+
+        // This disables "Attach to bugreports" when long traces are enabled. This cannot be done in
+        // main.xml because there are some other settings there that are enabled with long traces.
+        SwitchPreference attachToBugreport = findPreference(
+            getString(R.string.pref_key_attach_to_bugreport));
+        findPreference(getString(R.string.pref_key_long_traces))
+            .setOnPreferenceClickListener(
+                new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        if (((SwitchPreference) preference).isChecked()) {
+                            attachToBugreport.setEnabled(false);
+                        } else {
+                            attachToBugreport.setEnabled(true);
                         }
                         return true;
                     }
@@ -328,16 +331,25 @@ public class MainFragment extends PreferenceFragment {
             }
         }
 
-        // Check if BetterBug is installed to see if Traceur should display or disable
-        // the attach trace to bugreport toggle.
+        // Check if BetterBug is installed to see if Traceur should display either the toggle for
+        // 'attach_to_bugreport' or 'stop_on_bugreport'.
         try {
             context.getPackageManager().getPackageInfo(BETTERBUG_PACKAGE_NAME,
-                PackageManager.MATCH_SYSTEM_ONLY);
-            findPreference(getString(R.string.pref_key_attach_to_bug_report)).setVisible(true);
+                    PackageManager.MATCH_SYSTEM_ONLY);
+            findPreference(getString(R.string.pref_key_attach_to_bugreport)).setVisible(true);
+            findPreference(getString(R.string.pref_key_stop_on_bugreport)).setVisible(false);
+            // Changes the long traces summary to add that they cannot be attached to bugreports.
+            findPreference(getString(R.string.pref_key_long_traces))
+                    .setSummary(getString(R.string.long_traces_summary_betterbug));
         } catch (PackageManager.NameNotFoundException e) {
+            // attach_to_bugreport must be disabled here because it's true by default.
             mPrefs.edit().putBoolean(
-                    getString(R.string.pref_key_attach_to_bug_report), false).commit();
-            findPreference(getString(R.string.pref_key_attach_to_bug_report)).setVisible(false);
+                    getString(R.string.pref_key_attach_to_bugreport), false).commit();
+            findPreference(getString(R.string.pref_key_attach_to_bugreport)).setVisible(false);
+            findPreference(getString(R.string.pref_key_stop_on_bugreport)).setVisible(true);
+            // Sets long traces summary to the default in case Betterbug was removed.
+            findPreference(getString(R.string.pref_key_long_traces))
+                    .setSummary(getString(R.string.long_traces_summary));
         }
 
         // Check if an activity exists to handle the trace_link_button intent. If not, hide the UI
