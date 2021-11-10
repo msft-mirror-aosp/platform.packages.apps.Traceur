@@ -187,17 +187,31 @@ public class TraceService extends IntentService {
             Notification.Builder notificationAttached = getBaseTraceurNotification()
                 .setContentTitle(getString(R.string.attached_to_report))
                 .setTicker(getString(R.string.attached_to_report))
-                .setContentText(getString(R.string.attached_to_report_summary))
                 .setAutoCancel(true);
 
             Intent openIntent =
                     getPackageManager().getLaunchIntentForPackage(BETTERBUG_PACKAGE_NAME);
             if (openIntent != null) {
+                // Add "Tap to open BetterBug" to notification only if intent is non-null.
+                notificationAttached.setContentText(getString(
+                        R.string.attached_to_report_summary));
                 notificationAttached.setContentIntent(PendingIntent.getActivity(
                         context, 0, openIntent, PendingIntent.FLAG_ONE_SHOT
                                 | PendingIntent.FLAG_CANCEL_CURRENT
                                 | PendingIntent.FLAG_IMMUTABLE));
             }
+
+            // Adds an action button to the notification for starting a new trace.
+            Intent restartIntent = new Intent(context, InternalReceiver.class);
+            restartIntent.setAction(InternalReceiver.START_ACTION);
+            PendingIntent restartPendingIntent = PendingIntent.getBroadcast(context, 0,
+                    restartIntent, PendingIntent.FLAG_ONE_SHOT
+                            | PendingIntent.FLAG_CANCEL_CURRENT
+                            | PendingIntent.FLAG_IMMUTABLE);
+            Notification.Action action = new Notification.Action.Builder(
+                    R.drawable.bugfood_icon, context.getString(R.string.start_new_trace),
+                    restartPendingIntent).build();
+            notificationAttached.addAction(action);
 
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
