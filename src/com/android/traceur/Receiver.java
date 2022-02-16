@@ -229,10 +229,6 @@ public class Receiver extends BroadcastReceiver {
                                 context.getString(R.string.pref_key_quick_setting), false)
                                 .commit();
                             updateQuickSettings(context);
-                            // Stop an ongoing trace if one exists.
-                            if (TraceUtils.isTracingOn()) {
-                                TraceService.stopTracingWithoutSaving(context);
-                            }
                         }
                     }
                 };
