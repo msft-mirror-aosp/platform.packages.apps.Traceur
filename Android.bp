@@ -5,7 +5,8 @@ package {
 android_app {
     name: "Traceur",
     platform_apis: true,
-    certificate: "platform",
+    certificate: "shared",
+    privileged: true,
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
