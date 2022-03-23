@@ -25,7 +25,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
+
+import perfetto.protos.DataSourceDescriptorOuterClass.DataSourceDescriptor;
+import perfetto.protos.FtraceDescriptorOuterClass.FtraceDescriptor.AtraceCategory;
+import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState;
+import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSource;
 
 /**
  * Utility functions for calling Perfetto
@@ -46,6 +53,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
+    private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
@@ -229,6 +237,15 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
               .append("}\n");
         }
 
+        if (tags.contains(CAMERA_TAG)) {
+          config.append("data_sources: {\n")
+              .append("  config { \n")
+              .append("    name: \"android.hardware.camera\"\n")
+              .append("    target_buffer: 1\n")
+              .append("  }\n")
+              .append("}\n");
+        }
+
         // Also enable Chrome events when the WebView tag is enabled.
         if (tags.contains(WEBVIEW_TAG)) {
             String chromeTraceConfig =  "{" +
@@ -357,6 +374,42 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             } else {
                 throw new RuntimeException("Perfetto error: " + result);
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static TreeMap<String,String> perfettoListCategories() {
+        String cmd = "perfetto --query-raw";
+
+        Log.v(TAG, "Listing tags: " + cmd);
+        try {
+            Process perfetto = TraceUtils.exec(cmd, null, false);
+
+            TracingServiceState serviceState =
+                    TracingServiceState.parseFrom(perfetto.getInputStream());
+
+            if (perfetto.waitFor() != 0) {
+                Log.e(TAG, "perfettoListCategories failed with: " + perfetto.exitValue());
+            }
+
+            List<AtraceCategory> categories = null;
+
+            for (DataSource dataSource : serviceState.getDataSourcesList()) {
+                DataSourceDescriptor dataSrcDescriptor = dataSource.getDsDescriptor();
+                if (dataSrcDescriptor.getName().equals("linux.ftrace")){
+                    categories = dataSrcDescriptor.getFtraceDescriptor().getAtraceCategoriesList();
+                    break;
+                }
+            }
+
+            TreeMap<String,String> result = new TreeMap<>();
+            if (categories != null) {
+                for (AtraceCategory category : categories) {
+                    result.put(category.getName(), category.getDescription());
+                }
+            }
+            return result;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
