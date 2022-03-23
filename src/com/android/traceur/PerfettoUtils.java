@@ -25,14 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
-import java.util.List;
-import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
-
-import perfetto.protos.DataSourceDescriptorOuterClass.DataSourceDescriptor;
-import perfetto.protos.FtraceDescriptorOuterClass.FtraceDescriptor.AtraceCategory;
-import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState;
-import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSource;
 
 /**
  * Utility functions for calling Perfetto
@@ -49,16 +42,13 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final String PERFETTO_TAG = "traceur";
     private static final String MARKER = "PERFETTO_ARGUMENTS";
     private static final int STARTUP_TIMEOUT_MS = 10000;
-    private static final int EXEC_TIMEOUT_MS = 5000;
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
-    private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
-    private static final String WEBVIEW_TAG = "webview";
 
     public String getName() {
         return NAME;
@@ -237,39 +227,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
               .append("}\n");
         }
 
-        if (tags.contains(CAMERA_TAG)) {
-          config.append("data_sources: {\n")
-              .append("  config { \n")
-              .append("    name: \"android.hardware.camera\"\n")
-              .append("    target_buffer: 1\n")
-              .append("  }\n")
-              .append("}\n");
-        }
-
-        // Also enable Chrome events when the WebView tag is enabled.
-        if (tags.contains(WEBVIEW_TAG)) {
-            String chromeTraceConfig =  "{" +
-                "\\\"record_mode\\\":\\\"record-continuously\\\"," +
-                "\\\"included_categories\\\":[\\\"*\\\"]" +
-                "}";
-            config.append("data_sources: {\n")
-                .append("  config {\n")
-                .append("    name: \"org.chromium.trace_event\"\n")
-                .append("    chrome_config {\n")
-                .append("      trace_config: \"" + chromeTraceConfig + "\"\n")
-                .append("    }\n")
-                .append("  }\n")
-                .append("}\n")
-                .append("data_sources: {\n")
-                .append("  config {\n")
-                .append("    name: \"org.chromium.trace_metadata\"\n")
-                .append("      chrome_config {\n")
-                .append("        trace_config: \"" + chromeTraceConfig + "\"\n")
-                .append("      }\n")
-                .append("  }\n")
-                .append("}\n");
-        }
-
         String configString = config.toString();
 
         // If the here-doc ends early, within the config string, exit immediately.
@@ -287,14 +244,17 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         try {
             Process process = TraceUtils.exec(cmd, TEMP_DIR);
 
-            // Waits for the process to terminate before checking its exit value.
-            if (process.waitFor(EXEC_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
-                if (process.exitValue() != 0) {
-                    Log.e(TAG, "perfetto traceStart failed with: " + process.exitValue());
-                    return false;
-                }
-            } else {
-                Log.e(TAG, "perfetto traceStart command never terminated.");
+            // If we time out, ensure that the perfetto process is destroyed.
+            if (!process.waitFor(STARTUP_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
+                Log.e(TAG, "perfetto traceStart has timed out after "
+                    + STARTUP_TIMEOUT_MS + " ms.");
+                process.destroyForcibly();
+                return false;
+            }
+
+            if (process.exitValue() != 0) {
+                Log.e(TAG, "perfetto traceStart failed with: "
+                    + process.exitValue());
                 return false;
             }
         } catch (Exception e) {
@@ -315,14 +275,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         String cmd = "perfetto --stop --attach=" + PERFETTO_TAG;
         try {
             Process process = TraceUtils.exec(cmd);
-
-            // Waits for the process to terminate before checking its exit value.
-            if (process.waitFor(EXEC_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
-                if (process.exitValue() != 0) {
-                    Log.e(TAG, "perfetto traceStop failed with: " + process.exitValue());
-                }
-            } else {
-                Log.e(TAG, "perfetto traceStop command never terminated.");
+            if (process.waitFor() != 0) {
+                Log.e(TAG, "perfetto traceStop failed with: " + process.exitValue());
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -331,12 +285,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     public boolean traceDump(File outFile) {
         traceStop();
-
-        // Short-circuit if a trace was not stopped.
-        if (isTracingOn()) {
-            Log.e(TAG, "Trace was not stopped successfully, aborting trace dump.");
-            return false;
-        }
 
         // Short-circuit if the file we're trying to dump to doesn't exist.
         if (!Files.exists(Paths.get(TEMP_TRACE_LOCATION))) {
@@ -374,42 +322,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             } else {
                 throw new RuntimeException("Perfetto error: " + result);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static TreeMap<String,String> perfettoListCategories() {
-        String cmd = "perfetto --query-raw";
-
-        Log.v(TAG, "Listing tags: " + cmd);
-        try {
-            Process perfetto = TraceUtils.exec(cmd, null, false);
-
-            TracingServiceState serviceState =
-                    TracingServiceState.parseFrom(perfetto.getInputStream());
-
-            if (perfetto.waitFor() != 0) {
-                Log.e(TAG, "perfettoListCategories failed with: " + perfetto.exitValue());
-            }
-
-            List<AtraceCategory> categories = null;
-
-            for (DataSource dataSource : serviceState.getDataSourcesList()) {
-                DataSourceDescriptor dataSrcDescriptor = dataSource.getDsDescriptor();
-                if (dataSrcDescriptor.getName().equals("linux.ftrace")){
-                    categories = dataSrcDescriptor.getFtraceDescriptor().getAtraceCategoriesList();
-                    break;
-                }
-            }
-
-            TreeMap<String,String> result = new TreeMap<>();
-            if (categories != null) {
-                for (AtraceCategory category : categories) {
-                    result.put(category.getName(), category.getDescription());
-                }
-            }
-            return result;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
