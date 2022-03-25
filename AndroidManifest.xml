@@ -44,6 +44,9 @@
     <!-- Used for brief periods where the trace service is foregrounded. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
+    <!-- Used to post file-sending notification. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <!-- Declare Android TV support. -->
     <uses-feature android:name="android.software.leanback"
          android:required="false"/>
@@ -54,7 +57,8 @@
 
     <application android:label="@string/system_tracing"
          android:banner="@drawable/banner"
-         android:icon="@drawable/ic_launcher_settings">
+         android:icon="@drawable/ic_launcher_settings"
+         android:backupAgent="com.android.traceur.TraceurBackupAgent">
 
         <activity android:name=".MainActivity"
              android:description="@string/record_system_activity"
@@ -111,6 +115,11 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.android.internal.intent.action.BUGREPORT_STARTED"/>
             </intent-filter>
+          </receiver>
+
+        <receiver android:name=".InternalReceiver"
+            androidprv:systemUserOnly="true"
+            android:exported="false">
         </receiver>
 
         <service android:name=".StopTraceService"
@@ -128,6 +137,8 @@
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                       android:value="true" />
         </service>
 
         <provider android:name="androidx.core.content.FileProvider"
