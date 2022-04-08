@@ -1,8 +1,0 @@
-// for packages/apps/Traceur
-{
-    "presubmit": [
-        {
-            "name": "TraceurUiTests"
-        }
-    ]
-}
