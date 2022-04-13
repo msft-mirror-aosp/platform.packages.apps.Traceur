@@ -52,6 +52,10 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
+    // The total amount of memory allocated to the two target buffers will be divided according to a
+    // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
+    private static final int BUFFER_SIZE_RATIO = 64;
+
     private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
@@ -85,6 +89,11 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         // The user chooses a per-CPU buffer size due to atrace limitations.
         // So we use this to ensure that we reserve the correctly-sized buffer.
         int numCpus = Runtime.getRuntime().availableProcessors();
+
+        // Allots 1 / BUFFER_SIZE_RATIO to the small buffer and the remainder to the large buffer.
+        int totalBufferSizeKb = numCpus * bufferSizeKb;
+        int targetBuffer1Kb = totalBufferSizeKb / BUFFER_SIZE_RATIO;
+        int targetBuffer0Kb = totalBufferSizeKb - targetBuffer1Kb;
 
         // Build the perfetto config that will be passed on the command line.
         StringBuilder config = new StringBuilder()
@@ -128,12 +137,12 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             // This is target_buffer: 0, which is used for ftrace and the ftrace-derived
             // android.gpu.memory.
             .append("buffers {\n")
-            .append("  size_kb: " + bufferSizeKb * numCpus + "\n")
+            .append("  size_kb: " + targetBuffer0Kb + "\n")
             .append("  fill_policy: RING_BUFFER\n")
             .append("} \n")
             // This is target_buffer: 1, which is used for additional data sources.
             .append("buffers {\n")
-            .append("  size_kb: 2048\n")
+            .append("  size_kb: " + targetBuffer1Kb + "\n")
             .append("  fill_policy: RING_BUFFER\n")
             .append("} \n")
             .append("data_sources {\n")
