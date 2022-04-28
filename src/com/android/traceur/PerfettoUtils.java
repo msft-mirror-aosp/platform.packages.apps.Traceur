@@ -20,12 +20,17 @@ import android.system.Os;
 import android.util.Log;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
+
+import perfetto.protos.DataSourceDescriptorOuterClass.DataSourceDescriptor;
+import perfetto.protos.FtraceDescriptorOuterClass.FtraceDescriptor.AtraceCategory;
+import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState;
+import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSource;
 
 /**
  * Utility functions for calling Perfetto
@@ -41,11 +46,13 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     private static final String PERFETTO_TAG = "traceur";
     private static final String MARKER = "PERFETTO_ARGUMENTS";
+    private static final int LIST_TIMEOUT_MS = 10000;
     private static final int STARTUP_TIMEOUT_MS = 10000;
-    private static final int EXEC_TIMEOUT_MS = 5000;
+    private static final int STOP_TIMEOUT_MS = 30000;
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
 
+    private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
@@ -229,6 +236,15 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
               .append("}\n");
         }
 
+        if (tags.contains(CAMERA_TAG)) {
+          config.append("data_sources: {\n")
+              .append("  config { \n")
+              .append("    name: \"android.hardware.camera\"\n")
+              .append("    target_buffer: 1\n")
+              .append("  }\n")
+              .append("}\n");
+        }
+
         // Also enable Chrome events when the WebView tag is enabled.
         if (tags.contains(WEBVIEW_TAG)) {
             String chromeTraceConfig =  "{" +
@@ -268,16 +284,11 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
         Log.v(TAG, "Starting perfetto trace.");
         try {
-            Process process = TraceUtils.exec(cmd, TEMP_DIR);
-
-            // Waits for the process to terminate before checking its exit value.
-            if (process.waitFor(EXEC_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
-                if (process.exitValue() != 0) {
-                    Log.e(TAG, "perfetto traceStart failed with: " + process.exitValue());
-                    return false;
-                }
-            } else {
-                Log.e(TAG, "perfetto traceStart command never terminated.");
+            Process process = TraceUtils.execWithTimeout(cmd, TEMP_DIR, STARTUP_TIMEOUT_MS);
+            if (process == null) {
+                return false;
+            } else if (process.exitValue() != 0) {
+                Log.e(TAG, "perfetto traceStart failed with: " + process.exitValue());
                 return false;
             }
         } catch (Exception e) {
@@ -297,15 +308,9 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
         String cmd = "perfetto --stop --attach=" + PERFETTO_TAG;
         try {
-            Process process = TraceUtils.exec(cmd);
-
-            // Waits for the process to terminate before checking its exit value.
-            if (process.waitFor(EXEC_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
-                if (process.exitValue() != 0) {
-                    Log.e(TAG, "perfetto traceStop failed with: " + process.exitValue());
-                }
-            } else {
-                Log.e(TAG, "perfetto traceStop command never terminated.");
+            Process process = TraceUtils.execWithTimeout(cmd, null, STOP_TIMEOUT_MS);
+            if (process != null && process.exitValue() != 0) {
+                Log.e(TAG, "perfetto traceStop failed with: " + process.exitValue());
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -357,6 +362,53 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             } else {
                 throw new RuntimeException("Perfetto error: " + result);
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static TreeMap<String,String> perfettoListCategories() {
+        String cmd = "perfetto --query-raw";
+
+        Log.v(TAG, "Listing tags: " + cmd);
+        try {
+
+            TreeMap<String, String> result = new TreeMap<>();
+
+            // execWithTimeout() cannot be used because stdout must be consumed before the process
+            // is terminated.
+            Process perfetto = TraceUtils.exec(cmd, null, false);
+            TracingServiceState serviceState =
+                    TracingServiceState.parseFrom(perfetto.getInputStream());
+
+            // Destroy the perfetto process if it times out.
+            if (!perfetto.waitFor(LIST_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
+                Log.e(TAG, "perfettoListCategories timed out after " + LIST_TIMEOUT_MS + " ms.");
+                perfetto.destroyForcibly();
+                return result;
+            }
+
+            // The perfetto process completed and failed, but does not need to be destroyed.
+            if (perfetto.exitValue() != 0) {
+                Log.e(TAG, "perfettoListCategories failed with: " + perfetto.exitValue());
+            }
+
+            List<AtraceCategory> categories = null;
+
+            for (DataSource dataSource : serviceState.getDataSourcesList()) {
+                DataSourceDescriptor dataSrcDescriptor = dataSource.getDsDescriptor();
+                if (dataSrcDescriptor.getName().equals("linux.ftrace")){
+                    categories = dataSrcDescriptor.getFtraceDescriptor().getAtraceCategoriesList();
+                    break;
+                }
+            }
+
+            if (categories != null) {
+                for (AtraceCategory category : categories) {
+                    result.put(category.getName(), category.getDescription());
+                }
+            }
+            return result;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
