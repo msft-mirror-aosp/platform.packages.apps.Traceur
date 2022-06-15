@@ -27,12 +27,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
 
 /**
@@ -50,7 +52,6 @@ public class TraceUtils {
     private static TraceEngine mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
-    private static final int PROCESS_TIMEOUT_MS = 30000; // 30 seconds
 
     public interface TraceEngine {
         public String getName();
@@ -87,7 +88,7 @@ public class TraceUtils {
     }
 
     public static TreeMap<String, String> listCategories() {
-        return PerfettoUtils.perfettoListCategories();
+        return AtraceUtils.atraceListCategories();
     }
 
     public static void clearSavedTraces() {
@@ -126,23 +127,6 @@ public class TraceUtils {
             new Logger("traceService:stdout", process.getInputStream());
         }
 
-        return process;
-    }
-
-    // Returns the Process if the command terminated on time and null if not.
-    public static Process execWithTimeout(String cmd, String tmpdir, long timeout)
-            throws IOException {
-        Process process = exec(cmd, tmpdir, true);
-        try {
-            if (!process.waitFor(timeout, TimeUnit.MILLISECONDS)) {
-                Log.e(TAG, "Command '" + cmd + "' has timed out after " + timeout + " ms.");
-                process.destroyForcibly();
-                // Return null to signal a timeout and that the Process was destroyed.
-                return null;
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         return process;
     }
 
@@ -220,7 +204,7 @@ public class TraceUtils {
     }
 
     /**
-     * Redirects an InputStream to logcat.
+     * Streams data from an InputStream to an OutputStream
      */
     private static class Logger {
 
@@ -228,6 +212,7 @@ public class TraceUtils {
             new Thread(tag) {
                 @Override
                 public void run() {
+                    int read;
                     String line;
                     BufferedReader r = new BufferedReader(new InputStreamReader(in));
                     try {

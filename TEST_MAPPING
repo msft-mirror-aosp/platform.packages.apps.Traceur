@@ -4,10 +4,5 @@
         {
             "name": "TraceurUiTests"
         }
-    ],
-    "hwasan-postsubmit": [
-        {
-            "name": "TraceurUiTests"
-        }
     ]
 }

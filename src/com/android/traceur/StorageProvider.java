@@ -15,6 +15,7 @@
  */
 package com.android.traceur;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
@@ -25,8 +26,10 @@ import android.os.ParcelFileDescriptor;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 import android.provider.DocumentsContract.Root;
+import android.provider.DocumentsProvider;
 import android.provider.Settings;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 import com.android.internal.content.FileSystemProvider;
 

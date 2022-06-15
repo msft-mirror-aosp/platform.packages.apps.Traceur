@@ -26,6 +26,7 @@ import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_TARGET_PACKAGE;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_TARGET_CLASS;
 
+import android.content.res.Resources;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
