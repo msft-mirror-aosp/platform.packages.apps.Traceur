@@ -81,7 +81,7 @@ public class Receiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.i(TAG, "Received BOOT_COMPLETE");
             createNotificationChannels(context);
-            updateDeveloperOptionsWatcher(context);
+            updateDeveloperOptionsWatcher(context, /* fromBootIntent */ true);
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
@@ -199,7 +199,7 @@ public class Receiver extends BroadcastReceiver {
      * preference to false to hide the tile. The user will need to re-enable the
      * preference if they decide to turn Developer Options back on again.
      */
-    static void updateDeveloperOptionsWatcher(Context context) {
+    static void updateDeveloperOptionsWatcher(Context context, boolean fromBootIntent) {
         if (mDeveloperOptionsObserver == null) {
             Uri settingUri = Settings.Global.getUriFor(
                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
@@ -239,7 +239,11 @@ public class Receiver extends BroadcastReceiver {
 
             context.getContentResolver().registerContentObserver(settingUri,
                 false, mDeveloperOptionsObserver);
-            mDeveloperOptionsObserver.onChange(true);
+            // If this observer is being created and registered on boot, it can be assumed that
+            // developer options did not change in the meantime.
+            if (!fromBootIntent) {
+                mDeveloperOptionsObserver.onChange(true);
+            }
         }
     }
 
