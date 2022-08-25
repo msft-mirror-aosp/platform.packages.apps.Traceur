@@ -88,7 +88,7 @@ public class MainFragment extends PreferenceFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Receiver.updateDeveloperOptionsWatcher(getContext());
+        Receiver.updateDeveloperOptionsWatcher(getContext(), /* fromBootIntent */ false);
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(
                 getActivity().getApplicationContext());
