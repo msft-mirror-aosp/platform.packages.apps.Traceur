@@ -283,6 +283,7 @@ public class Receiver extends BroadcastReceiver {
         tracingChannel.setBypassDnd(true);
         tracingChannel.enableVibration(true);
         tracingChannel.setSound(null, null);
+        tracingChannel.setBlockable(true);
 
         NotificationChannel saveTraceChannel = new NotificationChannel(
             NOTIFICATION_CHANNEL_OTHER,
@@ -291,6 +292,7 @@ public class Receiver extends BroadcastReceiver {
         saveTraceChannel.setBypassDnd(true);
         saveTraceChannel.enableVibration(true);
         saveTraceChannel.setSound(null, null);
+        saveTraceChannel.setBlockable(true);
 
         NotificationManager notificationManager =
             context.getSystemService(NotificationManager.class);
