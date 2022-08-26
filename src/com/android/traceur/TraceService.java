@@ -129,11 +129,11 @@ public class TraceService extends IntentService {
                 intent.getIntExtra(INTENT_EXTRA_LONG_TRACE_DURATION,
                     Integer.parseInt(context.getString(R.string.default_long_trace_duration))));
         } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(), false, false);
+            stopTracingInternal(TraceUtils.getOutputFilename(), false);
         } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(), true, false);
+            stopTracingInternal(TraceUtils.getOutputFilename(), false);
         } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOLEN)) {
-            stopTracingInternal("", false, true);
+            stopTracingInternal("", true);
         }
     }
 
@@ -185,8 +185,7 @@ public class TraceService extends IntentService {
         }
     }
 
-    private void stopTracingInternal(String outputFilename, boolean forceStop,
-            boolean sessionStolen) {
+    private void stopTracingInternal(String outputFilename, boolean sessionStolen) {
         Context context = getApplicationContext();
         NotificationManager notificationManager =
             getSystemService(NotificationManager.class);
