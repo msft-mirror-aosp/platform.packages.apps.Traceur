@@ -27,9 +27,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -128,17 +125,24 @@ public class TraceUtils {
         if (logOutput) {
             new Logger("traceService:stdout", process.getInputStream());
         }
+
+        return process;
+    }
+
+    // Returns the Process if the command terminated on time and null if not.
+    public static Process execWithTimeout(String cmd, String tmpdir, long timeout)
+            throws IOException {
+        Process process = exec(cmd, tmpdir, true);
         try {
-            // Destroy the process in the case of a timeout.
-            if (!process.waitFor(PROCESS_TIMEOUT_MS, TimeUnit.MILLISECONDS)) {
-                Log.e(TAG, "Command '" + cmd + "' has timed out after "
-                      + PROCESS_TIMEOUT_MS + " ms.");
+            if (!process.waitFor(timeout, TimeUnit.MILLISECONDS)) {
+                Log.e(TAG, "Command '" + cmd + "' has timed out after " + timeout + " ms.");
                 process.destroyForcibly();
+                // Return null to signal a timeout and that the Process was destroyed.
+                return null;
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         return process;
     }
 
@@ -216,7 +220,7 @@ public class TraceUtils {
     }
 
     /**
-     * Streams data from an InputStream to an OutputStream
+     * Redirects an InputStream to logcat.
      */
     private static class Logger {
 
@@ -224,7 +228,6 @@ public class TraceUtils {
             new Thread(tag) {
                 @Override
                 public void run() {
-                    int read;
                     String line;
                     BufferedReader r = new BufferedReader(new InputStreamReader(in));
                     try {
