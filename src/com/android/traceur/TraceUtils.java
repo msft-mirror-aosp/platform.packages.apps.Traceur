@@ -87,7 +87,11 @@ public class TraceUtils {
     }
 
     public static TreeMap<String, String> listCategories() {
-        return PerfettoUtils.perfettoListCategories();
+        TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
+        if (currentTraceEngine().equals(PerfettoUtils.NAME)) {
+            categories.put("sys_stats", "meminfo and vmstats");
+        }
+        return categories;
     }
 
     public static void clearSavedTraces() {
