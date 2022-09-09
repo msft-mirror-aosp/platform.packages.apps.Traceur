@@ -56,12 +56,16 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
     private static final int BUFFER_SIZE_RATIO = 64;
 
+    // atrace trace categories that will result in added data sources in the Perfetto config.
     private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
+
+    // Custom trace categories.
+    private static final String SYS_STATS_TAG = "sys_stats";
 
     public String getName() {
         return NAME;
@@ -225,12 +229,13 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("}\n");
         }
 
-        if (tags.contains(MEMORY_TAG)) {
+        if (tags.contains(SYS_STATS_TAG)) {
             config.append("data_sources: {\n")
                 .append("  config { \n")
-                .append("    name: \"android.sys_stats\"\n")
+                .append("    name: \"linux.sys_stats\"\n")
                 .append("    target_buffer: 1\n")
                 .append("    sys_stats_config {\n")
+                .append("      meminfo_period_ms: 1000\n")
                 .append("      vmstat_period_ms: 1000\n")
                 .append("    }\n")
                 .append("  }\n")
