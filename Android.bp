@@ -6,9 +6,6 @@ android_app {
     name: "Traceur",
     platform_apis: true,
     certificate: "platform",
-    optimize: {
-        proguard_flags_files: ["proguard.flags"],
-    },
     static_libs: [
         "androidx.leanback_leanback",
         "androidx.leanback_leanback-preference",
