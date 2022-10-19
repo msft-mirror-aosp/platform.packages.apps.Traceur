@@ -159,7 +159,7 @@ public class MainFragment extends PreferenceFragment {
                                         TraceUtils.clearSavedTraces();
                                     }
                                 })
-                            .setNegativeButton(android.R.string.no,
+                            .setNegativeButton(android.R.string.cancel,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
