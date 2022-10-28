@@ -57,7 +57,7 @@ public class UserConsentActivityDialog extends AlertActivity
         super.onCreate(icicle);
 
         this.getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
-        mNextIntent = getIntent().getParcelableExtra(Intent.EXTRA_INTENT);
+        mNextIntent = getIntent().getParcelableExtra(Intent.EXTRA_INTENT, Intent.class);
 
         // If the user has previously indicated to never show this dialog again,
         // go ahead and start the target intent and finish this activity.
