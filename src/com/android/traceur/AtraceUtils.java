@@ -20,6 +20,8 @@ import android.sysprop.TraceProperties;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.traceur.TraceUtils.Streamer;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,8 +30,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
-
-import com.android.traceur.TraceUtils.Streamer;
 
 /**
  * Utility functions for calling atrace
