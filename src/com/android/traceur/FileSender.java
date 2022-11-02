@@ -23,13 +23,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.Context;
-import androidx.core.content.FileProvider;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.util.Patterns;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 
