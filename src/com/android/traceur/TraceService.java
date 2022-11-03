@@ -16,7 +16,6 @@
 
 package com.android.traceur;
 
-
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
