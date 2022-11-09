@@ -82,11 +82,11 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
             return false;
         } else {
-            // Ensure the temporary trace file is cleared.
-            try {
-                Files.deleteIfExists(Paths.get(TEMP_TRACE_LOCATION));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            // If a temporary trace file already exists, save it before beginning a new trace.
+            File recoveredFile = TraceUtils.getOutputFile(
+                    TraceUtils.getRecoveredFilename());
+            if (!traceDump(recoveredFile)) {
+                Log.w(TAG, "Failed to recover in-progress trace.");
             }
         }
 
