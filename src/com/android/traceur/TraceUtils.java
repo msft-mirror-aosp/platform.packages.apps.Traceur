@@ -17,7 +17,6 @@
 package com.android.traceur;
 
 import android.os.Build;
-import android.os.AsyncTask;
 import android.os.FileUtils;
 import android.util.Log;
 
@@ -33,6 +32,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -162,17 +164,18 @@ public class TraceUtils {
     }
 
     protected static void cleanupOlderFiles(final int minCount, final long minAge) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
-                } catch (RuntimeException e) {
-                    Log.e(TAG, "Failed to delete older traces", e);
-                }
-                return null;
-            }
-        }.execute();
+        FutureTask<Void> task = new FutureTask<Void>(
+                () -> {
+                    try {
+                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
+                    } catch (RuntimeException e) {
+                        Log.e(TAG, "Failed to delete older traces", e);
+                    }
+                    return null;
+                });
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        // execute() instead of submit() because we don't need the result.
+        executor.execute(task);
     }
 
     /**
