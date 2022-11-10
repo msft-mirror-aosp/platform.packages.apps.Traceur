@@ -41,7 +41,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     public static final String NAME = "PERFETTO";
 
     private static final String OUTPUT_EXTENSION = "perfetto-trace";
-    private static final String TEMP_DIR= "/data/local/traces/";
+    private static final String TEMP_DIR = "/data/local/traces/";
     private static final String TEMP_TRACE_LOCATION = "/data/local/traces/.trace-in-progress.trace";
 
     private static final String PERFETTO_TAG = "traceur";
@@ -355,7 +355,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         }
 
         outFile.setReadable(true, false); // (readable, ownerOnly)
-        outFile.setWritable(true, false); // (readable, ownerOnly)
+        outFile.setWritable(true, false); // (writable, ownerOnly)
         return true;
     }
 
