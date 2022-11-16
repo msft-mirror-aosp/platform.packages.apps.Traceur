@@ -97,7 +97,8 @@ public class TraceUtils {
     }
 
     public static void clearSavedTraces() {
-        String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace";
+        String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace " +
+                TRACE_DIRECTORY + "recovered-trace*.*trace";
 
         Log.v(TAG, "Clearing trace directory: " + cmd);
         try {
@@ -157,6 +158,10 @@ public class TraceUtils {
         String now = new SimpleDateFormat(format, Locale.US).format(new Date());
         return String.format("trace-%s-%s-%s.%s", Build.BOARD, Build.ID, now,
             mTraceEngine.getOutputExtension());
+    }
+
+    public static String getRecoveredFilename() {
+        return "recovered-" + getOutputFilename();
     }
 
     public static File getOutputFile(String filename) {
