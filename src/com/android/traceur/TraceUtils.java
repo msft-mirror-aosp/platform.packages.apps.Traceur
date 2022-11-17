@@ -92,6 +92,7 @@ public class TraceUtils {
         TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
         if (currentTraceEngine().equals(PerfettoUtils.NAME)) {
             categories.put("sys_stats", "meminfo and vmstats");
+            categories.put("logs", "android logcat");
         }
         return categories;
     }
