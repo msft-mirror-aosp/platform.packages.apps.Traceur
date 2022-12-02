@@ -41,7 +41,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     public static final String NAME = "PERFETTO";
 
     private static final String OUTPUT_EXTENSION = "perfetto-trace";
-    private static final String TEMP_DIR= "/data/local/traces/";
+    private static final String TEMP_DIR = "/data/local/traces/";
     private static final String TEMP_TRACE_LOCATION = "/data/local/traces/.trace-in-progress.trace";
 
     private static final String PERFETTO_TAG = "traceur";
@@ -56,12 +56,17 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
     private static final int BUFFER_SIZE_RATIO = 64;
 
+    // atrace trace categories that will result in added data sources in the Perfetto config.
     private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
+
+    // Custom trace categories.
+    private static final String SYS_STATS_TAG = "sys_stats";
+    private static final String LOG_TAG = "logs";
 
     public String getName() {
         return NAME;
@@ -78,11 +83,11 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
             return false;
         } else {
-            // Ensure the temporary trace file is cleared.
-            try {
-                Files.deleteIfExists(Paths.get(TEMP_TRACE_LOCATION));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            // If a temporary trace file already exists, save it before beginning a new trace.
+            File recoveredFile = TraceUtils.getOutputFile(
+                    TraceUtils.getRecoveredFilename());
+            if (!traceDump(recoveredFile)) {
+                Log.w(TAG, "Failed to recover in-progress trace.");
             }
         }
 
@@ -225,14 +230,23 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("}\n");
         }
 
-        if (tags.contains(MEMORY_TAG)) {
+        if (tags.contains(SYS_STATS_TAG)) {
             config.append("data_sources: {\n")
                 .append("  config { \n")
-                .append("    name: \"android.sys_stats\"\n")
+                .append("    name: \"linux.sys_stats\"\n")
                 .append("    target_buffer: 1\n")
                 .append("    sys_stats_config {\n")
+                .append("      meminfo_period_ms: 1000\n")
                 .append("      vmstat_period_ms: 1000\n")
                 .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+        }
+
+        if (tags.contains(LOG_TAG)) {
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.log\"\n")
                 .append("  }\n")
                 .append("}\n");
         }
@@ -350,7 +364,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         }
 
         outFile.setReadable(true, false); // (readable, ownerOnly)
-        outFile.setWritable(true, false); // (readable, ownerOnly)
+        outFile.setWritable(true, false); // (writable, ownerOnly)
         return true;
     }
 
