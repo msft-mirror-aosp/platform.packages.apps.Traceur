@@ -106,35 +106,35 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             // Ensure that we flush ftrace data every 30s even if cpus are idle.
             .append("flush_period_ms: 30000\n");
 
-            // If the user has flagged that in-progress trace sessions should be grabbed
-            // during bugreports, and BetterBug is present.
-            if (attachToBugreport) {
-                config.append("bugreport_score: 500\n");
+        // If the user has flagged that in-progress trace sessions should be grabbed
+        // during bugreports, and BetterBug is present.
+        if (attachToBugreport) {
+            config.append("bugreport_score: 500\n");
+        }
+
+        // Indicates that perfetto should notify Traceur if the tracing session's status
+        // changes.
+        config.append("notify_traceur: true\n");
+
+        if (longTrace) {
+            if (maxLongTraceSizeMb != 0) {
+                config.append("max_file_size_bytes: "
+                    + (maxLongTraceSizeMb * MEGABYTES_TO_BYTES) + "\n");
             }
 
-            // Indicates that perfetto should notify Traceur if the tracing session's status
-            // changes.
-            config.append("notify_traceur: true\n");
-
-            if (longTrace) {
-                if (maxLongTraceSizeMb != 0) {
-                    config.append("max_file_size_bytes: "
-                        + (maxLongTraceSizeMb * MEGABYTES_TO_BYTES) + "\n");
-                }
-
-                if (maxLongTraceDurationMinutes != 0) {
-                    config.append("duration_ms: "
-                        + (maxLongTraceDurationMinutes * MINUTES_TO_MILLISECONDS)
-                        + "\n");
-                }
-
-                // Default value for long traces to write to file.
-                config.append("file_write_period_ms: 1000\n");
-            } else {
-                // For short traces, we don't write to the file.
-                // So, always use the maximum value here: 7 days.
-                config.append("file_write_period_ms: 604800000\n");
+            if (maxLongTraceDurationMinutes != 0) {
+                config.append("duration_ms: "
+                    + (maxLongTraceDurationMinutes * MINUTES_TO_MILLISECONDS)
+                    + "\n");
             }
+
+            // Default value for long traces to write to file.
+            config.append("file_write_period_ms: 1000\n");
+        } else {
+            // For short traces, we don't write to the file.
+            // So, always use the maximum value here: 7 days.
+            config.append("file_write_period_ms: 604800000\n");
+        }
 
         config.append("incremental_state_config {\n")
             .append("  clear_period_ms: 15000\n")
