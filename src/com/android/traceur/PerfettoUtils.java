@@ -54,7 +54,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     // The total amount of memory allocated to the two target buffers will be divided according to a
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
-    private static final int BUFFER_SIZE_RATIO = 64;
+    private static final int BUFFER_SIZE_RATIO = 32;
 
     // atrace trace categories that will result in added data sources in the Perfetto config.
     private static final String CAMERA_TAG = "camera";
@@ -247,6 +247,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             config.append("data_sources: {\n")
                 .append("  config {\n")
                 .append("    name: \"android.log\"\n")
+                .append("    target_buffer: 1\n")
                 .append("  }\n")
                 .append("}\n");
         }
@@ -255,6 +256,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
           config.append("data_sources: {\n")
               .append("  config { \n")
               .append("    name: \"android.surfaceflinger.frametimeline\"\n")
+              .append("    target_buffer: 1\n")
               .append("  }\n")
               .append("}\n");
         }
@@ -277,6 +279,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             config.append("data_sources: {\n")
                 .append("  config {\n")
                 .append("    name: \"org.chromium.trace_event\"\n")
+                .append("    target_buffer: 1\n")
                 .append("    chrome_config {\n")
                 .append("      trace_config: \"" + chromeTraceConfig + "\"\n")
                 .append("    }\n")
@@ -285,6 +288,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("data_sources: {\n")
                 .append("  config {\n")
                 .append("    name: \"org.chromium.trace_metadata\"\n")
+                .append("    target_buffer: 1\n")
                 .append("      chrome_config {\n")
                 .append("        trace_config: \"" + chromeTraceConfig + "\"\n")
                 .append("      }\n")
