@@ -39,7 +39,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Utility functions for tracing.
- * Will call atrace or perfetto depending on the setting.
  */
 public class TraceUtils {
 
@@ -47,8 +46,6 @@ public class TraceUtils {
 
     public static final String TRACE_DIRECTORY = "/data/local/traces/";
 
-    // To change Traceur to use atrace to collect traces,
-    // change mTraceEngine to point to AtraceUtils().
     private static TraceEngine mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
