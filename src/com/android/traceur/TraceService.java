@@ -140,33 +140,21 @@ public class TraceService extends IntentService {
             boolean longTrace, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
         Context context = getApplicationContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
         Intent stopIntent = new Intent(Receiver.STOP_ACTION,
             null, context, Receiver.class);
         stopIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
 
-        String title = context.getString(R.string.trace_is_being_recorded);
-        String msg = context.getString(R.string.tap_to_stop_tracing);
-
         boolean attachToBugreport =
                 prefs.getBoolean(context.getString(R.string.pref_key_attach_to_bugreport), true);
 
-        Notification.Builder notification =
-            new Notification.Builder(context, Receiver.NOTIFICATION_CHANNEL_TRACING)
-                .setSmallIcon(R.drawable.bugfood_icon)
-                .setContentTitle(title)
-                .setTicker(title)
-                .setContentText(msg)
-                .setContentIntent(
-                    PendingIntent.getBroadcast(context, 0, stopIntent, PendingIntent.FLAG_IMMUTABLE))
-                .setOngoing(true)
-                .setLocalOnly(true)
-                .setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE)
-                .setColor(getColor(
-                    com.android.internal.R.color.system_notification_accent_color));
-
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK)) {
-            notification.extend(new Notification.TvExtender());
-        }
+        Notification.Builder notification = getTraceurNotification(
+                context.getString(R.string.trace_is_being_recorded),
+                context.getString(R.string.tap_to_stop_tracing),
+                Receiver.NOTIFICATION_CHANNEL_TRACING);
+        notification.setOngoing(true)
+                .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
+                          PendingIntent.FLAG_IMMUTABLE));
 
         startForeground(TRACE_NOTIFICATION, notification.build());
 
@@ -189,28 +177,20 @@ public class TraceService extends IntentService {
         NotificationManager notificationManager =
             getSystemService(NotificationManager.class);
 
-        Notification.Builder notification;
-        if (sessionStolen) {
-            notification = getBaseTraceurNotification()
-                .setContentTitle(getString(R.string.attaching_to_report))
-                .setTicker(getString(R.string.attaching_to_report))
-                .setProgress(1, 0, true);
-        } else {
-            notification = getBaseTraceurNotification()
-                .setContentTitle(getString(R.string.saving_trace))
-                .setTicker(getString(R.string.saving_trace))
-                .setProgress(1, 0, true);
-        }
+        Notification.Builder notification = getTraceurNotification(context.getString(
+                sessionStolen ? R.string.attaching_to_report : R.string.saving_trace),
+                null, Receiver.NOTIFICATION_CHANNEL_OTHER);
+        notification.setProgress(1, 0, true);
 
         startForeground(SAVING_TRACE_NOTIFICATION, notification.build());
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
         if (sessionStolen) {
-            Notification.Builder notificationAttached = getBaseTraceurNotification()
-                .setContentTitle(getString(R.string.attached_to_report))
-                .setTicker(getString(R.string.attached_to_report))
-                .setAutoCancel(true);
+            Notification.Builder notificationAttached = getTraceurNotification(
+                    context.getString(R.string.attached_to_report), null,
+                    Receiver.NOTIFICATION_CHANNEL_OTHER);
+            notification.setAutoCancel(true);
 
             Intent openIntent =
                     getPackageManager().getLaunchIntentForPackage(BETTERBUG_PACKAGE_NAME);
@@ -250,15 +230,22 @@ public class TraceService extends IntentService {
         TraceUtils.cleanupOlderFiles(MIN_KEEP_COUNT, MIN_KEEP_AGE);
     }
 
-    private Notification.Builder getBaseTraceurNotification() {
+    // Creates a Traceur notification for the given channel using the provided title and message.
+    private Notification.Builder getTraceurNotification(String title, String msg, String channel) {
         Context context = getApplicationContext();
-        Notification.Builder notification =
-                new Notification.Builder(this, Receiver.NOTIFICATION_CHANNEL_OTHER)
-                    .setSmallIcon(R.drawable.bugfood_icon)
-                    .setLocalOnly(true)
-                    .setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE)
-                    .setColor(context.getColor(
-                            com.android.internal.R.color.system_notification_accent_color));
+        Notification.Builder notification = new Notification.Builder(context, channel)
+                .setContentTitle(title)
+                .setTicker(title)
+                .setSmallIcon(R.drawable.bugfood_icon)
+                .setLocalOnly(true)
+                .setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE)
+                .setColor(context.getColor(
+                        com.android.internal.R.color.system_notification_accent_color));
+
+        // Some Traceur notifications only have a title.
+        if (msg != null) {
+            notification.setContentText(msg);
+        }
 
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK)) {
             notification.extend(new Notification.TvExtender());
