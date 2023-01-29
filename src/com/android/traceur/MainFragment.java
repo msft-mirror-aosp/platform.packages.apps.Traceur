@@ -315,22 +315,13 @@ public class MainFragment extends PreferenceFragment {
                 context.getString(R.string.pref_key_buffer_size));
         bufferSize.setSummary(bufferSize.getEntry());
 
-        // If we are not using the Perfetto trace backend,
-        // hide the unsupported preferences.
-        if (TraceUtils.currentTraceEngine().equals(PerfettoUtils.NAME)) {
-            ListPreference maxLongTraceSize = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_size));
-            maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
+        ListPreference maxLongTraceSize = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_size));
+        maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
 
-            ListPreference maxLongTraceDuration = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_duration));
-            maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
-        } else {
-            Preference longTraceCategory = findPreference("long_trace_category");
-            if (longTraceCategory != null) {
-                getPreferenceScreen().removePreference(longTraceCategory);
-            }
-        }
+        ListPreference maxLongTraceDuration = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_duration));
+        maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
 
         // Check if BetterBug is installed to see if Traceur should display either the toggle for
         // 'attach_to_bugreport' or 'stop_on_bugreport'.
