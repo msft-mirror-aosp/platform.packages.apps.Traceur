@@ -55,16 +55,16 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
     private static final List<String> TRACE_TAGS = Arrays.asList(
-            "am", "binder_driver", "camera", "dalvik", "freq", "gfx", "hal",
-            "idle", "input", "memory", "memreclaim", "power", "res", "sched",
-            "sync", "thermal", "view", "webview", "wm", "workq");
+            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
+            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
+            "res", "sched", "sync", "thermal", "view", "webview", "wm", "workq");
 
     /* The user list doesn't include workq or sync, because the user builds don't have
      * permissions for them. */
     private static final List<String> TRACE_TAGS_USER = Arrays.asList(
-            "am", "binder_driver", "camera", "dalvik", "freq", "gfx", "hal",
-            "idle", "input", "memory", "memreclaim", "power", "res", "sched",
-            "thermal", "view", "webview", "wm");
+            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
+            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
+            "res", "sched", "thermal", "view", "webview", "wm");
 
     private static final String TAG = "Traceur";
 
@@ -81,7 +81,7 @@ public class Receiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.i(TAG, "Received BOOT_COMPLETE");
             createNotificationChannels(context);
-            updateDeveloperOptionsWatcher(context);
+            updateDeveloperOptionsWatcher(context, /* fromBootIntent */ true);
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
@@ -199,7 +199,7 @@ public class Receiver extends BroadcastReceiver {
      * preference to false to hide the tile. The user will need to re-enable the
      * preference if they decide to turn Developer Options back on again.
      */
-    static void updateDeveloperOptionsWatcher(Context context) {
+    static void updateDeveloperOptionsWatcher(Context context, boolean fromBootIntent) {
         if (mDeveloperOptionsObserver == null) {
             Uri settingUri = Settings.Global.getUriFor(
                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
@@ -239,7 +239,11 @@ public class Receiver extends BroadcastReceiver {
 
             context.getContentResolver().registerContentObserver(settingUri,
                 false, mDeveloperOptionsObserver);
-            mDeveloperOptionsObserver.onChange(true);
+            // If this observer is being created and registered on boot, it can be assumed that
+            // developer options did not change in the meantime.
+            if (!fromBootIntent) {
+                mDeveloperOptionsObserver.onChange(true);
+            }
         }
     }
 
@@ -279,6 +283,7 @@ public class Receiver extends BroadcastReceiver {
         tracingChannel.setBypassDnd(true);
         tracingChannel.enableVibration(true);
         tracingChannel.setSound(null, null);
+        tracingChannel.setBlockable(true);
 
         NotificationChannel saveTraceChannel = new NotificationChannel(
             NOTIFICATION_CHANNEL_OTHER,
@@ -287,6 +292,7 @@ public class Receiver extends BroadcastReceiver {
         saveTraceChannel.setBypassDnd(true);
         saveTraceChannel.enableVibration(true);
         saveTraceChannel.setSound(null, null);
+        saveTraceChannel.setBlockable(true);
 
         NotificationManager notificationManager =
             context.getSystemService(NotificationManager.class);

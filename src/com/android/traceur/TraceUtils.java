@@ -17,27 +17,28 @@
 package com.android.traceur;
 
 import android.os.Build;
-import android.os.AsyncTask;
 import android.os.FileUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Utility functions for tracing.
- * Will call atrace or perfetto depending on the setting.
  */
 public class TraceUtils {
 
@@ -45,8 +46,6 @@ public class TraceUtils {
 
     public static final String TRACE_DIRECTORY = "/data/local/traces/";
 
-    // To change Traceur to use atrace to collect traces,
-    // change mTraceEngine to point to AtraceUtils().
     private static TraceEngine mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
@@ -87,11 +86,15 @@ public class TraceUtils {
     }
 
     public static TreeMap<String, String> listCategories() {
-        return PerfettoUtils.perfettoListCategories();
+        TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
+        categories.put("sys_stats", "meminfo and vmstats");
+        categories.put("logs", "android logcat");
+        return categories;
     }
 
     public static void clearSavedTraces() {
-        String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace";
+        String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace " +
+                TRACE_DIRECTORY + "recovered-trace*.*trace";
 
         Log.v(TAG, "Clearing trace directory: " + cmd);
         try {
@@ -153,22 +156,27 @@ public class TraceUtils {
             mTraceEngine.getOutputExtension());
     }
 
+    public static String getRecoveredFilename() {
+        return "recovered-" + getOutputFilename();
+    }
+
     public static File getOutputFile(String filename) {
         return new File(TraceUtils.TRACE_DIRECTORY, filename);
     }
 
     protected static void cleanupOlderFiles(final int minCount, final long minAge) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
-                } catch (RuntimeException e) {
-                    Log.e(TAG, "Failed to delete older traces", e);
-                }
-                return null;
-            }
-        }.execute();
+        FutureTask<Void> task = new FutureTask<Void>(
+                () -> {
+                    try {
+                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
+                    } catch (RuntimeException e) {
+                        Log.e(TAG, "Failed to delete older traces", e);
+                    }
+                    return null;
+                });
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        // execute() instead of submit() because we don't need the result.
+        executor.execute(task);
     }
 
     /**
