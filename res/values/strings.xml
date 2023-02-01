@@ -94,8 +94,6 @@
 
     <!-- Checkbox that indicates this dialog should not be shown again when the next trace is taken. -->
     <string name="dont_show_again">Don\'t show again</string>
-    <!-- Checkbox that indicates that we should use Perfetto to take traces. This feature is in beta. -->
-    <string name="use_perfetto_beta">Use Perfetto (beta)</string>
 
     <string name="long_traces">Long traces</string>
     <string name="long_traces_summary">Saved continuously to device storage</string>
@@ -146,4 +144,11 @@
 
     <!-- On click, takes the user to the directory containing on-device trace files. -->
     <string name="link_to_traces">View trace files</string>
+
+    <!-- This is the title for the list of settings related to tracing. -->
+    <string name="pref_category_trace_settings">Trace settings</string>
+    <!-- This is the title for the options related to viewing or deleting saved Traceur files. -->
+    <string name="pref_category_saved_files">Saved files</string>
+    <!-- This is the title for the miscellaneous options. -->
+    <string name="pref_category_misc">Miscellaneous</string>
 </resources>

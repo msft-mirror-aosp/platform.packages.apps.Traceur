@@ -24,24 +24,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.PackageManager;
 import android.icu.text.MessageFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.MultiSelectListPreference;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.widget.Toast;
 
 import com.android.settingslib.HelpUtils;
 
@@ -88,7 +88,7 @@ public class MainFragment extends PreferenceFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Receiver.updateDeveloperOptionsWatcher(getContext());
+        Receiver.updateDeveloperOptionsWatcher(getContext(), /* fromBootIntent */ false);
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(
                 getActivity().getApplicationContext());
@@ -159,7 +159,7 @@ public class MainFragment extends PreferenceFragment {
                                         TraceUtils.clearSavedTraces();
                                     }
                                 })
-                            .setNegativeButton(android.R.string.no,
+                            .setNegativeButton(android.R.string.cancel,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
@@ -315,22 +315,13 @@ public class MainFragment extends PreferenceFragment {
                 context.getString(R.string.pref_key_buffer_size));
         bufferSize.setSummary(bufferSize.getEntry());
 
-        // If we are not using the Perfetto trace backend,
-        // hide the unsupported preferences.
-        if (TraceUtils.currentTraceEngine().equals(PerfettoUtils.NAME)) {
-            ListPreference maxLongTraceSize = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_size));
-            maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
+        ListPreference maxLongTraceSize = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_size));
+        maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
 
-            ListPreference maxLongTraceDuration = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_duration));
-            maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
-        } else {
-            Preference longTraceCategory = findPreference("long_trace_category");
-            if (longTraceCategory != null) {
-                getPreferenceScreen().removePreference(longTraceCategory);
-            }
-        }
+        ListPreference maxLongTraceDuration = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_duration));
+        maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
 
         // Check if BetterBug is installed to see if Traceur should display either the toggle for
         // 'attach_to_bugreport' or 'stop_on_bugreport'.
