@@ -144,4 +144,11 @@
 
     <!-- On click, takes the user to the directory containing on-device trace files. -->
     <string name="link_to_traces">View trace files</string>
+
+    <!-- This is the title for the list of settings related to tracing. -->
+    <string name="pref_category_trace_settings">Trace settings</string>
+    <!-- This is the title for the options related to viewing or deleting saved Traceur files. -->
+    <string name="pref_category_saved_files">Saved files</string>
+    <!-- This is the title for the miscellaneous options. -->
+    <string name="pref_category_misc">Miscellaneous</string>
 </resources>
