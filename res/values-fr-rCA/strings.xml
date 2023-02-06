@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Les fichiers de suivi système peuvent comprendre des données sensibles concernant le système et les applications (par exemple, l\'utilisation des applications). Prenez soin de les partager uniquement avec les gens et les application en qui vous avez confiance."</string>
     <string name="share" msgid="8443979083706282338">"Partager"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ne plus afficher"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Utiliser Perfetto (version bêta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Traces longues"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Enregistrement continuel vers l\'espace de stockage de l\'appareil"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Enregistrement continu dans l\'espace de stockage de l\'appareil (sans ajout automatique aux rapports de bogue)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Joindre des traces aux rapports de bogue"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Envoyer automatiquement des traces de progression à BetterBug lorsqu\'un rapport de bogue est reçu"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Afficher les fichiers de suivi"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>

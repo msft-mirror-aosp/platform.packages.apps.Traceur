@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Τα αρχεία ιχνηλάτησης συστήματος μπορεί να περιλαμβάνουν ευαίσθητα δεδομένα συστήματος και εφαρμογών (όπως χρήση εφαρμογών). Κοινοποιείτε τα ίχνη συστήματος μόνο σε άτομα και εφαρμογές που εμπιστεύεστε."</string>
     <string name="share" msgid="8443979083706282338">"Κοινοποίηση"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Να μην εμφανιστεί ξανά"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Χρήση Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Μεγάλα ίχνη"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Συνεχής αποθήκευση στον αποθηκευτικό χώρο συσκευής"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Συνεχής αποθήκευση στον αποθηκευτικό χώρο της συσκευής (δεν θα γίνει αυτόματη επισύναψη σε αναφορές σφάλματος)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Επισύναψη ιχνών στις αναφορές σφαλμάτων"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Αυτόματη αποστολή ιχνών που βρίσκονται σε εξέλιξη στο BetterBug κατά τη συλλογή μιας αναφοράς σφάλματος"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Προβολή αρχείων ιχνηλάτησης"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ρυθμίσεις ίχνους"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Αποθηκευμένα αρχεία"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Διάφορα"</string>
 </resources>

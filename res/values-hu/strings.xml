@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"A rendszerkövetési fájlok bizalmas rendszer- és alkalmazásadatokat tartalmazhatnak (például az alkalmazáshasználatról). Csak megbízható személyekkel és alkalmazásokkal osszon meg rendszerkövetési információkat."</string>
     <string name="share" msgid="8443979083706282338">"Megosztás"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ne jelenjen meg többé"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"A Perfetto (béta) használata"</string>
     <string name="long_traces" msgid="5110949471775966329">"Hosszú nyomkövetések"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Folyamatos mentés az eszköz tárhelyére"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Folyamatosan mentve az eszköz tárhelyére (nem lesz automatikusan csatolva a hibajelentésekhez)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Nyomok csatolása a hibajelentéshez"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Folyamatban lévő nyomok automatikus küldése a BetterBugnak hibajelentés begyűjtésekor"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Nyomkövetési fájlok megjelenítése"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Beállítások nyomon követése"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Mentett fájlok"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Egyéb"</string>
 </resources>

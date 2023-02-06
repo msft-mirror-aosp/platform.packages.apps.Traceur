@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Amafayela okulandelela isistimu angafaka idatha ezwelayo yesistimu neyohlelo lokusebenza (efana nokusetshenziswa kohlelo lokusebenza). Yabelana kuphela ngokulandelela kwesistimu nabantu nezinhlelo zokusebenza ozithembayo."</string>
     <string name="share" msgid="8443979083706282338">"Yabelana"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ungabonisi futhi"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Sebenzisa i-Perfetto (i-beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Ukulandela okude"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Kulondolozwe ngokuqhubeka kusitoreji sedivayisi"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Kulondolozwe ngokuqhubekayo kwisitoreji sedivayisi (ngeke kunamathiselwe ngokuzenzekelayo kwimibiko yyesiphazamisi)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Namathisela ukulandelelwa kwimibiko yeziphazamisi"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Thumela ngokuzenzekelayo ukulandelelwa okuqhubekayo ku-BetterBug lapho kuqoqwe umbiko wesiphazamisi"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Buka amafayela wokulandelela"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Amasethingi okulandelela"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Amafayela alondoloziwe"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"I-Miscellaneous"</string>
 </resources>

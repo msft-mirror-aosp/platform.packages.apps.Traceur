@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"ସିଷ୍ଟମ୍‍ ଟ୍ରେସିଂ ଫାଇଲ୍‍ଗୁଡିକ ହୁଏତ ସମ୍ବେଦନଶୀଳ ସିଷ୍ଟମ୍‍ ଏବଂ ଆପ୍‍ ଡାଟା (ଯେପରି କି ଆପ୍‍ ବ୍ୟବହାର) ଅନ୍ତର୍ଭୁକ୍ତ କରିପାରେ। ସିଷ୍ଟମ୍‍ ଟ୍ରେସ୍‍ କେବଳ ଆପଣ ବିଶ୍ବାସ କରୁଥିବା ଲୋକ ଏବଂ ଆପ୍ସ ସହ ସେୟାର୍‍ କରନ୍ତୁ।"</string>
     <string name="share" msgid="8443979083706282338">"ସେୟାର୍‍ କରନ୍ତୁ"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ପୁଣି ଦେଖାନ୍ତୁ ନାହିଁ"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto (ବିଟା) ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="long_traces" msgid="5110949471775966329">"ଲମ୍ବା ଟ୍ରେସ୍"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"ଡିଭାଇସ୍ ଷ୍ଟୋରେଜ୍ ପାଇଁ ବାରମ୍ବାର ସେଭ୍ କରନ୍ତୁ"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ଡିଭାଇସ୍ ଷ୍ଟୋରେଜରେ କ୍ରମାଗତ ଭାବେ ସେଭ୍ କରାଯାଏ (ବଗ୍ ରିପୋର୍ଟରେ ସ୍ୱଚାଳିତ ଭାବେ ଆଟାଚ୍ ହେବ ନାହିଁ)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ବଗ୍ ରିପୋର୍ଟଗୁଡ଼ିକ ସହିତ ଟ୍ରେସ୍ ଆଟାଚ୍ କରନ୍ତୁ"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"ଯେତେବେଳେ ଏକ ବଗ୍ ରିପୋର୍ଟ ସଂଗ୍ରହ କରାଯାଏ ସେତେବେଳେ ସ୍ୱଚାଳିତ ଭାବେ BetterBugକୁ ପ୍ରକ୍ରିୟାରତ-ଅଛି ଟ୍ରେସ୍ ପଠାଯାଏ"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ଟ୍ରେସ୍ ଫାଇଲଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ଟ୍ରେସ ସେଟିଂସ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"ସେଭ କରାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକ"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"ବିବିଧ"</string>
 </resources>
