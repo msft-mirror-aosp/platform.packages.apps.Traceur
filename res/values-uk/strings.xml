@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Файли трасування можуть містити конфіденційні дані про систему й додатки (як-от використання додатка). Діліться ними лише з людьми та в додатках, яким довіряєте."</string>
     <string name="share" msgid="8443979083706282338">"Поділитися"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Більше не показувати"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Використовувати Perfetto (бета)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Довгі трасування"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Постійно зберігаються в пам’яті пристрою"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Постійно зберігається в пам’яті пристрою (ці дані не будуть автоматично долучатися до звітів про помилки)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Долучати трасування до звітів про помилки"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Автоматично надсилати активні трасування в BetterBug під час формування звіту про помилки"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Переглянути файли трасування"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>

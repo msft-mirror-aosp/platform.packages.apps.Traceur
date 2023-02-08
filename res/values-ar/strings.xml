@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"قد تشتمل ملفات \"تتبُّع النظام\" على بيانات حساسة عن النظام والتطبيقات (مثل إحصاءات استخدام التطبيقات). يُرجى عدم مشاركة ملفات تتبُّع النظام إلا مع الأشخاص والتطبيقات التي تثق فيها."</string>
     <string name="share" msgid="8443979083706282338">"مشاركة"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"عدم الإظهار مرة أخرى"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"‏استخدام Perfetto (تجريبي)"</string>
     <string name="long_traces" msgid="5110949471775966329">"آثار الأنشطة طويلة المدة"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"يتم الحفظ في مساحة تخزين الجهاز دائمًا"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"يتم الحفظ باستمرار في مساحة تخزين الجهاز (لن يتم الإرفاق بتقارير الخطأ تلقائيًا)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"إرفاق آثار الأنشطة بتقارير الخطأ"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"‏إرسال آثار الأنشطة الجاري تنفيذها إلى BetterBug عند جمع تقرير خطأ."</string>
     <string name="link_to_traces" msgid="6569969595898995517">"عرض ملفات التتبُّع"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>
