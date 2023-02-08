@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Sistemos pėdsakų failuose gali būti neskelbtinų sistemos ir programų duomenų (pvz., programų naudojimo duomenų). Sistemos pėdsakų failus bendrinkite tik su patikimomis programomis ir žmonėmis."</string>
     <string name="share" msgid="8443979083706282338">"Bendrinti"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Daugiau neberodyti"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Naudoti „Perfetto“ (beta versija)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Ilgalaikio stebėjimo duomenys"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Visam laikui išsaugota įrenginio saugykloje"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Visam laikui išsaugota įrenginio saugykloje (nebus automatiškai pridedama prie pranešimų apie riktus)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Pridėti pėdsakų prie pranešimų apie riktus"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Automatiškai siųsti vykdomos veiklos pėdsakus į sistemą „BetterBug“, kai gaunamas pranešimas apie riktą"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Žr. pėdsakų failus"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>

@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Датотеке праћења система могу да садрже осетљиве податке о систему и апликацијама (на пример, о коришћењу апликације). Делите праћења система само са поузданим људима и апликацијама."</string>
     <string name="share" msgid="8443979083706282338">"Дели"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Не приказуј поново"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Користи Perfetto (бета)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Дуги трагови"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Непрекидно се чува у меморијском простору уређаја"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Стално се чува у меморијски простор уређаја (неће се аутоматски приложити извештајима о грешци)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Приложи праћења извештајима о грешкама"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Аутоматски шаљи праћења у току на BetterBug по добијању извештаја о грешци"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Прикажи фајлове са праћењима"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Подешавања праћења"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Сачувани фајлови"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Разно"</string>
 </resources>

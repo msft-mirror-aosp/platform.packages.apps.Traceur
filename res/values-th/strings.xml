@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"ไฟล์การติดตามระบบอาจมีข้อมูลระบบและแอปที่ละเอียดอ่อน (เช่น การใช้งานแอป) โปรดแชร์ไฟล์การติดตามระบบกับแอปและบุคคลที่คุณเชื่อถือเท่านั้น"</string>
     <string name="share" msgid="8443979083706282338">"แชร์"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ไม่ต้องแสดงอีก"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"ใช้ Perfetto (เบต้า)"</string>
     <string name="long_traces" msgid="5110949471775966329">"การติดตามแบบยาว"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"บันทึกในพื้นที่เก็บข้อมูลของอุปกรณ์อย่างต่อเนื่อง"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"บันทึกในพื้นที่เก็บข้อมูลของอุปกรณ์อย่างต่อเนื่อง (จะไม่แนบกับรายงานข้อบกพร่องโดยอัตโนมัติ)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"แนบการติดตามในรายงานข้อบกพร่อง"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"ส่งการติดตามที่กำลังดำเนินการไปยัง BetterBug โดยอัตโนมัติเมื่อรวบรวมรายงานข้อบกพร่อง"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ดูไฟล์การย้ายข้อมูล"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"การตั้งค่าการติดตาม"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"ไฟล์ที่บันทึกไว้"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"เบ็ดเตล็ด"</string>
 </resources>

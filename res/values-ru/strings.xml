@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"В файлах трассировки может содержаться конфиденциальная информация о системе и приложении (например, данные о его использовании). Открывайте доступ к ним только надежным пользователям и приложениям."</string>
     <string name="share" msgid="8443979083706282338">"Поделиться"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Больше не показывать"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Использовать Perfetto (бета)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Длинные трассировки"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Постоянно сохраняется в памяти устройства."</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Длинные трассировки сохраняются на устройстве (они не будут автоматически прикрепляться к отчетам об ошибках)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Прикреплять к отчетам об ошибках данные трассировки"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Автоматически отправлять данные выполняемой трассировки в BetterBug при формировании отчета об ошибке"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Показать файлы трассировки"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Настройки трассировки"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Сохраненные файлы"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Другое"</string>
 </resources>

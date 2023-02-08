@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"سسٹم ٹریسنگ کی فائلز حساس سسٹم وار ایپ ڈیٹا (جیسے کہ ایپ کا استعمال) شامل ہو سکتی ہیں۔ صرف سسٹم ٹریسز بھروسے مند ایپس کا لوگوں کے ساتھ اشتراک کریں۔"</string>
     <string name="share" msgid="8443979083706282338">"اشتراک کریں"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"دوبارہ نہ دکھائیں"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"‏Perfetto کا استعمال کریں (بی ٹا)"</string>
     <string name="long_traces" msgid="5110949471775966329">"لمبے ٹریسز"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"آلہ کے اسٹوریج میں مسلسل محفوظ ہو رہا ہے"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"آلے کی اسٹوریج میں مستقل طور پر محفوظ کیا گیا (بگ رپورٹس کے ساتھ خودکار طور پر منسلک نہیں کیا جائے گا)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"بگ رپورٹس پر ٹریسز منسلک کریں"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"‏بگ رپورٹ جمع ہونے پر خود کار طریقے سے پیشرفت کے ٹریسز کو BetterBug میں بھیج دیا جاتا ہے"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ٹریس فائلز دیکھیں"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>

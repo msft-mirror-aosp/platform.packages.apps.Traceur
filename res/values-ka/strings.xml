@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"სისტემის ტრასირების ფაილები შეიძლება შეიცავდეს სისტემისა და აპების სენსიტიურ მონაცემებს (როგორიცაა აპების გამოყენება). გირჩევთ, სისტემის ტრასირებები გაუზიაროთ მხოლო იმ ადამიანებსა და აპებს, რომლებსაც ენდობით."</string>
     <string name="share" msgid="8443979083706282338">"გაზიარება"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"აღარ გამოჩნდეს"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto-ს გამოყენება (ბეტა)"</string>
     <string name="long_traces" msgid="5110949471775966329">"გრძელი ტრასირებები"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"განუწყვეტლივ ინახება მოწყობილობის მეხსიერებაში"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"უწყვეტად ინახება მოწყობილობის მეხსიერებაში (ავტომატურად არ დაერთვის სისტემის ხარვეზის ანგარიშებს)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"კვალის სისტემის ხარვეზის ანგარიშებზე დართვა"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"შესრულების პროცესში მყოფი კვალი ავტომატურად ეგზავნება BetterBug-ს სისტემის ხარვეზის ანგარიშის მიღებისას"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ტრასირების ფაილების ნახვა"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"პარამეტრებისთვის თვალის დევნება"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"შენახული ფაილები"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"სხვადასხვა"</string>
 </resources>

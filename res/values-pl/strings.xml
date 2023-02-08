@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Pliki śledzenia systemu mogą zawierać poufne dane dotyczące systemu i aplikacji (np. o użyciu aplikacji). Śledzenie systemu i aplikacji udostępniaj tylko zaufanym osobom."</string>
     <string name="share" msgid="8443979083706282338">"Udostępnij"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Nie pokazuj ponownie"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Użyj Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Długie ślady"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Zapisywane ciągle w pamięci urządzenia"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Nieprzerwanie zapisywane w pamięci urządzenia (nie będzie automatycznie załączane do raportów o błędach)"</string>
@@ -63,4 +62,10 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Dołącz logi do raportów o błędach"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Automatycznie przesyłaj logi działania do BetterBug podczas tworzenia raportu o błędzie"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Wyświetl pliki śledzenia"</string>
+    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
+    <skip />
+    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
+    <skip />
+    <!-- no translation found for pref_category_misc (6217624054980014683) -->
+    <skip />
 </resources>
