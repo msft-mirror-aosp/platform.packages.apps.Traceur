@@ -62,10 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ភ្ជាប់ដានទៅក្នុងរបាយការណ៍អំពីបញ្ហា"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"បញ្ជូនដានដែលកំពុងដំណើរការដោយស្វ័យប្រវត្តិទៅ BetterBug នៅពេលប្រមូលរបាយការណ៍អំពីបញ្ហា"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"មើលឯកសារដាន"</string>
-    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
-    <skip />
-    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
-    <skip />
-    <!-- no translation found for pref_category_misc (6217624054980014683) -->
-    <skip />
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ការកំណត់ដាន"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"ឯកសារដែលបានរក្សាទុក"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"ផ្សេងៗ"</string>
 </resources>

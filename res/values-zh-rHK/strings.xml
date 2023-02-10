@@ -63,6 +63,6 @@
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"收集到錯誤報告後，自動將處理中的追蹤記錄傳送到 BetterBug"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"查看追蹤檔案"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"追蹤記錄設定"</string>
-    <string name="pref_category_saved_files" msgid="1477491400970413291">"儲存的檔案"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"已儲存的檔案"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"其他"</string>
 </resources>

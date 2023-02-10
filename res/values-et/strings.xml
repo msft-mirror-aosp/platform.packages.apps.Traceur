@@ -62,10 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Jälgede manustamine veaaruannetesse"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Aktiivsed jäljed saadetakse veaaruande kogumisel automaatselt laiendusele BetterBug"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Kuva jäljefailid"</string>
-    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
-    <skip />
-    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
-    <skip />
-    <!-- no translation found for pref_category_misc (6217624054980014683) -->
-    <skip />
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jälgimise seaded"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Salvestatud failid"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Mitmesugust"</string>
 </resources>
