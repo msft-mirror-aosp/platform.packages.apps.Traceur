@@ -62,10 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ແນບການຕິດຕາມເພື່ອລາຍງານຂໍ້ຜິດພາດ"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"ສົ່ງການຕິດຕາມທີ່ດຳເນີນຢູ່ໄປໃຫ້ BetterBug ອັດຕະໂນມັດໃນເວລາເກັບກຳລາຍງານຂໍ້ຜິດພາດ"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ເບິ່ງໄຟລ໌ການຕິດຕາມ"</string>
-    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
-    <skip />
-    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
-    <skip />
-    <!-- no translation found for pref_category_misc (6217624054980014683) -->
-    <skip />
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ຕິດຕາມການຕັ້ງຄ່າ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"ໄຟລ໌ທີ່ບັນທຶກໄວ້"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"ອື່ນໆ"</string>
 </resources>
