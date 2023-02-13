@@ -62,10 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ट्रेस (फ़ोन में हुई गतिविधि की रिकॉर्डिंग) को गड़बड़ी की रिपोर्ट में अटैच करें"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रहे ट्रेस सेशन की जानकारी अपने-आप भेज दी जाती है"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ट्रेस फ़ाइलें देखें"</string>
-    <!-- no translation found for pref_category_trace_settings (6507535407023329628) -->
-    <skip />
-    <!-- no translation found for pref_category_saved_files (1477491400970413291) -->
-    <skip />
-    <!-- no translation found for pref_category_misc (6217624054980014683) -->
-    <skip />
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेस करने की सेटिंग"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव की गई फ़ाइलें"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"अन्य विकल्प"</string>
 </resources>
