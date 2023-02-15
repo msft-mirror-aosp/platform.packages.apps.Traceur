@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"システム トレース ファイルには、他人に知られたくないシステムやアプリのデータ（アプリの使用状況など）が含まれている場合があります。システム トレースの共有は、信頼できる人やアプリとのみ行ってください。"</string>
     <string name="share" msgid="8443979083706282338">"共有"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"次回から表示しない"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto を使用する（ベータ版）"</string>
     <string name="long_traces" msgid="5110949471775966329">"長期トレース"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"デバイスのストレージに引き続き保存されます"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"デバイス ストレージに継続的に保存されます（バグレポートに自動的に添付されることはありません）"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"トレースをバグレポートに添付する"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"バグレポートの収集時に、処理中のトレースを BetterBug に自動的に送信します"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"トレース ファイルを表示"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"トレース設定"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"保存したファイル"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"その他"</string>
 </resources>

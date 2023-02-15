@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Fișierele de urmărire a sistemului pot include date sensibile ale sistemului și ale aplicațiilor (cum ar fi utilizarea aplicațiilor). Permiți accesul la fișierele de urmărire a sistemului numai persoanelor și aplicațiilor în care ai încredere."</string>
     <string name="share" msgid="8443979083706282338">"Permite accesul"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Nu mai afișa"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Folosește Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Urme lungi"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Salvat continuu în spațiul de stocare al dispozitivului"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Salvat continuu în spațiul de stocare al dispozitivului (nu se va atașa automat la rapoartele de eroare)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Atașează urme la rapoartele de eroare"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Activează trimiterea automată a urmelor în desfășurare la BetterBug când se execută un raport de eroare"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Vezi fișierele de urmărire"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Setări pentru urmărire"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Fișiere salvate"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Diverse"</string>
 </resources>

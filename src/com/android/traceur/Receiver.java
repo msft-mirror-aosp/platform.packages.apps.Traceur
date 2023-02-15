@@ -86,8 +86,12 @@ public class Receiver extends BroadcastReceiver {
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
         } else if (STOP_ACTION.equals(intent.getAction())) {
+            // Only one of tracing or stack sampling should be enabled, but because they use the
+            // same path for stopping and saving, set both to false.
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
             context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
@@ -118,11 +122,32 @@ public class Receiver extends BroadcastReceiver {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean prefsTracingOn =
                 prefs.getBoolean(context.getString(R.string.pref_key_tracing_on), false);
+        boolean prefsStackSamplingOn =
+                prefs.getBoolean(context.getString(R.string.pref_key_stack_sampling_on), false);
+
+        // This should never happen because enabling one toggle should disable the other. Just in
+        // case, set both preferences to false and stop any ongoing trace.
+        if (prefsTracingOn && prefsStackSamplingOn) {
+            Log.e(TAG, "Preference state thinks that both trace configs should be active; " +
+                    "disabling both and stopping the ongoing trace if one exists.");
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_tracing_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            if (TraceUtils.isTracingOn()) {
+                TraceService.stopTracing(context);
+            }
+            context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
+            QsService.updateTile();
+            return;
+        }
 
         boolean traceUtilsTracingOn = assumeTracingIsOff ? false : TraceUtils.isTracingOn();
 
-        if (prefsTracingOn != traceUtilsTracingOn) {
-            if (prefsTracingOn) {
+        if ((prefsTracingOn || prefsStackSamplingOn) != traceUtilsTracingOn) {
+            if (prefsStackSamplingOn) {
+                TraceService.startStackSampling(context);
+            } else if (prefsTracingOn) {
                 // Show notification if the tags in preferences are not all actually available.
                 Set<String> activeAvailableTags = getActiveTags(context, prefs, true);
                 Set<String> activeTags = getActiveTags(context, prefs, false);

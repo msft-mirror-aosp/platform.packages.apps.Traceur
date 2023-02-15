@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Sistemaren jarraipena direktorioko fitxategiek sistemaren eta aplikazioen kontuzko datuak izan ditzakete (adibidez, aplikazioen erabilera). Partekatu sistemaren arrastoak fidagarritzat jotzen dituzun pertsona eta aplikazioekin soilik."</string>
     <string name="share" msgid="8443979083706282338">"Partekatu"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ez erakutsi berriro"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Erabili Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Arrasto luzeak"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Gailuaren memorian etengabe gordetzen da"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Etengabe gordetzen da gailuaren memorian (ez da erantsiko automatikoki akatsen txostenetan)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Erantsi arrastoak akatsen txostenak egiteko"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Bidali automatikoki abian diren arrastoak BetterBug-era akatsen txosten bat biltzen denean"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Ikusi arrasto-fitxategiak"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Arrastoen ezarpenak"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Gordetako fitxategiak"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Askotarikoak"</string>
 </resources>

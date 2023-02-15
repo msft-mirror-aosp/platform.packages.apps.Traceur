@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Les fichiers de traçage système peuvent inclure des données sensibles sur le système et les applications (telles que la consommation par application). Nous vous recommandons de ne partager des traces système qu\'avec des personnes et des applications que vous estimez fiables."</string>
     <string name="share" msgid="8443979083706282338">"Partager"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ne plus afficher"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Utiliser Perfetto (bêta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Traces allongées"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Enregistré en continu dans l\'espace de stockage de cet appareil"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Enregistrement continu sur l\'espace de stockage de l\'appareil (pas d\'ajout automatique aux rapports de bug)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Joindre les traces aux rapports de bug"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Envoyer automatiquement les traces en cours à BetterBug quand un rapport de bug est collecté"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Afficher les fichiers de suivi"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Paramètres de traçage"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Fichiers enregistrés"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Divers"</string>
 </resources>

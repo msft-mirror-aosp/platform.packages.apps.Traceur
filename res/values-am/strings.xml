@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"የሥርዓት ዱካ መከታተያ ፋይሎች አደጋን ሊያስከትሉ የሚችሉ የሥርዓት እና የመተግበሪያ ውሂብ (እንደ የመተግበሪያ አጠቃቀም) ያለ ሊያካትት ይችላል። ከሚያምኗቸው ሰዎች ጋር ብቻ የሥርዓት ዱካ መከታተያዎችን ያጋሩ።"</string>
     <string name="share" msgid="8443979083706282338">"አጋራ"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ዳግም አታሳይ"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto ይጠቀሙ (ቅድመ ይሁንታ ሙከራ)"</string>
     <string name="long_traces" msgid="5110949471775966329">"ረጅን ዱካዎች"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"ወደ መሣሪያ ማከማቻ በቀጣይነት ተቀምጧል"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"በመሣሪያ ማከማቻ ላይ ያለማቋረጥ ይቀመጣል (በራስ-ሰር ከሳንካ ሪፖርቶች ጋር አይያያዝም)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"በሳንካ ሪፖርቶች ላይ መከታተያዎችን አባሪ አድርግ"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"የሳንካ ሪፖርት በሚሰበሰብበት ጊዜ በሂደት ላይ ያሉ መከታተያን በራስ-ሰር ወደ BetterBug ይላኩ"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"የመከታተያ ፋይሎችን አሳይ"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ቅንብሮችን ይከታተሉ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"የተቀመጡ ፋይሎች"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"የተለያዩ"</string>
 </resources>

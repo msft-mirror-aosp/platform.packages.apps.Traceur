@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"सिस्टम ट्रेसिंग फ़ाइलों में संवेदनशील सिस्टम और ऐप्लिकेशन डेटा (जैसे कि ऐप्लिकेशन का इस्तेमाल) शामिल हो सकता है. सिस्टम ट्रेस उन्हीं लोगों और ऐप्लिकेशन से शेयर करें जिन पर आपको भरोसा है."</string>
     <string name="share" msgid="8443979083706282338">"शेयर करें"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"फिर से न दिखाएं"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"परफ़ेटो का बीटा वर्शन इस्तेमाल करें"</string>
     <string name="long_traces" msgid="5110949471775966329">"लंबे ट्रेस"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"लगातार डिवाइस की मेमोरी में सेव किया गया"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"डिवाइस के स्टोरेज में लगातार सेव किए जाते हैं (इन्हें गड़बड़ी की रिपोर्ट में अपने-आप अटैच नहीं किया जाएगा)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ट्रेस (फ़ोन में हुई गतिविधि की रिकॉर्डिंग) को गड़बड़ी की रिपोर्ट में अटैच करें"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रहे ट्रेस सेशन की जानकारी अपने-आप भेज दी जाती है"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ट्रेस फ़ाइलें देखें"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेस करने की सेटिंग"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव की गई फ़ाइलें"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"अन्य विकल्प"</string>
 </resources>

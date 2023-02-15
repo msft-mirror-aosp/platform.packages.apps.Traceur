@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Հետագծման ֆայլերը տրամադրեք միայն վստահելի մարդկանց և հավելվածներին, քանի որ դրանք կարող են պարունակել համակարգի և հավելվածի մասին գաղտնի տեղեկություններ (օրինակ՝ տվյալներ հավելվածի օգտագործման մասին):"</string>
     <string name="share" msgid="8443979083706282338">"Ուղարկել"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Այլևս ցույց չտալ"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Օգտագործել Perfetto գործառույթը (բետա)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Երկար հետագծումներ"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Միշտ պահվում է սարքի հիշողությունում"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Պահվում է շարունակաբար սարքի հիշողության մեջ (ավտոմատ չի կցվի վրիպակների մասին զեկույցներում)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Կցեք հետագծման ֆայլերը վրիպակի մասին զեկույցներին"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Վրիպակի մասին հաղորդման հավաքման ժամանակ հետագծման ֆայլերը, որոնց մշակումը դեռ չի ավարտվել, ավտոմատ ուղարկել BetterBug-ին"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Դիտել հետագծման ֆայլերի ցանկը"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Հետագծման կարգավորումներ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Պահված ֆայլեր"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Այլ"</string>
 </resources>

@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Els fitxers de Traçabilitat del sistema poden incloure dades sensibles del sistema i de les aplicacions (com ara l\'ús de les aplicacions). Comparteix les traces del sistema només amb aplicacions i persones de confiança."</string>
     <string name="share" msgid="8443979083706282338">"Comparteix"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"No ho tornis a mostrar"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Utilitza Perfetto (versió beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Traces llargues"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Es desa contínuament a l\'emmagatzematge del dispositiu"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Es desen contínuament a l\'emmagatzematge del dispositiu (no s\'adjuntaran automàticament als informes d\'errors)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Adjunta traces als informes d\'errors"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Envia automàticament traces en curs a BetterBug quan es reculli un informe d\'errors"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Mostra els fitxers de seguiment"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Configuració de traça"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Fitxers desats"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Miscel·lània"</string>
 </resources>

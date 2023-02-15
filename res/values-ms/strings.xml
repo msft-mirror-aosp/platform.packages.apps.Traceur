@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Fail Penyurihan Sistem mungkin termasuk data sistem dan apl yang sensitif (seperti penggunaan apl). Kongsikan surihan sistem dengan orang dan apl yang anda percayai sahaja."</string>
     <string name="share" msgid="8443979083706282338">"Kongsi"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Jangan tunjukkan lagi"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Gunakan Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Surih panjang"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Disimpan secara berterusan ke storan peranti"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Disimpan secara berterusan pada storan peranti (tidak akan dilampirkan secara automatik pada laporan pepijat)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Lampirkan surih pada laporan pepijat"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Surihan dalam proses dihantar kepada BetterBug secara automatik apabila laporan pepijat dikumpulkan"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Lihat fail penjejak"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Tetapan surih"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Fail yang disimpan"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Pelbagai"</string>
 </resources>

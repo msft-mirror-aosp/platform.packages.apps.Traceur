@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"સિસ્ટમ ટ્રેસ કરવાની ફાઇલોમાં સંવેદનશીલ સિસ્ટમ અને ઍપ ડેટા (જેમ કે ઍપ વપરાશ) શામેલ હોઈ શકે છે. તમે વિશ્વાસ કરો છો માત્ર તે લોકો અને ઍપ સાથે જ સિસ્ટમ ટ્રેસ શેર કરો."</string>
     <string name="share" msgid="8443979083706282338">"શેર કરો"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ફરી બતાવશો નહીં"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfettoનો ઉપયોગ કરો (બીટા)"</string>
     <string name="long_traces" msgid="5110949471775966329">"લાંબા ટ્રેસ"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"સતત ડિવાઇસના સ્ટોરેજમાં સાચવવામાં આવ્યાં"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ડિવાઇસના સ્ટોરેજમાં સતત સચવાય છે (બગ રિપોર્ટ સાથે ઑટોમૅટિક રીતે જોડવામાં નહીં આવે)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"બગ રિપોર્ટમાં ટ્રેસ જોડો"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"જ્યારે બગ રિપોર્ટ એકત્રિત કરવામાં આવે, ત્યારે BetterBugને ઑટોમૅટિક રીતે ચાલુ પ્રક્રિયાના ટ્રેસ મોકલો"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ટ્રેસ ફાઇલો જુઓ"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ટ્રેસિંગ સંબંધી સેટિંગ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"સાચવેલી ફાઇલો"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"વિવિધ"</string>
 </resources>

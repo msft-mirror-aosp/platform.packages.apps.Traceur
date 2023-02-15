@@ -69,7 +69,7 @@ public class UserConsentActivityDialog extends AlertActivity
         final AlertController.AlertParams params = mAlertParams;
         params.mView = LayoutInflater.from(this).inflate(
             R.layout.consent_dialog_checkbox, null);
-        params.mTitle = getString(R.string.share_trace);
+        params.mTitle = getString(R.string.share_file);
         params.mMessage = getString(R.string.system_trace_sensitive_data);
         params.mPositiveButtonText = getString(R.string.share);
         params.mNegativeButtonText = getString(android.R.string.cancel);
