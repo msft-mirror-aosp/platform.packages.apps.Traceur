@@ -51,12 +51,16 @@ public class TraceUtils {
     private static final Runtime RUNTIME = Runtime.getRuntime();
     private static final int PROCESS_TIMEOUT_MS = 30000; // 30 seconds
 
+    enum RecordingType {
+      UNKNOWN, TRACE, STACK_SAMPLES
+    }
     public interface TraceEngine {
         public String getName();
         public String getOutputExtension();
         public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
             boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes);
+        public boolean stackSampleStart(boolean attachToBugreport);
         public void traceStop();
         public boolean traceDump(File outFile);
         public boolean isTracingOn();
@@ -71,6 +75,10 @@ public class TraceUtils {
             int maxLongTraceDurationMinutes) {
         return mTraceEngine.traceStart(tags, bufferSizeKb, apps,
             attachToBugreport, longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes);
+    }
+
+    public static boolean stackSampleStart(boolean attachToBugreport) {
+        return mTraceEngine.stackSampleStart(attachToBugreport);
     }
 
     public static void traceStop() {
@@ -89,12 +97,14 @@ public class TraceUtils {
         TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
         categories.put("sys_stats", "meminfo and vmstats");
         categories.put("logs", "android logcat");
+        categories.put("cpu", "callstack samples");
         return categories;
     }
 
     public static void clearSavedTraces() {
         String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace " +
-                TRACE_DIRECTORY + "recovered-trace*.*trace";
+                TRACE_DIRECTORY + "recovered-trace*.*trace " +
+                TRACE_DIRECTORY + "stack-samples*.*trace";
 
         Log.v(TAG, "Clearing trace directory: " + cmd);
         try {
@@ -149,15 +159,30 @@ public class TraceUtils {
         return process;
     }
 
-    public static String getOutputFilename() {
+    public static String getOutputFilename(RecordingType type) {
+        String prefix;
+        switch (type) {
+            case TRACE:
+                prefix = "trace";
+                break;
+            case STACK_SAMPLES:
+                prefix = "stack-samples";
+                break;
+            case UNKNOWN:
+            default:
+                prefix = "recording";
+                break;
+        }
         String format = "yyyy-MM-dd-HH-mm-ss";
         String now = new SimpleDateFormat(format, Locale.US).format(new Date());
-        return String.format("trace-%s-%s-%s.%s", Build.BOARD, Build.ID, now,
+        return String.format("%s-%s-%s-%s.%s", prefix, Build.BOARD, Build.ID, now,
             mTraceEngine.getOutputExtension());
     }
 
     public static String getRecoveredFilename() {
-        return "recovered-" + getOutputFilename();
+        // Knowing what the previous Traceur session was recording would require adding a
+        // recordingWasTrace parameter to TraceUtils.traceStart().
+        return "recovered-" + getOutputFilename(RecordingType.UNKNOWN);
     }
 
     public static File getOutputFile(String filename) {
