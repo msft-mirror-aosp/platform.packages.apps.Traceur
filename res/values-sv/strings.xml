@@ -4,6 +4,12 @@
     <string name="system_tracing" msgid="4719188511746319848">"Systemspårning"</string>
     <string name="record_system_activity" msgid="4339462312915377825">"Registrera systemaktivitet och analysera den senare för bättre prestanda"</string>
     <string name="record_trace" msgid="6416875085186661845">"Spela in spårning"</string>
+    <!-- no translation found for record_trace_summary (6705357754827849292) -->
+    <skip />
+    <!-- no translation found for record_stack_samples (3498368637185702335) -->
+    <skip />
+    <!-- no translation found for record_stack_samples_summary (7827953921526410478) -->
+    <skip />
     <string name="start_new_trace" msgid="8177130420802170353">"Starta ny spårning"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spåra felsökningsbara appar"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorier"</string>
@@ -17,7 +23,12 @@
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"Visa rutan Snabbinställningar"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Spårning sparas"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Spårningen har sparats"</string>
-    <string name="tap_to_share" msgid="6766732404489536899">"Tryck om du vill dela spårningen"</string>
+    <!-- no translation found for saving_stack_samples (8174915522390525221) -->
+    <skip />
+    <!-- no translation found for stack_samples_saved (8863295751647724616) -->
+    <skip />
+    <!-- no translation found for tap_to_share (4440713575852187545) -->
+    <skip />
     <string name="attaching_to_report" msgid="2629202947947275886">"Spår bifogas i felrapporten"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Spår har bifogats i felrapporten"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Tryck för att öppna BetterBug"</string>
@@ -25,14 +36,23 @@
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Vissa spårningskategorier är inte tillgängliga:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"En spårning registreras"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tryck här om du vill stoppa spårningen"</string>
-    <string name="clear_saved_traces" msgid="4809195654452260944">"Rensa sparade spårningar"</string>
-    <string name="clear_saved_traces_summary" msgid="6035923138201219577">"Alla spår rensas efter en månad"</string>
-    <string name="clear_saved_traces_question" msgid="2184026613055303818">"Vill du rensa sparade spårningar?"</string>
-    <string name="all_traces_will_be_deleted" msgid="6646545462206955920">"Alla spår raderas från /data/local/traces"</string>
+    <!-- no translation found for stack_samples_are_being_recorded (8669254939248349583) -->
+    <skip />
+    <!-- no translation found for tap_to_stop_stack_sampling (5911317684139059415) -->
+    <skip />
+    <!-- no translation found for clear_saved_files (9156079311231446825) -->
+    <skip />
+    <!-- no translation found for clear_saved_files_summary (109751867417553670) -->
+    <skip />
+    <!-- no translation found for clear_saved_files_question (8586686617760838834) -->
+    <skip />
+    <!-- no translation found for all_recordings_will_be_deleted (7731693738485947891) -->
+    <skip />
     <string name="clear" msgid="5484761795406948056">"Rensa"</string>
     <string name="system_traces_storage_title" msgid="8294090839883366871">"Systemspårning"</string>
     <string name="keywords" msgid="736547007949049535">"systrace, spårning, prestanda"</string>
-    <string name="share_trace" msgid="4528525067822044385">"Ska spårningen delas?"</string>
+    <!-- no translation found for share_file (1982029143280382271) -->
+    <skip />
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Systemspårningsfilerna kan innehålla känslig data om system och appar (t.ex. hur appar används). Dela bara systemspårningsfiler med personer och appar du litar på."</string>
     <string name="share" msgid="8443979083706282338">"Dela"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Visa inte igen"</string>
@@ -57,11 +77,16 @@
     <string name="sixteen_thousand_kb" msgid="7342517169232459259">"16384 kB"</string>
     <string name="thirtytwo_thousand_kb" msgid="654328198799196150">"32768 KB"</string>
     <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"65536 kB"</string>
-    <string name="stop_on_bugreport" msgid="2045328149107284734">"Stoppa spårning vid felrapporter"</string>
-    <string name="stop_on_bugreport_summary" msgid="7844074306038850040">"Avslutar aktiv spårning när felrapportering startas"</string>
-    <string name="attach_to_bug_report" msgid="2953745117960948415">"Bifoga spår i felrapporter"</string>
-    <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Skicka automatiskt spår från pågående session till BetterBug när en felrapport samlas in"</string>
-    <string name="link_to_traces" msgid="6569969595898995517">"Visa spårningsfiler"</string>
+    <!-- no translation found for stop_on_bugreport (4591832600597126422) -->
+    <skip />
+    <!-- no translation found for stop_on_bugreport_summary (1601834864982891381) -->
+    <skip />
+    <!-- no translation found for attach_to_bug_report (5388986830016247490) -->
+    <skip />
+    <!-- no translation found for attach_to_bug_report_summary (4213730623971240002) -->
+    <skip />
+    <!-- no translation found for link_to_traces (1404687523304348490) -->
+    <skip />
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Spåra inställningar"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Sparade filer"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Övrigt"</string>
