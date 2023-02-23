@@ -48,7 +48,7 @@ import java.util.regex.Pattern;
 public class TraceurAppTests {
 
     private static final String TRACEUR_PACKAGE = "com.android.traceur";
-    private static final String RECYCLERVIEW_CLASS = "androidx.recyclerview.widget.RecyclerView";
+    private static final String RECYCLERVIEW_ID = "com.android.traceur:id/recycler_view";
     private static final int LAUNCH_TIMEOUT_MS = 10000;
     private static final int UI_TIMEOUT_MS = 7500;
     private static final int SHORT_PAUSE_MS = 1000;
@@ -87,10 +87,10 @@ public class TraceurAppTests {
         assertTrue(mDevice.wait(Until.hasObject(By.pkg(TRACEUR_PACKAGE).depth(0)),
                   LAUNCH_TIMEOUT_MS));
 
-        // The RecyclerView class used to find the specific scrollable view we want, as scrollable
-        // views may exist higher in the view hierarchy.
+        // The ID for the scrollable RecyclerView is used to find the specific view that we want,
+        // because scrollable views may exist higher in the view hierarchy.
         mScrollableMainScreen =
-                new UiScrollable(new UiSelector().scrollable(true).className(RECYCLERVIEW_CLASS));
+                new UiScrollable(new UiSelector().scrollable(true).resourceId(RECYCLERVIEW_ID));
         if (mScrollableMainScreen.exists()) {
             mScrollableMainScreen.setAsVerticalList();
             mScrollableMainScreen.setMaxSearchSwipes(MAX_SCROLL_SWIPES);
