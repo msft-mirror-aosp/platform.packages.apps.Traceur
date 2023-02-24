@@ -66,6 +66,7 @@ public class MainFragment extends PreferenceFragment {
     private static final String STORAGE_URI = "content://com.android.traceur.documents/root";
 
     private SwitchPreference mTracingOn;
+    private SwitchPreference mStackSamplingOn;
 
     private AlertDialog mAlertDialog;
     private SharedPreferences mPrefs;
@@ -94,13 +95,31 @@ public class MainFragment extends PreferenceFragment {
                 getActivity().getApplicationContext());
 
         mTracingOn = (SwitchPreference) findPreference(getActivity().getString(R.string.pref_key_tracing_on));
+        mStackSamplingOn = (SwitchPreference) findPreference(
+                getActivity().getString(R.string.pref_key_stack_sampling_on));
+
         mTracingOn.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-              Receiver.updateTracing(getContext());
-              return true;
+                Receiver.updateTracing(getContext());
+                // Immediately disable the stack sampling toggle if the trace toggle is enabled.
+                mStackSamplingOn.setEnabled(
+                        ((SwitchPreference) preference).isChecked() ? false : true);
+                return true;
             }
         });
+
+        mStackSamplingOn.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Receiver.updateTracing(getContext());
+                // Immediately disable the trace toggle if the stack sampling toggle is enabled.
+                mTracingOn.setEnabled(
+                        ((SwitchPreference) preference).isChecked() ? false : true);
+                return true;
+            }
+        });
+
 
         mTags = (MultiSelectListPreference) findPreference(getContext().getString(R.string.pref_key_tags));
         mTags.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -146,13 +165,13 @@ public class MainFragment extends PreferenceFragment {
                     }
                 });
 
-        findPreference("clear_saved_traces").setOnPreferenceClickListener(
+        findPreference("clear_saved_files").setOnPreferenceClickListener(
                 new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
                         new AlertDialog.Builder(getContext())
-                            .setTitle(R.string.clear_saved_traces_question)
-                            .setMessage(R.string.all_traces_will_be_deleted)
+                            .setTitle(R.string.clear_saved_files_question)
+                            .setMessage(R.string.all_recordings_will_be_deleted)
                             .setPositiveButton(R.string.clear,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
@@ -272,9 +291,15 @@ public class MainFragment extends PreferenceFragment {
     private void refreshUi(boolean restoreDefaultTags) {
         Context context = getContext();
 
-        // Make sure the Record Trace toggle matches the preference value.
-        mTracingOn.setChecked(mTracingOn.getPreferenceManager().getSharedPreferences().getBoolean(
-                mTracingOn.getKey(), false));
+        // Make sure the Record trace and Record CPU profile toggles match their preference values.
+        mTracingOn.setChecked(mPrefs.getBoolean(mTracingOn.getKey(), false));
+        mStackSamplingOn.setChecked(mPrefs.getBoolean(mStackSamplingOn.getKey(), false));
+
+        // Enable or disable each toggle based on the state of the other. This path exists in case
+        // the tracing state was updated with the QS tile or the ongoing-trace notification, which
+        // would not call the toggles' OnClickListeners.
+        mTracingOn.setEnabled(mStackSamplingOn.isChecked() ? false : true);
+        mStackSamplingOn.setEnabled(mTracingOn.isChecked() ? false : true);
 
         SwitchPreference stopOnReport =
                 (SwitchPreference) findPreference(getString(R.string.pref_key_stop_on_bugreport));
@@ -315,22 +340,13 @@ public class MainFragment extends PreferenceFragment {
                 context.getString(R.string.pref_key_buffer_size));
         bufferSize.setSummary(bufferSize.getEntry());
 
-        // If we are not using the Perfetto trace backend,
-        // hide the unsupported preferences.
-        if (TraceUtils.currentTraceEngine().equals(PerfettoUtils.NAME)) {
-            ListPreference maxLongTraceSize = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_size));
-            maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
+        ListPreference maxLongTraceSize = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_size));
+        maxLongTraceSize.setSummary(maxLongTraceSize.getEntry());
 
-            ListPreference maxLongTraceDuration = (ListPreference)findPreference(
-                    context.getString(R.string.pref_key_max_long_trace_duration));
-            maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
-        } else {
-            Preference longTraceCategory = findPreference("long_trace_category");
-            if (longTraceCategory != null) {
-                getPreferenceScreen().removePreference(longTraceCategory);
-            }
-        }
+        ListPreference maxLongTraceDuration = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_max_long_trace_duration));
+        maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
 
         // Check if BetterBug is installed to see if Traceur should display either the toggle for
         // 'attach_to_bugreport' or 'stop_on_bugreport'.
