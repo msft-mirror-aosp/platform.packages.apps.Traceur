@@ -60,6 +60,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
+    private static final String NETWORK_TAG = "network";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
@@ -488,6 +489,26 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             config.append("data_sources: {\n")
                 .append("  config { \n")
                 .append("    name: \"android.hardware.camera\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+        }
+
+        if (tags.contains(NETWORK_TAG)) {
+            config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.network_packets\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    network_packet_trace_config {\n")
+                .append("      poll_ms: 250\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+            // Include the packages_list data source so that we can map UIDs
+            // from Network Tracing to the corresponding package name.
+            config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.packages_list\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("  }\n")
                 .append("}\n");
