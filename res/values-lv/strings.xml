@@ -4,12 +4,9 @@
     <string name="system_tracing" msgid="4719188511746319848">"Sistēmas izsekošana"</string>
     <string name="record_system_activity" msgid="4339462312915377825">"Reģistrējiet sistēmas darbību un vēlāk analizējiet to, lai uzlabotu veiktspēju"</string>
     <string name="record_trace" msgid="6416875085186661845">"Reģistrēt izsekošanas datus"</string>
-    <!-- no translation found for record_trace_summary (6705357754827849292) -->
-    <skip />
-    <!-- no translation found for record_stack_samples (3498368637185702335) -->
-    <skip />
-    <!-- no translation found for record_stack_samples_summary (7827953921526410478) -->
-    <skip />
+    <string name="record_trace_summary" msgid="6705357754827849292">"Tiek reģistrēti sistēmas izsekošanas dati, izmantojot sadaļā “Izsekošanas iestatījumi” iestatīto konfigurāciju."</string>
+    <string name="record_stack_samples" msgid="3498368637185702335">"Reģistrēt centrālā procesora profilu"</string>
+    <string name="record_stack_samples_summary" msgid="7827953921526410478">"Izsekošanas datos var iespējot arī izsaukuma steka paraugu reģistrēšanu, pievienojot atzīmi centrālā procesora kategorijai."</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Sākt jaunu trasējumu"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Izsekot atkļūdošanas lietojumprogrammas"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorijas"</string>
@@ -23,12 +20,9 @@
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ātro iestatījumu elementa rādīšana"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Izsekošanas datu saglabāšana"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Izsekošanas dati saglabāti"</string>
-    <!-- no translation found for saving_stack_samples (8174915522390525221) -->
-    <skip />
-    <!-- no translation found for stack_samples_saved (8863295751647724616) -->
-    <skip />
-    <!-- no translation found for tap_to_share (4440713575852187545) -->
-    <skip />
+    <string name="saving_stack_samples" msgid="8174915522390525221">"Notiek steka paraugu saglabāšana"</string>
+    <string name="stack_samples_saved" msgid="8863295751647724616">"Steka paraugi ir saglabāti"</string>
+    <string name="tap_to_share" msgid="4440713575852187545">"Pieskarieties, lai kopīgotu reģistrētos datus"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Notiek izsekošanas datu pievienošana kļūdas pārskatam…"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Izsekošanas dati ir pievienoti kļūdas pārskatam"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Pieskarieties, lai atvērtu rīku BetterBug."</string>
@@ -36,23 +30,16 @@
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Noteiktas izsekošanas kategorijas nav pieejamas:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Tiek ierakstīti izsekošanas dati"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Pieskarieties, lai apturētu izsekošanu"</string>
-    <!-- no translation found for stack_samples_are_being_recorded (8669254939248349583) -->
-    <skip />
-    <!-- no translation found for tap_to_stop_stack_sampling (5911317684139059415) -->
-    <skip />
-    <!-- no translation found for clear_saved_files (9156079311231446825) -->
-    <skip />
-    <!-- no translation found for clear_saved_files_summary (109751867417553670) -->
-    <skip />
-    <!-- no translation found for clear_saved_files_question (8586686617760838834) -->
-    <skip />
-    <!-- no translation found for all_recordings_will_be_deleted (7731693738485947891) -->
-    <skip />
+    <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Notiek steka paraugu reģistrēšana"</string>
+    <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"Pieskarieties, lai apturētu steka paraugu reģistrēšanu"</string>
+    <string name="clear_saved_files" msgid="9156079311231446825">"Notīrīt saglabātos failus"</string>
+    <string name="clear_saved_files_summary" msgid="109751867417553670">"Reģistrētie dati tiek dzēsti pēc viena mēneša."</string>
+    <string name="clear_saved_files_question" msgid="8586686617760838834">"Vai notīrīt saglabātos failus?"</string>
+    <string name="all_recordings_will_be_deleted" msgid="7731693738485947891">"Visi reģistrētie dati tiks izdzēsti no mapes /data/local/traces."</string>
     <string name="clear" msgid="5484761795406948056">"Notīrīt"</string>
     <string name="system_traces_storage_title" msgid="8294090839883366871">"Sistēmas izsekošanas dati"</string>
     <string name="keywords" msgid="736547007949049535">"systrace, izsekošana, veiktspēja"</string>
-    <!-- no translation found for share_file (1982029143280382271) -->
-    <skip />
+    <string name="share_file" msgid="1982029143280382271">"Vai kopīgot failu?"</string>
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Sistēmas trasējuma failos var būt iekļauti sensitīvi sistēmas un lietotņu dati (piemēram, par lietotņu izmantošanu). Kopīgojiet sistēmas trasējumus tikai ar uzticamām personām un lietotnēm."</string>
     <string name="share" msgid="8443979083706282338">"Kopīgot"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Vairs nerādīt"</string>
@@ -77,16 +64,11 @@
     <string name="sixteen_thousand_kb" msgid="7342517169232459259">"16 384 KB"</string>
     <string name="thirtytwo_thousand_kb" msgid="654328198799196150">"32 768 KB"</string>
     <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"65 536 KB"</string>
-    <!-- no translation found for stop_on_bugreport (4591832600597126422) -->
-    <skip />
-    <!-- no translation found for stop_on_bugreport_summary (1601834864982891381) -->
-    <skip />
-    <!-- no translation found for attach_to_bug_report (5388986830016247490) -->
-    <skip />
-    <!-- no translation found for attach_to_bug_report_summary (4213730623971240002) -->
-    <skip />
-    <!-- no translation found for link_to_traces (1404687523304348490) -->
-    <skip />
+    <string name="stop_on_bugreport" msgid="4591832600597126422">"Apturēt datu reģistrēšanu, sākot kļūdas pārskata izveidi"</string>
+    <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Kad tiek sākta kļūdas pārskata izveide, tiek apturēta aktīvā reģistrēšana."</string>
+    <string name="attach_to_bug_report" msgid="5388986830016247490">"Kļūdu pārskatiem pievienot reģistrētos datus"</string>
+    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automātiski sūtīt pašreizējos reģistrētos datus uz rīku BetterBug kopā ar kļūdas pārskatu"</string>
+    <string name="link_to_traces" msgid="1404687523304348490">"Skatīt saglabātos failus"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Izsekošanas iestatījumi"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Saglabātie faili"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Dažādi"</string>
