@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.os.FileUtils;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
-import android.os.UserManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 import android.provider.DocumentsContract.Root;
@@ -76,11 +75,10 @@ public class StorageProvider extends FileSystemProvider{
         boolean developerOptionsIsEnabled =
             Settings.Global.getInt(getContext().getContentResolver(),
                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        boolean isAdminUser = getContext().getSystemService(UserManager.class).isAdminUser();
 
-        // If developer options is not enabled or the user is not an admin, return an empty root
-        // cursor. This removes the provider from the list entirely.
-        if (!developerOptionsIsEnabled || !isAdminUser) {
+        // If developer options is not enabled, return an empty root cursor.
+        // This removes the provider from the list entirely.
+        if (!developerOptionsIsEnabled) {
             return null;
         }
 
