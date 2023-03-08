@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"קבצים של נתוני המעקב מהמערכת עשויים לכלול נתונים רגישים של המערכת ושל האפליקציה (למשל, נתוני שימוש באפליקציה). יש לשתף את נתוני המעקב של המערכת רק עם אנשים ואפליקציות שיש לך אמון בהם."</string>
     <string name="share" msgid="8443979083706282338">"שיתוף"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"אני לא רוצה לראות זאת שוב"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"‏שימוש ב-Perfetto (בטא)"</string>
     <string name="long_traces" msgid="5110949471775966329">"מעקבים ארוכים"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"נשמר באופן מתמשך באחסון המכשיר"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"מתבצעת שמירה רציפה בנפח האחסון של המכשיר (לא יתבצע צירוף אוטומטי לדוחות על באגים)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"צירוף נתוני מעקב לדוחות על באגים"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"‏שליחה אוטומטית של נתוני מעקב בתהליך אל BetterBug כאשר מתבצע איסוף של דוח על באג"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"צפייה בקבצים של פרטי ההעברה"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"הגדרות איתור"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"קבצים שנשמרו"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"שונות"</string>
 </resources>

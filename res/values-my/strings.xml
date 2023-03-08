@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"စနစ် \'လုပ်ဆောင်ချက်မှတ်တမ်း\' ဖိုင်များတွင် အရေးကြီးသောစနစ်နှင့် အက်ပ်ဒေတာများ (အက်ပ်အသုံးပြုမှုကဲ့သို့) ပါဝင်နိုင်သည်။ စနစ်လုပ်ဆောင်ချက်မှတ်တမ်းများကို သင်ယုံကြည့်သည့် လူများ၊ အက်ပ်များနှင့်သာ မျှဝေပါ။"</string>
     <string name="share" msgid="8443979083706282338">"မျှဝေရန်"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ထပ်မပြပါနှင့်"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto ကို သုံးရန် (စမ်းသပ်)"</string>
     <string name="long_traces" msgid="5110949471775966329">"ရှည်ကြာသော လုပ်ဆောင်ချက်မှတ်တမ်းများ"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"စက်ပစ္စည်းသိုလှောင်ခန်းသို့ ဆက်တိုက် သိမ်းထားသည်"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"စက်သိုလှောင်ခန်းသို့ အဆက်မပြတ် သိမ်းထားသည် (ချွတ်ယွင်းချက် အစီရင်ခံစာများတွင် အလိုအလျောက် ပူးတွဲမည်မဟုတ်ပါ)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် လုပ်ဆောင်ချက်မှတ်တမ်းများကို ပူးတွဲရန်"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"ချွတ်ယွင်းချက်အစီရင်ခံစာကို စုစည်းရာတွင် ဆောင်ရွက်နေဆဲ လုပ်ဆောင်ချက်မှတ်တမ်းများကို BetterBug သို့ အလိုအလျောက်ပို့သည်"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"လုပ်ဆောင်ချက်မှတ်တမ်းဖိုင်များကို ကြည့်ရန်"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"လုပ်ဆောင်ချက်မှတ်တမ်း ဆက်တင်များ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"သိမ်းထားသော ဖိုင်များ"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"အထွေထွေ"</string>
 </resources>

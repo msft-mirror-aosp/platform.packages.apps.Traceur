@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Fajlovi praćenja sistema mogu sadržavati osjetljive podatke o sistemu i aplikaciji (kao što je korištenje aplikacije). Praćenje sistema dijelite samo sa osobama i aplikacijama kojima vjerujete."</string>
     <string name="share" msgid="8443979083706282338">"Dijeli"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ne prikazuj opet"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Koristi Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Dugi tragovi"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Kontinuirano čuvano u pohranu uređaja"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Neprestano se pohranjuje u pohranu uređaja (neće se automatski priložiti izvještajima o grešci)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Priložite tragove praćenja uz izvještaje o greškama"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Automatski šaljite tragove praćenja koji su u toku BetterBugu kada se preuzme izvještaj o grešci"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Prikaži fajlove praćenja"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Postavke praćenja"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Sačuvani fajlovi"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Razno"</string>
 </resources>

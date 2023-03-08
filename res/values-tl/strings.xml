@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Ang mga file ng Pag-trace ng System ay maaaring may sensitibong data ng system at app (gaya ng paggamit ng app). Ibahagi lang ang mga trace ng system sa mga tao at app na pinakakatiwalaan mo."</string>
     <string name="share" msgid="8443979083706282338">"Ibahagi"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Huwag ipakitang muli"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Gamitin ang Perfetto (beta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Mga long trace"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Tuloy-tuloy na sine-save sa storage ng device"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Naka-save nang tuloy-tuloy sa storage ng device (hindi awtomatikong maa-attach sa mga ulat ng bug)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Mag-attach ng mga trace sa mga ulat ng bug"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Awtomatikong magpadala ng mga kasalukuyang isinasagawang trace sa BetterBug kapag nangolekta ng ulat ng bug"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Tingnan ang mga trace file"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mga setting ng pag-trace"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Mga naka-save na file"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Miscellaneous"</string>
 </resources>

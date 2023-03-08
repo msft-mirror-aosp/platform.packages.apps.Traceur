@@ -60,6 +60,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final String CAMERA_TAG = "camera";
     private static final String GFX_TAG = "gfx";
     private static final String MEMORY_TAG = "memory";
+    private static final String NETWORK_TAG = "network";
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
@@ -67,6 +68,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     // Custom trace categories.
     private static final String SYS_STATS_TAG = "sys_stats";
     private static final String LOG_TAG = "logs";
+    private static final String CPU_TAG = "cpu";
 
     public String getName() {
         return NAME;
@@ -109,6 +111,28 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         appendFtraceConfig(config, tags, apps);
         appendProcStatsConfig(config, tags, /* target_buffer = */ 1);
         appendAdditionalDataSources(config, tags, longTrace, /* target_buffer = */ 1);
+
+        return startPerfettoWithConfig(config.toString());
+    }
+
+    public boolean stackSampleStart(boolean attachToBugreport) {
+        if (isTracingOn()) {
+            Log.e(TAG, "Attemping to start stack sampling but perfetto is already active");
+            return false;
+        } else {
+            recoverExistingRecording();
+        }
+
+        StringBuilder config = new StringBuilder();
+        appendBaseConfigOptions(config, attachToBugreport, /* longTrace = */ false,
+                /* maxLongTraceSizeMb */ 0, /* maxLongTraceDurationMinutes = */ 0);
+
+        // Number of cores * 16MiB. 16MiB was chosen as it is the default for Traceur traces.
+        int targetBufferKb = Runtime.getRuntime().availableProcessors() * (16 * 1024);
+        appendTraceBuffer(config, targetBufferKb);
+
+        appendLinuxPerfConfig(config, /* target_buffer = */ 0);
+        appendProcStatsConfig(config, /* tags = */ null, /* target_buffer = */ 0);
 
         return startPerfettoWithConfig(config.toString());
     }
@@ -377,13 +401,29 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         config.append("data_sources {\n")
             .append("  config {\n")
             .append("    name: \"linux.process_stats\"\n")
-            .append("    target_buffer: " + targetBuffer + "\n");
+            .append("    target_buffer: " + targetBuffer + "\n")
+            .append("    process_stats_config {\n");
         if (tagsContainsMemory) {
-            config.append("    process_stats_config {\n")
-                .append("      proc_stats_poll_ms: 60000\n")
-                .append("    }\n");
+            config.append("      proc_stats_poll_ms: 60000\n");
+        } else {
+            config.append("      scan_all_processes_on_start: true\n");
         }
-        config.append("  }\n")
+        config.append("    }\n")
+            .append("  }\n")
+            .append("}\n");
+    }
+
+    // Appends the callstack-sampling data source. Sampling frequency is measured in Hz.
+    private void appendLinuxPerfConfig(StringBuilder config, int targetBuffer) {
+        config.append("data_sources: {\n")
+            .append("  config {\n")
+            .append("    name: \"linux.perf\"\n")
+            .append("    target_buffer: " + targetBuffer + "\n")
+            .append("    perf_event_config {\n")
+            .append("      all_cpus: true\n")
+            .append("      sampling_frequency: 100\n")
+            .append("    }\n")
+            .append("  }\n")
             .append("}\n");
     }
 
@@ -432,6 +472,10 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("}\n");
         }
 
+        if (tags.contains(CPU_TAG)) {
+            appendLinuxPerfConfig(config, /* target_buffer = */ 1);
+        }
+
         if (tags.contains(GFX_TAG)) {
             config.append("data_sources: {\n")
                 .append("  config { \n")
@@ -445,6 +489,26 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             config.append("data_sources: {\n")
                 .append("  config { \n")
                 .append("    name: \"android.hardware.camera\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+        }
+
+        if (tags.contains(NETWORK_TAG)) {
+            config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.network_packets\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    network_packet_trace_config {\n")
+                .append("      poll_ms: 250\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+            // Include the packages_list data source so that we can map UIDs
+            // from Network Tracing to the corresponding package name.
+            config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.packages_list\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("  }\n")
                 .append("}\n");

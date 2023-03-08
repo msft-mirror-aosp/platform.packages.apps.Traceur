@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"ممکن است فایل‌های «ردیابی سیستم» حاوی داده‌های حساس سیستم و برنامه (مثل میزان مصرف برنامه) باشد. ردیابی‌های سیستم را فقط با افراد و برنامه‌هایی هم‌رسانی کنید که به آن‌ها اعتماد دارید."</string>
     <string name="share" msgid="8443979083706282338">"هم‌رسانی"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"دیگر نشان داده نشود"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"‏استفاده از Perfetto (بتا)"</string>
     <string name="long_traces" msgid="5110949471775966329">"ردهای طولانی"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"به‌طور مرتب در فضای ذخیره‌سازی دستگاه ذخیره شده است"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"به‌طور پیوسته در فضای ذخیره‌سازی دستگاه ذخیره می‌شود (به‌طور خودکار به گزارش‌های اشکال پیوست نخواهد شد)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"پیوست کردن ردها به گزارش‌های اشکال"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"‏هنگام جمع‌آوری گزارش اشکال، ردهای درحال انجام به‌طور خودکار به BetterBug ارسال شود"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"مشاهده فایل‌های ردیابی"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"تنظیمات ردیابی"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"فایل‌های ذخیره‌شده"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"متفرقه"</string>
 </resources>

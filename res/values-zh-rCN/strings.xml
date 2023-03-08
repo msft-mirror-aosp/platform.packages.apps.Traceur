@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"系统跟踪文件可能包含敏感的系统数据和应用数据（例如应用使用情况信息）。请务必只与您信任的人和应用分享系统跟踪文件。"</string>
     <string name="share" msgid="8443979083706282338">"分享"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"不再显示"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"使用 Perfetto（测试版）"</string>
     <string name="long_traces" msgid="5110949471775966329">"长期跟踪"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"持续保存到设备存储空间"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"持续保存到设备存储空间（不会自动附加到错误报告）"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"将跟踪记录附加到错误报告"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"收集错误报告后，自动将处理中的跟踪记录发送到 BetterBug"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"查看跟踪文件"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"跟踪设置"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"已保存的文件"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"其他"</string>
 </resources>

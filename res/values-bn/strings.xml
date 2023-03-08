@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"সিস্টেম ট্রেসিং ফাইলে অতি গোপনীয় সিস্টেম এবং অ্যাপ ডেটা থাকতে পারে (যেমন অ্যাপের জন্য ডেটার ব্যবহার)। কেবলমাত্র আপনার বিশ্বস্ত লোকজন এবং অ্যাপের সঙ্গে সিস্টেম ট্রেস শেয়ার করুন।"</string>
     <string name="share" msgid="8443979083706282338">"শেয়ার করুন"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"আর দেখাবেন না"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto (বিটা) ব্যবহার করুন"</string>
     <string name="long_traces" msgid="5110949471775966329">"লম্বা ট্রেস"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"ডিভাইসের স্টোরেজে ক্রমাগত সেভ করা হয়েছে"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ডিভাইসের স্টোরেজে ক্রমাগত সেভ করা হয়েছে (সমস্যার রিপোর্টে অটোমেটিক অ্যাটাচ করা হবে না)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"ট্রেসকে সমস্যার রিপোর্টে অ্যাটাচ করুন"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"কোনও সমস্যার রিপোর্ট পাওয়া গেলে, চলছে এমন ট্রেস সম্পর্কিত তথ্য অটোমেটিক BetterBug-কে পাঠান"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ট্রেস ফাইল দেখুন"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"\'ট্রেস\' সেটিংস"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"সেভ করা ফাইল"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"বিবিধ"</string>
 </resources>

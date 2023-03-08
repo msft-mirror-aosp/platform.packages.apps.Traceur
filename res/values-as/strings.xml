@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"ছিষ্টেমে ট্রে\'চ কৰা ফাইলত ছিষ্টেম আৰু এপৰ সংবেদনশীল ডেটা (যেনে- এপে ব্যৱহাৰ কৰা ডেটা) থাকিব পাৰে। আপুনি বিশ্বাস কৰা ব্যক্তি আৰু এপৰ সৈতেহে ছিষ্টেম ট্রে\'চ শ্বেয়াৰ কৰক।"</string>
     <string name="share" msgid="8443979083706282338">"শ্বেয়াৰ কৰক"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"পুনৰাই নেদেখুৱাব"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto (বিটা) ব্যৱহাৰ কৰক"</string>
     <string name="long_traces" msgid="5110949471775966329">"দীঘল ট্ৰে\'চ"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"ডিভাইচ ষ্ট’ৰেজত নিয়মীয়াকৈ ছেভ কৰা হৈছে"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ডিভাইচৰ ষ্ট’ৰেজত অবিৰতভাৱে ছেভ কৰা হয় (বাগ ৰিপ’ৰ্টত স্বয়ংক্ৰিয়ভাৱে সংলগ্ন কৰা নহ’ব)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"বাগ ৰিপ’টত ট্ৰে’চ সংলগ্ন কৰক"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"যেতিয়া এটা বাগ ৰিপ’ৰ্ট সংগ্ৰহ কৰা হয়, চলি থকা ট্ৰে’চ BetterBugলৈ স্বয়ংক্ৰিয়ভাৱে পঠিয়াওক"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ট্ৰেচ ফাইল চাওক"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ট্ৰে’চৰ ছেটিং"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"ছেভ কৰি থোৱা ফাইল"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"সানমিহলি"</string>
 </resources>

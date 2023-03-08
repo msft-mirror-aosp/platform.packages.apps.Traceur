@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"సిస్టమ్ స్థితిగతిని కనుగొనే ఫైళ్లు- గోప్యమైన సిస్టమ్, యాప్ డేటాను (యాప్ వినియోగం వంటివి) కలిగి ఉండవచ్చు. కేవలం మీకు నమ్మకం ఉన్న వ్యక్తుల‌కు, యాప్‌లకు మాత్రమే సిస్టమ్ స్థితిగతులను షేర్ చేయండి."</string>
     <string name="share" msgid="8443979083706282338">"షేర్ చేయండి"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"మళ్లీ చూపవద్దు"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto (బీటా)ని ఉపయోగించండి"</string>
     <string name="long_traces" msgid="5110949471775966329">"ఎక్కువ నిడివి స్థితిగతి"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"పరికర నిల్వలో నిరంతరం సేవ్ చేయబడుతుంది"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"పరికర స్టోరేజ్‌కు నిరంతరం సేవ్ చేయబడుతుంది (బగ్ రిపోర్ట్‌లకు ఆటోమేటిక్‌గా అటాచ్ చేయబడదు)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"బగ్ రిపోర్ట్‌లకు ట్రేస్‌లను అటాచ్ చేయండి"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"బగ్ రిపోర్ట్ సేకరించినప్పుడు ప్రోగెస్‌లో ఉన్న ట్రేస్‌లను ఆటోమేటిక్‌గా BetterBugకు పంపండి"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ట్రేస్ ఫైళ్లను చూడండి"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ట్రేస్ సెట్టింగ్‌లు"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"సేవ్ చేసిన ఫైల్స్"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"ఇతరాలు"</string>
 </resources>

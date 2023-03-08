@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"시스템 추적 파일에는 민감한 시스템 및 앱 데이터(예: 앱 사용)가 포함되어 있을 수 있습니다. 신뢰할 수 있는 앱 및 사용자에게만 공유하세요."</string>
     <string name="share" msgid="8443979083706282338">"공유"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"다시 표시 안함"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto(베타) 사용"</string>
     <string name="long_traces" msgid="5110949471775966329">"장기 추적"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"기기 저장용량에 계속 저장됨"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"계속해서 기기 저장용량에 저장됨(버그 신고서에 자동으로 첨부되지 않음)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"버그 신고에 트레이스 첨부"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"버그 신고 수집 시 진행 중인 트레이스를 자동으로 BetterBug에 전송합니다."</string>
     <string name="link_to_traces" msgid="6569969595898995517">"추적 파일 보기"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"트레이스 설정"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"저장된 파일"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"기타"</string>
 </resources>

@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Süsteemi jälgimise failid võivad hõlmata tundlikke süsteemi- ja rakenduseandmeid (nt rakenduse kasutust). Jagage süsteemijälgi ainult usaldusväärsete inimeste ja rakendustega."</string>
     <string name="share" msgid="8443979083706282338">"Jaga"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"Ära enam kuva"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Kasuta rakendust Perfetto (beeta)"</string>
     <string name="long_traces" msgid="5110949471775966329">"Pikad jäljed"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"Salvestatakse pidevalt seadme salvestusruumi"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"Salvestatakse pidevalt seadme salvestusruumi (ei lisata automaatselt veaaruannetele)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"Jälgede manustamine veaaruannetesse"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"Aktiivsed jäljed saadetakse veaaruande kogumisel automaatselt laiendusele BetterBug"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"Kuva jäljefailid"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jälgimise seaded"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"Salvestatud failid"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"Mitmesugust"</string>
 </resources>

@@ -36,7 +36,6 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"प्रणालीले पत्ता लगाएको फाइलहरूमा संवेदनशील प्रणाली र एप डेटा (जस्तै एपको उपयोग) समावेश हुन सक्छ। तपाईंले विश्वास गर्ने मान्छेहरूलाई मात्र प्रणालीले पत्ता लगाएको फाइलहरू सेयर गर्नुहोस्‌।"</string>
     <string name="share" msgid="8443979083706282338">"सेयर गर्नुहोस्"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"फेरि नदेखाउनुहोस्"</string>
-    <string name="use_perfetto_beta" msgid="2725630143916520160">"Perfetto (बिटा) प्रयोग गर्नुहोस्‌"</string>
     <string name="long_traces" msgid="5110949471775966329">"लामो ट्रेसहरू"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"डिभाइसको भण्डारणमा निरन्तर रूपमा सेभ गरियो"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"डिभाइसको भण्डारणमा निरन्तर सेभ भइरहन्छ (त्रुटिसम्बन्धी रिपोर्टमा स्वतः एट्याच गरिने छैन)"</string>
@@ -63,4 +62,7 @@
     <string name="attach_to_bug_report" msgid="2953745117960948415">"बग रिपोर्टहरूमा ट्रेस एट्याच गर्नुहोस्"</string>
     <string name="attach_to_bug_report_summary" msgid="2225208904634565377">"बग रिपोर्ट सङ्कलन गरिएपछि प्रक्रियामा रहेका ट्रेसहरू स्वतः BetterBug मा पठाउनुहोस्"</string>
     <string name="link_to_traces" msgid="6569969595898995517">"ट्रेस फाइलहरू हेर्नुहोस्"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेससम्बन्धी सेटिङ"</string>
+    <string name="pref_category_saved_files" msgid="1477491400970413291">"सेभ गरिएका फाइलहरू"</string>
+    <string name="pref_category_misc" msgid="6217624054980014683">"विविध"</string>
 </resources>
