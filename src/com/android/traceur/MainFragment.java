@@ -226,7 +226,8 @@ public class MainFragment extends PreferenceFragment {
         super.onStart();
         getPreferenceScreen().getSharedPreferences()
             .registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
-        getActivity().registerReceiver(mRefreshReceiver, new IntentFilter(ACTION_REFRESH_TAGS));
+        getActivity().registerReceiver(mRefreshReceiver, new IntentFilter(ACTION_REFRESH_TAGS),
+                Context.RECEIVER_NOT_EXPORTED);
         Receiver.updateTracing(getContext());
     }
 
