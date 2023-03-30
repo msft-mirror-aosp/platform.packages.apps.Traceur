@@ -101,7 +101,7 @@ public class Receiver extends BroadcastReceiver {
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
-            context.closeSystemDialogs();
+            context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
             context.startActivity(new Intent(context, MainActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else if (BUGREPORT_STARTED.equals(intent.getAction())) {
