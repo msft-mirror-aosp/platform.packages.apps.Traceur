@@ -116,7 +116,7 @@
              android:exported="true">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.ACTION_USER_FOREGROUND"/>
+                <action android:name="android.intent.action.USER_FOREGROUND"/>
                 <action android:name="com.android.internal.intent.action.BUGREPORT_STARTED"/>
             </intent-filter>
           </receiver>
