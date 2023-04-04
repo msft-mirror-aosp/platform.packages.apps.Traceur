@@ -90,8 +90,12 @@ public class Receiver extends BroadcastReceiver {
             boolean developerOptionsEnabled = (1 ==
                 Settings.Global.getInt(context.getContentResolver(),
                     Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-            boolean isAdminUser = context.getSystemService(UserManager.class).isAdminUser();
-            updateStorageProvider(context, developerOptionsEnabled && isAdminUser);
+            UserManager userManager = context.getSystemService(UserManager.class);
+            boolean isAdminUser = userManager.isAdminUser();
+            boolean debuggingDisallowed = userManager.hasUserRestriction(
+                    UserManager.DISALLOW_DEBUGGING_FEATURES);
+            updateStorageProvider(context,
+                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
         } else if (STOP_ACTION.equals(intent.getAction())) {
             // Only one of tracing or stack sampling should be enabled, but because they use the
             // same path for stopping and saving, set both to false.
@@ -245,9 +249,12 @@ public class Receiver extends BroadcastReceiver {
                         boolean developerOptionsEnabled = (1 ==
                             Settings.Global.getInt(context.getContentResolver(),
                                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-                        boolean isAdminUser = context.getSystemService(UserManager.class)
-                                .isAdminUser();
-                        updateStorageProvider(context, developerOptionsEnabled && isAdminUser);
+                        UserManager userManager = context.getSystemService(UserManager.class);
+                        boolean isAdminUser = userManager.isAdminUser();
+                        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                                UserManager.DISALLOW_DEBUGGING_FEATURES);
+                        updateStorageProvider(context,
+                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
 
                         if (!developerOptionsEnabled) {
                             SharedPreferences prefs =
