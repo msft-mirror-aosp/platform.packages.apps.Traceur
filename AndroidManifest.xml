@@ -104,6 +104,18 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainWearActivity"
+                  android:description="@string/record_system_activity"
+                  android:label="@string/system_tracing"
+                  android:theme="@style/WearTheme"
+                  android:launchMode="singleTask"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.INFO"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name=".UserConsentActivityDialog"
              android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.Alert"
              android:finishOnCloseSystemDialogs="true"
