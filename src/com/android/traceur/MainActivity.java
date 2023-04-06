@@ -17,6 +17,7 @@ package com.android.traceur;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.UserManager;
 import android.provider.Settings;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
@@ -35,7 +36,13 @@ public class MainActivity extends CollapsingToolbarBaseActivity {
             Settings.Global.getInt(getApplicationContext().getContentResolver(),
                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
 
-        if (!developerOptionsIsEnabled) {
+        UserManager userManager = getApplicationContext()
+                .getSystemService(UserManager.class);
+        boolean isAdminUser = userManager.isAdminUser();
+        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                UserManager.DISALLOW_DEBUGGING_FEATURES);
+
+        if (!developerOptionsIsEnabled || !isAdminUser || debuggingDisallowed) {
             finish();
         }
     }
