@@ -32,6 +32,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -85,12 +86,26 @@ public class Receiver extends BroadcastReceiver {
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
+        } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
+            boolean developerOptionsEnabled = (1 ==
+                Settings.Global.getInt(context.getContentResolver(),
+                    Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
+            UserManager userManager = context.getSystemService(UserManager.class);
+            boolean isAdminUser = userManager.isAdminUser();
+            boolean debuggingDisallowed = userManager.hasUserRestriction(
+                    UserManager.DISALLOW_DEBUGGING_FEATURES);
+            updateStorageProvider(context,
+                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
         } else if (STOP_ACTION.equals(intent.getAction())) {
+            // Only one of tracing or stack sampling should be enabled, but because they use the
+            // same path for stopping and saving, set both to false.
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
-            context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+            context.closeSystemDialogs();
             context.startActivity(new Intent(context, MainActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else if (BUGREPORT_STARTED.equals(intent.getAction())) {
@@ -118,11 +133,32 @@ public class Receiver extends BroadcastReceiver {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean prefsTracingOn =
                 prefs.getBoolean(context.getString(R.string.pref_key_tracing_on), false);
+        boolean prefsStackSamplingOn =
+                prefs.getBoolean(context.getString(R.string.pref_key_stack_sampling_on), false);
+
+        // This should never happen because enabling one toggle should disable the other. Just in
+        // case, set both preferences to false and stop any ongoing trace.
+        if (prefsTracingOn && prefsStackSamplingOn) {
+            Log.e(TAG, "Preference state thinks that both trace configs should be active; " +
+                    "disabling both and stopping the ongoing trace if one exists.");
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_tracing_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            if (TraceUtils.isTracingOn()) {
+                TraceService.stopTracing(context);
+            }
+            context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
+            QsService.updateTile();
+            return;
+        }
 
         boolean traceUtilsTracingOn = assumeTracingIsOff ? false : TraceUtils.isTracingOn();
 
-        if (prefsTracingOn != traceUtilsTracingOn) {
-            if (prefsTracingOn) {
+        if ((prefsTracingOn || prefsStackSamplingOn) != traceUtilsTracingOn) {
+            if (prefsStackSamplingOn) {
+                TraceService.startStackSampling(context);
+            } else if (prefsTracingOn) {
                 // Show notification if the tags in preferences are not all actually available.
                 Set<String> activeAvailableTags = getActiveTags(context, prefs, true);
                 Set<String> activeTags = getActiveTags(context, prefs, false);
@@ -213,14 +249,12 @@ public class Receiver extends BroadcastReceiver {
                         boolean developerOptionsEnabled = (1 ==
                             Settings.Global.getInt(context.getContentResolver(),
                                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-
-                        ComponentName name = new ComponentName(context,
-                            StorageProvider.class);
-                        context.getPackageManager().setComponentEnabledSetting(name,
-                           developerOptionsEnabled
-                                ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                                : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                            PackageManager.DONT_KILL_APP);
+                        UserManager userManager = context.getSystemService(UserManager.class);
+                        boolean isAdminUser = userManager.isAdminUser();
+                        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                                UserManager.DISALLOW_DEBUGGING_FEATURES);
+                        updateStorageProvider(context,
+                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
 
                         if (!developerOptionsEnabled) {
                             SharedPreferences prefs =
@@ -245,6 +279,17 @@ public class Receiver extends BroadcastReceiver {
                 mDeveloperOptionsObserver.onChange(true);
             }
         }
+    }
+
+    // Enables/disables the System Traces storage component. enableProvider should be true iff
+    // developer options are enabled and the current user is an admin user.
+    static void updateStorageProvider(Context context, boolean enableProvider) {
+        ComponentName name = new ComponentName(context, StorageProvider.class);
+        context.getPackageManager().setComponentEnabledSetting(name,
+                enableProvider
+                        ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                        : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
     }
 
     private static void postCategoryNotification(Context context, SharedPreferences prefs) {
