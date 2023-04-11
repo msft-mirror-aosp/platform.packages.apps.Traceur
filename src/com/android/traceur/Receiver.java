@@ -90,8 +90,12 @@ public class Receiver extends BroadcastReceiver {
             boolean developerOptionsEnabled = (1 ==
                 Settings.Global.getInt(context.getContentResolver(),
                     Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-            boolean isAdminUser = context.getSystemService(UserManager.class).isAdminUser();
-            updateStorageProvider(context, developerOptionsEnabled && isAdminUser);
+            UserManager userManager = context.getSystemService(UserManager.class);
+            boolean isAdminUser = userManager.isAdminUser();
+            boolean debuggingDisallowed = userManager.hasUserRestriction(
+                    UserManager.DISALLOW_DEBUGGING_FEATURES);
+            updateStorageProvider(context,
+                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
         } else if (STOP_ACTION.equals(intent.getAction())) {
             // Only one of tracing or stack sampling should be enabled, but because they use the
             // same path for stopping and saving, set both to false.
@@ -101,7 +105,7 @@ public class Receiver extends BroadcastReceiver {
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
-            context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+            context.closeSystemDialogs();
             context.startActivity(new Intent(context, MainActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else if (BUGREPORT_STARTED.equals(intent.getAction())) {
@@ -245,9 +249,12 @@ public class Receiver extends BroadcastReceiver {
                         boolean developerOptionsEnabled = (1 ==
                             Settings.Global.getInt(context.getContentResolver(),
                                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-                        boolean isAdminUser = context.getSystemService(UserManager.class)
-                                .isAdminUser();
-                        updateStorageProvider(context, developerOptionsEnabled && isAdminUser);
+                        UserManager userManager = context.getSystemService(UserManager.class);
+                        boolean isAdminUser = userManager.isAdminUser();
+                        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                                UserManager.DISALLOW_DEBUGGING_FEATURES);
+                        updateStorageProvider(context,
+                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
 
                         if (!developerOptionsEnabled) {
                             SharedPreferences prefs =
