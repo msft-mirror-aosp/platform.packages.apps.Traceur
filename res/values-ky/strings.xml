@@ -14,7 +14,7 @@
     <string name="applications" msgid="521776761270770549">"Колдонмолор"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Бир да мүчүлүштүктөрү оңдоло турган колдонмо жеткиликтүү эмес"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Процессордун буферинин өлчөмү"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ыкчам жөндөөлөр тактасын көрсөтүү"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ыкчам параметрлер тактасын көрсөтүү"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Телефондо аткарылган аракеттер сакталууда"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Телефондо аткарылган аракеттер сакталды"</string>
     <string name="tap_to_share" msgid="6766732404489536899">"Телефондо аткарылган аракеттерди бөлүшүү үчүн таптаңыз"</string>
