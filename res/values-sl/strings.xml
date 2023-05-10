@@ -14,7 +14,7 @@
     <string name="applications" msgid="521776761270770549">"Aplikacije"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Na voljo ni nobenih aplikacij, v katerih je mogoče odpravljati napake"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Velikost medpomnilnika za posamezno CPE"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Prikaz ploščice s hitrimi nastavitvami"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Prikaz ploščice v hitrih nastavitvah"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Shranjevanje sledi"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Sled je shranjena"</string>
     <string name="tap_to_share" msgid="6766732404489536899">"Dotaknite se, če želite deliti sled"</string>
