@@ -17,7 +17,7 @@
     <string name="applications" msgid="521776761270770549">"Aplicacións"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Non hai ningunha aplicación que se poida depurar dispoñible"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Tamaño do búfer por CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar atallo de configuración rápida"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar atallo de Configuración rápida"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Gardando rastro"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Gardouse o rastro"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Gardando mostras de pillas"</string>
@@ -69,7 +69,7 @@
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Anexar gravacións aos informes de erros"</string>
     <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Envía automaticamente gravacións en curso a BetterBug cando se recompile un informe de erros"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Ver ficheiros gardados"</string>
-    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Configuración de rastrexo"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Configuración de rastro"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Ficheiros gardados"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Outras opcións"</string>
 </resources>
