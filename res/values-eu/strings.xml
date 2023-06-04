@@ -8,7 +8,7 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Erregistratu PUZaren profil bat"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Dei pilen laginketa arrastoetan ere gai daiteke CPU kategoria markatuta"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Hasi beste arrasto bat"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"Egin araz daitezkeen aplikazioen segimendua"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"Egin aratz daitezkeen aplikazioen segimendua"</string>
     <string name="categories" msgid="2280163673538611008">"Kategoriak"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Leheneratu kategoria lehenetsiak"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Leheneratu dira kategoria lehenetsiak"</string>
