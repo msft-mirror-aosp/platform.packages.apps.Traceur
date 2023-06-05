@@ -69,7 +69,7 @@
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Đính kèm bản ghi vào báo cáo lỗi"</string>
     <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Tự động gửi các bản ghi đang xử lý đến BetterBug khi một báo cáo lỗi được thu thập"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Xem tệp đã lưu"</string>
-    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Chế độ cài đặt theo dõi"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Cài đặt hoạt động theo dõi"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Tệp đã lưu"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Tuỳ chọn khác"</string>
 </resources>
