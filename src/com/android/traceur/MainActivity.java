@@ -1,4 +1,3 @@
-package com.android.traceur;
 /*
  * Copyright (C) 2017 The Android Open Source Project
  *
@@ -14,6 +13,8 @@ package com.android.traceur;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.android.traceur;
 
 import android.app.Activity;
 import android.os.Bundle;
