@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.android.traceur;
 
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.FileUtils;
 import android.os.CancellationSignal;
+import android.os.FileUtils;
 import android.os.ParcelFileDescriptor;
 import android.os.UserManager;
 import android.provider.DocumentsContract;
