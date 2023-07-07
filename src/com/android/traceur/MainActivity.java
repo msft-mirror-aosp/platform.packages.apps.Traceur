@@ -1,4 +1,3 @@
-package com.android.traceur;
 /*
  * Copyright (C) 2017 The Android Open Source Project
  *
@@ -14,6 +13,8 @@ package com.android.traceur;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.android.traceur;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -35,10 +36,14 @@ public class MainActivity extends CollapsingToolbarBaseActivity {
         boolean developerOptionsIsEnabled =
             Settings.Global.getInt(getApplicationContext().getContentResolver(),
                 Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        boolean isAdminUser = getApplicationContext()
-                .getSystemService(UserManager.class).isAdminUser();
 
-        if (!developerOptionsIsEnabled || !isAdminUser) {
+        UserManager userManager = getApplicationContext()
+                .getSystemService(UserManager.class);
+        boolean isAdminUser = userManager.isAdminUser();
+        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                UserManager.DISALLOW_DEBUGGING_FEATURES);
+
+        if (!developerOptionsIsEnabled || !isAdminUser || debuggingDisallowed) {
             finish();
         }
     }
