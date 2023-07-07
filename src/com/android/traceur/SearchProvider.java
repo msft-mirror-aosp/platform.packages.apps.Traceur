@@ -16,15 +16,15 @@
 
 package com.android.traceur;
 
-import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS;
-import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_KEY;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_TITLE;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_SUMMARY_ON;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_KEYWORDS;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_ACTION;
-import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_TARGET_PACKAGE;
 import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_TARGET_CLASS;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_INTENT_TARGET_PACKAGE;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_KEY;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_KEYWORDS;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_SUMMARY_ON;
+import static android.provider.SearchIndexablesContract.COLUMN_INDEX_RAW_TITLE;
+import static android.provider.SearchIndexablesContract.INDEXABLES_RAW_COLUMNS;
+import static android.provider.SearchIndexablesContract.NON_INDEXABLES_KEYS_COLUMNS;
 
 import android.content.Context;
 import android.content.Intent;
