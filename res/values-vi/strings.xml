@@ -16,7 +16,7 @@
     <string name="buffer_size" msgid="3944311026715111454">"Dung lượng bộ nhớ đệm trên mỗi CPU"</string>
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"Hiển thị ô Cài đặt nhanh"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Đang lưu dấu vết"</string>
-    <string name="trace_saved" msgid="5869970594780992309">"Dấu vết đã lưu"</string>
+    <string name="trace_saved" msgid="5869970594780992309">"Đã lưu dấu vết"</string>
     <string name="tap_to_share" msgid="6766732404489536899">"Nhấn để chia sẻ dấu vết của bạn"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Đang đính kèm dấu vết vào báo cáo lỗi"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Đã đính kèm dấu vết vào báo cáo lỗi"</string>
