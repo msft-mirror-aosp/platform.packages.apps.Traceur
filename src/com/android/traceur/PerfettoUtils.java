@@ -375,7 +375,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         // These parameters affect only the kernel trace buffer size and how
         // frequently it gets moved into the userspace buffer defined above.
         config.append("      buffer_size_kb: 8192\n")
-            .append("      drain_period_ms: 1000\n")
             .append("    }\n")
             .append("  }\n")
             .append("}\n")
