@@ -171,6 +171,9 @@ public class Receiver extends BroadcastReceiver {
                     prefs.getString(context.getString(R.string.pref_key_buffer_size),
                         context.getString(R.string.default_buffer_size)));
 
+                boolean winscopeTracing = prefs.getBoolean(
+                    context.getString(R.string.pref_key_winscope),
+                        false);
                 boolean appTracing = prefs.getBoolean(context.getString(R.string.pref_key_apps), true);
                 boolean longTrace = prefs.getBoolean(context.getString(R.string.pref_key_long_traces), true);
 
@@ -182,7 +185,7 @@ public class Receiver extends BroadcastReceiver {
                     prefs.getString(context.getString(R.string.pref_key_max_long_trace_duration),
                         context.getString(R.string.default_long_trace_duration)));
 
-                TraceService.startTracing(context, activeAvailableTags, bufferSize,
+                TraceService.startTracing(context, activeAvailableTags, bufferSize, winscopeTracing,
                     appTracing, longTrace, maxLongTraceSize, maxLongTraceDuration);
             } else {
                 TraceService.stopTracing(context);
