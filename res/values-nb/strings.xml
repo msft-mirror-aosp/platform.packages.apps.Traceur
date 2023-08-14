@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="system_tracing" msgid="4719188511746319848">"Systemsporing"</string>
-    <string name="record_system_activity" msgid="4339462312915377825">"Registrer systemaktivitet, og analyser den senere for å forbedre ytelsen"</string>
+    <string name="record_system_activity" msgid="4339462312915377825">"Registrer systemaktivitet, og analysér den senere for å forbedre ytelsen"</string>
     <string name="record_trace" msgid="6416875085186661845">"Registrer spor"</string>
     <string name="record_trace_summary" msgid="6705357754827849292">"Tar opp et systemspor med konfigurasjonene angitt i «Innstillinger for sporing»"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"Ta opp prosessorprofil"</string>
