@@ -30,11 +30,12 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.util.EventLog;
-import android.util.Log;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class TraceService extends IntentService {
     /* Indicates Perfetto has stopped tracing due to either the supplied long trace limitations
@@ -51,6 +52,7 @@ public class TraceService extends IntentService {
 
     private static String INTENT_EXTRA_TAGS= "tags";
     private static String INTENT_EXTRA_BUFFER = "buffer";
+    private static String INTENT_EXTRA_WINSCOPE = "winscope";
     private static String INTENT_EXTRA_APPS = "apps";
     private static String INTENT_EXTRA_LONG_TRACE = "long_trace";
     private static String INTENT_EXTRA_LONG_TRACE_SIZE = "long_trace_size";
@@ -65,12 +67,13 @@ public class TraceService extends IntentService {
     private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
 
     public static void startTracing(final Context context,
-            Collection<String> tags, int bufferSizeKb, boolean apps,
+            Collection<String> tags, int bufferSizeKb, boolean winscope, boolean apps,
             boolean longTrace, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
         Intent intent = new Intent(context, TraceService.class);
         intent.setAction(INTENT_ACTION_START_TRACING);
         intent.putExtra(INTENT_EXTRA_TAGS, new ArrayList(tags));
         intent.putExtra(INTENT_EXTRA_BUFFER, bufferSizeKb);
+        intent.putExtra(INTENT_EXTRA_WINSCOPE, winscope);
         intent.putExtra(INTENT_EXTRA_APPS, apps);
         intent.putExtra(INTENT_EXTRA_LONG_TRACE, longTrace);
         intent.putExtra(INTENT_EXTRA_LONG_TRACE_SIZE, maxLongTraceSizeMb);
@@ -101,7 +104,7 @@ public class TraceService extends IntentService {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putBoolean(context.getString(
             R.string.pref_key_tracing_on), false).commit();
-        TraceUtils.traceStop();
+        TraceUtils.traceStop(context.getContentResolver());
     }
 
     public TraceService() {
@@ -143,6 +146,7 @@ public class TraceService extends IntentService {
             startTracingInternal(intent.getStringArrayListExtra(INTENT_EXTRA_TAGS),
                 intent.getIntExtra(INTENT_EXTRA_BUFFER,
                     Integer.parseInt(context.getString(R.string.default_buffer_size))),
+                intent.getBooleanExtra(INTENT_EXTRA_WINSCOPE, false),
                 intent.getBooleanExtra(INTENT_EXTRA_APPS, false),
                 intent.getBooleanExtra(INTENT_EXTRA_LONG_TRACE, false),
                 intent.getIntExtra(INTENT_EXTRA_LONG_TRACE_SIZE,
@@ -160,8 +164,9 @@ public class TraceService extends IntentService {
         }
     }
 
-    private void startTracingInternal(Collection<String> tags, int bufferSizeKb, boolean appTracing,
-            boolean longTrace, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
+    private void startTracingInternal(Collection<String> tags, int bufferSizeKb,
+            boolean winscopeTracing, boolean appTracing, boolean longTrace, int maxLongTraceSizeMb,
+            int maxLongTraceDurationMinutes) {
         Context context = getApplicationContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -182,13 +187,14 @@ public class TraceService extends IntentService {
 
         startForeground(TRACE_NOTIFICATION, notification.build());
 
-        if (TraceUtils.traceStart(tags, bufferSizeKb, appTracing,
-                longTrace, attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+        if (TraceUtils.traceStart(getContentResolver(), tags, bufferSizeKb, winscopeTracing,
+                appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
+                maxLongTraceDurationMinutes)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
             // Starting the trace was unsuccessful, so ensure that tracing
             // is stopped and the preference is reset.
-            TraceUtils.traceStop();
+            TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
             QsService.updateTile();
@@ -227,7 +233,7 @@ public class TraceService extends IntentService {
         } else {
             // Starting stack sampling was unsuccessful, so ensure that it is stopped and the
             // preference is reset.
-            TraceUtils.traceStop();
+            TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             QsService.updateTile();
@@ -297,10 +303,9 @@ public class TraceService extends IntentService {
 
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
-            File file = TraceUtils.getOutputFile(outputFilename);
-
-            if (TraceUtils.traceDump(file)) {
-                FileSender.postNotification(getApplicationContext(), file);
+            Optional<List<File>> files = TraceUtils.traceDump(getContentResolver(), outputFilename);
+            if (files.isPresent()) {
+                FileSender.postNotification(getApplicationContext(), files.get());
             }
         }
 

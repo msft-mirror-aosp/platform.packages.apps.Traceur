@@ -16,6 +16,7 @@
 
 package com.android.traceur;
 
+import android.content.ContentResolver;
 import android.os.Build;
 import android.os.FileUtils;
 import android.util.Log;
@@ -27,10 +28,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -57,8 +61,8 @@ public class TraceUtils {
     public interface TraceEngine {
         public String getName();
         public String getOutputExtension();
-        public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
-            boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
+        public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
+            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes);
         public boolean stackSampleStart(boolean attachToBugreport);
         public void traceStop();
@@ -70,23 +74,40 @@ public class TraceUtils {
         return mTraceEngine.getName();
     }
 
-    public static boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
-            boolean longTrace, boolean attachToBugreport, int maxLongTraceSizeMb,
-            int maxLongTraceDurationMinutes) {
-        return mTraceEngine.traceStart(tags, bufferSizeKb, apps,
-            attachToBugreport, longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes);
+    public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
+            int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
+            boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
+        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, attachToBugreport,
+                longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+            return false;
+        }
+        WinscopeUtils.traceStart(contentResolver, winscope);
+        return true;
     }
 
     public static boolean stackSampleStart(boolean attachToBugreport) {
         return mTraceEngine.stackSampleStart(attachToBugreport);
     }
 
-    public static void traceStop() {
+    public static void traceStop(ContentResolver contentResolver) {
         mTraceEngine.traceStop();
+        WinscopeUtils.traceStop(contentResolver);
     }
 
-    public static boolean traceDump(File outFile) {
-        return mTraceEngine.traceDump(outFile);
+    public static Optional<List<File>> traceDump(ContentResolver contentResolver,
+            String outFilename) {
+        File outFile = TraceUtils.getOutputFile(outFilename);
+        if (!mTraceEngine.traceDump(outFile)) {
+            return Optional.empty();
+        }
+
+        List<File> outFiles = new ArrayList();
+        outFiles.add(outFile);
+
+        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(contentResolver, outFilename);
+        outFiles.addAll(outLegacyWinscopeFiles);
+
+        return Optional.of(outFiles);
     }
 
     public static boolean isTracingOn() {

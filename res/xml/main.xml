@@ -27,6 +27,11 @@
     <androidx.preference.PreferenceCategory
         android:title="@string/pref_category_trace_settings" >
         <androidx.preference.SwitchPreference
+            android:key="@string/pref_key_winscope"
+            android:title="@string/winscope_tracing"
+            android:summary="@string/winscope_tracing_summary"
+            android:defaultValue="false" />
+        <androidx.preference.SwitchPreference
             android:key="@string/pref_key_apps"
             android:title="@string/trace_debuggable_applications"
             android:defaultValue="true" />
