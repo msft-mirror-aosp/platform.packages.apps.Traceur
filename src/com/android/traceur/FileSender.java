@@ -22,6 +22,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +35,8 @@ import android.util.Patterns;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sends bugreport-y files, adapted from fw/base/packages/Shell's BugreportReceiver.
@@ -43,16 +46,20 @@ public class FileSender {
     private static final String AUTHORITY = "com.android.traceur.files";
     private static final String MIME_TYPE = "application/vnd.android.systrace";
 
-    public static void postNotification(Context context, File file) {
+    public static void postNotification(Context context, List<File> files) {
+        if (files.isEmpty()) {
+            return;
+        }
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean recordingWasTrace = prefs.getBoolean(
                     context.getString(R.string.pref_key_recording_was_trace), true);
         // Files are kept on private storage, so turn into Uris that we can
         // grant temporary permissions for.
-        final Uri traceUri = getUriForFile(context, file);
+        final List<Uri> traceUris = getUriForFiles(context, files);
 
         // Intent to send the file
-        Intent sendIntent = buildSendIntent(context, traceUri);
+        Intent sendIntent = buildSendIntent(context, traceUris);
         sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         // This dialog will show to warn the user about sharing traces, then will execute
@@ -70,7 +77,7 @@ public class FileSender {
                 .setTicker(title)
                 .setContentText(context.getString(R.string.tap_to_share))
                 .setContentIntent(PendingIntent.getActivity(
-                        context, traceUri.hashCode(), intent, PendingIntent.FLAG_ONE_SHOT
+                        context, traceUris.get(0).hashCode(), intent, PendingIntent.FLAG_ONE_SHOT
                                 | PendingIntent.FLAG_CANCEL_CURRENT
                                 | PendingIntent.FLAG_IMMUTABLE))
                 .setAutoCancel(true)
@@ -82,42 +89,34 @@ public class FileSender {
             builder.extend(new Notification.TvExtender());
         }
 
-        NotificationManager.from(context).notify(file.getName(), 0, builder.build());
+        NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
     }
 
-    public static void send(Context context, File file) {
-        // Files are kept on private storage, so turn into Uris that we can
-        // grant temporary permissions for.
-        final Uri traceUri = getUriForFile(context, file);
-
-        Intent sendIntent = buildSendIntent(context, traceUri);
-        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        context.startActivity(sendIntent);
-    }
-
-    private static Uri getUriForFile(Context context, File file) {
-        return FileProvider.getUriForFile(context, AUTHORITY, file);
+    private static List<Uri> getUriForFiles(Context context, List<File> files) {
+        List<Uri> uris = new ArrayList();
+        for (File file : files) {
+            uris.add(FileProvider.getUriForFile(context, AUTHORITY, file));
+        }
+        return uris;
     }
 
     /**
      * Build {@link Intent} that can be used to share the given bugreport.
      */
-    private static Intent buildSendIntent(Context context, Uri traceUri) {
+    private static Intent buildSendIntent(Context context, List<Uri> traceUris) {
         final CharSequence description = Build.FINGERPRINT;
 
-        final Intent intent = new Intent(Intent.ACTION_SEND);
+        final Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setType(MIME_TYPE);
 
-        intent.putExtra(Intent.EXTRA_SUBJECT, traceUri.getLastPathSegment());
+        intent.putExtra(Intent.EXTRA_SUBJECT, traceUris.get(0).getLastPathSegment());
         intent.putExtra(Intent.EXTRA_TEXT, description);
-        intent.putExtra(Intent.EXTRA_STREAM, traceUri);
+        intent.putExtra(Intent.EXTRA_STREAM, new ArrayList(traceUris));
 
         // Explicitly set the clip data; see b/119399115
-        intent.setClipData(new ClipData(null, new String[] { MIME_TYPE },
-            new ClipData.Item(description, null, traceUri)));
+        intent.setClipData(buildClipData(traceUris));
 
         final Account sendToAccount = findSendToAccount(context);
         if (sendToAccount != null) {
@@ -126,6 +125,16 @@ public class FileSender {
 
         return intent;
     }
+
+    private static ClipData buildClipData(List<Uri> uris) {
+        ArrayList<ClipData.Item> items = new ArrayList();
+        for (Uri uri : uris) {
+            items.add(new ClipData.Item(Build.FINGERPRINT, null, uri));
+        }
+        ClipDescription description = new ClipDescription(null, new String[] { MIME_TYPE });
+        return new ClipData(description, items);
+    }
+
 
     /**
      * Find the best matching {@link Account} based on build properties.
