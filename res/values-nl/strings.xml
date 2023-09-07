@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU-profiel opnemen"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Callstack-sampling kan ook worden aangezet in traceringen door de categorie \'cpu\' aan te vinken"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Nieuwe tracering starten"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-sporen verzamelen"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Omvat gedetailleerde UI-telemetriegegevens (kan een onderbreking in de weergave veroorzaken)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Beschikbare apps voor foutopsporing traceren"</string>
     <string name="categories" msgid="2280163673538611008">"Categorieën"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Standaardcategorieën herstellen"</string>
