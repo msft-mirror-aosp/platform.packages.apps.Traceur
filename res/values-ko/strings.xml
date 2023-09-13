@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU 프로필 기록"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"\'cpu\' 카테고리를 선택하면 콜스택 샘플링도 트레이스에서 사용 설정할 수 있습니다"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"새 트레이스 시작"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope 트레이스 수집"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"상세한 UI 원격 분석 데이터 포함(버벅거림이 발생할 수 있음)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"디버그 가능한 애플리케이션 추적"</string>
     <string name="categories" msgid="2280163673538611008">"카테고리"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"기본 카테고리 복원"</string>

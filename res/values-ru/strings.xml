@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Запись профиля ЦП"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Создание образцов стека вызовов также можно включить в настройках трассировки, выбрав категорию \"Процессор\""</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Начать трассировку"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Собирать трассировки Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Включает подробные данные телеметрии интерфейса (может вызвать временное зависание)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Записывать действия приложений, доступных для отладки"</string>
     <string name="categories" msgid="2280163673538611008">"Категории"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Восстановить категории по умолчанию"</string>
