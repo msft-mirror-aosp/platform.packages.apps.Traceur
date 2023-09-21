@@ -20,6 +20,10 @@
     <!-- This is the label for the button to start a new trace from a notification. -->
     <string name="start_new_trace">Start new trace</string>
 
+    <!-- This is the text for a toggle that will let the user choose whether to include Winscope traces in the trace they are collecting. -->
+    <string name="winscope_tracing">Collect Winscope traces</string>
+    <string name="winscope_tracing_summary">Includes detailed UI telemetry data (can cause jank)</string>
+
     <!-- This is the label for a toggle that will let the user choose whether to trace debuggable applications in the trace they are collecting. -->
     <string name="trace_debuggable_applications">Trace debuggable applications</string>
 

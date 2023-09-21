@@ -78,8 +78,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         return OUTPUT_EXTENSION;
     }
 
-    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
-            boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
+    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
+            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes) {
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
@@ -110,7 +110,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
         appendFtraceConfig(config, tags, apps);
         appendProcStatsConfig(config, tags, /* target_buffer = */ 1);
-        appendAdditionalDataSources(config, tags, longTrace, /* target_buffer = */ 1);
+        appendAdditionalDataSources(config, tags, winscope, longTrace, /* target_buffer = */ 1);
 
         return startPerfettoWithConfig(config.toString());
     }
@@ -428,7 +428,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
     // Appends additional data sources to the specified extra buffer based on enabled trace tags.
     private void appendAdditionalDataSources(StringBuilder config, Collection<String> tags,
-            boolean longTrace, int targetBuffer) {
+            boolean winscope, boolean longTrace, int targetBuffer) {
         if (tags.contains(POWER_TAG)) {
             config.append("data_sources: {\n")
                 .append("  config { \n")
@@ -534,6 +534,33 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    chrome_config {\n")
                 .append("      trace_config: \"" + chromeTraceConfig + "\"\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+        }
+
+        if (winscope) {
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.surfaceflinger.layers\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    surfaceflinger_layers_config: {\n")
+                .append("      mode: MODE_ACTIVE\n")
+                .append("      trace_flags: TRACE_FLAG_INPUT\n")
+                .append("      trace_flags: TRACE_FLAG_COMPOSITION\n")
+                .append("      trace_flags: TRACE_FLAG_HWC\n")
+                .append("      trace_flags: TRACE_FLAG_BUFFERS\n")
+                .append("      trace_flags: TRACE_FLAG_VIRTUAL_DISPLAYS\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.surfaceflinger.transactions\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    surfaceflinger_transactions_config: {\n")
+                .append("      mode: MODE_ACTIVE\n")
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");

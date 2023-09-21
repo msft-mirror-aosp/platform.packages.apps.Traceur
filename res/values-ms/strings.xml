@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Rakam profil CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Pensampelan tindanan panggilan juga boleh didayakan dalam surih dengan menyemak kategori \"cpu\""</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Mulakan surih baharu"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Kumpulkan surih Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Termasuk data telemetri UI terperinci (boleh menyebabkan jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Surih aplikasi yang boleh dinyahpepijat"</string>
     <string name="categories" msgid="2280163673538611008">"Kategori"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Pulihkan kategori lalai"</string>
