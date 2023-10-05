@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU प्रोफाइल रेकर्ड गरियोस्"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"ट्रेसहरूमा गई \"cpu\" कोटीमा चिन्ह लगाएर पनि कलस्ट्याक स्याम्पलिङ अन गर्न सकिन्छ"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"नयाँ ट्रेस सुरु गर्नुहोस्"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Collect Winscope का ट्रेसहरू सङ्कलन गरियोस्"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"यसमा UI टेलिमेट्रीको विस्तृत डेटा (ज्याङ्क हुन सक्छ) समावेश गरिएको हुन्छ"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डिबग गर्न मिल्ने एपहरू पत्ता लगाउनुहोस्"</string>
     <string name="categories" msgid="2280163673538611008">"कोटिहरू"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"डिफल्ट कोटिहरू पुनर्स्थापना गर्नुहोस्"</string>
