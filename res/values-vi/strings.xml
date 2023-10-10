@@ -19,7 +19,7 @@
     <string name="buffer_size" msgid="3944311026715111454">"Dung lượng bộ nhớ đệm trên mỗi CPU"</string>
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"Hiển thị ô Cài đặt nhanh"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Đang lưu dấu vết"</string>
-    <string name="trace_saved" msgid="5869970594780992309">"Dấu vết đã lưu"</string>
+    <string name="trace_saved" msgid="5869970594780992309">"Đã lưu dấu vết"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Đang lưu các mẫu ngăn xếp"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Đã lưu các mẫu ngăn xếp"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Nhấn để chia sẻ bản ghi của bạn"</string>
