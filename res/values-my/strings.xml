@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU ပရိုဖိုင် မှတ်တမ်းတင်ရန်"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"‘‘cpu’’ အမျိုးအစားကို အမှတ်ခြစ်၍လည်း Callstack နမူနာယူခြင်းကို လုပ်ဆောင်ချက်မှတ်တမ်းများတွင် ဖွင့်နိုင်သည်"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"လုပ်ဆောင်ချက်မှတ်တမ်းသစ် စတင်ရန်"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope လုပ်ဆောင်ချက်မှတ်တမ်းများကို စုစည်းရန်"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"အသေးစိတ်ကျသော UI တယ်လီတိုင်းတာမှု ဒေတာပါဝင်သည် (ရပ်တန့်စေနိုင်သည်)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"အမှားရှာပြင်နိုင်သည့် အပလီကေးရှင်းများကို မှတ်တမ်းတင်ရန်"</string>
     <string name="categories" msgid="2280163673538611008">"အမျိုးအစားများ"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"မူလအမျိုးအစားများအတိုင်း ပြင်ဆင်သတ်မှတ်ရန်"</string>

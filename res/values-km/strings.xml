@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"ថតកម្រងព័ត៌មាន CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"សំណាក Callstack ក៏អាចត្រូវបានបើក​នៅក្នុងដានតាមរយៈ​ការពិនិត្យមើលប្រភេទ \"cpu\" ផងដែរ"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"ចាប់ផ្ដើម​ដានថ្មី"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"ប្រមូលដាន Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"រួមបញ្ចូលទិន្នន័យទូរមាត្រ UI លម្អិត (អាចបណ្ដាលឱ្យដំណើរការអាក់ៗ)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"តាម​ដាន​កម្មវិធី​ដែល​អាច​ជួសជុល​បាន"</string>
     <string name="categories" msgid="2280163673538611008">"ប្រភេទ"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"ស្តារ​ប្រភេទ​លំនាំ​ដើម"</string>
