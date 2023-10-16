@@ -8,6 +8,10 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Nahrát profil CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Callstack sampling lze aktivovat i v trasování výběrem kategorie CPU"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Spustit nové trasování"</string>
+    <!-- no translation found for winscope_tracing (5818984791154837458) -->
+    <skip />
+    <!-- no translation found for winscope_tracing_summary (7040550156722395894) -->
+    <skip />
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Trasovat aplikace k ladění"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorie"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Obnovit výchozí kategorie"</string>
