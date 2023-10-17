@@ -8,8 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Εγγραφή προφίλ CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Η δειγματοληψία στοίβας κλήσης μπορεί επίσης να ενεργοποιηθεί στα ίχνη, επιλέγοντας την κατηγορία cpu"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Έναρξη νέου ίχνους"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Συγκέντρωση ιχνών Winscope"</string>
-    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Συμπεριλαμβάνει λεπτομερή δεδομένα τηλεμετρίας διεπαφής χρήστη (μπορεί να προκαλέσει παύση)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Ανίχνευση εφαρμογών με δυνατότητα εντοπισμού σφαλμάτων"</string>
     <string name="categories" msgid="2280163673538611008">"Κατηγορίες"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Επαναφορά προεπιλεγμένων κατηγοριών"</string>

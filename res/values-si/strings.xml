@@ -8,8 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU පැතිකඩ වාර්තා කරන්න"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"\"cpu\" ප්‍රවර්ගය පිරික්සීම මගින් Callstack නියැදිකරණය හෝඩුවා තුළ සක්‍රීය කළ හැක"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"නව හඹා යාම ආරම්භ කරන්න"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope හෝඩුවා එකතු කරන්න"</string>
-    <string name="winscope_tracing_summary" msgid="7040550156722395894">"සවිස්තරාත්මක UI දුරස්ථමාන දත්ත ඇතුළත් වේ (ජැන්ක් ඇති කළ හැක)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"දෝෂහරණය කළ හැකි යෙදුම් හඹා යන්න"</string>
     <string name="categories" msgid="2280163673538611008">"ප්‍රවර්ග"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"පෙරනිමි ප්‍රවර්ග ප්‍රතිසාධනය කරන්න"</string>

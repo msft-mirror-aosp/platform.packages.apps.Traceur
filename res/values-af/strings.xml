@@ -8,8 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Neem CPU-profiel op"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Oproepstapelvoorbeeldneming kan ook in spore geaktiveer word deur die “CPU”-kategorie te merk"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Begin nuwe spoor"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Samel Winscope-spore in"</string>
-    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sluit gedetailleerde UI-telemetriedata in (kan oponthoud veroorsaak)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spoor ontfoutbare programme na"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorieë"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Stel verstekkategorieë terug"</string>
