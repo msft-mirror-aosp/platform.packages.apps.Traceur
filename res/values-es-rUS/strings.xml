@@ -17,7 +17,7 @@
     <string name="applications" msgid="521776761270770549">"Aplicaciones"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"No hay aplicaciones depurables disponibles"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Tamaño del búfer de cada CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar el mosaico de Configuración rápida"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar la tarjeta de Configuración rápida"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Guardando seguimiento"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Se guardó el seguimiento"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Guardando muestras de pila"</string>
