@@ -8,10 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU ப்ரொஃபைலை ரெக்கார்டு செய்தல்"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"\"cpu\" வகையைத் தேர்வுசெய்வதன் மூலம் டிரேஸ்களிலும் கால்ஸ்டாக் சாம்பிளிங்கை இயக்கலாம்"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"புதிய டிரேஸைத் தொடங்கு"</string>
-    <!-- no translation found for winscope_tracing (5818984791154837458) -->
-    <skip />
-    <!-- no translation found for winscope_tracing_summary (7040550156722395894) -->
-    <skip />
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"பிழை திருத்தக்கூடிய ஆப்ஸை டிரேஸ் செய்"</string>
     <string name="categories" msgid="2280163673538611008">"வகைகள்"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"இயல்புநிலை வகைகளை மீட்டமை"</string>
