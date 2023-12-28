@@ -87,15 +87,7 @@ public class Receiver extends BroadcastReceiver {
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
-            boolean developerOptionsEnabled = (1 ==
-                Settings.Global.getInt(context.getContentResolver(),
-                    Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-            UserManager userManager = context.getSystemService(UserManager.class);
-            boolean isAdminUser = userManager.isAdminUser();
-            boolean debuggingDisallowed = userManager.hasUserRestriction(
-                    UserManager.DISALLOW_DEBUGGING_FEATURES);
-            updateStorageProvider(context,
-                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
+            updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
             // Only one of tracing or stack sampling should be enabled, but because they use the
             // same path for stopping and saving, set both to false.
@@ -248,18 +240,9 @@ public class Receiver extends BroadcastReceiver {
                     @Override
                     public void onChange(boolean selfChange) {
                         super.onChange(selfChange);
-
-                        boolean developerOptionsEnabled = (1 ==
-                            Settings.Global.getInt(context.getContentResolver(),
-                                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-                        UserManager userManager = context.getSystemService(UserManager.class);
-                        boolean isAdminUser = userManager.isAdminUser();
-                        boolean debuggingDisallowed = userManager.hasUserRestriction(
-                                UserManager.DISALLOW_DEBUGGING_FEATURES);
-                        updateStorageProvider(context,
-                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
-
-                        if (!developerOptionsEnabled) {
+                        boolean traceurAllowed = isTraceurAllowed(context);
+                        updateStorageProvider(context, traceurAllowed);
+                        if (!traceurAllowed) {
                             SharedPreferences prefs =
                                 PreferenceManager.getDefaultSharedPreferences(context);
                             prefs.edit().putBoolean(
@@ -284,8 +267,7 @@ public class Receiver extends BroadcastReceiver {
         }
     }
 
-    // Enables/disables the System Traces storage component. enableProvider should be true iff
-    // developer options are enabled and the current user is an admin user.
+    // Enables/disables the System Traces storage component.
     static void updateStorageProvider(Context context, boolean enableProvider) {
         ComponentName name = new ComponentName(context, StorageProvider.class);
         context.getPackageManager().setComponentEnabledSetting(name,
@@ -379,5 +361,18 @@ public class Receiver extends BroadcastReceiver {
         }
 
         return mDefaultTagList;
+    }
+
+    public static boolean isTraceurAllowed(Context context) {
+        boolean developerOptionsEnabled = Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        UserManager userManager = context.getSystemService(UserManager.class);
+        boolean isAdminUser = userManager.isAdminUser();
+        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                UserManager.DISALLOW_DEBUGGING_FEATURES);
+
+        // For Traceur usage to be allowed, developer options must be enabled, the user must be an
+        // admin, and the user must not have debugging features disallowed.
+        return developerOptionsEnabled && isAdminUser && !debuggingDisallowed;
     }
 }
