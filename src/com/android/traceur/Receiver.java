@@ -89,12 +89,14 @@ public class Receiver extends BroadcastReceiver {
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
             updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
-            // Only one of tracing or stack sampling should be enabled, but because they use the
-            // same path for stopping and saving, set both to false.
+            // Only one of these should be enabled, but they all use the same path for stopping and
+            // saving, so set them all to false.
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_heap_dump_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
             context.closeSystemDialogs();
@@ -127,16 +129,21 @@ public class Receiver extends BroadcastReceiver {
                 prefs.getBoolean(context.getString(R.string.pref_key_tracing_on), false);
         boolean prefsStackSamplingOn =
                 prefs.getBoolean(context.getString(R.string.pref_key_stack_sampling_on), false);
+        boolean prefsHeapDumpOn =
+                prefs.getBoolean(context.getString(R.string.pref_key_heap_dump_on), false);
 
-        // This should never happen because enabling one toggle should disable the other. Just in
-        // case, set both preferences to false and stop any ongoing trace.
-        if (prefsTracingOn && prefsStackSamplingOn) {
-            Log.e(TAG, "Preference state thinks that both trace configs should be active; " +
-                    "disabling both and stopping the ongoing trace if one exists.");
+        // This checks that at most one of the three tracing types are enabled. This shouldn't
+        // happen because enabling one toggle should disable the others. Just in case, set all
+        // preferences to false and stop any ongoing trace.
+        if ((prefsTracingOn ^ prefsStackSamplingOn) ? prefsHeapDumpOn : prefsTracingOn) {
+            Log.e(TAG, "Preference state thinks that multiple trace configs should be active; " +
+                    "disabling all of them and stopping the ongoing trace if one exists.");
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_heap_dump_on), false).commit();
             if (TraceUtils.isTracingOn()) {
                 TraceService.stopTracing(context);
             }
@@ -147,9 +154,11 @@ public class Receiver extends BroadcastReceiver {
 
         boolean traceUtilsTracingOn = assumeTracingIsOff ? false : TraceUtils.isTracingOn();
 
-        if ((prefsTracingOn || prefsStackSamplingOn) != traceUtilsTracingOn) {
+        if ((prefsTracingOn || prefsStackSamplingOn || prefsHeapDumpOn) != traceUtilsTracingOn) {
             if (prefsStackSamplingOn) {
                 TraceService.startStackSampling(context);
+            } else if (prefsHeapDumpOn) {
+                TraceService.startHeapDump(context);
             } else if (prefsTracingOn) {
                 // Show notification if the tags in preferences are not all actually available.
                 Set<String> activeAvailableTags = getActiveTags(context, prefs, true);

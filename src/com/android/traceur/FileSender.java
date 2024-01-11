@@ -16,6 +16,11 @@
 
 package com.android.traceur;
 
+import static com.android.traceur.TraceUtils.RecordingType.HEAP_DUMP;
+import static com.android.traceur.TraceUtils.RecordingType.STACK_SAMPLES;
+import static com.android.traceur.TraceUtils.RecordingType.TRACE;
+import static com.android.traceur.TraceUtils.RecordingType.UNKNOWN;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Notification;
@@ -25,12 +30,10 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.SystemProperties;
-import android.preference.PreferenceManager;
 import android.util.Patterns;
 import androidx.core.content.FileProvider;
 
@@ -51,9 +54,6 @@ public class FileSender {
             return;
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean recordingWasTrace = prefs.getBoolean(
-                    context.getString(R.string.pref_key_recording_was_trace), true);
         // Files are kept on private storage, so turn into Uris that we can
         // grant temporary permissions for.
         final List<Uri> traceUris = getUriForFiles(context, files);
@@ -68,8 +68,22 @@ public class FileSender {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
         intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
 
-        String title = context.getString(
-                recordingWasTrace ? R.string.trace_saved : R.string.stack_samples_saved);
+        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
+        int titleResId;
+        switch (type) {
+            case STACK_SAMPLES:
+                titleResId = R.string.stack_samples_saved;
+                break;
+            case HEAP_DUMP:
+                titleResId = R.string.heap_dump_saved;
+                break;
+            case TRACE:
+            case UNKNOWN:
+            default:
+                titleResId = R.string.trace_saved;
+                break;
+        }
+        String title = context.getString(titleResId);
         final Notification.Builder builder =
             new Notification.Builder(context, Receiver.NOTIFICATION_CHANNEL_OTHER)
                 .setSmallIcon(R.drawable.bugfood_icon)
