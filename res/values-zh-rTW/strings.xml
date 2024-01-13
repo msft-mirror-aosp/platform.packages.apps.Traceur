@@ -19,7 +19,7 @@
     <string name="applications" msgid="521776761270770549">"應用程式"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"沒有可偵錯的應用程式"</string>
     <string name="buffer_size" msgid="3944311026715111454">"每個 CPU 的緩衝區空間"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"顯示快速設定圖塊"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"顯示快速設定方塊"</string>
     <string name="saving_trace" msgid="1468692734770800541">"正在儲存追蹤記錄"</string>
     <string name="trace_saved" msgid="5869970594780992309">"追蹤記錄已儲存"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"正在儲存堆疊樣本"</string>
