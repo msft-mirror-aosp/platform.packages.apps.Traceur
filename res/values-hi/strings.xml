@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="system_tracing" msgid="4719188511746319848">"सिस्टम ट्रेस करने की सुविधा"</string>
+    <string name="system_tracing" msgid="4719188511746319848">"सिस्टम ट्रेस करने वाला टूल"</string>
     <string name="record_system_activity" msgid="4339462312915377825">"यह सिस्टम की गतिविधि रिकॉर्ड करता है और परफ़ॉर्मेंस बेहतर बनाने के लिए, बाद में इसका विश्लेषण करता है"</string>
     <string name="record_trace" msgid="6416875085186661845">"ट्रेस रिकॉर्ड करें"</string>
     <string name="record_trace_summary" msgid="6705357754827849292">"\"ट्रेस सेटिंग\" में सेट किए गए कॉन्फ़िगरेशन की मदद से, सिस्टम ट्रेस करने की प्रक्रिया कैप्चर करें"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"सीपीयू प्रोफ़ाइल रिकॉर्ड करें"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"ट्रेस में जाकर \"सीपीयू\" कैटगरी को चुनकर, कॉलस्टैक सैंपलिंग चालू की जा सकती है"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"नया ट्रेस शुरू करें"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"WinScope के ट्रेस इकट्ठा करें"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"इसमें यूज़र इंटरफ़ेस से जुड़ा टेलीमेट्री डेटा शामिल है (इससे जैंक होने की संभावना है)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डीबग करने के लिए ऐप्लिकेशन ट्रेस करें"</string>
     <string name="categories" msgid="2280163673538611008">"ट्रेस श्रेणियां"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"डिफ़ॉल्ट श्रेणियां बहाल करें"</string>

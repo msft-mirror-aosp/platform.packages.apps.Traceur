@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU ਪ੍ਰੋਫਾਈਲ ਨੂੰ ਰਿਕਾਰਡ ਕਰੋ"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"ਕਾਲਸਟੈਕ ਸੈਂਪਲਿੰਗ ਨੂੰ ਸਿਰਫ਼ \"cpu\" ਸ਼੍ਰੇਣੀ ਦੀ ਜਾਂਚ ਕਰ ਕੇ ਟ੍ਰੇਸਾਂ ਵਿੱਚ ਹੀ ਚਾਲੂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"ਨਵਾਂ ਟ੍ਰੇਸ ਚਾਲੂ ਕਰੋ"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ਟ੍ਰੇਸਾਂ ਨੂੰ ਇਕੱਤਰ ਕਰੋ"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"ਇਸ ਵਿੱਚ ਵੇਰਵੇ ਸਹਿਤ UI ਟੈਲੀਮੈਟਰੀ ਡਾਟਾ ਸ਼ਾਮਲ ਹੈ (ਇਹ ਜੈਂਕ ਦਾ ਕਾਰਨ ਬਣ ਸਕਦਾ ਹੈ)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ਡੀਬੱਗਯੋਗ ਐਪਲੀਕੇਸ਼ਨਾਂ ਟ੍ਰੇਸ ਕਰੋ"</string>
     <string name="categories" msgid="2280163673538611008">"ਸ਼੍ਰੇਣੀਆਂ"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਸ਼੍ਰੇਣੀਆਂ ਮੁੜ-ਬਹਾਲ ਕਰੋ"</string>
