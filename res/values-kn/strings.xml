@@ -19,7 +19,7 @@
     <string name="buffer_size" msgid="3944311026715111454">"ಪ್ರತಿ-CPU ನ ಬಫರ್ ಗಾತ್ರ"</string>
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"ತ್ವರಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಟೈಲ್ ತೋರಿಸು"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗಿದೆ"</string>
+    <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
