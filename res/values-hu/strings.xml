@@ -8,8 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU-profil rögzítése"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"A hívásverem mintavételezése nyomokban is engedélyezhető a „cpu” kategóriával"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Új nyom indítása"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Gyűjtsön Winscope-nyomokat"</string>
-    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Részletes UI telemetriai adatokat tartalmaz (akadozást okozhat)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Hibaelhárítást igénylő alkalmazások nyomon követése"</string>
     <string name="categories" msgid="2280163673538611008">"Kategóriák"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Alapértelmezett kategóriák visszaállítása"</string>
@@ -71,7 +69,7 @@
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Felvételek csatolása a hibajelentésekhez"</string>
     <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Folyamatban lévő felvételek automatikus küldése a BetterBugnak hibajelentés begyűjtésekor"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Mentett fájlok megtekintése"</string>
-    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Követési beállítások"</string>
+    <string name="pref_category_trace_settings" msgid="6507535407023329628">"Beállítások nyomon követése"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Mentett fájlok"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Egyéb"</string>
 </resources>

@@ -8,10 +8,6 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Записване на анализ на процесора"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Семплирането на извикванията на стека може да бъде активирано и в трасиранията, като поставите отметка в квадратчето до категорията „процесор“"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Стартиране на ново трасиране"</string>
-    <!-- no translation found for winscope_tracing (5818984791154837458) -->
-    <skip />
-    <!-- no translation found for winscope_tracing_summary (7040550156722395894) -->
-    <skip />
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Трасиране на приложенията с възможност за отстраняване на грешки"</string>
     <string name="categories" msgid="2280163673538611008">"Категории"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Възстановяване на стандартните категории"</string>
