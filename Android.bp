@@ -17,11 +17,24 @@ android_app {
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "androidx.legacy_legacy-support-v4",
-        "perfetto_config_java_protos",
+        "TraceurCommon",
     ],
     resource_dirs: ["res"],
     srcs: ["src/**/*.java"],
     defaults: [
         "SettingsLibDefaults",
     ],
+}
+
+android_library {
+    name: "TraceurCommon",
+    platform_apis: true,
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "androidx.legacy_legacy-support-v4",
+        "perfetto_config_java_protos",
+    ],
+    manifest: "AndroidManifest-common.xml",
+    resource_dirs: [],
+    srcs: ["src_common/**/*.java"],
 }
