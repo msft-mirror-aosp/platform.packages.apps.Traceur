@@ -128,7 +128,7 @@ public class TraceUtils {
 
     public static TreeMap<String, String> listCategories() {
         TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
-        categories.put("sys_stats", "meminfo and vmstats");
+        categories.put("sys_stats", "meminfo, psi, and vmstats");
         categories.put("logs", "android logcat");
         categories.put("cpu", "callstack samples");
         return categories;
