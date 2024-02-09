@@ -641,6 +641,16 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("  }\n")
                 .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.protolog\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    protolog_config: {\n")
+                .append("      tracing_mode: ENABLE_ALL\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
         }
     }
 }
