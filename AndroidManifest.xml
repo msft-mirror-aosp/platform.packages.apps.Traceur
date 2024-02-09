@@ -56,6 +56,9 @@
     <!-- Used to control view capture Winscope tracing (not yet migrated to perfetto). -->
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
+    <!-- Used to get a list of apps for heap dumps. -->
+    <uses-permission android:name="android.permission.REAL_GET_TASKS" />
+
     <!-- Declare Android TV support. -->
     <uses-feature android:name="android.software.leanback"
          android:required="false"/>
