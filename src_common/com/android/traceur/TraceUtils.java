@@ -19,10 +19,8 @@ package com.android.traceur;
 import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.FileUtils;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -60,9 +58,8 @@ public class TraceUtils {
     private static TraceEngine mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
-    private static final int PROCESS_TIMEOUT_MS = 30000; // 30 seconds
 
-    enum RecordingType {
+    public enum RecordingType {
       UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
     public interface TraceEngine {
@@ -242,21 +239,6 @@ public class TraceUtils {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         // execute() instead of submit() because we don't need the result.
         executor.execute(task);
-    }
-
-    static RecordingType getRecentTraceType(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean recordingWasTrace = prefs.getBoolean(
-                context.getString(R.string.pref_key_recording_was_trace), true);
-        boolean recordingWasStackSamples = prefs.getBoolean(
-                context.getString(R.string.pref_key_recording_was_stack_samples), true);
-        if (recordingWasTrace) {
-            return RecordingType.TRACE;
-        } else if (recordingWasStackSamples) {
-            return RecordingType.STACK_SAMPLES;
-        } else {
-            return RecordingType.HEAP_DUMP;
-        }
     }
 
     static Set<String> getRunningAppProcesses(Context context) {

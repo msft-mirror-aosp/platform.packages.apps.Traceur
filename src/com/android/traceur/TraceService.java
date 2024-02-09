@@ -16,11 +16,6 @@
 
 package com.android.traceur;
 
-import static com.android.traceur.TraceUtils.RecordingType.HEAP_DUMP;
-import static com.android.traceur.TraceUtils.RecordingType.STACK_SAMPLES;
-import static com.android.traceur.TraceUtils.RecordingType.TRACE;
-import static com.android.traceur.TraceUtils.RecordingType.UNKNOWN;
-
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -30,11 +25,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -66,6 +61,7 @@ public class TraceService extends IntentService {
     private static String INTENT_EXTRA_LONG_TRACE_DURATION = "long_trace_duration";
 
     private static String BETTERBUG_PACKAGE_NAME = "com.google.android.apps.internal.betterbug";
+    private static final String AUTHORITY = "com.android.traceur.files";
 
     private static int TRACE_NOTIFICATION = 1;
     private static int SAVING_TRACE_NOTIFICATION = 2;
@@ -137,7 +133,7 @@ public class TraceService extends IntentService {
             return;
         }
 
-        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
+        TraceUtils.RecordingType type = getRecentTraceType(context);
 
         if (intent.getAction().equals(INTENT_ACTION_START_TRACING)) {
             startTracingInternal(intent.getStringArrayListExtra(INTENT_EXTRA_TAGS),
@@ -160,6 +156,21 @@ public class TraceService extends IntentService {
             stopTracingInternal(TraceUtils.getOutputFilename(type), false);
         } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOLEN)) {
             stopTracingInternal("", true);
+        }
+    }
+
+    private static TraceUtils.RecordingType getRecentTraceType(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean recordingWasTrace = prefs.getBoolean(
+                context.getString(R.string.pref_key_recording_was_trace), true);
+        boolean recordingWasStackSamples = prefs.getBoolean(
+                context.getString(R.string.pref_key_recording_was_stack_samples), true);
+        if (recordingWasTrace) {
+            return TraceUtils.RecordingType.TRACE;
+        } else if (recordingWasStackSamples) {
+            return TraceUtils.RecordingType.STACK_SAMPLES;
+        } else {
+            return TraceUtils.RecordingType.HEAP_DUMP;
         }
     }
 
@@ -302,7 +313,7 @@ public class TraceService extends IntentService {
             getSystemService(NotificationManager.class);
 
         // This helps determine which text to show on the post-recording notifications.
-        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
+        TraceUtils.RecordingType type = getRecentTraceType(context);
         int savingTextResId;
         switch (type) {
             case STACK_SAMPLES:
@@ -363,13 +374,57 @@ public class TraceService extends IntentService {
         } else {
             Optional<List<File>> files = TraceUtils.traceDump(getContentResolver(), outputFilename);
             if (files.isPresent()) {
-                FileSender.postNotification(getApplicationContext(), files.get());
+                postFileSharingNotification(getApplicationContext(), files.get());
             }
         }
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
 
         TraceUtils.cleanupOlderFiles(MIN_KEEP_COUNT, MIN_KEEP_AGE);
+    }
+
+    private void postFileSharingNotification(Context context, List<File> files) {
+        if (files.isEmpty()) {
+            return;
+        }
+
+        // Files are kept on private storage, so turn into Uris that we can
+        // grant temporary permissions for.
+        final List<Uri> traceUris = FileSender.getUriForFiles(context, files, AUTHORITY);
+
+        // Intent to send the file
+        Intent sendIntent = FileSender.buildSendIntent(context, traceUris);
+        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // This dialog will show to warn the user about sharing traces, then will execute
+        // the above file-sharing intent.
+        final Intent intent = new Intent(context, UserConsentActivityDialog.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
+        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
+
+        TraceUtils.RecordingType type = getRecentTraceType(context);
+        int titleResId;
+        switch (type) {
+            case STACK_SAMPLES:
+                titleResId = R.string.stack_samples_saved;
+                break;
+            case HEAP_DUMP:
+                titleResId = R.string.heap_dump_saved;
+                break;
+            case TRACE:
+            case UNKNOWN:
+            default:
+                titleResId = R.string.trace_saved;
+                break;
+        }
+        final Notification.Builder builder = getTraceurNotification(context.getString(titleResId),
+                context.getString(R.string.tap_to_share), Receiver.NOTIFICATION_CHANNEL_OTHER)
+                        .setContentIntent(PendingIntent.getActivity(context,
+                                traceUris.get(0).hashCode(), intent,PendingIntent.FLAG_ONE_SHOT
+                                        | PendingIntent.FLAG_CANCEL_CURRENT
+                                        | PendingIntent.FLAG_IMMUTABLE))
+                        .setAutoCancel(true);
+        NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
     }
 
     // Creates a Traceur notification for the given channel using the provided title and message.
