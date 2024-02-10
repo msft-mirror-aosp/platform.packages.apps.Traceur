@@ -61,4 +61,23 @@
     <item>720</item>
     <item>1440</item>
 </string-array>
+
+<!-- Durations are in seconds. -->
+<string name="default_continuous_heap_dump_interval">60</string>
+
+<!-- Keep the following two arrays in sync or you will regret it! -->
+<string-array name="continuous_heap_dump_interval_names">
+    <item>@string/five_seconds</item>
+    <item>@string/ten_seconds</item>
+    <item>@string/thirty_seconds</item>
+    <item>@string/one_minute</item>
+</string-array>
+
+<string-array name="continuous_heap_dump_interval_values">
+    <item>5</item>
+    <item>10</item>
+    <item>30</item>
+    <item>@string/default_continuous_heap_dump_interval</item>
+</string-array>
+
 </resources>
