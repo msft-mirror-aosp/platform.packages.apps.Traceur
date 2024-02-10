@@ -58,13 +58,16 @@ public class QsService extends TileService {
         boolean tracingOn = prefs.getBoolean(getString(R.string.pref_key_tracing_on), false);
         boolean stackSamplingOn = prefs.getBoolean(
                 getString(R.string.pref_key_stack_sampling_on), false);
+        boolean heapDumpOn = prefs.getBoolean(
+                getString(R.string.pref_key_heap_dump_on), false);
 
         String titleString = getString(tracingOn ? R.string.stop_tracing: R.string.record_trace);
 
         getQsTile().setIcon(Icon.createWithResource(this, R.drawable.bugfood_icon));
-        // If stack sampling is active, the "Record trace" tile cannot be interacted with.
-        // Otherwise, it should reflect the current trace state (active vs. inactive).
-        getQsTile().setState(stackSamplingOn ? Tile.STATE_UNAVAILABLE :
+        // If a non-standard trace (stack samples, heap dump) is active, the "Record trace" tile
+        // cannot be interacted with. Otherwise, it should reflect the current trace state (active
+        // vs. inactive).
+        getQsTile().setState((stackSamplingOn || heapDumpOn) ? Tile.STATE_UNAVAILABLE :
                 (tracingOn ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE));
         getQsTile().setLabel(titleString);
         getQsTile().updateTile();

@@ -16,6 +16,11 @@
 
 package com.android.traceur;
 
+import static com.android.traceur.TraceUtils.RecordingType.HEAP_DUMP;
+import static com.android.traceur.TraceUtils.RecordingType.STACK_SAMPLES;
+import static com.android.traceur.TraceUtils.RecordingType.TRACE;
+import static com.android.traceur.TraceUtils.RecordingType.UNKNOWN;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -26,13 +31,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.text.format.DateUtils;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.Optional;
 
 public class TraceService extends IntentService {
@@ -47,6 +54,8 @@ public class TraceService extends IntentService {
     private static String INTENT_ACTION_START_TRACING = "com.android.traceur.START_TRACING";
     private static String INTENT_ACTION_START_STACK_SAMPLING =
             "com.android.traceur.START_STACK_SAMPLING";
+    private static String INTENT_ACTION_START_HEAP_DUMP =
+            "com.android.traceur.START_HEAP_DUMP";
 
     private static String INTENT_EXTRA_TAGS= "tags";
     private static String INTENT_EXTRA_BUFFER = "buffer";
@@ -82,6 +91,12 @@ public class TraceService extends IntentService {
     public static void startStackSampling(final Context context) {
         Intent intent = new Intent(context, TraceService.class);
         intent.setAction(INTENT_ACTION_START_STACK_SAMPLING);
+        context.startForegroundService(intent);
+    }
+
+    public static void startHeapDump(final Context context) {
+        Intent intent = new Intent(context, TraceService.class);
+        intent.setAction(INTENT_ACTION_START_HEAP_DUMP);
         context.startForegroundService(intent);
     }
 
@@ -122,10 +137,7 @@ public class TraceService extends IntentService {
             return;
         }
 
-        boolean recordingWasTrace = prefs.getBoolean(
-                context.getString(R.string.pref_key_recording_was_trace), true);
-        TraceUtils.RecordingType type = recordingWasTrace ? TraceUtils.RecordingType.TRACE
-                                                          : TraceUtils.RecordingType.STACK_SAMPLES;
+        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
 
         if (intent.getAction().equals(INTENT_ACTION_START_TRACING)) {
             startTracingInternal(intent.getStringArrayListExtra(INTENT_EXTRA_TAGS),
@@ -140,6 +152,8 @@ public class TraceService extends IntentService {
                     Integer.parseInt(context.getString(R.string.default_long_trace_duration))));
         } else if (intent.getAction().equals(INTENT_ACTION_START_STACK_SAMPLING)) {
             startStackSamplingInternal();
+        } else if (intent.getAction().equals(INTENT_ACTION_START_HEAP_DUMP)) {
+            startHeapDumpInternal();
         } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING)) {
             stopTracingInternal(TraceUtils.getOutputFilename(type), false);
         } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
@@ -191,6 +205,8 @@ public class TraceService extends IntentService {
         // and 2) choosing the filename format for the saved recording.
         prefs.edit().putBoolean(
                 context.getString(R.string.pref_key_recording_was_trace), true).commit();
+        prefs.edit().putBoolean(
+                context.getString(R.string.pref_key_recording_was_stack_samples), false).commit();
     }
 
     private void startStackSamplingInternal() {
@@ -230,6 +246,53 @@ public class TraceService extends IntentService {
         // and 2) choosing the filename format for the saved recording.
         prefs.edit().putBoolean(
                 context.getString(R.string.pref_key_recording_was_trace), false).commit();
+        prefs.edit().putBoolean(
+                context.getString(R.string.pref_key_recording_was_stack_samples), true).commit();
+    }
+
+    private void startHeapDumpInternal() {
+        Context context = getApplicationContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        Intent stopIntent = new Intent(Receiver.STOP_ACTION, null, context, Receiver.class);
+        stopIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+
+        boolean attachToBugreport =
+                prefs.getBoolean(context.getString(R.string.pref_key_attach_to_bugreport), true);
+        boolean continuousDump =
+                prefs.getBoolean(context.getString(R.string.pref_key_continuous_heap_dump), false);
+        Set<String> processes = prefs.getStringSet(
+                context.getString(R.string.pref_key_heap_dump_processes), Collections.emptySet());
+
+        int dumpIntervalSeconds = Integer.parseInt(
+                prefs.getString(context.getString(R.string.pref_key_continuous_heap_dump_interval),
+                        context.getString(R.string.default_continuous_heap_dump_interval)));
+
+        Notification.Builder notification = getTraceurNotification(
+                context.getString(R.string.heap_dump_is_being_recorded),
+                context.getString(R.string.tap_to_stop_heap_dump),
+                Receiver.NOTIFICATION_CHANNEL_TRACING);
+        notification.setOngoing(true)
+                .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
+                          PendingIntent.FLAG_IMMUTABLE));
+
+        startForeground(TRACE_NOTIFICATION, notification.build());
+
+        if (TraceUtils.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
+                attachToBugreport)) {
+            stopForeground(Service.STOP_FOREGROUND_DETACH);
+        } else {
+            TraceUtils.traceStop(getContentResolver());
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_heap_dump_on), false).commit();
+            QsService.updateTile();
+            stopForeground(Service.STOP_FOREGROUND_REMOVE);
+        }
+
+        prefs.edit().putBoolean(
+                context.getString(R.string.pref_key_recording_was_trace), false).commit();
+        prefs.edit().putBoolean(
+                context.getString(R.string.pref_key_recording_was_stack_samples), false).commit();
     }
 
     private void stopTracingInternal(String outputFilename, boolean sessionStolen) {
@@ -239,12 +302,23 @@ public class TraceService extends IntentService {
             getSystemService(NotificationManager.class);
 
         // This helps determine which text to show on the post-recording notifications.
-        boolean recordingWasTrace = prefs.getBoolean(
-                context.getString(R.string.pref_key_recording_was_trace), true);
-
+        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
+        int savingTextResId;
+        switch (type) {
+            case STACK_SAMPLES:
+                savingTextResId = R.string.saving_stack_samples;
+                break;
+            case HEAP_DUMP:
+                savingTextResId = R.string.saving_heap_dump;
+                break;
+            case TRACE:
+            case UNKNOWN:
+            default:
+                savingTextResId = R.string.saving_trace;
+                break;
+        }
         Notification.Builder notification = getTraceurNotification(context.getString(
-                sessionStolen ? R.string.attaching_to_report :
-                        recordingWasTrace ? R.string.saving_trace : R.string.saving_stack_samples),
+                sessionStolen ? R.string.attaching_to_report : savingTextResId),
                 null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
@@ -270,10 +344,9 @@ public class TraceService extends IntentService {
                                 | PendingIntent.FLAG_IMMUTABLE));
             }
 
-            // Adds an action button to the notification for starting a new trace. This is currently
-            // not enabled for stack samples because we don't expect continuous stack samples
-            // (repeatedly stopped and attached to different bug reports) to be a common use case.
-            if (recordingWasTrace) {
+            // Adds an action button to the notification for starting a new trace. This is only
+            // enabled for standard traces.
+            if (type == TraceUtils.RecordingType.TRACE) {
                 Intent restartIntent = new Intent(context, InternalReceiver.class);
                 restartIntent.setAction(InternalReceiver.START_ACTION);
                 PendingIntent restartPendingIntent = PendingIntent.getBroadcast(context, 0,

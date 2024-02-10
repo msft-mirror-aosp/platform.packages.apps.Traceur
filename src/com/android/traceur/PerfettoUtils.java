@@ -50,7 +50,14 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final int STARTUP_TIMEOUT_MS = 10000;
     private static final int STOP_TIMEOUT_MS = 30000;
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
+    private static final long SECONDS_TO_MILLISECONDS = 1000L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
+
+    // This is 2x larger than the default buffer size to account for multiple processes being
+    // specified.
+    private static final int HEAP_DUMP_PER_CPU_BUFFER_SIZE_KB = 32 * 1024;
+    private static final int HEAP_DUMP_MAX_LONG_TRACE_SIZE_MB = 10 * 1024;
+    private static final int HEAP_DUMP_MAX_LONG_TRACE_DURATION_MINUTES = 10;
 
     // The total amount of memory allocated to the two target buffers will be divided according to a
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
@@ -109,8 +116,8 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         appendTraceBuffer(config, targetBuffer1Kb);
 
         appendFtraceConfig(config, tags, apps);
-        appendProcStatsConfig(config, tags, /* target_buffer = */ 1);
-        appendAdditionalDataSources(config, tags, winscope, longTrace, /* target_buffer = */ 1);
+        appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
+        appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
         return startPerfettoWithConfig(config.toString());
     }
@@ -131,8 +138,39 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         int targetBufferKb = Runtime.getRuntime().availableProcessors() * (16 * 1024);
         appendTraceBuffer(config, targetBufferKb);
 
-        appendLinuxPerfConfig(config, /* target_buffer = */ 0);
-        appendProcStatsConfig(config, /* tags = */ null, /* target_buffer = */ 0);
+        appendLinuxPerfConfig(config, /* targetBuffer = */ 0);
+        appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
+
+        return startPerfettoWithConfig(config.toString());
+    }
+
+    public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
+            int dumpIntervalSeconds, boolean attachToBugreport) {
+        if (isTracingOn()) {
+            Log.e(TAG, "Attempting to start heap dump but perfetto is already active");
+            return false;
+        } else {
+            recoverExistingRecording();
+        }
+
+        if (processes.isEmpty()) {
+            Log.e(TAG, "Attempting to start heap dump but list of processes is empty.");
+            return false;
+        }
+
+        StringBuilder config = new StringBuilder();
+
+        // A long trace is used to avoid data loss.
+        appendBaseConfigOptions(config, attachToBugreport, /* longTrace = */ true,
+                HEAP_DUMP_MAX_LONG_TRACE_SIZE_MB, HEAP_DUMP_MAX_LONG_TRACE_DURATION_MINUTES);
+
+        int targetBufferKb =
+                Runtime.getRuntime().availableProcessors() * HEAP_DUMP_PER_CPU_BUFFER_SIZE_KB;
+        appendTraceBuffer(config, targetBufferKb);
+
+        appendAndroidJavaHprofConfig(config, processes, continuousDump, dumpIntervalSeconds,
+                /* targetBuffer = */ 0);
+        appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
 
         return startPerfettoWithConfig(config.toString());
     }
@@ -426,6 +464,30 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             .append("}\n");
     }
 
+    // Appends the heap dump data source.
+    private void appendAndroidJavaHprofConfig(StringBuilder config, Collection<String> processes,
+            boolean continuousDump, int dumpIntervalSeconds, int targetBuffer) {
+        config.append("data_sources: {\n")
+            .append("  config: {\n")
+            .append("    name: \"android.java_hprof\"\n")
+            .append("    target_buffer: " + targetBuffer + "\n")
+            .append("    java_hprof_config: {\n");
+        for (String process : processes) {
+            config.append("      process_cmdline: \"" + process + "\"\n");
+        }
+        config.append("      dump_smaps: true\n");
+        if (continuousDump) {
+            config.append("      continuous_dump_config: {\n")
+                .append("        dump_phase_ms: 0\n")
+                .append("        dump_interval_ms: "
+                        + (dumpIntervalSeconds * SECONDS_TO_MILLISECONDS) + "\n")
+                .append("      }\n");
+        }
+        config.append("    }\n")
+            .append("  }\n")
+            .append("}\n");
+    }
+
     // Appends additional data sources to the specified extra buffer based on enabled trace tags.
     private void appendAdditionalDataSources(StringBuilder config, Collection<String> tags,
             boolean winscope, boolean longTrace, int targetBuffer) {
@@ -472,7 +534,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         }
 
         if (tags.contains(CPU_TAG)) {
-            appendLinuxPerfConfig(config, /* target_buffer = */ 1);
+            appendLinuxPerfConfig(config, /* targetBuffer = */ 1);
         }
 
         if (tags.contains(GFX_TAG)) {
