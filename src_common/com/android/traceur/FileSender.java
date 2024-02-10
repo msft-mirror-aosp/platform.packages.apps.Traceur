@@ -16,25 +16,17 @@
 
 package com.android.traceur;
 
-import static com.android.traceur.TraceUtils.RecordingType.HEAP_DUMP;
-import static com.android.traceur.TraceUtils.RecordingType.STACK_SAMPLES;
-import static com.android.traceur.TraceUtils.RecordingType.TRACE;
-import static com.android.traceur.TraceUtils.RecordingType.UNKNOWN;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.util.Patterns;
+
 import androidx.core.content.FileProvider;
 
 import java.io.File;
@@ -46,70 +38,12 @@ import java.util.List;
  */
 public class FileSender {
 
-    private static final String AUTHORITY = "com.android.traceur.files";
     private static final String MIME_TYPE = "application/vnd.android.systrace";
 
-    public static void postNotification(Context context, List<File> files) {
-        if (files.isEmpty()) {
-            return;
-        }
-
-        // Files are kept on private storage, so turn into Uris that we can
-        // grant temporary permissions for.
-        final List<Uri> traceUris = getUriForFiles(context, files);
-
-        // Intent to send the file
-        Intent sendIntent = buildSendIntent(context, traceUris);
-        sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        // This dialog will show to warn the user about sharing traces, then will execute
-        // the above file-sharing intent.
-        final Intent intent = new Intent(context, UserConsentActivityDialog.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
-        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
-
-        TraceUtils.RecordingType type = TraceUtils.getRecentTraceType(context);
-        int titleResId;
-        switch (type) {
-            case STACK_SAMPLES:
-                titleResId = R.string.stack_samples_saved;
-                break;
-            case HEAP_DUMP:
-                titleResId = R.string.heap_dump_saved;
-                break;
-            case TRACE:
-            case UNKNOWN:
-            default:
-                titleResId = R.string.trace_saved;
-                break;
-        }
-        String title = context.getString(titleResId);
-        final Notification.Builder builder =
-            new Notification.Builder(context, Receiver.NOTIFICATION_CHANNEL_OTHER)
-                .setSmallIcon(R.drawable.bugfood_icon)
-                .setContentTitle(title)
-                .setTicker(title)
-                .setContentText(context.getString(R.string.tap_to_share))
-                .setContentIntent(PendingIntent.getActivity(
-                        context, traceUris.get(0).hashCode(), intent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE))
-                .setAutoCancel(true)
-                .setLocalOnly(true)
-                .setColor(context.getColor(
-                        com.android.internal.R.color.system_notification_accent_color));
-
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_LEANBACK)) {
-            builder.extend(new Notification.TvExtender());
-        }
-
-        NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
-    }
-
-    private static List<Uri> getUriForFiles(Context context, List<File> files) {
+    public static List<Uri> getUriForFiles(Context context, List<File> files, String authority) {
         List<Uri> uris = new ArrayList();
         for (File file : files) {
-            uris.add(FileProvider.getUriForFile(context, AUTHORITY, file));
+            uris.add(FileProvider.getUriForFile(context, authority, file));
         }
         return uris;
     }
@@ -117,7 +51,7 @@ public class FileSender {
     /**
      * Build {@link Intent} that can be used to share the given bugreport.
      */
-    private static Intent buildSendIntent(Context context, List<Uri> traceUris) {
+    public static Intent buildSendIntent(Context context, List<Uri> traceUris) {
         final CharSequence description = Build.FINGERPRINT;
 
         final Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
