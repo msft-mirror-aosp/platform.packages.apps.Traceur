@@ -518,6 +518,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    sys_stats_config {\n")
                 .append("      meminfo_period_ms: 1000\n")
+                .append("      psi_period_ms: 1000\n")
                 .append("      vmstat_period_ms: 1000\n")
                 .append("    }\n")
                 .append("  }\n")
