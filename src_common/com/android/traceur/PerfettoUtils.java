@@ -634,6 +634,13 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"com.android.wm.shell.transition\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
         }
     }
 }

@@ -334,13 +334,6 @@ public class MainFragment extends PreferenceFragment {
         mStackSamplingOn.setChecked(mPrefs.getBoolean(mStackSamplingOn.getKey(), false));
         mHeapDumpOn.setChecked(mPrefs.getBoolean(mHeapDumpOn.getKey(), false));
 
-        // Enable or disable each toggle based on the state of the others. This path exists in case
-        // the tracing state was updated with the QS tile or the ongoing-trace notification, which
-        // would not call the toggles' OnClickListeners.
-        mTracingOn.setEnabled(!(mStackSamplingOn.isChecked() || mHeapDumpOn.isChecked()));
-        mStackSamplingOn.setEnabled(!(mTracingOn.isChecked() || mHeapDumpOn.isChecked()));
-        mHeapDumpOn.setEnabled(!(mTracingOn.isChecked() || mStackSamplingOn.isChecked()));
-
         SwitchPreference stopOnReport =
                 (SwitchPreference) findPreference(getString(R.string.pref_key_stop_on_bugreport));
         stopOnReport.setChecked(mPrefs.getBoolean(stopOnReport.getKey(), false));
@@ -384,10 +377,17 @@ public class MainFragment extends PreferenceFragment {
             mRefreshing = false;
         }
 
-        // Disallow heap dumps if no process is selected at all.
-        boolean heapDumpToggleEnabled = mHeapDumpProcesses.getValues().size() > 0;
-        mHeapDumpOn.setEnabled(heapDumpToggleEnabled);
-        mHeapDumpOn.setSummary(heapDumpToggleEnabled
+        // Enable or disable each toggle based on the state of the others. This path exists in case
+        // the tracing state was updated with the QS tile or the ongoing-trace notification, which
+        // would not call the toggles' OnClickListeners.
+        mTracingOn.setEnabled(!(mStackSamplingOn.isChecked() || mHeapDumpOn.isChecked()));
+        mStackSamplingOn.setEnabled(!(mTracingOn.isChecked() || mHeapDumpOn.isChecked()));
+
+        // Disallow heap dumps if no process is selected, or if tracing/stack sampling is active.
+        boolean heapDumpProcessSelected = mHeapDumpProcesses.getValues().size() > 0;
+        mHeapDumpOn.setEnabled(heapDumpProcessSelected &&
+                !(mTracingOn.isChecked() || mStackSamplingOn.isChecked()));
+        mHeapDumpOn.setSummary(heapDumpProcessSelected
                 ? context.getString(R.string.record_heap_dump_summary_enabled)
                 : context.getString(R.string.record_heap_dump_summary_disabled));
 
