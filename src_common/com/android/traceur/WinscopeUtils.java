@@ -36,12 +36,14 @@ import java.util.List;
 public class WinscopeUtils {
     private static final String TAG = "Traceur";
     private static final String SETTINGS_VIEW_CAPTURE_ENABLED = "view_capture_enabled";
-    private static final File[] TEMP_WINSCOPE_TRACES = {
-            new File("/data/misc/wmtrace/wm_trace.winscope"),
-            new File("/data/misc/wmtrace/wm_log.winscope"),
-            new File("/data/misc/wmtrace/ime_trace_clients.winscope"),
-            new File("/data/misc/wmtrace/ime_trace_managerservice.winscope"),
-            new File("/data/misc/wmtrace/ime_trace_service.winscope"),
+    private static final String VIEW_CAPTURE_FILE_SUFFIX = ".vc";
+    private static final String WM_TRACE_DIR = "/data/misc/wmtrace/";
+    private static final File[] CONSISTENTLY_NAMED_TRACE_FILES = {
+            new File(WM_TRACE_DIR + "wm_trace.winscope"),
+            new File(WM_TRACE_DIR + "wm_log.winscope"),
+            new File(WM_TRACE_DIR + "ime_trace_clients.winscope"),
+            new File(WM_TRACE_DIR + "ime_trace_managerservice.winscope"),
+            new File(WM_TRACE_DIR + "ime_trace_service.winscope"),
     };
 
     public static void traceStart(ContentResolver contentResolver,
@@ -72,16 +74,38 @@ public class WinscopeUtils {
         }
     }
 
+    /**
+     * This method is responsible for getting all trace files that will be useful for debugging so
+     * they can be inspected using go/winscope. In the /data/misc/wmtrace directory where these
+     * traces are stored, .vc (ViewCapture) files are named on a per-app basis, which means we have
+     * to collect X amount of them. In contrast, the winscope files are named the same everytime,
+     * and we simply have to check a predetermined set of file paths.
+     *
+     * @return File handles to all the useful trace files in the /data/misc/wmtrace directory.
+     */
+    private static List<File> getTraceFilesFromWmTraceDir() {
+        List<File> traceFiles = new ArrayList<>();
+        for (File possibleViewCaptureTraceFile : new File(WM_TRACE_DIR).listFiles()) {
+            if (possibleViewCaptureTraceFile.isFile()
+                    && possibleViewCaptureTraceFile.getName().endsWith(VIEW_CAPTURE_FILE_SUFFIX)) {
+                traceFiles.add(possibleViewCaptureTraceFile);
+            }
+        }
+        for (File possibleWinscopeTraceFile : CONSISTENTLY_NAMED_TRACE_FILES) {
+            if (possibleWinscopeTraceFile.exists()) {
+                traceFiles.add(possibleWinscopeTraceFile);
+            }
+        }
+
+        return traceFiles;
+    }
+
     public static List<File> traceDump(ContentResolver contentResolver, String perfettoFilename) {
         traceStop(contentResolver);
 
         ArrayList<File> files = new ArrayList();
 
-        for (File tempFile : TEMP_WINSCOPE_TRACES) {
-            if (!tempFile.exists()) {
-                continue;
-            }
-
+        for (File tempFile : getTraceFilesFromWmTraceDir()) {
             try {
                 // Make a copy of the winscope traces to change SELinux file context from
                 // "wm_trace_data_file" to "trace_data_file", otherwise other apps might not be able
@@ -166,7 +190,7 @@ public class WinscopeUtils {
     }
 
     private static void deleteTempTraceFiles() {
-        for (File file : TEMP_WINSCOPE_TRACES) {
+        for (File file : getTraceFilesFromWmTraceDir()) {
             if (!file.exists()) {
                 continue;
             }
