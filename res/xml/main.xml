@@ -24,8 +24,17 @@
         android:key="@string/pref_key_stack_sampling_on"
         android:title="@string/record_stack_samples"
         android:summary="@string/record_stack_samples_summary" />
+    <androidx.preference.SwitchPreference
+        android:key="@string/pref_key_heap_dump_on"
+        android:title="@string/record_heap_dump"
+        android:summary="@string/record_heap_dump_summary_disabled" />
     <androidx.preference.PreferenceCategory
         android:title="@string/pref_category_trace_settings" >
+        <androidx.preference.SwitchPreference
+            android:key="@string/pref_key_winscope"
+            android:title="@string/winscope_tracing"
+            android:summary="@string/winscope_tracing_summary"
+            android:defaultValue="false" />
         <androidx.preference.SwitchPreference
             android:key="@string/pref_key_apps"
             android:title="@string/trace_debuggable_applications"
@@ -63,6 +72,30 @@
             android:entries="@array/long_trace_duration_names"
             android:entryValues="@array/long_trace_duration_values"
             android:defaultValue="@string/default_long_trace_duration" />
+    </androidx.preference.PreferenceCategory>
+    <androidx.preference.PreferenceCategory
+        android:title="@string/pref_category_heap_dump_settings" >
+        <androidx.preference.MultiSelectListPreference
+            android:key="@string/pref_key_heap_dump_processes"
+            android:title="@string/heap_dump_processes"
+            android:summary="@string/heap_dump_processes_summary"
+            style="@style/MultiSelectDialogStyle" />
+        <Preference
+            android:key="clear_heap_dump_processes"
+            android:persistent="false"
+            android:title="@string/clear_heap_dump_processes" />
+        <androidx.preference.SwitchPreference
+            android:key="@string/pref_key_continuous_heap_dump"
+            android:title="@string/continuous_heap_dump"
+            android:summary="@string/continuous_heap_dump_summary"
+            android:defaultValue="false" />
+        <androidx.preference.ListPreference
+            android:key="@string/pref_key_continuous_heap_dump_interval"
+            android:title="@string/continuous_heap_dump_interval"
+            android:dependency="@string/pref_key_continuous_heap_dump"
+            android:entries="@array/continuous_heap_dump_interval_names"
+            android:entryValues="@array/continuous_heap_dump_interval_values"
+            android:defaultValue="@string/default_continuous_heap_dump_interval" />
     </androidx.preference.PreferenceCategory>
     <androidx.preference.PreferenceCategory
         android:title="@string/pref_category_saved_files" >

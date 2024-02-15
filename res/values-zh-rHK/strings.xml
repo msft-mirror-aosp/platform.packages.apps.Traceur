@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"記錄 CPU 效能分析"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"檢查「cpu」類別亦會啟用調用堆疊取樣功能"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"開始新的追蹤"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"收集 Winscope 追蹤記錄"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"加入詳細的使用者介面遙測資料 (可能會造成資源浪費)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"追蹤可偵錯的應用程式"</string>
     <string name="categories" msgid="2280163673538611008">"類別"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"還原預設類別"</string>
