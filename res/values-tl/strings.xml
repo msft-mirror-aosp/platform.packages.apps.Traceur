@@ -7,6 +7,9 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"Nagka-capture ng pag-trace ng system gamit ang configuration na nakatakda sa \"Mga setting ng trace\""</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"I-record ang profile ng CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Puwede ring i-enable ang pag-sample ng callstack sa mga trace sa pamamagitan ng pagtingin sa kategoryang \"cpu\""</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"I-record ang heap dump"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Nagka-capture ng heap dump ng mga prosesong pinili sa \"Mga proseso ng heap dump\""</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pumili ng kahit isang proseso man lang sa \"Mga proseso ng heap dump\" para mangolekta ng mga heap dump"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Magsimula ng bagong trace"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kolektahin ang mga trace ng Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Kasama ang detalyadong data ng UI telemetry (posibleng magdulot ng jank)"</string>
@@ -16,6 +19,17 @@
     <string name="default_categories_restored" msgid="6861683793680564181">"Na-restore ang mga default na kategorya"</string>
     <string name="default_categories" msgid="2117679794687799407">"Default"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# ang pinili}one{# ang pinili}other{# ang pinili}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"Mga proseso ng heap dump"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Dapat pumili ng kahit isang proseso man lang"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"I-clear ang mga proseso ng heap dump"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"Na-clear ang listahan ng proseso"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"Tuloy-tuloy na heap profile"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"Mag-capture ng heap dump isang beses kada natukoy na interval"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"Interval ng heap dump"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 segundo"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 segundo"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 segundo"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 minuto"</string>
     <string name="applications" msgid="521776761270770549">"Mga Application"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Walang available na nade-debug na application"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Laki ng buffer ng Per-CPU"</string>
@@ -24,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"Na-save ang trace"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Sine-save ang mga sample ng stack"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Na-save ang mga sample ng stack"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"Sine-save ang heap dump"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"Na-save ang heap dump"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"I-tap para ibahagi ang iyong recording"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Nag-a-attach ng trace sa ulat ng bug"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Nag-attach ng trace sa ulat ng bug"</string>
@@ -34,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"I-tap upang ihinto ang pag-trace"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Nire-record ang mga sample ng stack"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"I-tap para ihinto ang pag-sample ng stack"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"Nire-record ang heap dump"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"I-tap para ihinto ang heap dump"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"I-clear ang mga na-save na file"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"Maki-clear ang mga recording pagkalipas ng isang buwan"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"I-clear ang mga na-save na file?"</string>
@@ -74,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mga setting ng pag-trace"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Mga naka-save na file"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Miscellaneous"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"Mga setting ng heap dump"</string>
 </resources>
