@@ -28,7 +28,6 @@ android_app {
 
 android_library {
     name: "TraceurCommon",
-    platform_apis: true,
     static_libs: [
         "androidx.appcompat_appcompat",
         "androidx.legacy_legacy-support-v4",
