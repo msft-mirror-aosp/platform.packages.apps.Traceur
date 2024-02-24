@@ -7,12 +7,9 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"Spelar in systemspårning med konfigurationen som angetts i Spåra inställningar"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"Spela in CPU-profil"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Du kan även aktivera utdrag från anropsstacken i spår genom att markera kategorin CPU."</string>
-    <!-- no translation found for record_heap_dump (1688550222066812696) -->
-    <skip />
-    <!-- no translation found for record_heap_dump_summary_enabled (5038675257021221777) -->
-    <skip />
-    <!-- no translation found for record_heap_dump_summary_disabled (4640319333930345311) -->
-    <skip />
+    <string name="record_heap_dump" msgid="1688550222066812696">"Spela in minnesdump"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Spelar in en minnesdump av processerna som har valts i Minnedumpprocesser"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Välj minst en process i Minnesdumpprocesser för att samla in minnesdumpar"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Starta ny spårning"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samla in Winscope-spår"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inkluderar detaljerad telemetridata för användargränssnittet (kan orsaka jank)"</string>
@@ -22,28 +19,17 @@
     <string name="default_categories_restored" msgid="6861683793680564181">"Standardkategorierna har återställts"</string>
     <string name="default_categories" msgid="2117679794687799407">"Standard"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# vald}other{# valda}}"</string>
-    <!-- no translation found for heap_dump_processes (2500105180344901939) -->
-    <skip />
-    <!-- no translation found for heap_dump_processes_summary (4570434268024622765) -->
-    <skip />
-    <!-- no translation found for clear_heap_dump_processes (295101454741555286) -->
-    <skip />
-    <!-- no translation found for clear_heap_dump_processes_toast (3658510557596150797) -->
-    <skip />
-    <!-- no translation found for continuous_heap_dump (390369382946204224) -->
-    <skip />
-    <!-- no translation found for continuous_heap_dump_summary (4581643248161659581) -->
-    <skip />
-    <!-- no translation found for continuous_heap_dump_interval (842533896492001433) -->
-    <skip />
-    <!-- no translation found for five_seconds (7018465440929299712) -->
-    <skip />
-    <!-- no translation found for ten_seconds (863416601384309033) -->
-    <skip />
-    <!-- no translation found for thirty_seconds (7945396361369598222) -->
-    <skip />
-    <!-- no translation found for one_minute (4182508213840684258) -->
-    <skip />
+    <string name="heap_dump_processes" msgid="2500105180344901939">"Minnesdumpprocesser"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Du måste välja minst en process"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"Rensa minnesdumpprocesser"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"Processlistan har rensats"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"Kontinuerlig minnesprofil"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"Spela in en minnesdump en gång per specificerat intervall"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"Minnesdumpintervall"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 sekunder"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 sekunder"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 sekunder"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 minut"</string>
     <string name="applications" msgid="521776761270770549">"Appar"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Inga felsökningsbara appar är tillgängliga"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Buffertstorlek per CPU"</string>
@@ -52,10 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"Spårningen har sparats"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Stackutdrag sparas"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Stackutdrag har sparats"</string>
-    <!-- no translation found for saving_heap_dump (6118616780825771824) -->
-    <skip />
-    <!-- no translation found for heap_dump_saved (6720583137473857098) -->
-    <skip />
+    <string name="saving_heap_dump" msgid="6118616780825771824">"Sparar minnesdump"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"Minnesdump har sparats"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Tryck för att dela inspelningen"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Spår bifogas i felrapporten"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Spår har bifogats i felrapporten"</string>
@@ -66,10 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tryck här om du vill stoppa spårningen"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Stackutdrag spelas in"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"Tryck för att stoppa stackutdrag"</string>
-    <!-- no translation found for heap_dump_is_being_recorded (3789315106110524969) -->
-    <skip />
-    <!-- no translation found for tap_to_stop_heap_dump (6475699275834526902) -->
-    <skip />
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"Minnesdump spelas in"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"Tryck för att stoppa minnesdump"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"Rensa sparade filer"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"Alla inspelningar rensas efter en månad"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"Vill du rensa sparade filer?"</string>
@@ -110,6 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Spåra inställningar"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Sparade filer"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Övrigt"</string>
-    <!-- no translation found for pref_category_heap_dump_settings (2234681064312605310) -->
-    <skip />
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"Inställningar för minnesdump"</string>
 </resources>
