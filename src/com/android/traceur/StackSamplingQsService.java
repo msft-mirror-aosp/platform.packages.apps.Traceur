@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
-public class QsService extends TileService {
+public class StackSamplingQsService extends TileService {
 
     private static final String TAG = "Traceur";
-    private static QsService sListeningInstance;
+    private static StackSamplingQsService sListeningInstance;
 
     public static void updateTile() {
         if (sListeningInstance != null) {
@@ -50,7 +50,7 @@ public class QsService extends TileService {
     private void update() {
         Receiver.updateDeveloperOptionsWatcher(this, /* fromBootIntent */ false);
         if (getQsTile() == null) {
-            Log.w(TAG, "QsService.getQsTile() returned null");
+            Log.w(TAG, "StackSamplingQsService.getQsTile() returned null");
             return;
         }
 
@@ -61,25 +61,25 @@ public class QsService extends TileService {
         boolean heapDumpOn = prefs.getBoolean(
                 getString(R.string.pref_key_heap_dump_on), false);
 
-        String titleString = getString(tracingOn ? R.string.stop_tracing: R.string.record_trace);
+        String titleString = getString(stackSamplingOn ?
+                R.string.stop_stack_sampling: R.string.record_stack_samples);
 
         getQsTile().setIcon(Icon.createWithResource(this, R.drawable.bugfood_icon));
-        // If a non-standard trace (stack samples, heap dump) is active, the "Record trace" tile
-        // cannot be interacted with. Otherwise, it should reflect the current trace state (active
-        // vs. inactive).
-        getQsTile().setState((stackSamplingOn || heapDumpOn) ? Tile.STATE_UNAVAILABLE :
-                (tracingOn ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE));
+        // If a trace or heap dumps are being recorded, this tile is made uninteractable.
+        // Otherwise, it reflects the current stack sampling state (active vs. inactive).
+        getQsTile().setState((tracingOn || heapDumpOn) ? Tile.STATE_UNAVAILABLE :
+                (stackSamplingOn ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE));
         getQsTile().setLabel(titleString);
         getQsTile().updateTile();
     }
 
-    /** When we click the tile, toggle tracing state.
-     *  If tracing is being turned off, dump and offer to share. */
+    /** When we click the tile, toggle stack sampling state.
+     *  If stack sampling is being turned off, dump and offer to share. */
     @Override
     public void onClick() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean newTracingState = !prefs.getBoolean(getString(R.string.pref_key_tracing_on), false);
-        prefs.edit().putBoolean(getString(R.string.pref_key_tracing_on), newTracingState).commit();
+        boolean newState = !prefs.getBoolean(getString(R.string.pref_key_stack_sampling_on), false);
+        prefs.edit().putBoolean(getString(R.string.pref_key_stack_sampling_on), newState).commit();
 
         Receiver.updateTracing(this);
     }
