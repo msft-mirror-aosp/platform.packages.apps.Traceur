@@ -16,7 +16,9 @@
 
 package com.android.traceur;
 
+import android.app.ActivityManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.os.Build;
 import android.os.FileUtils;
 import android.util.Log;
@@ -31,15 +33,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * Utility functions for tracing.
@@ -53,10 +58,9 @@ public class TraceUtils {
     private static TraceEngine mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
-    private static final int PROCESS_TIMEOUT_MS = 30000; // 30 seconds
 
-    enum RecordingType {
-      UNKNOWN, TRACE, STACK_SAMPLES
+    public enum RecordingType {
+      UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
     public interface TraceEngine {
         public String getName();
@@ -65,6 +69,8 @@ public class TraceUtils {
             boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes);
         public boolean stackSampleStart(boolean attachToBugreport);
+        public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
+            int dumpIntervalSeconds, boolean attachToBugreport);
         public void traceStop();
         public boolean traceDump(File outFile);
         public boolean isTracingOn();
@@ -87,6 +93,12 @@ public class TraceUtils {
 
     public static boolean stackSampleStart(boolean attachToBugreport) {
         return mTraceEngine.stackSampleStart(attachToBugreport);
+    }
+
+    public static boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
+            int dumpIntervalSeconds, boolean attachToBugreport) {
+        return mTraceEngine.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
+                attachToBugreport);
     }
 
     public static void traceStop(ContentResolver contentResolver) {
@@ -116,7 +128,7 @@ public class TraceUtils {
 
     public static TreeMap<String, String> listCategories() {
         TreeMap<String, String> categories = PerfettoUtils.perfettoListCategories();
-        categories.put("sys_stats", "meminfo and vmstats");
+        categories.put("sys_stats", "meminfo, psi, and vmstats");
         categories.put("logs", "android logcat");
         categories.put("cpu", "callstack samples");
         return categories;
@@ -125,7 +137,8 @@ public class TraceUtils {
     public static void clearSavedTraces() {
         String cmd = "rm -f " + TRACE_DIRECTORY + "trace-*.*trace " +
                 TRACE_DIRECTORY + "recovered-trace*.*trace " +
-                TRACE_DIRECTORY + "stack-samples*.*trace";
+                TRACE_DIRECTORY + "stack-samples*.*trace " +
+                TRACE_DIRECTORY + "heap-dump*.*trace";
 
         Log.v(TAG, "Clearing trace directory: " + cmd);
         try {
@@ -189,6 +202,9 @@ public class TraceUtils {
             case STACK_SAMPLES:
                 prefix = "stack-samples";
                 break;
+            case HEAP_DUMP:
+                prefix = "heap-dump";
+                break;
             case UNKNOWN:
             default:
                 prefix = "recording";
@@ -223,6 +239,22 @@ public class TraceUtils {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         // execute() instead of submit() because we don't need the result.
         executor.execute(task);
+    }
+
+    static Set<String> getRunningAppProcesses(Context context) {
+        ActivityManager am = context.getSystemService(ActivityManager.class);
+        List<ActivityManager.RunningAppProcessInfo> processes =
+                am.getRunningAppProcesses();
+        // AM will return null instead of an empty list if no apps are found.
+        if (processes == null) {
+            return Collections.emptySet();
+        }
+
+        Set<String> processNames = processes.stream()
+                .map(process -> process.processName)
+                .collect(Collectors.toSet());
+
+        return processNames;
     }
 
     /**
