@@ -59,11 +59,11 @@
     <string name="eight_hours" msgid="3207620892104451552">"8 שעות"</string>
     <string name="twelve_hours" msgid="4647143276394563496">"12 שעות"</string>
     <string name="twentyfour_hours" msgid="2789663313550030791">"24 שעות"</string>
-    <string name="four_thousand_kb" msgid="5156346740862105703">"‎4096 KB"</string>
+    <string name="four_thousand_kb" msgid="5156346740862105703">"‎4096KB"</string>
     <string name="eight_thousand_kb" msgid="8815334985638334081">"‎8192KB"</string>
-    <string name="sixteen_thousand_kb" msgid="7342517169232459259">"‎16384 KB"</string>
-    <string name="thirtytwo_thousand_kb" msgid="654328198799196150">"‎32768 KB‎"</string>
-    <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"‎65536 KB"</string>
+    <string name="sixteen_thousand_kb" msgid="7342517169232459259">"‎16384KB"</string>
+    <string name="thirtytwo_thousand_kb" msgid="654328198799196150">"‎32768KB‎"</string>
+    <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"‎65536KB"</string>
     <string name="stop_on_bugreport" msgid="4591832600597126422">"הפסקת ההקלטה לדוחות איתור באגים"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"כאשר מופעל דוח על באג, נפסקות כל ההקלטות הפעילות"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"צירוף ההקלטות לדוחות איתור באגים"</string>
