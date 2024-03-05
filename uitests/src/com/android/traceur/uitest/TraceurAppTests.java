@@ -135,7 +135,8 @@ public class TraceurAppTests {
             "Clear saved files",
             // This is intentionally disabled because it can differ between internal and AOSP.
             // "Stop recording for bug reports",
-            "Show Quick Settings tile",
+            "Show CPU profiling Quick Settings tile",
+            "Show tracing Quick Settings tile",
         };
         for (String title : elementTitles) {
             assertNotNull(title + " element not found.", findObjectOnMainScreenByText(title));
