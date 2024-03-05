@@ -148,7 +148,7 @@ public class Receiver extends BroadcastReceiver {
                 TraceService.stopTracing(context);
             }
             context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-            QsService.updateTile();
+            TraceService.updateAllQuickSettingsTiles();
             return;
         }
 
@@ -195,21 +195,17 @@ public class Receiver extends BroadcastReceiver {
 
         // Update the main UI and the QS tile.
         context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-        QsService.updateTile();
+        TraceService.updateAllQuickSettingsTiles();
     }
 
     /*
-     * Updates the current Quick Settings tile state based on the current state
-     * of preferences.
+     * Updates the input Quick Settings tile state based on the current state of preferences.
      */
-    public static void updateQuickSettings(Context context) {
-        boolean quickSettingsEnabled =
-            PreferenceManager.getDefaultSharedPreferences(context)
-              .getBoolean(context.getString(R.string.pref_key_quick_setting), false);
-
-        ComponentName name = new ComponentName(context, QsService.class);
+    private static void updateQuickSettingsPanel(Context context, boolean enabled,
+            Class serviceClass) {
+        ComponentName name = new ComponentName(context, serviceClass);
         context.getPackageManager().setComponentEnabledSetting(name,
-            quickSettingsEnabled
+            enabled
                 ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
                 : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
             PackageManager.DONT_KILL_APP);
@@ -219,7 +215,7 @@ public class Receiver extends BroadcastReceiver {
 
         try {
             if (statusBarService != null) {
-                if (quickSettingsEnabled) {
+                if (enabled) {
                     statusBarService.addTile(name);
                 } else {
                     statusBarService.remTile(name);
@@ -228,8 +224,21 @@ public class Receiver extends BroadcastReceiver {
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to modify QS tile for Traceur.", e);
         }
+        TraceService.updateAllQuickSettingsTiles();
+    }
 
-        QsService.updateTile();
+    public static void updateTracingQuickSettings(Context context) {
+        boolean tracingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_tracing_quick_setting), false);
+        updateQuickSettingsPanel(context, tracingQsEnabled, TracingQsService.class);
+    }
+
+    public static void updateStackSamplingQuickSettings(Context context) {
+        boolean stackSamplingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_stack_sampling_quick_setting), false);
+        updateQuickSettingsPanel(context, stackSamplingQsEnabled, StackSamplingQsService.class);
     }
 
     /*
@@ -255,9 +264,14 @@ public class Receiver extends BroadcastReceiver {
                             SharedPreferences prefs =
                                 PreferenceManager.getDefaultSharedPreferences(context);
                             prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_quick_setting), false)
+                                context.getString(R.string.pref_key_tracing_quick_setting), false)
                                 .commit();
-                            updateQuickSettings(context);
+                            prefs.edit().putBoolean(
+                                context.getString(
+                                    R.string.pref_key_stack_sampling_quick_setting), false)
+                                .commit();
+                            updateTracingQuickSettings(context);
+                            updateStackSamplingQuickSettings(context);
                             // Stop an ongoing trace if one exists.
                             if (TraceUtils.isTracingOn()) {
                                 TraceService.stopTracingWithoutSaving(context);
