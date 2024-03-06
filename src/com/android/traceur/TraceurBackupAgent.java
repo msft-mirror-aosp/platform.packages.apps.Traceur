@@ -34,6 +34,7 @@ public class TraceurBackupAgent extends BackupAgentHelper {
 
     @Override
     public void onRestoreFinished() {
-        Receiver.updateQuickSettings(this);
+        Receiver.updateTracingQuickSettings(this);
+        Receiver.updateStackSamplingQuickSettings(this);
     }
 }

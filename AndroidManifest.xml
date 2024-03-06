@@ -141,10 +141,23 @@
         <service android:name=".TraceService"
              android:exported="false"/>
 
-        <service android:name=".QsService"
+        <service android:name=".TracingQsService"
              android:enabled="false"
              android:icon="@drawable/bugfood_icon"
              android:label="@string/record_trace"
+             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+             android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                       android:value="true" />
+        </service>
+
+        <service android:name=".StackSamplingQsService"
+             android:enabled="false"
+             android:icon="@drawable/bugfood_icon"
+             android:label="@string/record_stack_samples"
              android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
              android:exported="true">
             <intent-filter>
