@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU profilini yozib olish"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Trassirovkada chaqiruvlar toʻplamidan ham namuna olinishi uchun “cpu” turkumini tanlang"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Yangi trassirovkani boshlash"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope trassirovkasini jamlash"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Batafsil UI telemetriya maʼlumotlari bilan birga (kechikishga olib kelishi mumkin)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tuzatishga ruxsati bor ilovalarning harakatlarni yozib olish"</string>
     <string name="categories" msgid="2280163673538611008">"Turkumlar"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Asosiy turkumlarni tiklash"</string>
