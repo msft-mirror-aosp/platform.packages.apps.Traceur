@@ -33,7 +33,10 @@
     <string name="applications" msgid="521776761270770549">"កម្មវិធី"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"មិន​មាន​កម្មវិធី​ដែល​អាច​ជួសជុល​បាន​ទេ"</string>
     <string name="buffer_size" msgid="3944311026715111454">"ទំហំកន្លែងផ្ទុកក្នុងមួយ CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"បង្ហាញ​ប្រអប់​ការ​កំណត់​រហ័ស"</string>
+    <!-- no translation found for show_quick_settings_tile (3827556161191376500) -->
+    <skip />
+    <!-- no translation found for show_stack_sampling_quick_settings_tile (2142507886797788822) -->
+    <skip />
     <string name="saving_trace" msgid="1468692734770800541">"កំពុង​រក្សាទុក​ដាន"</string>
     <string name="trace_saved" msgid="5869970594780992309">"បាន​រក្សា​ទុក​ដាន"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"កំពុងរក្សាទុក​គំរូជង់"</string>
@@ -45,6 +48,8 @@
     <string name="attached_to_report" msgid="5806905349184608870">"បានភ្ជាប់ដានទៅក្នុងរបាយការណ៍អំពីបញ្ហា"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"ចុច​ដើម្បី​បើក BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"បញ្ឈប់​ការតាមដាន"</string>
+    <!-- no translation found for stop_stack_sampling (848558393878357485) -->
+    <skip />
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"មិនមាន​ប្រភេទ​ដាន​មួយ​ចំនួន​ទេ៖"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"កំពុង​ថត​ដាន"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"ចុច​ដើម្បី​បញ្ឈប់​ការតាមដាន"</string>
