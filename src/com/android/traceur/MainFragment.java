@@ -191,12 +191,22 @@ public class MainFragment extends PreferenceFragment {
                     }
                 });
 
-        findPreference(getString(R.string.pref_key_quick_setting))
+        findPreference(getString(R.string.pref_key_tracing_quick_setting))
             .setOnPreferenceClickListener(
                 new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
-                        Receiver.updateQuickSettings(getContext());
+                        Receiver.updateTracingQuickSettings(getContext());
+                        return true;
+                    }
+                });
+
+        findPreference(getString(R.string.pref_key_stack_sampling_quick_setting))
+            .setOnPreferenceClickListener(
+                new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        Receiver.updateStackSamplingQuickSettings(getContext());
                         return true;
                     }
                 });

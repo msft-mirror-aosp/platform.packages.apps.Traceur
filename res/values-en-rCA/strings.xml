@@ -33,7 +33,8 @@
     <string name="applications" msgid="521776761270770549">"Applications"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"No debuggable applications are available"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Per-CPU buffer size"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Show Quick Settings tile"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Show tracing Quick Settings tile"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Show CPU profiling Quick Settings tile"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Saving trace"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Trace saved"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Saving stack samples"</string>
@@ -45,6 +46,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Attached trace to bug report"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Tap to open BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Stop tracing"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Stop CPU profiling"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Some tracing categories are unavailable:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Trace is being recorded"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tap to stop tracing"</string>

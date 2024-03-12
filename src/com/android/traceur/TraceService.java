@@ -159,6 +159,11 @@ public class TraceService extends IntentService {
         }
     }
 
+    static void updateAllQuickSettingsTiles() {
+        TracingQsService.updateTile();
+        StackSamplingQsService.updateTile();
+    }
+
     private static TraceUtils.RecordingType getRecentTraceType(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean recordingWasTrace = prefs.getBoolean(
@@ -207,7 +212,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
@@ -248,7 +253,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
@@ -296,7 +301,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_heap_dump_on), false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
