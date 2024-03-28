@@ -17,7 +17,7 @@
     <string name="applications" msgid="521776761270770549">"אפליקציות"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"אין אפליקציות שניתן לנפות בהן באגים"</string>
     <string name="buffer_size" msgid="3944311026715111454">"‏שטח אחסון זמני לכל יחידת עיבוד מרכזית (CPU)"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"הצגת אריח של הגדרות מהירות"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"הצגת לחצן בהגדרות המהירות"</string>
     <string name="saving_trace" msgid="1468692734770800541">"שמירת מעקב מתבצעת"</string>
     <string name="trace_saved" msgid="5869970594780992309">"המעקב נשמר"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"שמירת מקבץ של דגימות"</string>
