@@ -30,7 +30,7 @@
     <string name="ten_seconds" msgid="863416601384309033">"10 sekondes"</string>
     <string name="thirty_seconds" msgid="7945396361369598222">"30 sekondes"</string>
     <string name="one_minute" msgid="4182508213840684258">"1 minuut"</string>
-    <string name="applications" msgid="521776761270770549">"Programme"</string>
+    <string name="applications" msgid="521776761270770549">"Apps"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Geen ontfoutbare programme is beskikbaar nie"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Per-CPU-buffergrootte"</string>
     <string name="show_quick_settings_tile" msgid="3827556161191376500">"Wys Kitsinstellingsteël vir nasporing"</string>
