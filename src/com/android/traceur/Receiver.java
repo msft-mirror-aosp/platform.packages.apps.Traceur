@@ -55,17 +55,13 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_TRACING = "trace-is-being-recorded";
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
-    private static final List<String> TRACE_TAGS = Arrays.asList(
+    private static final List<String> DEFAULT_TRACE_TAGS = Arrays.asList(
             "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
             "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
             "res", "sched", "ss", "sync", "thermal", "view", "webview", "wm", "workq");
-
-    /* The user list doesn't include workq or sync, because the user builds don't have
-     * permissions for them. */
-    private static final List<String> TRACE_TAGS_USER = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "thermal", "view", "webview", "wm");
+    private static final List<String> USER_BUILD_DISABLED_TRACE_TAGS = Arrays.asList(
+            "workq", "sync"
+    );
 
     private static final String TAG = "Traceur";
 
@@ -379,8 +375,10 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getDefaultTagList() {
         if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(Build.TYPE.equals("user")
-                ? TRACE_TAGS_USER : TRACE_TAGS);
+            mDefaultTagList = new ArraySet<String>(DEFAULT_TRACE_TAGS);
+            if (Build.TYPE.equals("user")) {
+                mDefaultTagList.removeAll(USER_BUILD_DISABLED_TRACE_TAGS);
+            }
         }
 
         return mDefaultTagList;
