@@ -66,8 +66,8 @@ public class TraceUtils {
     public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
             int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
             boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
-        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, attachToBugreport,
-                longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
+                attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
             return false;
         }
         WinscopeUtils.traceStart(contentResolver, winscope);
