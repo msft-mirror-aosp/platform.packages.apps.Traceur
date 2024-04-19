@@ -113,7 +113,7 @@ public class TraceService extends IntentService {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putBoolean(context.getString(
             R.string.pref_key_tracing_on), false).commit();
-        TraceUtils.traceStop(context.getContentResolver());
+        TraceUtils.traceStop(context);
     }
 
     public TraceService() {
@@ -202,14 +202,14 @@ public class TraceService extends IntentService {
 
         startForeground(TRACE_NOTIFICATION, notification.build());
 
-        if (TraceUtils.traceStart(getContentResolver(), tags, bufferSizeKb, winscopeTracing,
+        if (TraceUtils.traceStart(this, tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
                 maxLongTraceDurationMinutes)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
             // Starting the trace was unsuccessful, so ensure that tracing
             // is stopped and the preference is reset.
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
             updateAllQuickSettingsTiles();
@@ -250,7 +250,7 @@ public class TraceService extends IntentService {
         } else {
             // Starting stack sampling was unsuccessful, so ensure that it is stopped and the
             // preference is reset.
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateAllQuickSettingsTiles();
@@ -298,7 +298,7 @@ public class TraceService extends IntentService {
                 attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_heap_dump_on), false).commit();
             updateAllQuickSettingsTiles();
@@ -377,7 +377,7 @@ public class TraceService extends IntentService {
 
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
-            Optional<List<File>> files = TraceUtils.traceDump(getContentResolver(), outputFilename);
+            Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
             if (files.isPresent()) {
                 postFileSharingNotification(getApplicationContext(), files.get());
             }
