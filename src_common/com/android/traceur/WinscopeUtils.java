@@ -85,10 +85,13 @@ public class WinscopeUtils {
      */
     private static List<File> getTraceFilesFromWmTraceDir() {
         List<File> traceFiles = new ArrayList<>();
-        for (File possibleViewCaptureTraceFile : new File(WM_TRACE_DIR).listFiles()) {
-            if (possibleViewCaptureTraceFile.isFile()
-                    && possibleViewCaptureTraceFile.getName().endsWith(VIEW_CAPTURE_FILE_SUFFIX)) {
-                traceFiles.add(possibleViewCaptureTraceFile);
+        File[] wmTraceFiles = new File(WM_TRACE_DIR).listFiles();
+        if (wmTraceFiles != null) {
+            for (File possibleViewCaptureFile : wmTraceFiles) {
+                if (possibleViewCaptureFile.isFile()
+                        && possibleViewCaptureFile.getName().endsWith(VIEW_CAPTURE_FILE_SUFFIX)) {
+                    traceFiles.add(possibleViewCaptureFile);
+                }
             }
         }
         for (File possibleWinscopeTraceFile : CONSISTENTLY_NAMED_TRACE_FILES) {
