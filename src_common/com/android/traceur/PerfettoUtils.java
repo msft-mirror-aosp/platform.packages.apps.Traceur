@@ -35,7 +35,7 @@ import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSou
 /**
  * Utility functions for calling Perfetto
  */
-public class PerfettoUtils implements TraceUtils.TraceEngine {
+public class PerfettoUtils {
 
     static final String TAG = "Traceur";
     public static final String NAME = "PERFETTO";
