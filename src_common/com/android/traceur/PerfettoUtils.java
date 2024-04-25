@@ -35,7 +35,7 @@ import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSou
 /**
  * Utility functions for calling Perfetto
  */
-public class PerfettoUtils implements TraceUtils.TraceEngine {
+public class PerfettoUtils {
 
     static final String TAG = "Traceur";
     public static final String NAME = "PERFETTO";
@@ -86,7 +86,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     }
 
     public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
-            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
+            boolean apps, boolean longTrace, boolean attachToBugreport, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes) {
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");

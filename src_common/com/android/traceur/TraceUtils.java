@@ -55,36 +55,19 @@ public class TraceUtils {
 
     public static final String TRACE_DIRECTORY = "/data/local/traces/";
 
-    private static TraceEngine mTraceEngine = new PerfettoUtils();
+    private static PerfettoUtils mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
 
     public enum RecordingType {
       UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
-    public interface TraceEngine {
-        public String getName();
-        public String getOutputExtension();
-        public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
-            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
-            int maxLongTraceDurationMinutes);
-        public boolean stackSampleStart(boolean attachToBugreport);
-        public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
-            int dumpIntervalSeconds, boolean attachToBugreport);
-        public void traceStop();
-        public boolean traceDump(File outFile);
-        public boolean isTracingOn();
-    }
-
-    public static String currentTraceEngine() {
-        return mTraceEngine.getName();
-    }
 
     public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
             int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
             boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
-        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, attachToBugreport,
-                longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
+                attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
             return false;
         }
         WinscopeUtils.traceStart(contentResolver, winscope);
