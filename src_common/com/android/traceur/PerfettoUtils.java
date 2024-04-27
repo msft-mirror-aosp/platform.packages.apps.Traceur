@@ -613,6 +613,13 @@ public class PerfettoUtils {
         if (winscope) {
             config.append("data_sources: {\n")
                 .append("  config {\n")
+                .append("    name: \"android.inputmethod\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
                 .append("    name: \"android.surfaceflinger.layers\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    surfaceflinger_layers_config: {\n")
