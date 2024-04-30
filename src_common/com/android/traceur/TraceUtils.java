@@ -46,6 +46,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import perfetto.protos.TraceConfigOuterClass.TraceConfig;
+
 /**
  * Utility functions for tracing.
  */
@@ -61,6 +63,18 @@ public class TraceUtils {
 
     public enum RecordingType {
       UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
+    }
+
+    public static boolean traceStart(ContentResolver contentResolver, TraceConfig config,
+            boolean winscope) {
+        // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
+        // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
+        // available in Perfetto is captured using WinscopeUtils instead.
+        if (!mTraceEngine.traceStart(config)) {
+            return false;
+        }
+        WinscopeUtils.traceStart(contentResolver, winscope);
+        return true;
     }
 
     public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
@@ -159,11 +173,22 @@ public class TraceUtils {
         return process;
     }
 
-    // Returns the Process if the command terminated on time and null if not.
     public static Process execWithTimeout(String cmd, String tmpdir, long timeout)
+            throws IOException {
+        return execWithTimeout(cmd, tmpdir, timeout, null);
+    }
+
+    // Returns the Process if the command terminated on time and null if not.
+    public static Process execWithTimeout(String cmd, String tmpdir, long timeout, byte[] input)
             throws IOException {
         Process process = exec(cmd, tmpdir, true);
         try {
+            if (input != null) {
+                OutputStream os = process.getOutputStream();
+                os.write(input);
+                os.flush();
+                os.close();
+            }
             if (!process.waitFor(timeout, TimeUnit.MILLISECONDS)) {
                 Log.e(TAG, "Command '" + cmd + "' has timed out after " + timeout + " ms.");
                 process.destroyForcibly();
