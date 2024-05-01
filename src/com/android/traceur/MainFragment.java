@@ -375,7 +375,7 @@ public class MainFragment extends PreferenceFragment {
             mTags.setEntries(entries.toArray(new String[0]));
             mTags.setEntryValues(values.toArray(new String[0]));
             if (restoreDefaultTags || !mPrefs.contains(context.getString(R.string.pref_key_tags))) {
-                mTags.setValues(Receiver.getDefaultTagList());
+                mTags.setValues(PresetTraceConfigs.getDefaultTags());
             }
             mHeapDumpProcesses.setEntries(sortedProcesses.toArray(new String[0]));
             mHeapDumpProcesses.setEntryValues(sortedProcesses.toArray(new String[0]));
@@ -408,7 +408,7 @@ public class MainFragment extends PreferenceFragment {
                 Locale.getDefault());
         Map<String, Object> arguments = new HashMap<>();
         arguments.put("count", categories.size());
-        mTags.setSummary(Receiver.getDefaultTagList().equals(categories)
+        mTags.setSummary(PresetTraceConfigs.getDefaultTags().equals(categories)
                          ? context.getString(R.string.default_categories)
                          : msgFormat.format(arguments));
 
