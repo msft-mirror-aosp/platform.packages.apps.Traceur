@@ -46,6 +46,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import perfetto.protos.TraceConfigOuterClass.TraceConfig;
+
 /**
  * Utility functions for tracing.
  */
@@ -55,36 +57,31 @@ public class TraceUtils {
 
     public static final String TRACE_DIRECTORY = "/data/local/traces/";
 
-    private static TraceEngine mTraceEngine = new PerfettoUtils();
+    private static PerfettoUtils mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
 
     public enum RecordingType {
       UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
-    public interface TraceEngine {
-        public String getName();
-        public String getOutputExtension();
-        public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
-            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
-            int maxLongTraceDurationMinutes);
-        public boolean stackSampleStart(boolean attachToBugreport);
-        public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
-            int dumpIntervalSeconds, boolean attachToBugreport);
-        public void traceStop();
-        public boolean traceDump(File outFile);
-        public boolean isTracingOn();
-    }
 
-    public static String currentTraceEngine() {
-        return mTraceEngine.getName();
+    public static boolean traceStart(ContentResolver contentResolver, TraceConfig config,
+            boolean winscope) {
+        // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
+        // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
+        // available in Perfetto is captured using WinscopeUtils instead.
+        if (!mTraceEngine.traceStart(config)) {
+            return false;
+        }
+        WinscopeUtils.traceStart(contentResolver, winscope);
+        return true;
     }
 
     public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
             int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
             boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
-        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, attachToBugreport,
-                longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
+                attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
             return false;
         }
         WinscopeUtils.traceStart(contentResolver, winscope);
@@ -176,11 +173,22 @@ public class TraceUtils {
         return process;
     }
 
-    // Returns the Process if the command terminated on time and null if not.
     public static Process execWithTimeout(String cmd, String tmpdir, long timeout)
+            throws IOException {
+        return execWithTimeout(cmd, tmpdir, timeout, null);
+    }
+
+    // Returns the Process if the command terminated on time and null if not.
+    public static Process execWithTimeout(String cmd, String tmpdir, long timeout, byte[] input)
             throws IOException {
         Process process = exec(cmd, tmpdir, true);
         try {
+            if (input != null) {
+                OutputStream os = process.getOutputStream();
+                os.write(input);
+                os.flush();
+                os.close();
+            }
             if (!process.waitFor(timeout, TimeUnit.MILLISECONDS)) {
                 Log.e(TAG, "Command '" + cmd + "' has timed out after " + timeout + " ms.");
                 process.destroyForcibly();
