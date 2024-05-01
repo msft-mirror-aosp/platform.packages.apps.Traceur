@@ -55,20 +55,11 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_TRACING = "trace-is-being-recorded";
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
-    private static final List<String> DEFAULT_TRACE_TAGS = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "sync", "thermal", "view", "webview", "wm", "workq");
-    private static final List<String> USER_BUILD_DISABLED_TRACE_TAGS = Arrays.asList(
-            "workq", "sync"
-    );
-
     private static final String TAG = "Traceur";
 
     private static final String BETTERBUG_PACKAGE_NAME =
             "com.google.android.apps.internal.betterbug";
 
-    private static Set<String> mDefaultTagList = null;
     private static ContentObserver mDeveloperOptionsObserver;
 
     @Override
@@ -351,7 +342,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         if (onlyAvailable) {
@@ -364,24 +355,13 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         tags.removeAll(available);
 
         Log.v(TAG, "getActiveUnavailableTags() = \"" + tags.toString() + "\"");
         return tags;
-    }
-
-    public static Set<String> getDefaultTagList() {
-        if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(DEFAULT_TRACE_TAGS);
-            if (Build.TYPE.equals("user")) {
-                mDefaultTagList.removeAll(USER_BUILD_DISABLED_TRACE_TAGS);
-            }
-        }
-
-        return mDefaultTagList;
     }
 
     public static boolean isTraceurAllowed(Context context) {
