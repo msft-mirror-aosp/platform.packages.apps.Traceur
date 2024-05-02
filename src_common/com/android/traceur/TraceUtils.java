@@ -62,7 +62,42 @@ public class TraceUtils {
     private static final Runtime RUNTIME = Runtime.getRuntime();
 
     public enum RecordingType {
-      UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
+        UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
+    }
+
+    public enum PresetTraceType {
+        UNSET, PERFORMANCE, BATTERY, THERMAL, UI
+    }
+
+    public static boolean presetTraceStart(ContentResolver contentResolver, PresetTraceType type) {
+        Set<String> tags;
+        PresetTraceConfigs.TraceOptions options;
+        Log.v(TAG, "Using preset of type " + type.toString());
+        switch (type) {
+            case PERFORMANCE:
+                tags = PresetTraceConfigs.getPerformanceTags();
+                options = PresetTraceConfigs.getPerformanceOptions();
+                break;
+            case BATTERY:
+                tags = PresetTraceConfigs.getBatteryTags();
+                options = PresetTraceConfigs.getBatteryOptions();
+                break;
+            case THERMAL:
+                tags = PresetTraceConfigs.getThermalTags();
+                options = PresetTraceConfigs.getThermalOptions();
+                break;
+            case UI:
+                tags = PresetTraceConfigs.getUiTags();
+                options = PresetTraceConfigs.getUiOptions();
+                break;
+            case UNSET:
+            default:
+                tags = PresetTraceConfigs.getDefaultTags();
+                options = PresetTraceConfigs.getDefaultOptions();
+        }
+        return traceStart(contentResolver, tags, options.bufferSizeKb, options.winscope,
+                options.apps, options.longTrace, options.attachToBugreport,
+                options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
     }
 
     public static boolean traceStart(ContentResolver contentResolver, TraceConfig config,
