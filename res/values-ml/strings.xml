@@ -7,6 +7,9 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"\"അടയാള ക്രമീകരണത്തിൽ\" സജ്ജീകരിച്ച കോൺഫിഗറേഷൻ ഉപയോഗിച്ച് സിസ്റ്റത്തിലെ അടയാളം ക്യാപ്‌ചർ ചെയ്യുന്നു"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU പ്രൊഫൈൽ റെക്കോർഡ് ചെയ്യുക"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"\"cpu\" വിഭാഗം പരിശോധിച്ച് അടയാളങ്ങളിലും കോൾസ്റ്റാക്ക് സാംപ്ലിംഗ് പ്രവർത്തനക്ഷമമാക്കാനാകും"</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"ഹീപ്പ് ഡംപ് റെക്കോർഡ് ചെയ്യുക"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ഹീപ്പ് ഡംപ് പ്രോസസുകളിൽ\" തിരഞ്ഞെടുത്ത പ്രോസസുകളുടെ ഒരു ഹീപ്പ് ഡംപ് ക്യാപ്ചർ ചെയ്യുന്നു"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ഹീപ്പ് ഡംപുകൾ ശേഖരിക്കാൻ \"ഹീപ്പ് ഡംപ് പ്രോസസുകളിൽ\" ഒരു പ്രോസസ് എങ്കിലും തിരഞ്ഞെടുക്കുക"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"പുതിയ ട്രെയ്‌സ് ആരംഭിക്കുക"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"വിൻസ്‌കോപ്പ് അടയാളങ്ങൾ ശേഖരിക്കുക"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"വിശദമായ UI ടെലിമെട്രി ഡാറ്റ ഉൾപ്പെടുന്നു (ജങ്ക് ഉണ്ടാക്കാം)"</string>
@@ -16,6 +19,17 @@
     <string name="default_categories_restored" msgid="6861683793680564181">"ഡിഫോൾട്ട് വിഭാഗങ്ങൾ പുനഃസ്ഥാപിച്ചു"</string>
     <string name="default_categories" msgid="2117679794687799407">"ഡിഫോൾട്ട്"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# എണ്ണം തിരഞ്ഞെടുത്തു}other{# എണ്ണം തിരഞ്ഞെടുത്തു}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"ഹീപ്പ് ഡംപ് പ്രോസസുകൾ"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"ഒരു പ്രോസസ് എങ്കിലും തിരഞ്ഞെടുത്തിരിക്കണം"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"\'ഹീപ്പ് ഡംപ് പ്രോസസുകൾ\' മായ്ക്കുക"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"പ്രോസസ് ലിസ്റ്റ് മായ്ച്ചു"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"തുടർച്ചയായ ഹീപ്പ് പ്രൊഫൈൽ"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"ഒരു നിശ്ചിത ഇടവേളയിൽ ഒരു തവണ ഹീപ്പ് ഡംപ് ക്യാപ്‌ചർ ചെയ്യുക"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"ഹീപ്പ് ഡംപ് ഇടവേള"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 സെക്കൻഡ്"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 സെക്കൻഡ്"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 സെക്കൻഡ്"</string>
+    <string name="one_minute" msgid="4182508213840684258">"ഒരു മിനിറ്റ്"</string>
     <string name="applications" msgid="521776761270770549">"ആപ്പുകൾ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"ഡീബഗ്ഗ് ചെയ്യാവുന്ന അപ്ലിക്കേഷനുകൾ ലഭ്യമല്ല"</string>
     <string name="buffer_size" msgid="3944311026715111454">"ഓരോ CPU-യുവിനുമുള്ള ബഫർ വലുപ്പം"</string>
@@ -24,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"ട്രെയ്‌സ് സംരക്ഷിച്ചു"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"സ്റ്റാക്ക് സാംപ്ലിംഗ് സംരക്ഷിക്കുന്നു"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"സ്റ്റാക്ക് സാംപിളുകൾ സംരക്ഷിച്ചു"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"ഹീപ്പ് ഡംപ് സംരക്ഷിക്കുന്നു"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"ഹീപ്പ് ഡംപ് സംരക്ഷിച്ചു"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"നിങ്ങളുടെ റെക്കോർഡിഗ് പങ്കിടാൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്യുന്നു"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്‌തു"</string>
@@ -34,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"ട്രെയ്‌സിംഗ് നിർത്താൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"സ്റ്റാക്ക് സാംപിളുകൾ റെക്കോർഡ് ചെയ്യുന്നു"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"സ്റ്റാക്ക് സാംപ്ലിംഗ് അവസാനിപ്പിക്കാൻ ടാപ്പ് ചെയ്യുക"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"ഹീപ്പ് ഡംപ് റെക്കോർഡ് ചെയ്യുകയാണ്"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"ഹീപ്പ് ഡംപ് നിർത്താൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"സംരക്ഷിച്ച ഫയലുകൾ മായ്ക്കുക"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"ഒരു മാസത്തിന് ശേഷം റെക്കോർഡിംഗുകൾ മായ്ക്കുന്നു"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"സംരക്ഷിച്ച ഫയലുകൾ മായ്ക്കണോ?"</string>
@@ -74,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ട്രേസ് ചെയ്യൽ ക്രമീകരണം"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"സംരക്ഷിച്ച ഫയലുകൾ"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"മറ്റുള്ളവ"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"ഹീപ്പ് ഡംപ് ക്രമീകരണം"</string>
 </resources>
