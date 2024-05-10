@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Процессор профилин жаздыруу"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Топтомдун үлгүсүн \"Процессор\" категориясын белгилөө менен да алууга болот"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Жаңы аракеттерди жаздырууну баштоо"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope аракеттерин жыйноо"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Колдонуучу интерфейси толук телеметрия маалыматын камтыйт (бул интерфейстин начарлашына алып келиши мүмкүн)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Мүчүлүштүктөрү оңдоло турган колдонмолордун аракеттерин жаздыруу"</string>
     <string name="categories" msgid="2280163673538611008">"Категориялар"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Демейки категорияларды калыбына келтирүү"</string>
@@ -17,7 +19,7 @@
     <string name="applications" msgid="521776761270770549">"Колдонмолор"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Бир да мүчүлүштүктөрү оңдоло турган колдонмо жеткиликтүү эмес"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Процессордун буферинин өлчөмү"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ыкчам жөндөөлөр тактасын көрсөтүү"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ыкчам параметрлер тактасын көрсөтүү"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Телефондо аткарылган аракеттер сакталууда"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Телефондо аткарылган аракеттер сакталды"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Топтомдун үлгүлөрү сакталууда"</string>
@@ -38,7 +40,7 @@
     <string name="all_recordings_will_be_deleted" msgid="7731693738485947891">"/data/local/traces бөлүмүндөгү бардык жаздырылган нерселер өчүрүлөт"</string>
     <string name="clear" msgid="5484761795406948056">"Тазалоо"</string>
     <string name="system_traces_storage_title" msgid="8294090839883366871">"Системанын аракеттерин жаздыруу"</string>
-    <string name="keywords" msgid="736547007949049535">"тутумга көз салуу, аракеттерди жаздыруу, иштин майнаптуулугу"</string>
+    <string name="keywords" msgid="736547007949049535">"системага көз салуу, аракеттерди жаздыруу, иштин майнаптуулугу"</string>
     <string name="share_file" msgid="1982029143280382271">"Файлды бөлүшөсүзбү?"</string>
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Системага көз салуу файлдары тутумдагы жана колдонмодогу купуя маалыматтарды (мисалы, колдонмонун пайдаланылышы) камтышы мүмкүн. Системага көз салуудан алынган маалыматты ишенимдүү байланыштар жана колдонмолор менен гана бөлүшүңүз."</string>
     <string name="share" msgid="8443979083706282338">"Бөлүшүү"</string>

@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Gravar perfil da CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Tamén podes activar a toma de mostras de pilas de chamadas nos rastros seleccionando a categoría CPU"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Iniciar novo rastro"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Recompilar rastros de Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inclúe datos telemétricos detallados da IU (pode diminuír a velocidade de resposta)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Gardar rastros de aplicacións que se poidan depurar"</string>
     <string name="categories" msgid="2280163673538611008">"Categorías"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Restaurar categorías predeterminadas"</string>
@@ -17,7 +19,7 @@
     <string name="applications" msgid="521776761270770549">"Aplicacións"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Non hai ningunha aplicación que se poida depurar dispoñible"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Tamaño do búfer por CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar atallo de configuración rápida"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostrar atallo de Configuración rápida"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Gardando rastro"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Gardouse o rastro"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Gardando mostras de pillas"</string>

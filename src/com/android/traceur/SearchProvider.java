@@ -65,12 +65,7 @@ public class SearchProvider extends SearchIndexablesProvider {
 
     @Override
     public Cursor queryNonIndexableKeys(String[] projection) {
-        boolean developerOptionsIsEnabled =
-            Settings.Global.getInt(getContext().getContentResolver(),
-                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-
-        // If developer options is not enabled, System Tracing shouldn't be searchable.
-        if (!developerOptionsIsEnabled) {
+        if (!Receiver.isTraceurAllowed(getContext())) {
             MatrixCursor cursor = new MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS);
             Object[] row = new Object[] {getContext().getString(R.string.system_tracing)};
             cursor.addRow(row);

@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.util.EventLog;
 import android.util.Log;
 
 public class StopTraceService extends TraceService {
@@ -39,13 +38,7 @@ public class StopTraceService extends TraceService {
     @Override
     public void onHandleIntent(Intent intent) {
         Context context = getApplicationContext();
-        // Checks that developer options are enabled before continuing.
-        boolean developerOptionsEnabled =
-                Settings.Global.getInt(context.getContentResolver(),
-                        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        if (!developerOptionsEnabled) {
-            // Refer to b/204992293.
-            EventLog.writeEvent(0x534e4554, "204992293", -1, "");
+        if (!Receiver.isTraceurAllowed(context)) {
             return;
         }
         // Ensures that only intents that pertain to stopping a trace and need to be accessed from
@@ -69,7 +62,7 @@ public class StopTraceService extends TraceService {
                 .edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
         context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-        QsService.updateTile();
+        TraceService.updateAllQuickSettingsTiles();
         super.onHandleIntent(intent);
     }
 }

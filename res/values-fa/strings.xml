@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"ضبط تحلیل واحد پردازش مرکزی"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"با علامت زدن دسته «واحد پردازش مرکزی» هم می‌توان نمونه‌گیری از فراخوانی پشته را فعال کرد"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"شروع ردیابی جدید"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"‏جمع‌آوری ردپاهای Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"شامل داده‌های دورسنجی دقیق واسط کاربر می‌شود (ممکن است باعث قطع اتصال شود)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"برنامه‌هایی با قابلیت اشکال‌زدایی ردیابی"</string>
     <string name="categories" msgid="2280163673538611008">"دسته‌ها"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"بازیابی دسته‌های پیش‌فرض"</string>
@@ -17,7 +19,7 @@
     <string name="applications" msgid="521776761270770549">"برنامه‌ها"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"هیچ برنامه‌ای با قابلیت اشکال‌زدایی در دسترس نیست"</string>
     <string name="buffer_size" msgid="3944311026715111454">"‏اندازه بافر Per-CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"نمایش کاشی تنظیمات سریع"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"نمایش کاشی «تنظیمات فوری»"</string>
     <string name="saving_trace" msgid="1468692734770800541">"درحال ذخیره کردن رد"</string>
     <string name="trace_saved" msgid="5869970594780992309">"رد ذخیره شد"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"درحال ذخیره نمونه‌های پشته"</string>

@@ -30,11 +30,7 @@ public class MainTvActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        boolean developerOptionsIsEnabled =
-            Settings.Global.getInt(getApplicationContext().getContentResolver(),
-                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-
-        if (!developerOptionsIsEnabled) {
+        if (!Receiver.isTraceurAllowed(getApplicationContext())) {
             finish();
         }
     }

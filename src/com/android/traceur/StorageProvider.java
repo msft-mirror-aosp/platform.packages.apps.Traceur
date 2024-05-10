@@ -72,14 +72,8 @@ public class StorageProvider extends FileSystemProvider{
     @Override
     public Cursor queryRoots(String[] projection) throws FileNotFoundException {
         final MatrixCursor result = new MatrixCursor(resolveRootProjection(projection));
-
-        boolean developerOptionsIsEnabled =
-            Settings.Global.getInt(getContext().getContentResolver(),
-                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-
-        // If developer options is not enabled, return an empty root cursor.
-        // This removes the provider from the list entirely.
-        if (!developerOptionsIsEnabled) {
+        // Return an empty root cursor, which will remove the provider from the list entirely.
+        if (!Receiver.isTraceurAllowed(getContext())) {
             return null;
         }
 

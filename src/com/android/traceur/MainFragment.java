@@ -30,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.icu.text.MessageFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,8 +47,11 @@ import androidx.preference.SwitchPreference;
 import com.android.settingslib.HelpUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -67,11 +71,13 @@ public class MainFragment extends PreferenceFragment {
 
     private SwitchPreference mTracingOn;
     private SwitchPreference mStackSamplingOn;
+    private SwitchPreference mHeapDumpOn;
 
     private AlertDialog mAlertDialog;
     private SharedPreferences mPrefs;
 
     private MultiSelectListPreference mTags;
+    private MultiSelectListPreference mHeapDumpProcesses;
 
     private boolean mRefreshing;
 
@@ -94,17 +100,20 @@ public class MainFragment extends PreferenceFragment {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(
                 getActivity().getApplicationContext());
 
-        mTracingOn = (SwitchPreference) findPreference(getActivity().getString(R.string.pref_key_tracing_on));
+        mTracingOn = (SwitchPreference) findPreference(
+                getActivity().getString(R.string.pref_key_tracing_on));
         mStackSamplingOn = (SwitchPreference) findPreference(
                 getActivity().getString(R.string.pref_key_stack_sampling_on));
+        mHeapDumpOn = (SwitchPreference) findPreference(
+                getActivity().getString(R.string.pref_key_heap_dump_on));
 
         mTracingOn.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Receiver.updateTracing(getContext());
-                // Immediately disable the stack sampling toggle if the trace toggle is enabled.
-                mStackSamplingOn.setEnabled(
-                        ((SwitchPreference) preference).isChecked() ? false : true);
+                // Disable the stack sampling and heap dump toggles if the trace toggle is enabled.
+                mStackSamplingOn.setEnabled(!((SwitchPreference) preference).isChecked());
+                mHeapDumpOn.setEnabled(!((SwitchPreference) preference).isChecked());
                 return true;
             }
         });
@@ -113,13 +122,26 @@ public class MainFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Receiver.updateTracing(getContext());
-                // Immediately disable the trace toggle if the stack sampling toggle is enabled.
-                mTracingOn.setEnabled(
-                        ((SwitchPreference) preference).isChecked() ? false : true);
+                // Disable the trace and heap dump toggles if the stack sampling toggle is enabled.
+                mTracingOn.setEnabled(!((SwitchPreference) preference).isChecked());
+                mHeapDumpOn.setEnabled(!((SwitchPreference) preference).isChecked());
                 return true;
             }
         });
 
+        mHeapDumpOn.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Receiver.updateTracing(getContext());
+                // Disable the trace and stack sampling toggles if the heap dump toggle is enabled.
+                mTracingOn.setEnabled(!((SwitchPreference) preference).isChecked());
+                mStackSamplingOn.setEnabled(!((SwitchPreference) preference).isChecked());
+                return true;
+            }
+        });
+
+        mHeapDumpProcesses = (MultiSelectListPreference) findPreference(
+                getContext().getString(R.string.pref_key_heap_dump_processes));
 
         mTags = (MultiSelectListPreference) findPreference(getContext().getString(R.string.pref_key_tags));
         mTags.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -147,7 +169,8 @@ public class MainFragment extends PreferenceFragment {
                 new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
-                        refreshUi(/* restoreDefaultTags =*/ true);
+                        refreshUi(/* restoreDefaultTags =*/ true,
+                                /* clearHeapDumpProcesses =*/ false);
                         Toast.makeText(getContext(),
                             getContext().getString(R.string.default_categories_restored),
                                 Toast.LENGTH_SHORT).show();
@@ -155,12 +178,35 @@ public class MainFragment extends PreferenceFragment {
                     }
                 });
 
-        findPreference(getString(R.string.pref_key_quick_setting))
+        findPreference("clear_heap_dump_processes").setOnPreferenceClickListener(
+                new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        refreshUi(/* restoreDefaultTags =*/ false,
+                                /* clearHeapDumpProcesses =*/ true);
+                        Toast.makeText(getContext(),
+                            getContext().getString(R.string.clear_heap_dump_processes_toast),
+                                Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+
+        findPreference(getString(R.string.pref_key_tracing_quick_setting))
             .setOnPreferenceClickListener(
                 new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
-                        Receiver.updateQuickSettings(getContext());
+                        Receiver.updateTracingQuickSettings(getContext());
+                        return true;
+                    }
+                });
+
+        findPreference(getString(R.string.pref_key_stack_sampling_quick_setting))
+            .setOnPreferenceClickListener(
+                new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        Receiver.updateStackSamplingQuickSettings(getContext());
                         return true;
                     }
                 });
@@ -245,7 +291,8 @@ public class MainFragment extends PreferenceFragment {
         super.onStart();
         getPreferenceScreen().getSharedPreferences()
             .registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
-        getActivity().registerReceiver(mRefreshReceiver, new IntentFilter(ACTION_REFRESH_TAGS));
+        getActivity().registerReceiver(mRefreshReceiver, new IntentFilter(ACTION_REFRESH_TAGS),
+                Context.RECEIVER_NOT_EXPORTED);
         Receiver.updateTracing(getContext());
     }
 
@@ -281,29 +328,29 @@ public class MainFragment extends PreferenceFragment {
     }
 
     private void refreshUi() {
-        refreshUi(/* restoreDefaultTags =*/ false);
+        refreshUi(/* restoreDefaultTags =*/ false, /* clearHeapDumpProcesses =*/ false);
     }
 
     /*
      * Refresh the preferences UI to make sure it reflects the current state of the preferences and
      * system.
      */
-    private void refreshUi(boolean restoreDefaultTags) {
+    private void refreshUi(boolean restoreDefaultTags, boolean clearHeapDumpProcesses) {
         Context context = getContext();
 
-        // Make sure the Record trace and Record CPU profile toggles match their preference values.
+        // Make sure the Record trace, Record CPU profile, and Record heap dump toggles match their
+        // preference values.
         mTracingOn.setChecked(mPrefs.getBoolean(mTracingOn.getKey(), false));
         mStackSamplingOn.setChecked(mPrefs.getBoolean(mStackSamplingOn.getKey(), false));
-
-        // Enable or disable each toggle based on the state of the other. This path exists in case
-        // the tracing state was updated with the QS tile or the ongoing-trace notification, which
-        // would not call the toggles' OnClickListeners.
-        mTracingOn.setEnabled(mStackSamplingOn.isChecked() ? false : true);
-        mStackSamplingOn.setEnabled(mTracingOn.isChecked() ? false : true);
+        mHeapDumpOn.setChecked(mPrefs.getBoolean(mHeapDumpOn.getKey(), false));
 
         SwitchPreference stopOnReport =
                 (SwitchPreference) findPreference(getString(R.string.pref_key_stop_on_bugreport));
         stopOnReport.setChecked(mPrefs.getBoolean(stopOnReport.getKey(), false));
+
+        SwitchPreference continuousHeapDump = (SwitchPreference) findPreference(
+                getString(R.string.pref_key_continuous_heap_dump));
+        continuousHeapDump.setChecked(mPrefs.getBoolean(continuousHeapDump.getKey(), false));
 
         // Update category list to match the categories available on the system.
         Set<Entry<String, String>> availableTags = TraceUtils.listCategories().entrySet();
@@ -314,16 +361,45 @@ public class MainFragment extends PreferenceFragment {
             values.add(entry.getKey());
         }
 
+        // We keep selected processes in the list in case a user is interested in a process that AM
+        // is not yet aware of (e.g. an app that hasn't started up).
+        Set<String> runningProcesses = TraceUtils.getRunningAppProcesses(context);
+        Set<String> selectedProcesses = mHeapDumpProcesses.getValues();
+        runningProcesses.addAll(selectedProcesses);
+
+        List<String> sortedProcesses = new ArrayList<>(runningProcesses);
+        Collections.sort(sortedProcesses);
+
         mRefreshing = true;
         try {
             mTags.setEntries(entries.toArray(new String[0]));
             mTags.setEntryValues(values.toArray(new String[0]));
             if (restoreDefaultTags || !mPrefs.contains(context.getString(R.string.pref_key_tags))) {
-                mTags.setValues(Receiver.getDefaultTagList());
+                mTags.setValues(PresetTraceConfigs.getDefaultTags());
+            }
+            mHeapDumpProcesses.setEntries(sortedProcesses.toArray(new String[0]));
+            mHeapDumpProcesses.setEntryValues(sortedProcesses.toArray(new String[0]));
+            if (clearHeapDumpProcesses ||
+                    !mPrefs.contains(context.getString(R.string.pref_key_heap_dump_processes))) {
+                mHeapDumpProcesses.setValues(new HashSet<String>());
             }
         } finally {
             mRefreshing = false;
         }
+
+        // Enable or disable each toggle based on the state of the others. This path exists in case
+        // the tracing state was updated with the QS tile or the ongoing-trace notification, which
+        // would not call the toggles' OnClickListeners.
+        mTracingOn.setEnabled(!(mStackSamplingOn.isChecked() || mHeapDumpOn.isChecked()));
+        mStackSamplingOn.setEnabled(!(mTracingOn.isChecked() || mHeapDumpOn.isChecked()));
+
+        // Disallow heap dumps if no process is selected, or if tracing/stack sampling is active.
+        boolean heapDumpProcessSelected = mHeapDumpProcesses.getValues().size() > 0;
+        mHeapDumpOn.setEnabled(heapDumpProcessSelected &&
+                !(mTracingOn.isChecked() || mStackSamplingOn.isChecked()));
+        mHeapDumpOn.setSummary(heapDumpProcessSelected
+                ? context.getString(R.string.record_heap_dump_summary_enabled)
+                : context.getString(R.string.record_heap_dump_summary_disabled));
 
         // Update subtitles on this screen.
         Set<String> categories = mTags.getValues();
@@ -332,7 +408,7 @@ public class MainFragment extends PreferenceFragment {
                 Locale.getDefault());
         Map<String, Object> arguments = new HashMap<>();
         arguments.put("count", categories.size());
-        mTags.setSummary(Receiver.getDefaultTagList().equals(categories)
+        mTags.setSummary(PresetTraceConfigs.getDefaultTags().equals(categories)
                          ? context.getString(R.string.default_categories)
                          : msgFormat.format(arguments));
 
@@ -347,6 +423,10 @@ public class MainFragment extends PreferenceFragment {
         ListPreference maxLongTraceDuration = (ListPreference)findPreference(
                 context.getString(R.string.pref_key_max_long_trace_duration));
         maxLongTraceDuration.setSummary(maxLongTraceDuration.getEntry());
+
+        ListPreference continuousHeapDumpInterval = (ListPreference)findPreference(
+                context.getString(R.string.pref_key_continuous_heap_dump_interval));
+        continuousHeapDumpInterval.setSummary(continuousHeapDumpInterval.getEntry());
 
         // Check if BetterBug is installed to see if Traceur should display either the toggle for
         // 'attach_to_bugreport' or 'stop_on_bugreport'.

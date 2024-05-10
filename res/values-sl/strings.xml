@@ -8,6 +8,8 @@
     <string name="record_stack_samples" msgid="3498368637185702335">"Zapisuj profil CPE"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"V sledeh lahko potrdite tudi kategorijo »cpu«, da omogočite vzorčenje sklada priklicev."</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Začni novo sledenje"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Zbiranje sledov Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Vključuje podrobne telemetrične podatke o uporabniškem vmesniku (lahko povzroči zatikanje)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Sledenje aplikacijam, v katerih je mogoče odpravljati napake"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorije"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Obnovi privzete kategorije"</string>
@@ -17,7 +19,7 @@
     <string name="applications" msgid="521776761270770549">"Aplikacije"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Na voljo ni nobenih aplikacij, v katerih je mogoče odpravljati napake"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Velikost medpomnilnika za posamezno CPE"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Prikaz ploščice s hitrimi nastavitvami"</string>
+    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Prikaz ploščice v hitrih nastavitvah"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Shranjevanje sledi"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Sled je shranjena"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Shranjevanje vzorcev sklada"</string>

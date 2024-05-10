@@ -29,13 +29,14 @@ import java.util.concurrent.TimeUnit;
 
 import perfetto.protos.DataSourceDescriptorOuterClass.DataSourceDescriptor;
 import perfetto.protos.FtraceDescriptorOuterClass.FtraceDescriptor.AtraceCategory;
+import perfetto.protos.TraceConfigOuterClass.TraceConfig;
 import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState;
 import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSource;
 
 /**
  * Utility functions for calling Perfetto
  */
-public class PerfettoUtils implements TraceUtils.TraceEngine {
+public class PerfettoUtils {
 
     static final String TAG = "Traceur";
     public static final String NAME = "PERFETTO";
@@ -50,7 +51,14 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     private static final int STARTUP_TIMEOUT_MS = 10000;
     private static final int STOP_TIMEOUT_MS = 30000;
     private static final long MEGABYTES_TO_BYTES = 1024L * 1024L;
+    private static final long SECONDS_TO_MILLISECONDS = 1000L;
     private static final long MINUTES_TO_MILLISECONDS = 60L * 1000L;
+
+    // This is 2x larger than the default buffer size to account for multiple processes being
+    // specified.
+    private static final int HEAP_DUMP_PER_CPU_BUFFER_SIZE_KB = 32 * 1024;
+    private static final int HEAP_DUMP_MAX_LONG_TRACE_SIZE_MB = 10 * 1024;
+    private static final int HEAP_DUMP_MAX_LONG_TRACE_DURATION_MINUTES = 10;
 
     // The total amount of memory allocated to the two target buffers will be divided according to a
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
@@ -78,8 +86,21 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         return OUTPUT_EXTENSION;
     }
 
-    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean apps,
-            boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
+    // Traceur will not verify that the input TraceConfig will start properly before attempting to
+    // record a trace.
+    public boolean traceStart(TraceConfig config) {
+        if (isTracingOn()) {
+            Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
+            return false;
+        } else {
+            recoverExistingRecording();
+        }
+
+        return startPerfettoWithProtoConfig(config);
+    }
+
+    public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
+            boolean apps, boolean longTrace, boolean attachToBugreport, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes) {
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
@@ -109,10 +130,10 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         appendTraceBuffer(config, targetBuffer1Kb);
 
         appendFtraceConfig(config, tags, apps);
-        appendProcStatsConfig(config, tags, /* target_buffer = */ 1);
-        appendAdditionalDataSources(config, tags, longTrace, /* target_buffer = */ 1);
+        appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
+        appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
-        return startPerfettoWithConfig(config.toString());
+        return startPerfettoWithTextConfig(config.toString());
     }
 
     public boolean stackSampleStart(boolean attachToBugreport) {
@@ -131,10 +152,41 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         int targetBufferKb = Runtime.getRuntime().availableProcessors() * (16 * 1024);
         appendTraceBuffer(config, targetBufferKb);
 
-        appendLinuxPerfConfig(config, /* target_buffer = */ 0);
-        appendProcStatsConfig(config, /* tags = */ null, /* target_buffer = */ 0);
+        appendLinuxPerfConfig(config, /* targetBuffer = */ 0);
+        appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
 
-        return startPerfettoWithConfig(config.toString());
+        return startPerfettoWithTextConfig(config.toString());
+    }
+
+    public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
+            int dumpIntervalSeconds, boolean attachToBugreport) {
+        if (isTracingOn()) {
+            Log.e(TAG, "Attempting to start heap dump but perfetto is already active");
+            return false;
+        } else {
+            recoverExistingRecording();
+        }
+
+        if (processes.isEmpty()) {
+            Log.e(TAG, "Attempting to start heap dump but list of processes is empty.");
+            return false;
+        }
+
+        StringBuilder config = new StringBuilder();
+
+        // A long trace is used to avoid data loss.
+        appendBaseConfigOptions(config, attachToBugreport, /* longTrace = */ true,
+                HEAP_DUMP_MAX_LONG_TRACE_SIZE_MB, HEAP_DUMP_MAX_LONG_TRACE_DURATION_MINUTES);
+
+        int targetBufferKb =
+                Runtime.getRuntime().availableProcessors() * HEAP_DUMP_PER_CPU_BUFFER_SIZE_KB;
+        appendTraceBuffer(config, targetBufferKb);
+
+        appendAndroidJavaHprofConfig(config, processes, continuousDump, dumpIntervalSeconds,
+                /* targetBuffer = */ 0);
+        appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
+
+        return startPerfettoWithTextConfig(config.toString());
     }
 
     public void traceStop() {
@@ -253,7 +305,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     }
 
     // Starts Perfetto with the provided config string.
-    private boolean startPerfettoWithConfig(String config) {
+    private boolean startPerfettoWithTextConfig(String config) {
         // If the here-doc ends early, within the config string, exit immediately.
         // This should never happen.
         if (config.contains(MARKER)) {
@@ -265,9 +317,32 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 + " -c - --txt"
                 + " <<" + MARKER +"\n" + config + "\n" + MARKER;
 
-        Log.v(TAG, "Starting perfetto trace.");
+        Log.v(TAG, "Starting perfetto trace with text config.");
         try {
             Process process = TraceUtils.execWithTimeout(cmd, TEMP_DIR, STARTUP_TIMEOUT_MS);
+            if (process == null) {
+                return false;
+            } else if (process.exitValue() != 0) {
+                Log.e(TAG, "perfetto trace start failed with: " + process.exitValue());
+                return false;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        Log.v(TAG, "perfetto traceStart succeeded!");
+        return true;
+    }
+
+    // Starts Perfetto with the provided TraceConfig proto.
+    private boolean startPerfettoWithProtoConfig(TraceConfig config) {
+        String cmd = "perfetto --detach=" + PERFETTO_TAG
+                + " -o " + TEMP_TRACE_LOCATION
+                + " -c - ";
+        Log.v(TAG, "Starting perfetto trace with proto config.");
+        try {
+            Process process = TraceUtils.execWithTimeout(cmd, TEMP_DIR,
+                    STARTUP_TIMEOUT_MS, config.toByteArray());
             if (process == null) {
                 return false;
             } else if (process.exitValue() != 0) {
@@ -375,7 +450,6 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         // These parameters affect only the kernel trace buffer size and how
         // frequently it gets moved into the userspace buffer defined above.
         config.append("      buffer_size_kb: 8192\n")
-            .append("      drain_period_ms: 1000\n")
             .append("    }\n")
             .append("  }\n")
             .append("}\n")
@@ -427,9 +501,33 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
             .append("}\n");
     }
 
+    // Appends the heap dump data source.
+    private void appendAndroidJavaHprofConfig(StringBuilder config, Collection<String> processes,
+            boolean continuousDump, int dumpIntervalSeconds, int targetBuffer) {
+        config.append("data_sources: {\n")
+            .append("  config: {\n")
+            .append("    name: \"android.java_hprof\"\n")
+            .append("    target_buffer: " + targetBuffer + "\n")
+            .append("    java_hprof_config: {\n");
+        for (String process : processes) {
+            config.append("      process_cmdline: \"" + process + "\"\n");
+        }
+        config.append("      dump_smaps: true\n");
+        if (continuousDump) {
+            config.append("      continuous_dump_config: {\n")
+                .append("        dump_phase_ms: 0\n")
+                .append("        dump_interval_ms: "
+                        + (dumpIntervalSeconds * SECONDS_TO_MILLISECONDS) + "\n")
+                .append("      }\n");
+        }
+        config.append("    }\n")
+            .append("  }\n")
+            .append("}\n");
+    }
+
     // Appends additional data sources to the specified extra buffer based on enabled trace tags.
     private void appendAdditionalDataSources(StringBuilder config, Collection<String> tags,
-            boolean longTrace, int targetBuffer) {
+            boolean winscope, boolean longTrace, int targetBuffer) {
         if (tags.contains(POWER_TAG)) {
             config.append("data_sources: {\n")
                 .append("  config { \n")
@@ -457,6 +555,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    sys_stats_config {\n")
                 .append("      meminfo_period_ms: 1000\n")
+                .append("      psi_period_ms: 1000\n")
                 .append("      vmstat_period_ms: 1000\n")
                 .append("    }\n")
                 .append("  }\n")
@@ -473,7 +572,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         }
 
         if (tags.contains(CPU_TAG)) {
-            appendLinuxPerfConfig(config, /* target_buffer = */ 1);
+            appendLinuxPerfConfig(config, /* targetBuffer = */ 1);
         }
 
         if (tags.contains(GFX_TAG)) {
@@ -522,10 +621,18 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 "}";
             config.append("data_sources: {\n")
                 .append("  config {\n")
-                .append("    name: \"org.chromium.trace_event\"\n")
+                .append("    name: \"track_event\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    chrome_config {\n")
                 .append("      trace_config: \"" + chromeTraceConfig + "\"\n")
+                .append("    }\n")
+                .append("    track_event_config {\n")
+                .append("      enabled_categories: \"*\"\n")
+                .append("      enabled_categories: \"__metadata\"\n")
+                .append("      timestamp_unit_multiplier: 1000\n")
+                .append("      filter_debug_annotations: false\n")
+                .append("      enable_thread_time_sampling: true\n")
+                .append("      filter_dynamic_event_names: false\n")
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n")
@@ -535,6 +642,57 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    chrome_config {\n")
                 .append("      trace_config: \"" + chromeTraceConfig + "\"\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+        }
+
+        if (winscope) {
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.inputmethod\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.surfaceflinger.layers\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    surfaceflinger_layers_config: {\n")
+                .append("      mode: MODE_ACTIVE\n")
+                .append("      trace_flags: TRACE_FLAG_INPUT\n")
+                .append("      trace_flags: TRACE_FLAG_COMPOSITION\n")
+                .append("      trace_flags: TRACE_FLAG_HWC\n")
+                .append("      trace_flags: TRACE_FLAG_BUFFERS\n")
+                .append("      trace_flags: TRACE_FLAG_VIRTUAL_DISPLAYS\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.surfaceflinger.transactions\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    surfaceflinger_transactions_config: {\n")
+                .append("      mode: MODE_ACTIVE\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"com.android.wm.shell.transition\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.protolog\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("    protolog_config: {\n")
+                .append("      tracing_mode: ENABLE_ALL\n")
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");
