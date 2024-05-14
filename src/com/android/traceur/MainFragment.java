@@ -293,6 +293,7 @@ public class MainFragment extends PreferenceFragment {
             .registerOnSharedPreferenceChangeListener(mSharedPreferenceChangeListener);
         getActivity().registerReceiver(mRefreshReceiver, new IntentFilter(ACTION_REFRESH_TAGS),
                 Context.RECEIVER_NOT_EXPORTED);
+        TraceUtils.cleanupOlderFiles();
         Receiver.updateTracing(getContext());
     }
 
