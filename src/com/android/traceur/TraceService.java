@@ -27,7 +27,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.text.format.DateUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,9 +64,6 @@ public class TraceService extends IntentService {
 
     private static int TRACE_NOTIFICATION = 1;
     private static int SAVING_TRACE_NOTIFICATION = 2;
-
-    private static final int MIN_KEEP_COUNT = 3;
-    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
 
     public static void startTracing(final Context context,
             Collection<String> tags, int bufferSizeKb, boolean winscope, boolean apps,
@@ -385,7 +381,7 @@ public class TraceService extends IntentService {
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
 
-        TraceUtils.cleanupOlderFiles(MIN_KEEP_COUNT, MIN_KEEP_AGE);
+        TraceUtils.cleanupOlderFiles();
     }
 
     private void postFileSharingNotification(Context context, List<File> files) {
