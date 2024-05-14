@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Build;
 import android.os.FileUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -60,6 +61,12 @@ public class TraceUtils {
     private static PerfettoUtils mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
+
+    // The number of files to keep when clearing old traces.
+    private static final int MIN_KEEP_COUNT = 0;
+
+    // The age that old traces should be cleared at.
+    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
 
     public enum RecordingType {
         UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
@@ -269,11 +276,12 @@ public class TraceUtils {
         return new File(TraceUtils.TRACE_DIRECTORY, filename);
     }
 
-    protected static void cleanupOlderFiles(final int minCount, final long minAge) {
+    protected static void cleanupOlderFiles() {
         FutureTask<Void> task = new FutureTask<Void>(
                 () -> {
                     try {
-                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
+                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY),
+                                MIN_KEEP_COUNT, MIN_KEEP_AGE);
                     } catch (RuntimeException e) {
                         Log.e(TAG, "Failed to delete older traces", e);
                     }

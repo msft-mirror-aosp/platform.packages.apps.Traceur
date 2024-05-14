@@ -117,8 +117,9 @@ public class StorageProvider extends FileSystemProvider{
     public Cursor queryChildDocuments(
             String parentDocumentId, String[] projection, String sortOrder)
             throws FileNotFoundException {
-        Cursor result = super.queryChildDocuments(parentDocumentId, projection, sortOrder);
+        TraceUtils.cleanupOlderFiles();
 
+        Cursor result = super.queryChildDocuments(parentDocumentId, projection, sortOrder);
         Bundle bundle = new Bundle();
         bundle.putString(DocumentsContract.EXTRA_INFO,
             getContext().getResources().getString(R.string.system_trace_sensitive_data));
