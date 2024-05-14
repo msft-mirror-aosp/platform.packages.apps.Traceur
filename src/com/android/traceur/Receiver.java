@@ -73,6 +73,7 @@ public class Receiver extends BroadcastReceiver {
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
+            TraceUtils.cleanupOlderFiles();
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
             updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
