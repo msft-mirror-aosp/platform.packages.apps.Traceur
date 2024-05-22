@@ -27,7 +27,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.text.format.DateUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,9 +64,6 @@ public class TraceService extends IntentService {
 
     private static int TRACE_NOTIFICATION = 1;
     private static int SAVING_TRACE_NOTIFICATION = 2;
-
-    private static final int MIN_KEEP_COUNT = 3;
-    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
 
     public static void startTracing(final Context context,
             Collection<String> tags, int bufferSizeKb, boolean winscope, boolean apps,
@@ -113,7 +109,7 @@ public class TraceService extends IntentService {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().putBoolean(context.getString(
             R.string.pref_key_tracing_on), false).commit();
-        TraceUtils.traceStop(context.getContentResolver());
+        TraceUtils.traceStop(context);
     }
 
     public TraceService() {
@@ -202,14 +198,14 @@ public class TraceService extends IntentService {
 
         startForeground(TRACE_NOTIFICATION, notification.build());
 
-        if (TraceUtils.traceStart(getContentResolver(), tags, bufferSizeKb, winscopeTracing,
+        if (TraceUtils.traceStart(this, tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
                 maxLongTraceDurationMinutes)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
             // Starting the trace was unsuccessful, so ensure that tracing
             // is stopped and the preference is reset.
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
             updateAllQuickSettingsTiles();
@@ -250,7 +246,7 @@ public class TraceService extends IntentService {
         } else {
             // Starting stack sampling was unsuccessful, so ensure that it is stopped and the
             // preference is reset.
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
             updateAllQuickSettingsTiles();
@@ -298,7 +294,7 @@ public class TraceService extends IntentService {
                 attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
         } else {
-            TraceUtils.traceStop(getContentResolver());
+            TraceUtils.traceStop(this);
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_heap_dump_on), false).commit();
             updateAllQuickSettingsTiles();
@@ -377,7 +373,7 @@ public class TraceService extends IntentService {
 
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
-            Optional<List<File>> files = TraceUtils.traceDump(getContentResolver(), outputFilename);
+            Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
             if (files.isPresent()) {
                 postFileSharingNotification(getApplicationContext(), files.get());
             }
@@ -385,7 +381,7 @@ public class TraceService extends IntentService {
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
 
-        TraceUtils.cleanupOlderFiles(MIN_KEEP_COUNT, MIN_KEEP_AGE);
+        TraceUtils.cleanupOlderFiles();
     }
 
     private void postFileSharingNotification(Context context, List<File> files) {

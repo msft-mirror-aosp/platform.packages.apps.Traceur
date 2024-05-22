@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Build;
 import android.os.FileUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -61,6 +62,12 @@ public class TraceUtils {
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
 
+    // The number of files to keep when clearing old traces.
+    private static final int MIN_KEEP_COUNT = 0;
+
+    // The age that old traces should be cleared at.
+    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
+
     public enum RecordingType {
         UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
@@ -69,7 +76,7 @@ public class TraceUtils {
         UNSET, PERFORMANCE, BATTERY, THERMAL, UI
     }
 
-    public static boolean presetTraceStart(ContentResolver contentResolver, PresetTraceType type) {
+    public static boolean presetTraceStart(Context context, PresetTraceType type) {
         Set<String> tags;
         PresetTraceConfigs.TraceOptions options;
         Log.v(TAG, "Using preset of type " + type.toString());
@@ -95,31 +102,30 @@ public class TraceUtils {
                 tags = PresetTraceConfigs.getDefaultTags();
                 options = PresetTraceConfigs.getDefaultOptions();
         }
-        return traceStart(contentResolver, tags, options.bufferSizeKb, options.winscope,
+        return traceStart(context, tags, options.bufferSizeKb, options.winscope,
                 options.apps, options.longTrace, options.attachToBugreport,
                 options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
     }
 
-    public static boolean traceStart(ContentResolver contentResolver, TraceConfig config,
-            boolean winscope) {
+    public static boolean traceStart(Context context, TraceConfig config, boolean winscope) {
         // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
         // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
         // available in Perfetto is captured using WinscopeUtils instead.
         if (!mTraceEngine.traceStart(config)) {
             return false;
         }
-        WinscopeUtils.traceStart(contentResolver, winscope);
+        WinscopeUtils.traceStart(context, winscope);
         return true;
     }
 
-    public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
+    public static boolean traceStart(Context context, Collection<String> tags,
             int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
             boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
         if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
                 attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
             return false;
         }
-        WinscopeUtils.traceStart(contentResolver, winscope);
+        WinscopeUtils.traceStart(context, winscope);
         return true;
     }
 
@@ -133,13 +139,12 @@ public class TraceUtils {
                 attachToBugreport);
     }
 
-    public static void traceStop(ContentResolver contentResolver) {
+    public static void traceStop(Context context) {
         mTraceEngine.traceStop();
-        WinscopeUtils.traceStop(contentResolver);
+        WinscopeUtils.traceStop(context);
     }
 
-    public static Optional<List<File>> traceDump(ContentResolver contentResolver,
-            String outFilename) {
+    public static Optional<List<File>> traceDump(Context context, String outFilename) {
         File outFile = TraceUtils.getOutputFile(outFilename);
         if (!mTraceEngine.traceDump(outFile)) {
             return Optional.empty();
@@ -148,7 +153,7 @@ public class TraceUtils {
         List<File> outFiles = new ArrayList();
         outFiles.add(outFile);
 
-        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(contentResolver, outFilename);
+        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(context, outFilename);
         outFiles.addAll(outLegacyWinscopeFiles);
 
         return Optional.of(outFiles);
@@ -269,11 +274,12 @@ public class TraceUtils {
         return new File(TraceUtils.TRACE_DIRECTORY, filename);
     }
 
-    protected static void cleanupOlderFiles(final int minCount, final long minAge) {
+    protected static void cleanupOlderFiles() {
         FutureTask<Void> task = new FutureTask<Void>(
                 () -> {
                     try {
-                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
+                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY),
+                                MIN_KEEP_COUNT, MIN_KEEP_AGE);
                     } catch (RuntimeException e) {
                         Log.e(TAG, "Failed to delete older traces", e);
                     }
