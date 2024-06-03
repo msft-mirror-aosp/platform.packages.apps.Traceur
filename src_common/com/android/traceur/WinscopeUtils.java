@@ -17,6 +17,8 @@
 package com.android.traceur;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.pm.LauncherApps;
 import android.os.FileUtils;
 import android.os.RemoteException;
 import android.provider.Settings;
@@ -46,10 +48,9 @@ public class WinscopeUtils {
             new File(WM_TRACE_DIR + "ime_trace_service.winscope"),
     };
 
-    public static void traceStart(ContentResolver contentResolver,
-            boolean isWinscopeTracingEnabled) {
+    public static void traceStart(Context context, boolean isWinscopeTracingEnabled) {
         // Ensure all tracing sessions are initially stopped (buffers don't contain old data)
-        traceStop(contentResolver);
+        traceStop(context);
 
         // Ensure there are no stale files on disk that could be
         // picked up later by WinscopeUtils#traceDump()
@@ -58,19 +59,19 @@ public class WinscopeUtils {
         if (isWinscopeTracingEnabled) {
             setWindowTraceEnabled(true);
             setImeTraceEnabled(true);
-            setViewCaptureEnabled(contentResolver, true);
+            setViewCaptureEnabled(context, true);
         }
     }
 
-    public static void traceStop(ContentResolver contentResolver) {
+    public static void traceStop(Context context) {
         if (isWindowTraceEnabled()) {
             setWindowTraceEnabled(false);
         }
         if (isImeTraceEnabled()) {
             setImeTraceEnabled(false);
         }
-        if (isViewCaptureEnabled(contentResolver)) {
-            setViewCaptureEnabled(contentResolver, false);
+        if (isViewCaptureEnabled(context.getContentResolver())) {
+            setViewCaptureEnabled(context, false);
         }
     }
 
@@ -85,10 +86,13 @@ public class WinscopeUtils {
      */
     private static List<File> getTraceFilesFromWmTraceDir() {
         List<File> traceFiles = new ArrayList<>();
-        for (File possibleViewCaptureTraceFile : new File(WM_TRACE_DIR).listFiles()) {
-            if (possibleViewCaptureTraceFile.isFile()
-                    && possibleViewCaptureTraceFile.getName().endsWith(VIEW_CAPTURE_FILE_SUFFIX)) {
-                traceFiles.add(possibleViewCaptureTraceFile);
+        File[] wmTraceFiles = new File(WM_TRACE_DIR).listFiles();
+        if (wmTraceFiles != null) {
+            for (File possibleViewCaptureFile : wmTraceFiles) {
+                if (possibleViewCaptureFile.isFile()
+                        && possibleViewCaptureFile.getName().endsWith(VIEW_CAPTURE_FILE_SUFFIX)) {
+                    traceFiles.add(possibleViewCaptureFile);
+                }
             }
         }
         for (File possibleWinscopeTraceFile : CONSISTENTLY_NAMED_TRACE_FILES) {
@@ -100,8 +104,8 @@ public class WinscopeUtils {
         return traceFiles;
     }
 
-    public static List<File> traceDump(ContentResolver contentResolver, String perfettoFilename) {
-        traceStop(contentResolver);
+    public static List<File> traceDump(Context context, String perfettoFilename) {
+        traceStop(context);
 
         ArrayList<File> files = new ArrayList();
 
@@ -168,11 +172,17 @@ public class WinscopeUtils {
         return Settings.Global.getInt(contentResolver, SETTINGS_VIEW_CAPTURE_ENABLED, 0) != 0;
     }
 
-    private static void setViewCaptureEnabled(ContentResolver contentResolver, boolean toEnable) {
+    private static void setViewCaptureEnabled(Context context, boolean toEnable) {
+        ContentResolver contentResolver = context.getContentResolver();
         if (toEnable) {
             Settings.Global.putInt(contentResolver, SETTINGS_VIEW_CAPTURE_ENABLED, 1);
             Log.v(TAG, "Started view capture tracing");
         } else {
+            LauncherApps launcherApps = context.getSystemService(LauncherApps.class);
+            if (launcherApps != null) {
+                // TODO: b/335894686 Remove after ViewCapture is migrated to new Perfetto API
+                launcherApps.saveViewCaptureData();
+            }
             Settings.Global.putInt(contentResolver, SETTINGS_VIEW_CAPTURE_ENABLED, 0);
             Log.v(TAG, "Stopped view capture tracing");
         }

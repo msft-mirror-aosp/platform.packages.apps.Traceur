@@ -55,24 +55,11 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_TRACING = "trace-is-being-recorded";
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
-    private static final List<String> TRACE_TAGS = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "sync", "thermal", "view", "webview", "wm", "workq");
-
-    /* The user list doesn't include workq or sync, because the user builds don't have
-     * permissions for them. */
-    private static final List<String> TRACE_TAGS_USER = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "thermal", "view", "webview", "wm");
-
     private static final String TAG = "Traceur";
 
     private static final String BETTERBUG_PACKAGE_NAME =
             "com.google.android.apps.internal.betterbug";
 
-    private static Set<String> mDefaultTagList = null;
     private static ContentObserver mDeveloperOptionsObserver;
 
     @Override
@@ -86,6 +73,7 @@ public class Receiver extends BroadcastReceiver {
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
+            TraceUtils.cleanupOlderFiles();
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
             updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
@@ -355,7 +343,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         if (onlyAvailable) {
@@ -368,22 +356,13 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         tags.removeAll(available);
 
         Log.v(TAG, "getActiveUnavailableTags() = \"" + tags.toString() + "\"");
         return tags;
-    }
-
-    public static Set<String> getDefaultTagList() {
-        if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(Build.TYPE.equals("user")
-                ? TRACE_TAGS_USER : TRACE_TAGS);
-        }
-
-        return mDefaultTagList;
     }
 
     public static boolean isTraceurAllowed(Context context) {

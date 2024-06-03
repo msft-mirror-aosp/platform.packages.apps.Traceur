@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Build;
 import android.os.FileUtils;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -46,6 +47,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import perfetto.protos.TraceConfigOuterClass.TraceConfig;
+
 /**
  * Utility functions for tracing.
  */
@@ -55,39 +58,74 @@ public class TraceUtils {
 
     public static final String TRACE_DIRECTORY = "/data/local/traces/";
 
-    private static TraceEngine mTraceEngine = new PerfettoUtils();
+    private static PerfettoUtils mTraceEngine = new PerfettoUtils();
 
     private static final Runtime RUNTIME = Runtime.getRuntime();
 
+    // The number of files to keep when clearing old traces.
+    private static final int MIN_KEEP_COUNT = 0;
+
+    // The age that old traces should be cleared at.
+    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
+
     public enum RecordingType {
-      UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
-    }
-    public interface TraceEngine {
-        public String getName();
-        public String getOutputExtension();
-        public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
-            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
-            int maxLongTraceDurationMinutes);
-        public boolean stackSampleStart(boolean attachToBugreport);
-        public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
-            int dumpIntervalSeconds, boolean attachToBugreport);
-        public void traceStop();
-        public boolean traceDump(File outFile);
-        public boolean isTracingOn();
+        UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
 
-    public static String currentTraceEngine() {
-        return mTraceEngine.getName();
+    public enum PresetTraceType {
+        UNSET, PERFORMANCE, BATTERY, THERMAL, UI
     }
 
-    public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
-            int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
-            boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
-        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, attachToBugreport,
-                longTrace, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+    public static boolean presetTraceStart(Context context, PresetTraceType type) {
+        Set<String> tags;
+        PresetTraceConfigs.TraceOptions options;
+        Log.v(TAG, "Using preset of type " + type.toString());
+        switch (type) {
+            case PERFORMANCE:
+                tags = PresetTraceConfigs.getPerformanceTags();
+                options = PresetTraceConfigs.getPerformanceOptions();
+                break;
+            case BATTERY:
+                tags = PresetTraceConfigs.getBatteryTags();
+                options = PresetTraceConfigs.getBatteryOptions();
+                break;
+            case THERMAL:
+                tags = PresetTraceConfigs.getThermalTags();
+                options = PresetTraceConfigs.getThermalOptions();
+                break;
+            case UI:
+                tags = PresetTraceConfigs.getUiTags();
+                options = PresetTraceConfigs.getUiOptions();
+                break;
+            case UNSET:
+            default:
+                tags = PresetTraceConfigs.getDefaultTags();
+                options = PresetTraceConfigs.getDefaultOptions();
+        }
+        return traceStart(context, tags, options.bufferSizeKb, options.winscope,
+                options.apps, options.longTrace, options.attachToBugreport,
+                options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
+    }
+
+    public static boolean traceStart(Context context, TraceConfig config, boolean winscope) {
+        // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
+        // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
+        // available in Perfetto is captured using WinscopeUtils instead.
+        if (!mTraceEngine.traceStart(config)) {
             return false;
         }
-        WinscopeUtils.traceStart(contentResolver, winscope);
+        WinscopeUtils.traceStart(context, winscope);
+        return true;
+    }
+
+    public static boolean traceStart(Context context, Collection<String> tags,
+            int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
+            boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
+        if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
+                attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
+            return false;
+        }
+        WinscopeUtils.traceStart(context, winscope);
         return true;
     }
 
@@ -101,13 +139,12 @@ public class TraceUtils {
                 attachToBugreport);
     }
 
-    public static void traceStop(ContentResolver contentResolver) {
+    public static void traceStop(Context context) {
         mTraceEngine.traceStop();
-        WinscopeUtils.traceStop(contentResolver);
+        WinscopeUtils.traceStop(context);
     }
 
-    public static Optional<List<File>> traceDump(ContentResolver contentResolver,
-            String outFilename) {
+    public static Optional<List<File>> traceDump(Context context, String outFilename) {
         File outFile = TraceUtils.getOutputFile(outFilename);
         if (!mTraceEngine.traceDump(outFile)) {
             return Optional.empty();
@@ -116,7 +153,7 @@ public class TraceUtils {
         List<File> outFiles = new ArrayList();
         outFiles.add(outFile);
 
-        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(contentResolver, outFilename);
+        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(context, outFilename);
         outFiles.addAll(outLegacyWinscopeFiles);
 
         return Optional.of(outFiles);
@@ -176,11 +213,22 @@ public class TraceUtils {
         return process;
     }
 
-    // Returns the Process if the command terminated on time and null if not.
     public static Process execWithTimeout(String cmd, String tmpdir, long timeout)
+            throws IOException {
+        return execWithTimeout(cmd, tmpdir, timeout, null);
+    }
+
+    // Returns the Process if the command terminated on time and null if not.
+    public static Process execWithTimeout(String cmd, String tmpdir, long timeout, byte[] input)
             throws IOException {
         Process process = exec(cmd, tmpdir, true);
         try {
+            if (input != null) {
+                OutputStream os = process.getOutputStream();
+                os.write(input);
+                os.flush();
+                os.close();
+            }
             if (!process.waitFor(timeout, TimeUnit.MILLISECONDS)) {
                 Log.e(TAG, "Command '" + cmd + "' has timed out after " + timeout + " ms.");
                 process.destroyForcibly();
@@ -226,11 +274,12 @@ public class TraceUtils {
         return new File(TraceUtils.TRACE_DIRECTORY, filename);
     }
 
-    protected static void cleanupOlderFiles(final int minCount, final long minAge) {
+    protected static void cleanupOlderFiles() {
         FutureTask<Void> task = new FutureTask<Void>(
                 () -> {
                     try {
-                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY), minCount, minAge);
+                        FileUtils.deleteOlderFiles(new File(TRACE_DIRECTORY),
+                                MIN_KEEP_COUNT, MIN_KEEP_AGE);
                     } catch (RuntimeException e) {
                         Log.e(TAG, "Failed to delete older traces", e);
                     }
