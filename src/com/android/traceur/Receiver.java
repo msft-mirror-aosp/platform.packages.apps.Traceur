@@ -55,24 +55,11 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_TRACING = "trace-is-being-recorded";
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
-    private static final List<String> TRACE_TAGS = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "sync", "thermal", "view", "webview", "wm", "workq");
-
-    /* The user list doesn't include workq or sync, because the user builds don't have
-     * permissions for them. */
-    private static final List<String> TRACE_TAGS_USER = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "thermal", "view", "webview", "wm");
-
     private static final String TAG = "Traceur";
 
     private static final String BETTERBUG_PACKAGE_NAME =
             "com.google.android.apps.internal.betterbug";
 
-    private static Set<String> mDefaultTagList = null;
     private static ContentObserver mDeveloperOptionsObserver;
 
     @Override
@@ -86,23 +73,18 @@ public class Receiver extends BroadcastReceiver {
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
+            TraceUtils.cleanupOlderFiles();
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
-            boolean developerOptionsEnabled = (1 ==
-                Settings.Global.getInt(context.getContentResolver(),
-                    Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-            UserManager userManager = context.getSystemService(UserManager.class);
-            boolean isAdminUser = userManager.isAdminUser();
-            boolean debuggingDisallowed = userManager.hasUserRestriction(
-                    UserManager.DISALLOW_DEBUGGING_FEATURES);
-            updateStorageProvider(context,
-                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
+            updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
-            // Only one of tracing or stack sampling should be enabled, but because they use the
-            // same path for stopping and saving, set both to false.
+            // Only one of these should be enabled, but they all use the same path for stopping and
+            // saving, so set them all to false.
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_heap_dump_on), false).commit();
             updateTracing(context);
         } else if (OPEN_ACTION.equals(intent.getAction())) {
             context.closeSystemDialogs();
@@ -135,29 +117,36 @@ public class Receiver extends BroadcastReceiver {
                 prefs.getBoolean(context.getString(R.string.pref_key_tracing_on), false);
         boolean prefsStackSamplingOn =
                 prefs.getBoolean(context.getString(R.string.pref_key_stack_sampling_on), false);
+        boolean prefsHeapDumpOn =
+                prefs.getBoolean(context.getString(R.string.pref_key_heap_dump_on), false);
 
-        // This should never happen because enabling one toggle should disable the other. Just in
-        // case, set both preferences to false and stop any ongoing trace.
-        if (prefsTracingOn && prefsStackSamplingOn) {
-            Log.e(TAG, "Preference state thinks that both trace configs should be active; " +
-                    "disabling both and stopping the ongoing trace if one exists.");
+        // This checks that at most one of the three tracing types are enabled. This shouldn't
+        // happen because enabling one toggle should disable the others. Just in case, set all
+        // preferences to false and stop any ongoing trace.
+        if ((prefsTracingOn ^ prefsStackSamplingOn) ? prefsHeapDumpOn : prefsTracingOn) {
+            Log.e(TAG, "Preference state thinks that multiple trace configs should be active; " +
+                    "disabling all of them and stopping the ongoing trace if one exists.");
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_tracing_on), false).commit();
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
+            prefs.edit().putBoolean(
+                    context.getString(R.string.pref_key_heap_dump_on), false).commit();
             if (TraceUtils.isTracingOn()) {
                 TraceService.stopTracing(context);
             }
             context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-            QsService.updateTile();
+            TraceService.updateAllQuickSettingsTiles();
             return;
         }
 
         boolean traceUtilsTracingOn = assumeTracingIsOff ? false : TraceUtils.isTracingOn();
 
-        if ((prefsTracingOn || prefsStackSamplingOn) != traceUtilsTracingOn) {
+        if ((prefsTracingOn || prefsStackSamplingOn || prefsHeapDumpOn) != traceUtilsTracingOn) {
             if (prefsStackSamplingOn) {
                 TraceService.startStackSampling(context);
+            } else if (prefsHeapDumpOn) {
+                TraceService.startHeapDump(context);
             } else if (prefsTracingOn) {
                 // Show notification if the tags in preferences are not all actually available.
                 Set<String> activeAvailableTags = getActiveTags(context, prefs, true);
@@ -171,6 +160,9 @@ public class Receiver extends BroadcastReceiver {
                     prefs.getString(context.getString(R.string.pref_key_buffer_size),
                         context.getString(R.string.default_buffer_size)));
 
+                boolean winscopeTracing = prefs.getBoolean(
+                    context.getString(R.string.pref_key_winscope),
+                        false);
                 boolean appTracing = prefs.getBoolean(context.getString(R.string.pref_key_apps), true);
                 boolean longTrace = prefs.getBoolean(context.getString(R.string.pref_key_long_traces), true);
 
@@ -182,7 +174,7 @@ public class Receiver extends BroadcastReceiver {
                     prefs.getString(context.getString(R.string.pref_key_max_long_trace_duration),
                         context.getString(R.string.default_long_trace_duration)));
 
-                TraceService.startTracing(context, activeAvailableTags, bufferSize,
+                TraceService.startTracing(context, activeAvailableTags, bufferSize, winscopeTracing,
                     appTracing, longTrace, maxLongTraceSize, maxLongTraceDuration);
             } else {
                 TraceService.stopTracing(context);
@@ -191,21 +183,17 @@ public class Receiver extends BroadcastReceiver {
 
         // Update the main UI and the QS tile.
         context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-        QsService.updateTile();
+        TraceService.updateAllQuickSettingsTiles();
     }
 
     /*
-     * Updates the current Quick Settings tile state based on the current state
-     * of preferences.
+     * Updates the input Quick Settings tile state based on the current state of preferences.
      */
-    public static void updateQuickSettings(Context context) {
-        boolean quickSettingsEnabled =
-            PreferenceManager.getDefaultSharedPreferences(context)
-              .getBoolean(context.getString(R.string.pref_key_quick_setting), false);
-
-        ComponentName name = new ComponentName(context, QsService.class);
+    private static void updateQuickSettingsPanel(Context context, boolean enabled,
+            Class serviceClass) {
+        ComponentName name = new ComponentName(context, serviceClass);
         context.getPackageManager().setComponentEnabledSetting(name,
-            quickSettingsEnabled
+            enabled
                 ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
                 : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
             PackageManager.DONT_KILL_APP);
@@ -215,7 +203,7 @@ public class Receiver extends BroadcastReceiver {
 
         try {
             if (statusBarService != null) {
-                if (quickSettingsEnabled) {
+                if (enabled) {
                     statusBarService.addTile(name);
                 } else {
                     statusBarService.remTile(name);
@@ -224,8 +212,21 @@ public class Receiver extends BroadcastReceiver {
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to modify QS tile for Traceur.", e);
         }
+        TraceService.updateAllQuickSettingsTiles();
+    }
 
-        QsService.updateTile();
+    public static void updateTracingQuickSettings(Context context) {
+        boolean tracingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_tracing_quick_setting), false);
+        updateQuickSettingsPanel(context, tracingQsEnabled, TracingQsService.class);
+    }
+
+    public static void updateStackSamplingQuickSettings(Context context) {
+        boolean stackSamplingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_stack_sampling_quick_setting), false);
+        updateQuickSettingsPanel(context, stackSamplingQsEnabled, StackSamplingQsService.class);
     }
 
     /*
@@ -245,24 +246,20 @@ public class Receiver extends BroadcastReceiver {
                     @Override
                     public void onChange(boolean selfChange) {
                         super.onChange(selfChange);
-
-                        boolean developerOptionsEnabled = (1 ==
-                            Settings.Global.getInt(context.getContentResolver(),
-                                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-                        UserManager userManager = context.getSystemService(UserManager.class);
-                        boolean isAdminUser = userManager.isAdminUser();
-                        boolean debuggingDisallowed = userManager.hasUserRestriction(
-                                UserManager.DISALLOW_DEBUGGING_FEATURES);
-                        updateStorageProvider(context,
-                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
-
-                        if (!developerOptionsEnabled) {
+                        boolean traceurAllowed = isTraceurAllowed(context);
+                        updateStorageProvider(context, traceurAllowed);
+                        if (!traceurAllowed) {
                             SharedPreferences prefs =
                                 PreferenceManager.getDefaultSharedPreferences(context);
                             prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_quick_setting), false)
+                                context.getString(R.string.pref_key_tracing_quick_setting), false)
                                 .commit();
-                            updateQuickSettings(context);
+                            prefs.edit().putBoolean(
+                                context.getString(
+                                    R.string.pref_key_stack_sampling_quick_setting), false)
+                                .commit();
+                            updateTracingQuickSettings(context);
+                            updateStackSamplingQuickSettings(context);
                             // Stop an ongoing trace if one exists.
                             if (TraceUtils.isTracingOn()) {
                                 TraceService.stopTracingWithoutSaving(context);
@@ -281,8 +278,7 @@ public class Receiver extends BroadcastReceiver {
         }
     }
 
-    // Enables/disables the System Traces storage component. enableProvider should be true iff
-    // developer options are enabled and the current user is an admin user.
+    // Enables/disables the System Traces storage component.
     static void updateStorageProvider(Context context, boolean enableProvider) {
         ComponentName name = new ComponentName(context, StorageProvider.class);
         context.getPackageManager().setComponentEnabledSetting(name,
@@ -347,7 +343,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         if (onlyAvailable) {
@@ -360,7 +356,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         tags.removeAll(available);
@@ -369,12 +365,16 @@ public class Receiver extends BroadcastReceiver {
         return tags;
     }
 
-    public static Set<String> getDefaultTagList() {
-        if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(Build.TYPE.equals("user")
-                ? TRACE_TAGS_USER : TRACE_TAGS);
-        }
+    public static boolean isTraceurAllowed(Context context) {
+        boolean developerOptionsEnabled = Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        UserManager userManager = context.getSystemService(UserManager.class);
+        boolean isAdminUser = userManager.isAdminUser();
+        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                UserManager.DISALLOW_DEBUGGING_FEATURES);
 
-        return mDefaultTagList;
+        // For Traceur usage to be allowed, developer options must be enabled, the user must be an
+        // admin, and the user must not have debugging features disallowed.
+        return developerOptionsEnabled && isAdminUser && !debuggingDisallowed;
     }
 }

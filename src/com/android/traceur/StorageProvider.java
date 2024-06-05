@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.FileUtils;
 import android.os.ParcelFileDescriptor;
-import android.os.UserManager;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
 import android.provider.DocumentsContract.Root;
@@ -73,18 +72,8 @@ public class StorageProvider extends FileSystemProvider{
     @Override
     public Cursor queryRoots(String[] projection) throws FileNotFoundException {
         final MatrixCursor result = new MatrixCursor(resolveRootProjection(projection));
-
-        boolean developerOptionsIsEnabled =
-            Settings.Global.getInt(getContext().getContentResolver(),
-                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
-        UserManager userManager = getContext().getSystemService(UserManager.class);
-        boolean isAdminUser = userManager.isAdminUser();
-        boolean debuggingDisallowed = userManager.hasUserRestriction(
-                UserManager.DISALLOW_DEBUGGING_FEATURES);
-
-        // If developer options is not enabled or the user is not an admin, return an empty root
-        // cursor. This removes the provider from the list entirely.
-        if (!developerOptionsIsEnabled || !isAdminUser || debuggingDisallowed) {
+        // Return an empty root cursor, which will remove the provider from the list entirely.
+        if (!Receiver.isTraceurAllowed(getContext())) {
             return null;
         }
 
@@ -128,8 +117,9 @@ public class StorageProvider extends FileSystemProvider{
     public Cursor queryChildDocuments(
             String parentDocumentId, String[] projection, String sortOrder)
             throws FileNotFoundException {
-        Cursor result = super.queryChildDocuments(parentDocumentId, projection, sortOrder);
+        TraceUtils.cleanupOlderFiles();
 
+        Cursor result = super.queryChildDocuments(parentDocumentId, projection, sortOrder);
         Bundle bundle = new Bundle();
         bundle.putString(DocumentsContract.EXTRA_INFO,
             getContext().getResources().getString(R.string.system_trace_sensitive_data));

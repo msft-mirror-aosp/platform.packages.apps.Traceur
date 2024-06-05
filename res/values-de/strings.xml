@@ -7,31 +7,53 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"Erfasst anhand der in den Trace-Einstellungen festgelegten Konfiguration einen System-Trace"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"CPU-Profil aufzeichnen"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Die Probenerfassung für den Aufrufstack kann auch durch Markieren der Kategorie „cpu“ in Traces aktiviert werden"</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"Heap-Dump aufzeichnen"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Ein Heap-Dump der in „Heap-Dump-Prozesse“ ausgewählten Prozesse wird aufgezeichnet"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Wähle mindestens einen Prozess in „Heap-Dump-Prozesse“ aus, um Heap-Dumps aufzuzeichnen"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Neuen Trace starten"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-Traces erfassen"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Enthält detaillierte UI-Telemetriedaten (kann zu Verzögerung führen)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Debug-fähige Anwendungen in Trace aufnehmen"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorien"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Standardkategorien wiederherstellen"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Standardkategorien wiederhergestellt"</string>
     <string name="default_categories" msgid="2117679794687799407">"Standard"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# ausgewählt}other{# ausgewählt}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"Heap-Dump-Prozesse"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Mindestens ein Prozess muss ausgewählt werden"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"Heap-Dump-Prozesse löschen"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"Prozessliste gelöscht"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"Fortlaufendes Heap-Profil"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"Heap-Dump einmal pro festgelegtem Intervall aufzeichnen"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"Heap-Dump-Intervall"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 Sekunden"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 Sekunden"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 Sekunden"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 Minute"</string>
     <string name="applications" msgid="521776761270770549">"Anwendungen"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Es sind keine Anwendungen für das Debugging verfügbar"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Puffergröße je CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Kachel \"Schnelleinstellungen\" anzeigen"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Schnelleinstellungen-Kachel für das Tracing anzeigen"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Schnelleinstellungen-Kachel für die CPU-Profilerstellung anzeigen"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Trace wird gespeichert"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Trace wurde gespeichert"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Stackproben werden gespeichert"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Stackproben gespeichert"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"Heap-Dump wird gespeichert"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"Heap-Dump gespeichert"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Zum Teilen deiner Aufzeichnung tippen"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Trace wird an Fehlerbericht angehängt"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Trace wurde an den Fehlerbericht angehängt"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Tippen, um BetterBug zu öffnen"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Tracing beenden"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU-Profilerstellung beenden"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Einige Tracing-Kategorien sind nicht verfügbar:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Trace wird aufgezeichnet"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tippen, um das Tracing zu beenden"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Stackproben werden aufgezeichnet"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"Zum Beenden der Erfassung von Stackproben tippen"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"Heap-Dump wird aufgezeichnet"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"Zum Beenden des Heap-Dumps tippen"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"Gespeicherte Dateien löschen"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"Aufzeichnungen werden nach einem Monat gelöscht"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"Gespeicherte Dateien löschen?"</string>
@@ -72,4 +94,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Trace-Einstellungen"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Gespeicherte Dateien"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Sonstiges"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"Heap-Dump-Einstellungen"</string>
 </resources>

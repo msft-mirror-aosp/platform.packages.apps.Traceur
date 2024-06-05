@@ -123,6 +123,7 @@ public class TraceurAppTests {
         String[] elementTitles = {
             "Record trace",
             "Record CPU profile",
+            "Collect Winscope traces",
             "Trace debuggable applications",
             "Categories",
             "Restore default categories",
@@ -134,7 +135,8 @@ public class TraceurAppTests {
             "Clear saved files",
             // This is intentionally disabled because it can differ between internal and AOSP.
             // "Stop recording for bug reports",
-            "Show Quick Settings tile",
+            "Show CPU profiling Quick Settings tile",
+            "Show tracing Quick Settings tile",
         };
         for (String title : elementTitles) {
             assertNotNull(title + " element not found.", findObjectOnMainScreenByText(title));
@@ -150,6 +152,40 @@ public class TraceurAppTests {
     @Presubmit
     @Test
     public void testSuccessfulTracing() throws Exception {
+        UiObject2 recordTraceSwitch = findObjectOnMainScreenByText("Record trace");
+        assertNotNull("Record trace switch not found.", recordTraceSwitch);
+        recordTraceSwitch.click();
+
+        mDevice.waitForIdle();
+
+        mDevice.wait(Until.hasObject(By.text("Trace is being recorded")), UI_TIMEOUT_MS);
+        mDevice.wait(Until.gone(By.text("Trace is being recorded")), UI_TIMEOUT_MS);
+
+        recordTraceSwitch = findObjectOnMainScreenByText("Record trace");
+        assertNotNull("Record trace switch not found.", recordTraceSwitch);
+        recordTraceSwitch.click();
+
+        mDevice.waitForIdle();
+
+        waitForShareHUN();
+        tapShareNotification();
+        clickThroughShareSteps();
+    }
+
+    /**
+     * Checks that a trace with Winscope data can be recorded and shared.
+     * This test enables Winscope data collection by toggling 'Collect Winscope traces' in the UI,
+     * then records a trace by toggling 'Record trace', taps on the share notification once
+     * the trace is saved, then (on non-AOSP) verifies that a share dialog appears.
+     */
+    @Presubmit
+    @Test
+    public void testSuccessfulWinscopeTracing() throws Exception {
+        UiObject2 collectWinscopeTracesSwitch =
+            findObjectOnMainScreenByText("Collect Winscope traces");
+        assertNotNull("Collect Winscope traces switch not found.", collectWinscopeTracesSwitch);
+        collectWinscopeTracesSwitch.click();
+
         UiObject2 recordTraceSwitch = findObjectOnMainScreenByText("Record trace");
         assertNotNull("Record trace switch not found.", recordTraceSwitch);
         recordTraceSwitch.click();
