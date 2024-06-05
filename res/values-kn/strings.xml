@@ -19,7 +19,7 @@
     <string name="buffer_size" msgid="3944311026715111454">"ಪ್ರತಿ-CPU ನ ಬಫರ್ ಗಾತ್ರ"</string>
     <string name="show_quick_settings_tile" msgid="4971147332635291585">"ತ್ವರಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಟೈಲ್ ತೋರಿಸು"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗಿದೆ"</string>
+    <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
@@ -44,8 +44,8 @@
     <string name="share" msgid="8443979083706282338">"ಹಂಚಿಕೊಳ್ಳಿ"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ಮತ್ತೊಮ್ಮೆ ತೋರಿಸಬೇಡಿ"</string>
     <string name="long_traces" msgid="5110949471775966329">"ದೀರ್ಘ ಟ್ರೇಸ್‌ಗಳು"</string>
-    <string name="long_traces_summary" msgid="419034282946761469">"ಸಾಧನ ಸಂಗ್ರಹಣೆಯಲ್ಲಿ ನಿರಂತರವಾಗಿ ಉಳಿಸಲಾಗಿದೆ"</string>
-    <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ನಿರಂತರವಾಗಿ ಸಾಧನದ ಸಂಗ್ರಹಣೆಯಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ (ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಬಗ್ ವರದಿಗಳಿಗೆ ಲಗತ್ತಿಸಲಾಗುವುದಿಲ್ಲ)"</string>
+    <string name="long_traces_summary" msgid="419034282946761469">"ಸಾಧನ ಸಂಗ್ರಹಣೆಯಲ್ಲಿ ನಿರಂತರವಾಗಿ ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
+    <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ನಿರಂತರವಾಗಿ ಸಾಧನದ ಸಂಗ್ರಹಣೆಯಲ್ಲಿ ಸೇವ್ ಮಾಡಲಾಗಿದೆ (ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಬಗ್ ವರದಿಗಳಿಗೆ ಲಗತ್ತಿಸಲಾಗುವುದಿಲ್ಲ)"</string>
     <string name="max_long_trace_size" msgid="1943788179787181241">"ಗರಿಷ್ಠ ಉದ್ದ ಟ್ರೇಸ್ ಗಾತ್ರ"</string>
     <string name="max_long_trace_duration" msgid="8009837944364246785">"ಗರಿಷ್ಠ ದೀರ್ಘ ಟ್ರೇಸ್ ಅವಧಿ"</string>
     <string name="two_hundred_mb" msgid="4950018549725084512">"200 MB"</string>
