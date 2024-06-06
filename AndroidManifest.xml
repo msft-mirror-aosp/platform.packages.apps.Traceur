@@ -149,6 +149,11 @@
         <service android:name=".StopTraceService"
              android:exported="true"/>
 
+        <service android:name=".BindableTraceService"
+            android:permission="android.permission.CONTROL_UI_TRACING"
+            androidprv:systemUserOnly="true"
+            android:exported="true"/>
+
         <service android:name=".TraceService"
              android:exported="false"/>
 
