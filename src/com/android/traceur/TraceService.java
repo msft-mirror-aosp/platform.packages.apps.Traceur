@@ -37,6 +37,8 @@ import java.util.Set;
 import java.util.Optional;
 
 public class TraceService extends IntentService {
+    // Authority used to share trace files from Traceur to other apps
+    static final String AUTHORITY = "com.android.traceur.files";
     /* Indicates Perfetto has stopped tracing due to either the supplied long trace limitations
      * or limited storage capacity. */
     static String INTENT_ACTION_NOTIFY_SESSION_STOPPED =
@@ -60,7 +62,6 @@ public class TraceService extends IntentService {
     private static String INTENT_EXTRA_LONG_TRACE_DURATION = "long_trace_duration";
 
     private static String BETTERBUG_PACKAGE_NAME = "com.google.android.apps.internal.betterbug";
-    private static final String AUTHORITY = "com.android.traceur.files";
 
     private static int TRACE_NOTIFICATION = 1;
     private static int SAVING_TRACE_NOTIFICATION = 2;
