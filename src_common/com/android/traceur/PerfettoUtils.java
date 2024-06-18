@@ -696,6 +696,13 @@ public class PerfettoUtils {
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.viewcapture\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
         }
     }
 }
