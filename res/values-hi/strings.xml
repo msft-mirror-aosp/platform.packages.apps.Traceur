@@ -7,6 +7,9 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"\"ट्रेस सेटिंग\" में सेट किए गए कॉन्फ़िगरेशन की मदद से, सिस्टम ट्रेस करने की प्रक्रिया कैप्चर करें"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"सीपीयू प्रोफ़ाइल रिकॉर्ड करें"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"ट्रेस में जाकर \"सीपीयू\" कैटगरी को चुनकर, कॉलस्टैक सैंपलिंग चालू की जा सकती है"</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"हीप डंप को रिकॉर्ड करें"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"हीप डंप की प्रोसेस\" में चुनी गई प्रोसेस के हीप डंप को कैप्चर करें"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"हीप डंप को इकट्ठा करने के लिए \"हीप डंप की प्रोसेस\" में कम से कम एक प्रोसेस चुनें"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"नया ट्रेस शुरू करें"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"WinScope के ट्रेस इकट्ठा करें"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"इसमें यूज़र इंटरफ़ेस से जुड़ा टेलीमेट्री डेटा शामिल है (इससे जैंक होने की संभावना है)"</string>
@@ -16,6 +19,17 @@
     <string name="default_categories_restored" msgid="6861683793680564181">"डिफ़ॉल्ट श्रेणियां बहाल की गईं"</string>
     <string name="default_categories" msgid="2117679794687799407">"डिफ़ॉल्ट"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# चुनी गई}one{# चुनी गई}other{# चुनी गईं}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"हीप डंप की प्रोसेस"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"कम से कम एक प्रोसेस को चुनें"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"हीप डंप की प्रोसेस मिटाएं"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"प्रोसेस की सूची मिटाई गई"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"हीप प्रोफ़ाइल को जारी रखें"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"किसी खास इंटरवल के लिए एक बार हीप डंप को कैप्चर करें"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"हीप डंप इंटरवल"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 सेकंड"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 सेकंड"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 सेकंड"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 मिनट"</string>
     <string name="applications" msgid="521776761270770549">"ऐप्लिकेशन"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"डीबग करने के लिए कोई ऐप्लिकेशन उपलब्ध नहीं है"</string>
     <string name="buffer_size" msgid="3944311026715111454">"हर सीपीयू का बफ़र आकार"</string>
@@ -24,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"ट्रेस सेव किया गया"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"स्टैक सैंपल सेव किए जा रहे हैं"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"स्टैक सैंपल सेव किए गए"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"हीप डंप को सेव किया जा रहा है"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"हीप डंप को सेव किया गया"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"अपनी रिकॉर्डिंग शेयर करने के लिए टैप करें"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"ट्रेस को गड़बड़ी की रिपोर्ट में अटैच किया जा रहा है"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"ट्रेस को गड़बड़ी की रिपोर्ट में अटैच किया गया"</string>
@@ -34,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"ट्रेस करना बंद करने के लिए टैप करें"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"स्टैक सैंपल रिकॉर्ड किए जा रहे हैं"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"स्टैक सैंपलिंग रोकने के लिए टैप करें"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"हीप डंप को रिकॉर्ड किया जा रहा है"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"हीप डंप को रोकने के लिए टैप करें"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"सेव की गई फ़ाइलें मिटाएं"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"एक महीने के बाद रिकॉर्डिंग मिट जाती हैं"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"क्या आपको सेव की गई फ़ाइलें मिटानी हैं?"</string>
@@ -74,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेस करने की सेटिंग"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव की गई फ़ाइलें"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"अन्य विकल्प"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"हीप डंप की सेटिंग"</string>
 </resources>
