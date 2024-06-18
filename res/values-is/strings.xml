@@ -33,7 +33,8 @@
     <string name="applications" msgid="521776761270770549">"Forrit"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Engin forrit tiltæk fyrir villuleit"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Eftir stærð biðminnis örgjörva"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Sýna reit í flýtistillingum"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Sýna rakningu flýtistillingareits"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Sýna flýtistillingareit fyrir vöktun örgörva"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Vistar spor"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Spor vistað"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Vistar staflasömpl"</string>
@@ -45,6 +46,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Festi spor við villutilkynningu"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Ýttu til að opna BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Ljúka rakningu"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Stöðva vöktun örgjörva"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Einhverjir flokkar spora eru ekki til staðar:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Spor eru rakin"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Ýttu til að ljúka rakningu"</string>
