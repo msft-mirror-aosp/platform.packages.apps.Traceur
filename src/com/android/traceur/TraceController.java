@@ -56,8 +56,7 @@ public class TraceController extends Handler {
     public void handleMessage(Message msg) {
         switch (msg.what) {
             case MessageConstants.START_WHAT:
-                TraceUtils.presetTraceStart(mContext, msg.getData().getSerializable(
-                    INTENT_EXTRA_TRACE_TYPE, TraceUtils.PresetTraceType.class));
+                startTracingSafely(mContext, msg.getData());
                 break;
             case MessageConstants.STOP_WHAT:
                 TraceUtils.traceStop(mContext);
@@ -68,6 +67,24 @@ public class TraceController extends Handler {
             default:
                 throw new IllegalArgumentException("received unknown msg.what: " + msg.what);
         }
+    }
+
+    private static void startTracingSafely(Context context, @Nullable Bundle data) {
+        TraceConfig config;
+        if (data == null) {
+            Log.w(TAG, "bundle containing Input trace config is not present, using default "
+                + "trace configuration.");
+            config = PresetTraceConfigs.getDefaultConfig();
+        } else {
+            data.setClassLoader(TraceConfig.class.getClassLoader());
+            config = data.getParcelable(INTENT_EXTRA_TRACE_TYPE, TraceConfig.class);
+            if (config == null) {
+                Log.w(TAG, "Input trace config could not be read, using default trace "
+                    + "configuration.");
+                config = PresetTraceConfigs.getDefaultConfig();
+            }
+        }
+        TraceUtils.traceStart(context, config);
     }
 
     // Files are kept on private storage, so turn into Uris that we can
