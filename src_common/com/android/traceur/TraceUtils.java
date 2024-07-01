@@ -103,8 +103,8 @@ public class TraceUtils {
                 options = PresetTraceConfigs.getDefaultOptions();
         }
         return traceStart(context, tags, options.bufferSizeKb, options.winscope,
-                options.apps, options.longTrace, options.attachToBugreport,
-                options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
+            options.apps, /* options.longTrace --> b/343538743 */ false, options.attachToBugreport,
+            options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
     }
 
     public static boolean traceStart(Context context, TraceConfig config, boolean winscope) {
