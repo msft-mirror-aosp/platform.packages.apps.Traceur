@@ -204,7 +204,7 @@
 
     <!-- When enabled, the tracing service can take the in-progress recording session and attach it to a bug report. -->
     <string name="attach_to_bug_report">Attach recordings to bug reports</string>
-    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected</string>
+    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected. Recordings will continue afterward.</string>
 
     <!-- On click, takes the user to the directory containing on-device Traceur files. -->
     <string name="link_to_traces">View saved files</string>
