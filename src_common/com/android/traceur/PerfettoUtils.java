@@ -449,7 +449,7 @@ public class PerfettoUtils {
 
         // These parameters affect only the kernel trace buffer size and how
         // frequently it gets moved into the userspace buffer defined above.
-        config.append("      buffer_size_kb: 8192\n")
+        config.append("      buffer_size_kb: 16384\n")
             .append("    }\n")
             .append("  }\n")
             .append("}\n")
@@ -700,6 +700,13 @@ public class PerfettoUtils {
             config.append("data_sources: {\n")
                 .append("  config {\n")
                 .append("    name: \"android.viewcapture\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.windowmanager\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("  }\n")
                 .append("}\n");
