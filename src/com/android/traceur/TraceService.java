@@ -16,6 +16,8 @@
 
 package com.android.traceur;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -197,7 +199,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.traceStart(this, tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
@@ -240,7 +243,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.stackSampleStart(attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
@@ -289,7 +293,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
                 attachToBugreport)) {
@@ -335,7 +340,8 @@ public class TraceService extends IntentService {
                 null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
-        startForeground(SAVING_TRACE_NOTIFICATION, notification.build());
+        startForeground(SAVING_TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
