@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Dejar de grabar para los informes de errores"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Finaliza las grabaciones activas cuando se inicia un informe de errores"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Adjuntar las grabaciones en los informes de errores"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Adjunta automáticamente las grabaciones en curso en los informes de errores que se envían a BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Adjunta automáticamente las grabaciones en curso en los informes de errores que se envían a BetterBug. Las grabaciones continuarán después."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Ver los archivos guardados"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ajustes de rastreo"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Archivos guardados"</string>

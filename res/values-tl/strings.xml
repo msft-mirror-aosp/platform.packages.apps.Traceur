@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ihinto ang pag-record para sa mga ulat ng bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Wawakasan ang mga aktibong pag-record kapag nagsimula ng ulat ng bug"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"I-attach ang mga recording sa mga ulat ng bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Awtomatikong magpadala ng mga kasalukuyang isinasagawang recording sa BetterBug kapag nangolekta ng ulat ng bug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Awtomatikong magpadala ng mga kasalukuyang pag-record sa BetterBug kapag may nakolektang ulat ng bug. Magpapatuloy ang mga pag-record pagkatapos nito."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Tingnan ang mga naka-save na file"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mga setting ng pag-trace"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Mga naka-save na file"</string>

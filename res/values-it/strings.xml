@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Interrompi la registrazione per le segnalazioni di bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Consente di interrompere le registrazioni attive quando viene iniziata una segnalazione di bug"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Allega le registrazioni alle segnalazioni di bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug. Le registrazioni continueranno in seguito."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Visualizza i file salvati"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Impostazioni monitoraggio"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"File salvati"</string>
