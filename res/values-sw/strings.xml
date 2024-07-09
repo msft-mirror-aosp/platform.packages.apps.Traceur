@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Acha kurekodi ripoti za hitilafu"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Hukatisha rekodi zinazoendelea ripoti ya hitilafu inapoanzishwa"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Ambatisha rekodi kwenye ripoti za hitilafu"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Tuma kiotomatiki rekodi za shughuli zinazoendelea kwenye BetterBug wakati ripoti ya hitilafu inakusanywa"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Tuma kiotomatiki rekodi ya matukio yanayoendelea kwa BetterBug wakati ripoti ya hitilafu inakusanywa. Rekodi ya matukio itaendelea baadaye."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Angalia faili zilizohifadhiwa"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mipangilio ya ufuatiliaji"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Faili zilizohifadhiwa"</string>

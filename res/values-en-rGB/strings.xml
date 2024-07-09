@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stop recording for bug reports"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Ends active recordings when a bugreport is started"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Attach recordings to bug reports"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automatically send in-progress recordings to BetterBug when a bug report is collected"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Automatically send in-progress recordings to BetterBug when a bug report is collected. Recordings will continue afterwards."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"View saved files"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Trace settings"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Saved files"</string>
