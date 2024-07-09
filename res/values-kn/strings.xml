@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ಬಗ್ ವರದಿಗಳಿಗಾಗಿ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ಬಗ್ ವರದಿಮಾಡುವಿಕೆ ಪ್ರಾರಂಭವಾದಾಗ ಸಕ್ರಿಯವಾಗಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು ಕೊನೆಗೊಳಿಸುತ್ತದೆ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ಬಗ್ ವರದಿಗಳಿಗೆ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು ಲಗತ್ತಿಸಿ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ಬಗ್ ವರದಿಯನ್ನು ಸಂಗ್ರಹಿಸಿದ ನಂತರ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಗತಿಯಲ್ಲಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು BetterBug ಗೆ ಕಳುಹಿಸಿ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ಬಗ್ ವರದಿ ಮಾಡುವಿಕೆಯನ್ನು ಸಂಗ್ರಹಿಸಿದಾಗ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಗತಿಯಲ್ಲಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು BetterBug ಗೆ ಕಳುಹಿಸಿ. ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು ನಂತರ ಮುಂದುವರಿಯುತ್ತವೆ."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ಉಳಿಸಿದ ಫೈಲ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ಜಾಡು ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ಉಳಿಸಲಾದ ಫೈಲ್‌ಗಳು"</string>

@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Misa ukuqopha imibiko yesiphazamisi"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Iqeda ukurekhodwa kokulandelela okusebenzayo uma kuqaliswe umbiko wesiphazamisi"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Namathisela okurekhodiwe emibikweni yesiphazamisi"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Thumela ngokuzenzekelayo ukurekhoda okuqhubekayo ku-BetterBug lapho kuqoqwe umbiko wesiphazamisi"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Thumela ngokuzenzakalelayo ukurekhoda okuqhubekayo kuBetterBug lapho kuqoqwe umbiko wesiphazamisi. Okurekhodiwe kuzoqhubeka kamuva."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Buka amafayela alondoloziwe"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Amasethingi okulandelela"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Amafayela alondoloziwe"</string>

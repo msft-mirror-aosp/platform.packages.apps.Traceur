@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"गड़बड़ी की रिपोर्ट के लिए रिकॉर्डिंग करना बंद करें"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"यह मोड चालू होने पर, गड़बड़ी की रिपोर्ट के शुरू होने के बाद, रिकॉर्डिंग बंद हो जाती है"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"रिकॉर्डिंग को गड़बड़ी की रिपोर्ट में अटैच करें"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रही रिकॉर्डिंग की जानकारी अपने-आप भेज दी जाती है"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रही रिकॉर्डिंग अपने-आप भेजी जाती हैं. रिकॉर्डिंग बाद में भी जारी रहेंगी."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"सेव की गई फ़ाइलें देखें"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेस करने की सेटिंग"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव की गई फ़ाइलें"</string>

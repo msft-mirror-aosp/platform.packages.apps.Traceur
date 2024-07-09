@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stopp opptak for feilrapporter"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Avslutter aktive opptak når en feilrapport er startet"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Legg ved opptak i feilrapporter"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Send automatisk pågående opptak til BetterBug når en feilrapport samles inn"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Send automatisk aktive opptak til BetterBug når det samles inn feilrapporter. Opptakene fortsetter etterpå."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Se lagrede filer"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Innstillinger for sporing"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Lagrede filer"</string>
