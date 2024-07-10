@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"توقف ضبط برای گزارش‌های اشکال"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"وقتی گزارش اشکال شروع می‌شود، ضبط‌های فعال به‌پایان می‌رسند"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"پیوست کردن قطعه‌های ضبط‌شده به گزارش اشکال"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درحال انجام به‌طور خودکار به BetterBug ارسال می‌شود"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درحال انجام به‌طور خودکار به BetterBug ارسال می‌شود. پس‌از آن ضبط ادامه پیدا خواهد کرد."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"مشاهده فایل‌های ذخیره‌شده"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"تنظیمات ردیابی"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"فایل‌های ذخیره‌شده"</string>
