@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ချွတ်ယွင်းချက်အစီရင်ခံစာများကို မှတ်တမ်းတင်ခြင်း ရပ်ရန်"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ချွတ်ယွင်းချက်အစီရင်ခံစာကို စတင်ချိန်တွင် လက်ရှိ မှတ်တမ်းတင်မှုများကို ရပ်သည်"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"မှတ်တမ်းများကို ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် ပူးတွဲရန်"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ချွတ်ယွင်းချက်အစီရင်ခံစာကို စုစည်းရာတွင် ဆောင်ရွက်နေဆဲ မှတ်တမ်းများကို BetterBug သို့ အလိုအလျောက်ပို့သည်"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ချွတ်ယွင်းမှုအစီရင်ခံစာကို စုစည်းသောအခါ ဆောင်ရွက်နေဆဲ အသံဖမ်းချက်များကို BetterBug သို့ အလိုအလျောက် ပို့နိုင်သည်။ ထို့နောက် အသံဖမ်းချက်များကို ဆက်လုပ်မည်။"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"သိမ်းထားသောဖိုင်များ ကြည့်ရန်"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"လုပ်ဆောင်ချက်မှတ်တမ်း ဆက်တင်များ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"သိမ်းထားသော ဖိုင်များ"</string>
