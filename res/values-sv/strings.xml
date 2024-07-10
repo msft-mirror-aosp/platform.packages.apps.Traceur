@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Sluta spela in till felrapporter"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Avslutar aktiv inspelning när felrapportering startas"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Bifoga inspelningar i felrapporter"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Skicka automatiskt inspelningar från pågående session till BetterBug när en felrapport samlas in"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Skicka automatiskt inspelningar från pågående session till BetterBug när en felrapport samlas in. Inspelningarna fortsätter efteråt."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Visa sparade filer"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Spåra inställningar"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Sparade filer"</string>

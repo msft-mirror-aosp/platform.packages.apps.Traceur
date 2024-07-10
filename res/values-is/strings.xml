@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stöðva upptöku villutilkynninga"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Stöðvar virkar upptökur þegar villuskýrsla hefst"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Hengja upptökur við villutilkynningar"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Senda upptökur í vinnslu sjálfkrafa til BetterBug þegar villutilkynning er skráð"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"Skoða vistaðar skrár"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Rakningarstillingar"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Vistaðar skrár"</string>
