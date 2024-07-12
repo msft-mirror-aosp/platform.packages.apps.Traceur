@@ -24,9 +24,6 @@
     <!-- This is the subtitle for the "Record heap dump" button if heap dumps are disabled. -->
     <string name="record_heap_dump_summary_disabled">Select at least one process in \"Heap dump processes\" to collect heap dumps</string>
 
-    <!-- This is the label for the button to start a new trace from a notification. -->
-    <string name="start_new_trace">Start new trace</string>
-
     <!-- This is the text for a toggle that will let the user choose whether to include Winscope traces in the trace they are collecting. -->
     <string name="winscope_tracing">Collect Winscope traces</string>
     <string name="winscope_tracing_summary">Includes detailed UI telemetry data (can cause jank)</string>
