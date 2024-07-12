@@ -142,11 +142,6 @@
             </intent-filter>
           </receiver>
 
-        <receiver android:name=".InternalReceiver"
-            androidprv:systemUserOnly="true"
-            android:exported="false">
-        </receiver>
-
         <service android:name=".StopTraceService"
              android:exported="true"
              android:foregroundServiceType="specialUse">
