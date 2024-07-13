@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Opnamen voor bugrapporten stoppen"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Beëindigt actieve opnamen als een bugrapport is gestart"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Opnamen toevoegen aan bugrapporten"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Lopende opnamen automatisch naar BetterBug sturen als een bugrapport wordt verzameld"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Stuur lopende opnamen automatisch naar BetterBug als een bugrapport wordt verzameld. De opnamen gaan gewoon verder."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Opgeslagen bestanden bekijken"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Traceringsinstellingen"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Opgeslagen bestanden"</string>

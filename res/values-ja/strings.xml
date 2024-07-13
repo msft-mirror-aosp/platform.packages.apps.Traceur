@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"バグレポートの間は記録を停止する"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"バグレポートを開始したら、有効な記録を終了します"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"バグレポートに記録を添付する"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"バグレポートの収集時に、処理中の記録を BetterBug に自動的に送信します"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"保存したファイルを表示"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"トレース設定"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"保存したファイル"</string>

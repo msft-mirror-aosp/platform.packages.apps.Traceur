@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Қате туралы есептерді жазуды тоқтату"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Қате туралы есеп басталғанда, қосулы жазбаларды тоқтатады."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Қате туралы есептерге жазбаларды тіркеу"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Қате туралы есеп жиналған кезде, ағымдағы жазбаларды BetterBug қызметіне автоматты түрде жіберу"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"Сақталған файлдарды көру"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Трассалау параметрлері"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Сақталған файлдар"</string>
