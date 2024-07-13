@@ -142,13 +142,12 @@
             </intent-filter>
           </receiver>
 
-        <receiver android:name=".InternalReceiver"
-            androidprv:systemUserOnly="true"
-            android:exported="false">
-        </receiver>
-
         <service android:name=".StopTraceService"
-             android:exported="true"/>
+             android:exported="true"
+             android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                 android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
+        </service>
 
         <service android:name=".BindableTraceService"
             android:permission="android.permission.CONTROL_UI_TRACING"
@@ -156,10 +155,10 @@
             android:exported="true"/>
 
         <service android:name=".TraceService"
-              android:exported="false"
-          android:foregroundServiceType="specialUse">
+             android:exported="false"
+             android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
+                 android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
         </service>
 
         <service android:name=".TracingQsService"
