@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"त्रुटिसम्बन्धी रिपोर्ट बनाउने प्रक्रिया सुरु हुँदा रेकर्ड गर्न छाड्नुहोस्"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"त्रुटिसम्बन्धी रिपोर्ट बनाउने प्रक्रिया सुरु हुँदा रेकर्ड गर्न छाडिन्छ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"त्रुटिसम्बन्धी रिपोर्टहरूमा रेकर्डिङहरू एट्याच गर्नुहोस्"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"त्रुटिसम्बन्धी रिपोर्ट सङ्कलन गरिँदा प्रक्रियामा रहेका रेकर्डिङहरू BetterBug मा स्वतः पठाइयोस्"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"सेभ गरिएका फाइलहरू हेर्नुहोस्"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेससम्बन्धी सेटिङ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेभ गरिएका फाइलहरू"</string>
