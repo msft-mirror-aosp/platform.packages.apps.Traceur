@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"停止记录错误报告"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"启动错误报告时结束进行中的录制内容"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"在错误报告中附加录制内容"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"收集错误报告后，自动将处理中的录制内容发送到 BetterBug"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"查看已保存的文件"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"跟踪设置"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"已保存的文件"</string>
