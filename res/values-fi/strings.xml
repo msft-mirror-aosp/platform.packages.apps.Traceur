@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Lopeta tallennus virheraporttien aikana"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Lopettaa aktiiviset tallenteet, kun virheraportti luodaan"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Liitä tallenteet virheraportteihin"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Lähetä keskeneräiset tallenteet BetterBugille automaattisesti virheraportin keräyksen yhteydessä"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Lähetä keskeneräiset tallenteet BetterBugille automaattisesti virheraportin keräyksen yhteydessä. Tallenteet jatkuvat sen jälkeen."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Katso tallennetut tiedostot"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jäljittämisasetukset"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Tallennetut tiedostot"</string>

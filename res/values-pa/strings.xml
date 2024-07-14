@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਲਈ ਰਿਕਾਰਡਿੰਗਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ਬੱਗ ਰਿਪੋਰਟ ਚਾਲੂ ਹੋਣ \'ਤੇ ਕਿਰਿਆਸ਼ੀਲ ਰਿਕਾਰਡਿੰਗਾਂ ਸਮਾਪਤ ਹੁੰਦੀਆਂ ਹਨ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਨਾਲ ਰਿਕਾਰਡਿੰਗਾਂ ਨੱਥੀ ਕਰੋ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ਬੱਗ ਰਿਪੋਰਟ ਇਕੱਤਰ ਹੋ ਜਾਣ \'ਤੇ ਪ੍ਰਕਿਰਿਆ-ਅਧੀਨ ਰਿਕਾਰਡਿੰਗਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ BetterBug ਨੂੰ ਭੇਜੋ"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਫ਼ਾਈਲਾਂ ਦੇਖੋ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ਟ੍ਰੇਸ ਸੈਟਿੰਗਾਂ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਗਈਆਂ ਫ਼ਾਈਲਾਂ"</string>

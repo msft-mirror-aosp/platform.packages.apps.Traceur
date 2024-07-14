@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ukončit nahrávání pro zprávy o chybách"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Ukončí aktivní nahrávky, když je vytvořena chybová zpráva"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Přikládat ke zprávám o chybách nahrávky"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Při záznamu chyby automaticky odesílat probíhající nahrávky do nástroje BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Při získávání zprávy o chybě automaticky odesílat probíhající nahrávky do nástroje BetterBug. Nahrávání bude pokračovat."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Zobrazit uložené soubory"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nastavení trasování"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Uložené soubory"</string>

@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"إيقاف التسجيل لتقارير الأخطاء"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"لإنهاء التسجيلات النشطة عند بدء تقرير أخطاء"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"إرفاق التسجيلات بتقارير الأخطاء"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"‏يمكنك تلقائيًا إرسال التسجيلات الجاري تسجيلها إلى BetterBug عند جمع تقرير خطأ."</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏يمكنك تلقائيًا إرسال التسجيلات الجاري تسجيلها إلى BetterBug عند جمع تقرير خطأ. بعد ذلك، سيستمر التسجيل."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"عرض الملفات المحفوظة"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"إعدادات التتبُّع"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"الملفات المحفوظة"</string>

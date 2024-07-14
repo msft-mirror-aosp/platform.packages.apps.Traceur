@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ബഗ് റിപ്പോർട്ടുകൾക്കായി, റെക്കോർഡ് ചെയ്യുന്നത് അവസാനിപ്പിക്കുക"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ബഗ് റിപ്പോർട്ട് ആരംഭിക്കുമ്പോൾ, സജീവമായ റെക്കോർഡിംഗുകൾ അവസാനിപ്പിക്കുന്നു"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ബഗ് റിപ്പോർട്ടുകളിലേക്ക് റെക്കോർഡിംഗുകൾ അറ്റാച്ച് ചെയ്യുക"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ബഗ് റിപ്പോർട്ട് ശേഖരിച്ചാൽ, പുരോഗതിയിലുള്ള റെക്കോർഡിംഗുകൾ BetterBug-ലേക്ക് സ്വയമേവ അയയ്ക്കുക"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"സംരക്ഷിച്ച ഫയലുകൾ കാണുക"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ട്രേസ് ചെയ്യൽ ക്രമീകരണം"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"സംരക്ഷിച്ച ഫയലുകൾ"</string>
