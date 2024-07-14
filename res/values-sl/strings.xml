@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ustavi zapisovanje za poročila o napakah"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Konča aktivna zapisovanja ob zagonu poročila o napakah."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Zapise priloži poročilom o napakah"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Samodejno pošiljanje vmesnih zapisov v orodje BetterBug ob zbiranju poročila o napakah"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Samodejno pošiljanje posnetkov v teku v orodje BetterBug pri zbiranju poročila o napakah. Snemanje se bo nato nadaljevalo."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Prikaži shranjene datoteke"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nastavitve sledenja"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Shranjene datoteke"</string>

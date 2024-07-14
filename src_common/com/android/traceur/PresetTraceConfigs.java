@@ -53,44 +53,44 @@ public class PresetTraceConfigs {
     private static Set<String> mThermalTagList = null;
     private static Set<String> mUiTagList = null;
 
-    public static Set<String> getDefaultTags() {
+    public static TraceConfig getDefaultConfig() {
         if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(DEFAULT_TRACE_TAGS);
+            mDefaultTagList = new ArraySet<>(DEFAULT_TRACE_TAGS);
             updateTagsIfUserBuild(mDefaultTagList);
         }
-        return mDefaultTagList;
+        return new TraceConfig(DEFAULT_TRACE_OPTIONS, mDefaultTagList);
     }
 
-    public static Set<String> getPerformanceTags() {
+    public static TraceConfig getPerformanceConfig() {
         if (mPerformanceTagList == null) {
-            mPerformanceTagList = new ArraySet<String>(PERFORMANCE_TRACE_TAGS);
+            mPerformanceTagList = new ArraySet<>(PERFORMANCE_TRACE_TAGS);
             updateTagsIfUserBuild(mPerformanceTagList);
         }
-        return mPerformanceTagList;
+        return new TraceConfig(PERFORMANCE_TRACE_OPTIONS, mPerformanceTagList);
     }
 
-    public static Set<String> getBatteryTags() {
+    public static TraceConfig getBatteryConfig() {
         if (mBatteryTagList == null) {
-            mBatteryTagList = new ArraySet<String>(BATTERY_TRACE_TAGS);
+            mBatteryTagList = new ArraySet<>(BATTERY_TRACE_TAGS);
             updateTagsIfUserBuild(mBatteryTagList);
         }
-        return mBatteryTagList;
+        return new TraceConfig(BATTERY_TRACE_OPTIONS, mBatteryTagList);
     }
 
-    public static Set<String> getThermalTags() {
+    public static TraceConfig getThermalConfig() {
         if (mThermalTagList == null) {
-            mThermalTagList = new ArraySet<String>(THERMAL_TRACE_TAGS);
+            mThermalTagList = new ArraySet<>(THERMAL_TRACE_TAGS);
             updateTagsIfUserBuild(mThermalTagList);
         }
-        return mThermalTagList;
+        return new TraceConfig(THERMAL_TRACE_OPTIONS, mThermalTagList);
     }
 
-    public static Set<String> getUiTags() {
+    public static TraceConfig getUiConfig() {
         if (mUiTagList == null) {
-            mUiTagList = new ArraySet<String>(UI_TRACE_TAGS);
+            mUiTagList = new ArraySet<>(UI_TRACE_TAGS);
             updateTagsIfUserBuild(mUiTagList);
         }
-        return mUiTagList;
+        return new TraceConfig(UI_TRACE_OPTIONS, mUiTagList);
     }
 
     private static void updateTagsIfUserBuild(Collection<String> tags) {
@@ -99,16 +99,16 @@ public class PresetTraceConfigs {
         }
     }
 
-    static class TraceOptions {
-        final int bufferSizeKb;
-        final boolean winscope;
-        final boolean apps;
-        final boolean longTrace;
-        final boolean attachToBugreport;
-        final int maxLongTraceSizeMb;
-        final int maxLongTraceDurationMinutes;
+    public static class TraceOptions {
+        public final int bufferSizeKb;
+        public final boolean winscope;
+        public final boolean apps;
+        public final boolean longTrace;
+        public final boolean attachToBugreport;
+        public final int maxLongTraceSizeMb;
+        public final int maxLongTraceDurationMinutes;
 
-        TraceOptions(int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
+        public TraceOptions(int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
                 boolean attachToBugreport, int maxLongTraceSizeMb,
                 int maxLongTraceDurationMinutes) {
             this.bufferSizeKb = bufferSizeKb;
@@ -170,25 +170,4 @@ public class PresetTraceConfigs {
                     /* attachToBugreport */ true,
                     DEFAULT_MAX_LONG_TRACE_SIZE_MB,
                     DEFAULT_MAX_LONG_TRACE_DURATION_MINUTES);
-
-    public static TraceOptions getDefaultOptions() {
-        return DEFAULT_TRACE_OPTIONS;
-    }
-
-    public static TraceOptions getPerformanceOptions() {
-        return PERFORMANCE_TRACE_OPTIONS;
-    }
-
-    public static TraceOptions getBatteryOptions() {
-        return BATTERY_TRACE_OPTIONS;
-    }
-
-    public static TraceOptions getThermalOptions() {
-        return THERMAL_TRACE_OPTIONS;
-    }
-
-    public static TraceOptions getUiOptions() {
-        return UI_TRACE_OPTIONS;
-    }
-
 }

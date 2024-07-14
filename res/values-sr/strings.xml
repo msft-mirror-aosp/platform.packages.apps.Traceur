@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Заустави снимање за извештаје о грешци"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Зауставља активна снимања кад се започне извештај о грешци"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Приложите снимке у извештаје о грешци"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Аутоматски шаљи снимке у току на BetterBug по добијању извештаја о грешци"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Аутоматски шаљите BetterBug-у снимке док је снимање у току када се прикупи извештај о грешци. Снимање ће се затим наставити."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Прикажи сачуване фајлове"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Подешавања праћења"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Сачувани фајлови"</string>

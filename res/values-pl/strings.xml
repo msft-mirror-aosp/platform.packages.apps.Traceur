@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Zatrzymaj nagrywanie na potrzeby raportów o błędach"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Kończy aktywne sesje nagrywania, gdy rozpoczyna się tworzenie raportu o błędzie"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Załączaj nagrania do raportów o błędach"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automatycznie przesyłaj przetwarzanie nagrania do BetterBug podczas tworzenia raportu o błędzie"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"Wyświetl zapisane pliki"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ustawienia monitorowania"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Zapisane pliki"</string>
