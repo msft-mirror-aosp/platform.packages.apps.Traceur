@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Спыняць запіс, калі ствараюцца справаздачы пра памылкі"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Калі пачынаецца стварэнне справаздач пра памылкі, запіс спыняецца"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Далучаць запісы да справаздач пра памылкі"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Пры складанні справаздачы пра памылкі аўтаматычна адпраўляць у BetterBug бягучыя даныя"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"Праглядзець захаваныя файлы"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Налады трасіроўкі"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Захаваныя файлы"</string>

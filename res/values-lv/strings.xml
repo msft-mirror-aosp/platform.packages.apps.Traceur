@@ -89,7 +89,8 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Apturēt datu reģistrēšanu, sākot kļūdas pārskata izveidi"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Kad tiek sākta kļūdas pārskata izveide, tiek apturēta aktīvā reģistrēšana."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Kļūdu pārskatiem pievienot reģistrētos datus"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automātiski sūtīt pašreizējos reģistrētos datus uz rīku BetterBug kopā ar kļūdas pārskatu"</string>
+    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
+    <skip />
     <string name="link_to_traces" msgid="1404687523304348490">"Skatīt saglabātos failus"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Izsekošanas iestatījumi"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Saglabātie faili"</string>

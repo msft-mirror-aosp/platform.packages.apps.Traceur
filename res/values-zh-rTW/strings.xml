@@ -89,7 +89,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"停止用於錯誤報告的記錄工作階段"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"錯誤報告開始後結束進行中的記錄作業"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"在錯誤報告中附上記錄檔"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"收集到錯誤報告後，自動將處理中的記錄檔傳送到 BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"收集到錯誤報告後，自動將處理中的記錄檔傳送到 BetterBug。之後，系統會繼續記錄。"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"查看已儲存的檔案"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"追蹤記錄設定"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"儲存的檔案"</string>
