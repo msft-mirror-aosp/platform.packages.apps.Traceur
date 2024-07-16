@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"လျှပ်တစ်ပြက် မှတ်ဉာဏ်ကို ရိုက်ကူးရန်"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"“လျှပ်တစ်ပြက် မှတ်ဉာဏ် လုပ်ငန်းစဉ်များ” တွင် ရွေးထားသည့် လုပ်ငန်းစဉ်များ၏ လျှပ်တစ်ပြက် မှတ်ဉာဏ်ကို ရိုက်ကူးပါ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"လျှပ်တစ်ပြက် မှတ်ဉာဏ်များ စုဆောင်းရန် “လျှပ်တစ်ပြက် မှတ်ဉာဏ် လုပ်ငန်းစဉ်များ” တွင် အနည်းဆုံး လုပ်ငန်းစဉ်တစ်ခုကို ရွေးပါ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"လုပ်ဆောင်ချက်မှတ်တမ်းသစ် စတင်ရန်"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope လုပ်ဆောင်ချက်မှတ်တမ်းများကို စုစည်းရန်"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"အသေးစိတ်ကျသော UI တယ်လီတိုင်းတာမှု ဒေတာပါဝင်သည် (ရပ်တန့်စေနိုင်သည်)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"အမှားရှာပြင်နိုင်သည့် အပလီကေးရှင်းများကို မှတ်တမ်းတင်ရန်"</string>

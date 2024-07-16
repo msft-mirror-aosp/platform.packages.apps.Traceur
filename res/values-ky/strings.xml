@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Үймө дампын жаздыруу"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"Үймө дампы процесстеринен\" тандалган процесстердин үймө дампын тартат"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Үймө дампыларды топтоо үчүн \"Үймө дампы процесстеринен\" кеминде бир процессти тандаңыз"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Жаңы аракеттерди жаздырууну баштоо"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope аракеттерин жыйноо"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Колдонуучу интерфейси толук телеметрия маалыматын камтыйт (бул интерфейстин начарлашына алып келиши мүмкүн)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Мүчүлүштүктөрү оңдоло турган колдонмолордун аракеттерин жаздыруу"</string>

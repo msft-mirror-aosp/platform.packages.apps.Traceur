@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Snimaj dinamički deo memorije za proces"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Snima dinamički deo memorije za procese izabrane u delu Procesi za snimanje dinamičkog dela memorije"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Da biste prikupljali snimke dinamičkog dela memorije za procese, izaberite bar jedan proces u delu Procesi za snimanje dinamičkog dela memorije"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Pokreni novo praćenje"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Prikupljaj Winscope tragove"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Obuhvata detaljne telemetrijske podatke o korisničkom interfejsu (može da izazove seckanje)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Prati aplikacije sa funkcijom za otklanjanje grešaka"</string>
