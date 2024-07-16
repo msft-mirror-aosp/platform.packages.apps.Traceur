@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Rekodi picha ya hifadhi"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Hunasa picha ya hifadhi ya michakato iliyochaguliwa katika \"Michakato ya kurekodi picha ya hifadhi\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Chagua angalau mchakato mmoja katika \"Michakato ya kurekodi picha ya hifadhi\" ili ukusanye picha za hifadhi"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Anzisha historia mpya ya shughuli"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kusanya historia ya shughuli kwenye Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inajumuisha data ya kina ya kiolesura inayorekodiwa na kutumwa kutoka mbali (inaweza kusababisha matatizo ya ubora)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tafuta programu zinazoweza kutatuliwa"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Acha kurekodi ripoti za hitilafu"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Hukatisha rekodi zinazoendelea ripoti ya hitilafu inapoanzishwa"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Ambatisha rekodi kwenye ripoti za hitilafu"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Tuma kiotomatiki rekodi za shughuli zinazoendelea kwenye BetterBug wakati ripoti ya hitilafu inakusanywa"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Tuma kiotomatiki rekodi ya matukio yanayoendelea kwa BetterBug wakati ripoti ya hitilafu inakusanywa. Rekodi ya matukio itaendelea baadaye."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Angalia faili zilizohifadhiwa"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mipangilio ya ufuatiliaji"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Faili zilizohifadhiwa"</string>

@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Neem hoopstorting op"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Dit vang ’n hoopstorting vas van die prosesse wat in \"Hoopstortingprosesse\" gekies is"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Kies minstens een proses in die \"Hoopstortingprosesse\" om hoopstortings te versamel"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Begin nuwe spoor"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samel Winscope-spore in"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sluit gedetailleerde UI-telemetriedata in (kan oponthoud veroorsaak)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spoor ontfoutbare programme na"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stop opnames vir foutverslae"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Beëindig aktiewe opnames wanneer ’n foutverslag begin word"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Heg opnames by foutverslae aan"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Stuur opnames wat besig is outomaties na BetterBug toe wanneer ’n foutverslag opgehaal word"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Stuur opnames wat besig is outomaties na BetterBug toe wanneer ’n foutverslag opgehaal word. Opnames sal daarna voortgesit word."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Bekyk gestoorde lêers"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nasporinginstellings"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Gestoorde lêers"</string>
