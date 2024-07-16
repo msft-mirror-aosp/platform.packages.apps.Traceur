@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಿ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ಹೀಪ್ ಡಂಪ್ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ\" ಆಯ್ಕೆಮಾಡಿದ ಪ್ರಕ್ರಿಯೆಗಳ ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ಹೀಪ್ ಡಂಪ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಲು \"ಹೀಪ್ ಡಂಪ್ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ\" ಕನಿಷ್ಠ ಒಂದು ಪ್ರಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ಹೊಸ ಟ್ರೇಸ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"ವಿನ್ಸ್‌ಕೋಪ್‌ ಟ್ರೇಸ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ವಿವರವಾದ UI ಟೆಲಿಮೆಟ್ರಿ ಡೇಟಾವನ್ನು ಒಳಗೊಂಡಿದೆ (ಜಂಕ್ ಮಾಡಬಹುದು)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ಡೀಬಗ್‌ ಮಾಡುವಂತಹ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಜಾಡು ಹಿಡಿಯಿರಿ"</string>

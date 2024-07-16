@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Heap dump opnemen"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Legt een heap dump vast van de processen die zijn geselecteerd in Heap dumprocessen"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selecteer ten minste één proces in Heap dump-processen om heap dumps te verzamelen"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Nieuwe tracering starten"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-sporen verzamelen"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Omvat gedetailleerde UI-telemetriegegevens (kan een onderbreking in de weergave veroorzaken)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Beschikbare apps voor foutopsporing traceren"</string>
