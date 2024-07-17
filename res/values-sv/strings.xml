@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Spela in minnesdump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Spelar in en minnesdump av processerna som har valts i Minnedumpprocesser"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Välj minst en process i Minnesdumpprocesser för att samla in minnesdumpar"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Starta ny spårning"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samla in Winscope-spår"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inkluderar detaljerad telemetridata för användargränssnittet (kan orsaka jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spåra felsökningsbara appar"</string>
