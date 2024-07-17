@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"हिप डम्प रेकर्ड गर्नुहोस्"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"हिप डम्पका प्रोसेसहरू\" मा चयन गरिएका प्रोसेसहरूको हिप डम्प रेकर्ड गर्छ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"हिप डम्पहरू सङ्कलन गर्न \"हिप डम्पका प्रोसेसहरू\" मा कम्तीमा पनि एउटा प्रोसेस चयन गर्नुहोस्"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"नयाँ ट्रेस सुरु गर्नुहोस्"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Collect Winscope का ट्रेसहरू सङ्कलन गर्नुहोस्"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"यसमा UI टेलिमेट्रीको विस्तृत डेटा (ज्याङ्क हुन सक्छ) समावेश गरिएको हुन्छ"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डिबग गर्न मिल्ने एपहरू पत्ता लगाउनुहोस्"</string>
@@ -89,8 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"त्रुटिसम्बन्धी रिपोर्ट बनाउने प्रक्रिया सुरु हुँदा रेकर्ड गर्न छाड्नुहोस्"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"त्रुटिसम्बन्धी रिपोर्ट बनाउने प्रक्रिया सुरु हुँदा रेकर्ड गर्न छाडिन्छ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"त्रुटिसम्बन्धी रिपोर्टहरूमा रेकर्डिङहरू एट्याच गर्नुहोस्"</string>
-    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
-    <skip />
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"त्रुटिसम्बन्धी रिपोर्ट सङ्कलन गरिँदा जारी रहेका रेकर्डिङहरू BetterBug मा स्वतः पठाउनुहोस्। त्यसपछि रेकर्ड गर्ने क्रम जारी रहने छ।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"सेभ गरिएका फाइलहरू हेर्नुहोस्"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेससम्बन्धी सेटिङ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेभ गरिएका फाइलहरू"</string>
