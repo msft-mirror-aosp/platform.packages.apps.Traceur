@@ -710,6 +710,33 @@ public class PerfettoUtils {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("  }\n")
                 .append("}\n");
+
+            config.append("data_sources {\n")
+                .append("  config {\n")
+                .append("    name: \"android.input.inputevent\"\n")
+                .append("    target_buffer: 1\n")
+                .append("    android_input_event_config {\n")
+                .append("      mode: TRACE_MODE_USE_RULES\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_NONE\n")
+                .append("        match_secure: true\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_COMPLETE\n")
+                .append("        match_all_packages: \"com.android.shell\"\n")
+                .append("        match_all_packages: \"com.android.systemui\"\n")
+                .append("        match_all_packages: \"com.android.launcher3\"\n")
+                .append("        match_all_packages: \"com.android.settings\"\n")
+                .append("        match_ime_connection_active: false\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_REDACTED\n")
+                .append("      }\n")
+                .append("      trace_dispatcher_input_events: true\n")
+                .append("      trace_dispatcher_window_dispatch: true\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
         }
     }
 }
