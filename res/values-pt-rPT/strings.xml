@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registar captura da área dinâmica para dados"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Faz uma captura da área dinâmica para dados dos processos selecionados nos \"Processos de captura da área dinâmica para dados\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selecione, pelo menos, um processo em \"Processos da captura da área dinâmica para dados\" para recolher capturas da área dinâmica para dados"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Iniciar novo rastreio"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Recolher rastreios do Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inclui dados de telemetria da IU detalhados (pode provocar uma pausa percetível)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Rastrear aplicações disponíveis para depuração"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Pare a gravação de relatórios de erros"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Termina as gravações ativas quando é iniciado um relatório de erro"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Anexe gravações aos relatórios de erros"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Envie automaticamente gravações em curso para o BetterBug quando é recolhido um relatório de erro"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Envie automaticamente gravações em curso para o BetterBug quando é recolhido um relatório de erro. As gravações continuam depois disso."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Veja ficheiros guardados"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Definições de rastreio"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Ficheiros guardados"</string>

@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"የቆሻሻ ቁልል ይቅዱ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"በ«የቆሻሻ ቁልል ሂደቶች» ውስጥ የተመረጡትን ሂደቶች የቆሻሻ ቁልልን ይቀርጻል"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"የቆሻሻ ቁልሎችን ለመሰብሰብ በ«የቆሻሻ ቁልል ሂደቶች» ውስጥ ቢያንስ አንድ ሂደት ይምረጡ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"አዲስ መከታተያ ይጀምሩ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope መከታተያን ስብስብ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"የዩአይ ቴሌሜትሪ ውሂብ ዝርዝር ያካትታል (Jank ያስከትላል)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ሊታረሙ የሚችሉ መተግበሪያዎችን ዱካ ይከታተሉ"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"የሳንካ ሪፖርቶችን መቅረጽ ያቁሙ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"የሳንካ ሪፖርት ሲጀመር ገቢር ቀረጻዎችን ያጠናቅቃል"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ቀረጻዎችን ወደ ሳንካ ሪፖርቶች አባሪ ያድርጉ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"የሳንካ ሪፖርት በሚሰበሰብበት ጊዜ በሂደት ላይ ያሉ ቀረጻዎችን በራስ-ሰር ወደ BetterBug ይላኩ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"የሳንካ ሪፖርት በሚሰበሰብበት ጊዜ በሂደት ላይ ያሉ ቀረጻዎችን በራስ-ሰር ወደ BetterBug ይላኩ። ከዚያ በኋላ ቀረጻዎች ይቀጥላሉ።"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"የተቀመጡ ፋይሎችን አሳይ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ቅንብሮችን ይከታተሉ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"የተቀመጡ ፋይሎች"</string>

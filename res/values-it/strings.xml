@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registra dump dell\'heap"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Acquisisce un dump dell\'heap dei processi selezionati in \"Processi dump dell\'heap\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Seleziona almeno un processo in \"Processi dump dell\'heap\" per raccogliere i dump dell\'heap"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Avvia nuova traccia"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Raccogli tracce Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Include dati di telemetria dell\'UI dettagliati (può causare jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Monitora app di cui è possibile eseguire il debug"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Interrompi la registrazione per le segnalazioni di bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Consente di interrompere le registrazioni attive quando viene iniziata una segnalazione di bug"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Allega le registrazioni alle segnalazioni di bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug. Le registrazioni continueranno in seguito."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Visualizza i file salvati"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Impostazioni monitoraggio"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"File salvati"</string>
