@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ضبط رونوشت پشته"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"رونوشت پشته را برای پردازش‌های انتخاب‌شده در «پردازش‌های رونوشت پشته» را ضبط می‌کند"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"برای جمع‌آوری رونوشت‌های پشته، حداقل یک پردازش را در «پردازش‌های رونوشت پشته» انتخاب کنید"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"شروع ردیابی جدید"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"‏جمع‌آوری ردپاهای Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"شامل داده‌های دورسنجی دقیق واسط کاربر می‌شود (ممکن است باعث قطع اتصال شود)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"برنامه‌هایی با قابلیت اشکال‌زدایی ردیابی"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"توقف ضبط برای گزارش‌های اشکال"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"وقتی گزارش اشکال شروع می‌شود، ضبط‌های فعال به‌پایان می‌رسند"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"پیوست کردن قطعه‌های ضبط‌شده به گزارش اشکال"</string>
-    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درحال انجام به‌طور خودکار به BetterBug ارسال می‌شود. پس‌از آن ضبط ادامه پیدا خواهد کرد."</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درجریان به‌طور خودکار به BetterBug ارسال می‌شود. پس‌از آن، ضبط ادامه پیدا خواهد کرد."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"مشاهده فایل‌های ذخیره‌شده"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"تنظیمات ردیابی"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"فایل‌های ذخیره‌شده"</string>

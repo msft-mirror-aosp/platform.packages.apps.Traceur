@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Neem hoopstorting op"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Dit vang ’n hoopstorting vas van die prosesse wat in \"Hoopstortingprosesse\" gekies is"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Kies minstens een proses in die \"Hoopstortingprosesse\" om hoopstortings te versamel"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Begin nuwe spoor"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samel Winscope-spore in"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sluit gedetailleerde UI-telemetriedata in (kan oponthoud veroorsaak)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spoor ontfoutbare programme na"</string>

@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ஹீப் டம்ப்பை ரெக்கார்டு செய்தல்"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\'ஹீப் டம்ப் செயல்முறைகளில்\' தேர்ந்தெடுக்கப்பட்ட செயல்முறைகளின் ஹீப் டம்ப்பைப் பதிவுசெய்கிறது"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ஹீப் டம்ப்களைச் சேகரிக்க \'ஹீப் டம்ப் செயல்முறைகளில்\' குறைந்தது ஒரு செயல்முறையாவது தேர்ந்தெடுங்கள்"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"புதிய டிரேஸைத் தொடங்கு"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"வின்ஸ்கோப் டிரேஸ்களைச் சேகரித்தல்"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"விரிவான UI டெலிமெட்ரி தரவும் அடங்கும் (மந்தமான செயல்பாட்டை உண்டாக்கலாம்)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"பிழை திருத்தக்கூடிய ஆப்ஸை டிரேஸ் செய்"</string>
