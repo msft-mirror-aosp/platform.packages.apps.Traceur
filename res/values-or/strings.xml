@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ହିପ ଡମ୍ପ ରେକର୍ଡ କରନ୍ତୁ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ହିପ ଡମ୍ପ ପ୍ରକ୍ରିୟା\"ରେ ଚୟନିତ ପ୍ରକ୍ରିୟାଗୁଡ଼ିକର ଏକ ହିପ ଡମ୍ପକୁ କେପଚର କରେ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ହିପ ଡମ୍ପ ସଂଗ୍ରହ କରିବାକୁ \"ହିପ ଡମ୍ପ ପ୍ରକ୍ରିୟାଗୁଡ଼ିକ\"ରୁ ଅତି କମରେ ଗୋଟିଏ ପ୍ରକ୍ରିୟା ଚୟନ କରନ୍ତୁ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ନୂଆ ଟ୍ରେସ୍ ଆରମ୍ଭ କରନ୍ତୁ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ଟ୍ରେସ ସଂଗ୍ରହ କରନ୍ତୁ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ସବିଶେଷ UI ଟେଲିମେଟ୍ରି ଡାଟା ଅନ୍ତର୍ଭୁକ୍ତ କରେ (ଜଙ୍କ ସୃଷ୍ଟି କରିପାରେ)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ଡିବଗ୍‌ଯୋଗ୍ୟ ଆପ୍‌ଗୁଡ଼ିକୁ ଟ୍ରେସ୍ କରନ୍ତୁ"</string>
@@ -89,8 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ବଗ ରିପୋର୍ଟଗୁଡ଼ିକ ପାଇଁ ରେକର୍ଡିଂକୁ ବନ୍ଦ କରନ୍ତୁ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ଏକ ବଗରିପୋର୍ଟ ଆରମ୍ଭ ହେଲେ ସକ୍ରିୟ ରେକର୍ଡିଂଗୁଡ଼ିକ ସମାପ୍ତ ହୁଏ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ବଗ ରିପୋର୍ଟଗୁଡ଼ିକରେ ରେକର୍ଡିଂ ଆଟାଚ କରନ୍ତୁ"</string>
-    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
-    <skip />
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ଏକ ବଗ ରିପୋର୍ଟ ସଂଗ୍ରହ ହେଲେ BetterBugକୁ ରେକର୍ଡିଂ ସ୍ୱତଃ ପଠାଯାଏ। ଏହାପରେ ରେକର୍ଡିଂ ଜାରି ରହିବ।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ସେଭ କରାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ଟ୍ରେସ ସେଟିଂସ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ସେଭ କରାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକ"</string>

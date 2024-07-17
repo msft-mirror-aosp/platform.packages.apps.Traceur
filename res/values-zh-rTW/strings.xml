@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"記錄記憶體快照資料"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"擷取「記憶體快照資料處理程序」中所選處理程序的記憶體快照資料"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"如要收集記憶體快照資料，請至少選取「記憶體快照資料處理程序」中的其中一個處理程序"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"開始新的追蹤記錄"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"收集 Winscope 追蹤記錄"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"加入詳細的 UI 遙測資料 (可能會導致卡頓)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"追蹤可偵錯的應用程式"</string>
