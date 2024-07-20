@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Įrašyti atminties išklotinę"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Fiksuojama procesų, pasirinktų skiltyje „Atminties išklotinės procesai“, atminties išklotinė"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pasirinkite bent vieną procesą skiltyje „Atminties išklotinės procesai“, kad galėtumėte rinkti atminties išklotines"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Pradėti naują pėdsaką"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Rinkti „Winscope“ pėdsakus"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Įtraukiami išsamūs NS telemetrijos duomenys (gali įvykti pateikimo pauzė)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Žymėti derinamas programas"</string>
@@ -89,8 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Nebeįrašyti pranešimams apie riktus"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Užbaigiami aktyvūs įrašymo seansai, kai pradedamas generuoti pranešimas apie riktą"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Pridėkite įrašų prie pranešimų apie riktus"</string>
-    <!-- no translation found for attach_to_bug_report_summary (5289287574947339086) -->
-    <skip />
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Automatiškai siųsti vykdomos veiklos įrašus į sistemą „BetterBug“, kai gaunamas pranešimas apie riktą. Įrašymas bus tęsiamas vėliau."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Žr. išsaugotus failus"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Sekimo nustatymai"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Išsaugoti failai"</string>
