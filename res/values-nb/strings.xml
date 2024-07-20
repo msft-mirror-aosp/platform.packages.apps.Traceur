@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Utfør minnedump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Utfører en minnedump av prosessene som er valgt i «Minnedumpprosesser»"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Velg minst én prosess i «Minnedumpprosesser» for å utføre minnedumper"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Start ny registrering"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samle Winscope-spor"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inkluderer detaljerte UI-telemetridata (kan forårsake gjengivelsespause)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spor feilsøkbare apper"</string>

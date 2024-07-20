@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Rekhoda i-heap dump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Ithatha i-heap dump yezinqubo ezikhethiwe \"kuzinqubo ze-heap dump\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Khetha okungenani inqubo eyodwa kokuthi \"Izinqubo ze-heap dump\" ukuze uqoqe ama-heap dump"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Qala ukulandelela okusha"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Qoqa Ukulandelela kwe-Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Kuhlanganisa okuningilizwe Idatha ye-UI ye-telemetry (kungaba yimbangela ye-jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Landela izinhlelo zokusebenza ze-debuggable"</string>

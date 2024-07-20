@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Գրանցել գործընթացի դինամիկ հիշողության տվյալները"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Գրանցում է գործընթացների դինամիկ հիշողության տվյալները, որոնք ընտրվել են «Դինամիկ հիշողության տվյալների գործընթացներ» բաժնում"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Գործընթացի դինամիկ հիշողության տվյալները հավաքելու համար ընտրեք առնվազն մեկ գործընթաց «Դինամիկ հիշողության տվյալների գործընթացներ» բաժնում"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Սկսել նոր հետագծում"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Հավաքել Winscope-ի հետագծումները"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Ներառում է հեռուստամետրիայի միջերեսային մանրամասն տվյալներ (կարող է աղբ ավելացնել)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Հետագծել վրիպազերծման ենթակա հավելվածները"</string>
