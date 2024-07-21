@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Hip-dampni yozib olish"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"“Hip-damp jarayonlari”da tanlangan jarayonlarning hip-damplarini oladi"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Hip-damplarni olish uchun “Hip-damp jarayonlari” qismida kamida bitta jarayonni tanlang"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Yangi trassirovkani boshlash"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope trassirovkasini jamlash"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Batafsil UI telemetriya maʼlumotlari bilan birga (kechikishga olib kelishi mumkin)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tuzatishga ruxsati bor ilovalarning harakatlarni yozib olish"</string>
