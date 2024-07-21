@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Ghi tệp báo lỗi"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Thu thập một tệp báo lỗi của những quy trình được chọn trong \"Quy trình tệp báo lỗi\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Chọn ít nhất một quy trình trong \"Quy trình tệp báo lỗi\" để thu thập tệp báo lỗi"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Bắt đầu ghi lại dấu vết mới"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Thu thập dấu vết Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Gồm cả dữ liệu chi tiết được đo từ xa về giao diện người dùng (có thể gây ra hiện tượng giật)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Theo dõi ứng dụng có thể gỡ lỗi"</string>

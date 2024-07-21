@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registrar volcado de montículo"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Captura un volcado de montículo de los procesos seleccionados en \"Procesos de volcado de montículo\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selecciona al menos un proceso en \"Procesos de volcado de montículo\" para recopilar volcados de montículo"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Iniciar traza nueva"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Recoger rastro de Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Incluye datos detallados de telemetría de UI (puede causar tirones)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Rastrear aplicaciones que se puedan depurar"</string>

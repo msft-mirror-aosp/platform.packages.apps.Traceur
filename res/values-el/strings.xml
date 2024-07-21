@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Καταγραφή στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Καταγράφει ένα στιγμιότυπο μνήμης των διεργασιών που έχουν επιλεχθεί στη λίστα Διεργασίες στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Επιλέξτε τουλάχιστον μία διεργασία από τη λίστα Διεργασίες στιγμιότυπου μνήμης για να συλλέξετε στιγμιότυπα μνήμης"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Έναρξη νέου ίχνους"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Συγκέντρωση ιχνών Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Συμπεριλαμβάνει λεπτομερή δεδομένα τηλεμετρίας διεπαφής χρήστη (μπορεί να προκαλέσει παύση)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Ανίχνευση εφαρμογών με δυνατότητα εντοπισμού σφαλμάτων"</string>
