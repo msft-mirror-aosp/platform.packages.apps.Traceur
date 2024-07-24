@@ -55,24 +55,11 @@ public class Receiver extends BroadcastReceiver {
     public static final String NOTIFICATION_CHANNEL_TRACING = "trace-is-being-recorded";
     public static final String NOTIFICATION_CHANNEL_OTHER = "system-tracing";
 
-    private static final List<String> TRACE_TAGS = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "sync", "thermal", "view", "webview", "wm", "workq");
-
-    /* The user list doesn't include workq or sync, because the user builds don't have
-     * permissions for them. */
-    private static final List<String> TRACE_TAGS_USER = Arrays.asList(
-            "aidl", "am", "binder_driver", "camera", "dalvik", "disk", "freq",
-            "gfx", "hal", "idle", "input", "memory", "memreclaim", "network", "power",
-            "res", "sched", "ss", "thermal", "view", "webview", "wm");
-
     private static final String TAG = "Traceur";
 
     private static final String BETTERBUG_PACKAGE_NAME =
             "com.google.android.apps.internal.betterbug";
 
-    private static Set<String> mDefaultTagList = null;
     private static ContentObserver mDeveloperOptionsObserver;
 
     @Override
@@ -86,6 +73,7 @@ public class Receiver extends BroadcastReceiver {
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
+            TraceUtils.cleanupOlderFiles();
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
             updateStorageProvider(context, isTraceurAllowed(context));
         } else if (STOP_ACTION.equals(intent.getAction())) {
@@ -148,7 +136,7 @@ public class Receiver extends BroadcastReceiver {
                 TraceService.stopTracing(context);
             }
             context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-            QsService.updateTile();
+            TraceService.updateAllQuickSettingsTiles();
             return;
         }
 
@@ -195,21 +183,17 @@ public class Receiver extends BroadcastReceiver {
 
         // Update the main UI and the QS tile.
         context.sendBroadcast(new Intent(MainFragment.ACTION_REFRESH_TAGS));
-        QsService.updateTile();
+        TraceService.updateAllQuickSettingsTiles();
     }
 
     /*
-     * Updates the current Quick Settings tile state based on the current state
-     * of preferences.
+     * Updates the input Quick Settings tile state based on the current state of preferences.
      */
-    public static void updateQuickSettings(Context context) {
-        boolean quickSettingsEnabled =
-            PreferenceManager.getDefaultSharedPreferences(context)
-              .getBoolean(context.getString(R.string.pref_key_quick_setting), false);
-
-        ComponentName name = new ComponentName(context, QsService.class);
+    private static void updateQuickSettingsPanel(Context context, boolean enabled,
+            Class serviceClass) {
+        ComponentName name = new ComponentName(context, serviceClass);
         context.getPackageManager().setComponentEnabledSetting(name,
-            quickSettingsEnabled
+            enabled
                 ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
                 : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
             PackageManager.DONT_KILL_APP);
@@ -219,7 +203,7 @@ public class Receiver extends BroadcastReceiver {
 
         try {
             if (statusBarService != null) {
-                if (quickSettingsEnabled) {
+                if (enabled) {
                     statusBarService.addTile(name);
                 } else {
                     statusBarService.remTile(name);
@@ -228,8 +212,21 @@ public class Receiver extends BroadcastReceiver {
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to modify QS tile for Traceur.", e);
         }
+        TraceService.updateAllQuickSettingsTiles();
+    }
 
-        QsService.updateTile();
+    public static void updateTracingQuickSettings(Context context) {
+        boolean tracingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_tracing_quick_setting), false);
+        updateQuickSettingsPanel(context, tracingQsEnabled, TracingQsService.class);
+    }
+
+    public static void updateStackSamplingQuickSettings(Context context) {
+        boolean stackSamplingQsEnabled =
+            PreferenceManager.getDefaultSharedPreferences(context)
+              .getBoolean(context.getString(R.string.pref_key_stack_sampling_quick_setting), false);
+        updateQuickSettingsPanel(context, stackSamplingQsEnabled, StackSamplingQsService.class);
     }
 
     /*
@@ -255,9 +252,14 @@ public class Receiver extends BroadcastReceiver {
                             SharedPreferences prefs =
                                 PreferenceManager.getDefaultSharedPreferences(context);
                             prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_quick_setting), false)
+                                context.getString(R.string.pref_key_tracing_quick_setting), false)
                                 .commit();
-                            updateQuickSettings(context);
+                            prefs.edit().putBoolean(
+                                context.getString(
+                                    R.string.pref_key_stack_sampling_quick_setting), false)
+                                .commit();
+                            updateTracingQuickSettings(context);
+                            updateStackSamplingQuickSettings(context);
                             // Stop an ongoing trace if one exists.
                             if (TraceUtils.isTracingOn()) {
                                 TraceService.stopTracingWithoutSaving(context);
@@ -341,7 +343,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         if (onlyAvailable) {
@@ -354,22 +356,13 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                getDefaultTagList());
+                PresetTraceConfigs.getDefaultTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         tags.removeAll(available);
 
         Log.v(TAG, "getActiveUnavailableTags() = \"" + tags.toString() + "\"");
         return tags;
-    }
-
-    public static Set<String> getDefaultTagList() {
-        if (mDefaultTagList == null) {
-            mDefaultTagList = new ArraySet<String>(Build.TYPE.equals("user")
-                ? TRACE_TAGS_USER : TRACE_TAGS);
-        }
-
-        return mDefaultTagList;
     }
 
     public static boolean isTraceurAllowed(Context context) {

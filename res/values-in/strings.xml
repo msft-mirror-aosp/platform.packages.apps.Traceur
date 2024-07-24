@@ -2,18 +2,34 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="system_tracing" msgid="4719188511746319848">"Pelacakan Sistem"</string>
-    <string name="record_system_activity" msgid="4339462312915377825">"Merekam aktivitas sistem dan menganalisisnya nanti untuk menyempurnakan performa"</string>
+    <string name="record_system_activity" msgid="4339462312915377825">"Rekam, lalu analisis aktivitas sistem untuk meningkatkan performa"</string>
     <string name="record_trace" msgid="6416875085186661845">"Rekam jejak"</string>
     <string name="record_trace_summary" msgid="6705357754827849292">"Merekam aktivitas sistem menggunakan konfigurasi yang disetel di \"Setelan perekaman aktivitas\""</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"Rekam profil CPU"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Pengambilan sampel stack panggilan juga dapat diaktifkan dalam rekaman aktivitas dengan mencentang kategori \"cpu\""</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"Rekam heap dump"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Merekam proses heap dump yang dipilih di \"Proses heap dump\""</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pilih minimal satu proses di \"Proses heap dump\" untuk mengumpulkan heap dump"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Mulai rekaman aktivitas baru"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Kumpulkan rekaman aktivitas Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Menyertakan data telemetri UI yang mendetail (dapat menyebabkan jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Lacak aplikasi yang dapat di-debug"</string>
     <string name="categories" msgid="2280163673538611008">"Kategori"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Pulihkan kategori default"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Kategori default dipulihkan"</string>
     <string name="default_categories" msgid="2117679794687799407">"Default"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# dipilih}other{# dipilih}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"Proses heap dump"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Minimal satu proses harus dipilih"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"Hapus proses heap dump"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"Daftar proses dihapus"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"Profil heap berkelanjutan"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"Merekam heap dump sekali per interval yang ditentukan"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"Interval heap dump"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 detik"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 detik"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 detik"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 menit"</string>
     <string name="applications" msgid="521776761270770549">"Aplikasi"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Aplikasi yang dapat di-debug tidak tersedia"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Ukuran buffer per-CPU"</string>
@@ -22,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"Jejak tersimpan"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Menyimpan sampel stack"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Sampel stack disimpan"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"Menyimpan heap dump"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"Heap dump disimpan"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Ketuk untuk membagikan rekaman Anda"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Melampirkan rekaman aktivitas ke laporan bug"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Rekaman aktivitas dilampirkan ke laporan bug"</string>
@@ -32,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Ketuk untuk menghentikan pelacakan"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Sampel stack sedang direkam"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"Ketuk untuk menghentikan pengambilan sampel stack"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"Heap dump sedang direkam"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"Ketuk untuk menghentikan heap dump"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"Hapus file tersimpan"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"Rekaman dihapus setelah satu bulan"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"Hapus file tersimpan?"</string>
@@ -72,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Setelan perekaman aktivitas"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"File tersimpan"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Lain-lain"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"Setelan heap dump"</string>
 </resources>

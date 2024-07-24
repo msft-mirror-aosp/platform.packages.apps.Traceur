@@ -7,13 +7,29 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"Tallentaa järjestelmän jäljityksen käyttämällä Jäljitysasetusten määritystä"</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"Aloita CPU-profiilin tallennus"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"Kutsupinon näytteenotto voidaan ottaa käyttöön jäljityksellä valitsemalla CPU-kategoria"</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"Tallenna keon vedos"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Tallentaa kohdasta \"Keon vedos ‑prosessit\" valitun vedoksen"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Valitse ainakin yksi keon vedos ‑prosessi, jotta voit kerätä vedoksia"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"Aloita uusi jälki"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Kerää Winscope-jälkiä"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sisällyttää yksityiskohtaista UI-telemetriadataa (voi aiheuttaa katkoja)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tallenna viankorjausta tukevien sovellusten jäljet"</string>
     <string name="categories" msgid="2280163673538611008">"Luokat"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Palauta oletusluokat"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Oletusluokat palautettu"</string>
     <string name="default_categories" msgid="2117679794687799407">"Oletus"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# valittu}other{# valittu}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"Keon vedos ‑prosessit"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Valitse vähintään yksi prosessi"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"Tyhjennä keon vedos ‑prosessit"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"Prosessit tyhjennetty"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"Jatkuvan keon profiili"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"Tallenna keon vedos kerran valitun jakson aikana"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"Keon vedoksen ajanjakso"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"5 sekuntia"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"10 sekuntia"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"30 sekuntia"</string>
+    <string name="one_minute" msgid="4182508213840684258">"1 minuutti"</string>
     <string name="applications" msgid="521776761270770549">"Sovellukset"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Ei sovelluksia, joihin viankorjausta voidaan käyttää"</string>
     <string name="buffer_size" msgid="3944311026715111454">"CPU-kohtainen puskurin koko"</string>
@@ -22,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"Jälki tallennettu"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Tallennetaan pinon näytteitä"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"Pinon näytteet tallennettu"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"Keon vedosta tallennetaan"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"Keon vedos tallennettu"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Jaa tallenne napauttamalla"</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"Jäljitystä liitetään virheraporttiin"</string>
     <string name="attached_to_report" msgid="5806905349184608870">"Jäljitys liitetty virheraporttiin"</string>
@@ -32,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Lopeta jälkien tallentaminen napauttamalla"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"Pinon näytteitä tallennetaan"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"Lopeta pinon näytteenotto napauttamalla"</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"Keon vedosta tallennetaan"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"Keskeytä keon vedos napauttamalla"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"Poista tallennetut tiedostot"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"Tallenteet poistetaan kuukauden päästä"</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"Poistetaanko tallennetut tiedostot?"</string>
@@ -72,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jäljittämisasetukset"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Tallennetut tiedostot"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"Muut"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"Keon vedoksen asetukset"</string>
 </resources>

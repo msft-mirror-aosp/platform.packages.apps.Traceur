@@ -29,13 +29,14 @@ import java.util.concurrent.TimeUnit;
 
 import perfetto.protos.DataSourceDescriptorOuterClass.DataSourceDescriptor;
 import perfetto.protos.FtraceDescriptorOuterClass.FtraceDescriptor.AtraceCategory;
+import perfetto.protos.TraceConfigOuterClass.TraceConfig;
 import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState;
 import perfetto.protos.TracingServiceStateOuterClass.TracingServiceState.DataSource;
 
 /**
  * Utility functions for calling Perfetto
  */
-public class PerfettoUtils implements TraceUtils.TraceEngine {
+public class PerfettoUtils {
 
     static final String TAG = "Traceur";
     public static final String NAME = "PERFETTO";
@@ -85,8 +86,21 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         return OUTPUT_EXTENSION;
     }
 
+    // Traceur will not verify that the input TraceConfig will start properly before attempting to
+    // record a trace.
+    public boolean traceStart(TraceConfig config) {
+        if (isTracingOn()) {
+            Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
+            return false;
+        } else {
+            recoverExistingRecording();
+        }
+
+        return startPerfettoWithProtoConfig(config);
+    }
+
     public boolean traceStart(Collection<String> tags, int bufferSizeKb, boolean winscope,
-            boolean apps, boolean attachToBugreport, boolean longTrace, int maxLongTraceSizeMb,
+            boolean apps, boolean longTrace, boolean attachToBugreport, int maxLongTraceSizeMb,
             int maxLongTraceDurationMinutes) {
         if (isTracingOn()) {
             Log.e(TAG, "Attempting to start perfetto trace but trace is already in progress");
@@ -119,7 +133,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
         appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
-        return startPerfettoWithConfig(config.toString());
+        return startPerfettoWithTextConfig(config.toString());
     }
 
     public boolean stackSampleStart(boolean attachToBugreport) {
@@ -141,7 +155,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         appendLinuxPerfConfig(config, /* targetBuffer = */ 0);
         appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
 
-        return startPerfettoWithConfig(config.toString());
+        return startPerfettoWithTextConfig(config.toString());
     }
 
     public boolean heapDumpStart(Collection<String> processes, boolean continuousDump,
@@ -172,7 +186,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 /* targetBuffer = */ 0);
         appendProcStatsConfig(config, /* tags = */ null, /* targetBuffer = */ 0);
 
-        return startPerfettoWithConfig(config.toString());
+        return startPerfettoWithTextConfig(config.toString());
     }
 
     public void traceStop() {
@@ -291,7 +305,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
     }
 
     // Starts Perfetto with the provided config string.
-    private boolean startPerfettoWithConfig(String config) {
+    private boolean startPerfettoWithTextConfig(String config) {
         // If the here-doc ends early, within the config string, exit immediately.
         // This should never happen.
         if (config.contains(MARKER)) {
@@ -303,9 +317,32 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 + " -c - --txt"
                 + " <<" + MARKER +"\n" + config + "\n" + MARKER;
 
-        Log.v(TAG, "Starting perfetto trace.");
+        Log.v(TAG, "Starting perfetto trace with text config.");
         try {
             Process process = TraceUtils.execWithTimeout(cmd, TEMP_DIR, STARTUP_TIMEOUT_MS);
+            if (process == null) {
+                return false;
+            } else if (process.exitValue() != 0) {
+                Log.e(TAG, "perfetto trace start failed with: " + process.exitValue());
+                return false;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        Log.v(TAG, "perfetto traceStart succeeded!");
+        return true;
+    }
+
+    // Starts Perfetto with the provided TraceConfig proto.
+    private boolean startPerfettoWithProtoConfig(TraceConfig config) {
+        String cmd = "perfetto --detach=" + PERFETTO_TAG
+                + " -o " + TEMP_TRACE_LOCATION
+                + " -c - ";
+        Log.v(TAG, "Starting perfetto trace with proto config.");
+        try {
+            Process process = TraceUtils.execWithTimeout(cmd, TEMP_DIR,
+                    STARTUP_TIMEOUT_MS, config.toByteArray());
             if (process == null) {
                 return false;
             } else if (process.exitValue() != 0) {
@@ -412,7 +449,7 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
 
         // These parameters affect only the kernel trace buffer size and how
         // frequently it gets moved into the userspace buffer defined above.
-        config.append("      buffer_size_kb: 8192\n")
+        config.append("      buffer_size_kb: 16384\n")
             .append("    }\n")
             .append("  }\n")
             .append("}\n")
@@ -613,6 +650,13 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
         if (winscope) {
             config.append("data_sources: {\n")
                 .append("  config {\n")
+                .append("    name: \"android.inputmethod\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
                 .append("    name: \"android.surfaceflinger.layers\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    surfaceflinger_layers_config: {\n")
@@ -649,6 +693,47 @@ public class PerfettoUtils implements TraceUtils.TraceEngine {
                 .append("    target_buffer: " + targetBuffer + "\n")
                 .append("    protolog_config: {\n")
                 .append("      tracing_mode: ENABLE_ALL\n")
+                .append("    }\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.viewcapture\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources: {\n")
+                .append("  config {\n")
+                .append("    name: \"android.windowmanager\"\n")
+                .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources {\n")
+                .append("  config {\n")
+                .append("    name: \"android.input.inputevent\"\n")
+                .append("    target_buffer: 1\n")
+                .append("    android_input_event_config {\n")
+                .append("      mode: TRACE_MODE_USE_RULES\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_NONE\n")
+                .append("        match_secure: true\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_COMPLETE\n")
+                .append("        match_all_packages: \"com.android.shell\"\n")
+                .append("        match_all_packages: \"com.android.systemui\"\n")
+                .append("        match_all_packages: \"com.android.launcher3\"\n")
+                .append("        match_all_packages: \"com.android.settings\"\n")
+                .append("        match_ime_connection_active: false\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_REDACTED\n")
+                .append("      }\n")
+                .append("      trace_dispatcher_input_events: true\n")
+                .append("      trace_dispatcher_window_dispatch: true\n")
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");

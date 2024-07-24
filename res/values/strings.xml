@@ -24,9 +24,6 @@
     <!-- This is the subtitle for the "Record heap dump" button if heap dumps are disabled. -->
     <string name="record_heap_dump_summary_disabled">Select at least one process in \"Heap dump processes\" to collect heap dumps</string>
 
-    <!-- This is the label for the button to start a new trace from a notification. -->
-    <string name="start_new_trace">Start new trace</string>
-
     <!-- This is the text for a toggle that will let the user choose whether to include Winscope traces in the trace they are collecting. -->
     <string name="winscope_tracing">Collect Winscope traces</string>
     <string name="winscope_tracing_summary">Includes detailed UI telemetry data (can cause jank)</string>
@@ -80,8 +77,10 @@
     <!-- This is the label for a picker that will let the user select the buffer size to use for their trace. -->
     <string name="buffer_size">Per-CPU buffer size</string>
 
-    <!-- This setting is the label for a toggle button. When enabled, a Quick Settings tile will be available in the Quick Settings bar (available when you swipe down from the top of the screen). -->
-    <string name="show_quick_settings_tile">Show Quick Settings tile</string>
+    <!-- This setting is the label for a toggle button. When enabled, a Quick Settings tile for tracing will be available in the Quick Settings bar (available when you swipe down from the top of the screen). -->
+    <string name="show_quick_settings_tile">Show tracing Quick Settings tile</string>
+    <!-- This setting is the label for a toggle button. When enabled, a Quick Settings tile for stack sampling will be available in the Quick Settings bar. -->
+    <string name="show_stack_sampling_quick_settings_tile">Show CPU profiling Quick Settings tile</string>
 
     <!-- This is the title for a notification that appears while a trace is being saved. -->
     <string name="saving_trace">Saving trace</string>
@@ -107,6 +106,8 @@
 
     <!-- This is a message prompting the user to stop tracing. -->
     <string name="stop_tracing">Stop tracing</string>
+    <!-- This is a message prompting the user to stop CPU sampling. -->
+    <string name="stop_stack_sampling">Stop CPU profiling</string>
 
     <!-- This is the title for a notification that appears when a trace begins but for some reason a desired tracing category is not available. This ends in a colon because the subtitle for this notification is a list of the unavailable tracing categories. That list could contain one or more categories. (This should rarely happen) -->
     <string name="tracing_categories_unavailable">Some tracing categories are unavailable:</string>
@@ -200,7 +201,7 @@
 
     <!-- When enabled, the tracing service can take the in-progress recording session and attach it to a bug report. -->
     <string name="attach_to_bug_report">Attach recordings to bug reports</string>
-    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected</string>
+    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected. Recordings will continue afterward.</string>
 
     <!-- On click, takes the user to the directory containing on-device Traceur files. -->
     <string name="link_to_traces">View saved files</string>

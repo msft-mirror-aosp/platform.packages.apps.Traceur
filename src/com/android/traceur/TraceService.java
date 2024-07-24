@@ -16,6 +16,8 @@
 
 package com.android.traceur;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -27,7 +29,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.text.format.DateUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,9 +66,6 @@ public class TraceService extends IntentService {
 
     private static int TRACE_NOTIFICATION = 1;
     private static int SAVING_TRACE_NOTIFICATION = 2;
-
-    private static final int MIN_KEEP_COUNT = 3;
-    private static final long MIN_KEEP_AGE = 4 * DateUtils.WEEK_IN_MILLIS;
 
     public static void startTracing(final Context context,
             Collection<String> tags, int bufferSizeKb, boolean winscope, boolean apps,
@@ -159,6 +157,11 @@ public class TraceService extends IntentService {
         }
     }
 
+    static void updateAllQuickSettingsTiles() {
+        TracingQsService.updateTile();
+        StackSamplingQsService.updateTile();
+    }
+
     private static TraceUtils.RecordingType getRecentTraceType(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean recordingWasTrace = prefs.getBoolean(
@@ -195,7 +198,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.traceStart(getContentResolver(), tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
@@ -207,7 +211,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(context.getString(R.string.pref_key_tracing_on),
                         false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
@@ -238,7 +242,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.stackSampleStart(attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
@@ -248,7 +253,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_stack_sampling_on), false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
@@ -287,7 +292,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
                 attachToBugreport)) {
@@ -296,7 +302,7 @@ public class TraceService extends IntentService {
             TraceUtils.traceStop(getContentResolver());
             prefs.edit().putBoolean(
                     context.getString(R.string.pref_key_heap_dump_on), false).commit();
-            QsService.updateTile();
+            updateAllQuickSettingsTiles();
             stopForeground(Service.STOP_FOREGROUND_REMOVE);
         }
 
@@ -333,7 +339,8 @@ public class TraceService extends IntentService {
                 null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
-        startForeground(SAVING_TRACE_NOTIFICATION, notification.build());
+        startForeground(SAVING_TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
@@ -354,22 +361,6 @@ public class TraceService extends IntentService {
                                 | PendingIntent.FLAG_CANCEL_CURRENT
                                 | PendingIntent.FLAG_IMMUTABLE));
             }
-
-            // Adds an action button to the notification for starting a new trace. This is only
-            // enabled for standard traces.
-            if (type == TraceUtils.RecordingType.TRACE) {
-                Intent restartIntent = new Intent(context, InternalReceiver.class);
-                restartIntent.setAction(InternalReceiver.START_ACTION);
-                PendingIntent restartPendingIntent = PendingIntent.getBroadcast(context, 0,
-                        restartIntent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE);
-                Notification.Action action = new Notification.Action.Builder(
-                        R.drawable.bugfood_icon, context.getString(R.string.start_new_trace),
-                        restartPendingIntent).build();
-                notificationAttached.addAction(action);
-            }
-
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
             Optional<List<File>> files = TraceUtils.traceDump(getContentResolver(), outputFilename);
@@ -380,7 +371,7 @@ public class TraceService extends IntentService {
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
 
-        TraceUtils.cleanupOlderFiles(MIN_KEEP_COUNT, MIN_KEEP_AGE);
+        TraceUtils.cleanupOlderFiles();
     }
 
     private void postFileSharingNotification(Context context, List<File> files) {

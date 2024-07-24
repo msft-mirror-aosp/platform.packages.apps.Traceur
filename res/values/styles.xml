@@ -37,4 +37,7 @@
     <style name="TvTheme" parent="@style/Theme.Leanback">
       <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Leanback</item>
     </style>
+
+    <style name="WearTheme" parent="@style/Theme.Settings">
+    </style>
 </resources>

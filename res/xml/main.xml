@@ -122,7 +122,11 @@
             android:title="@string/attach_to_bug_report"
             android:defaultValue="true" />
         <androidx.preference.SwitchPreference
-            android:key="@string/pref_key_quick_setting"
+            android:key="@string/pref_key_stack_sampling_quick_setting"
+            android:title="@string/show_stack_sampling_quick_settings_tile"
+            android:defaultValue="false" />
+        <androidx.preference.SwitchPreference
+            android:key="@string/pref_key_tracing_quick_setting"
             android:title="@string/show_quick_settings_tile"
             android:defaultValue="false" />
     </androidx.preference.PreferenceCategory>

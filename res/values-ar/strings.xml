@@ -7,13 +7,29 @@
     <string name="record_trace_summary" msgid="6705357754827849292">"تسجيل تتبُّع النظام باستخدام مجموعة الإعدادات في \"إعدادات التتبُّع\""</string>
     <string name="record_stack_samples" msgid="3498368637185702335">"‏تسجيل محلّل وحدة المعالجة المركزية (CPU)"</string>
     <string name="record_stack_samples_summary" msgid="7827953921526410478">"‏يمكن أيضًا تفعيل جمع عيّنات تكدس الاستدعاءات في أنشطة التتبُّع عن طريق وضع علامة في مربّع فئة \"cpu\"."</string>
+    <string name="record_heap_dump" msgid="1688550222066812696">"تسجيل لقطة لأجزاء من الذاكرة"</string>
+    <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"عند اختيار إحدى \"العمليات الخاصة بلقطات لأجزاء من الذاكرة\"، يتم تسجيل اللقطة الخاصة بها"</string>
+    <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"يجب اختيار عملية واحدة على الأقل من \"العمليات الخاصة بلقطات لأجزاء من الذاكرة\" لجمع هذه اللقطات"</string>
     <string name="start_new_trace" msgid="8177130420802170353">"بدء عملية تتبّع جديدة"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"‏جمْع آثار أنشطة أداة Winscope"</string>
+    <string name="winscope_tracing_summary" msgid="7040550156722395894">"يتم تضمين بيانات تفصيلية للقياس عن بعد لواجهة المستخدم (يمكن أن يتسبّب ذلك في إيقاف مؤقت لعرض واجهة المستخدم)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"تتبّع التطبيقات التي يمكن تصحيح الأخطاء بها"</string>
     <string name="categories" msgid="2280163673538611008">"الفئات"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"استعادة الفئات التلقائية"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"تمت استعادة الفئات التلقائية."</string>
     <string name="default_categories" msgid="2117679794687799407">"تلقائي"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{تمّ اختيار #.}zero{تمّ اختيار #.}two{تمّ اختيار #.}few{تمّ اختيار #.}many{تمّ اختيار #.}other{تمّ اختيار #.}}"</string>
+    <string name="heap_dump_processes" msgid="2500105180344901939">"العمليات الخاصة بلقطات لأجزاء من الذاكرة"</string>
+    <string name="heap_dump_processes_summary" msgid="4570434268024622765">"يجب اختيار عملية واحدة على الأقل"</string>
+    <string name="clear_heap_dump_processes" msgid="295101454741555286">"محو العمليات الخاصة بلقطات لأجزاء من الذاكرة"</string>
+    <string name="clear_heap_dump_processes_toast" msgid="3658510557596150797">"تم محو قائمة العمليات"</string>
+    <string name="continuous_heap_dump" msgid="390369382946204224">"لقطة مستمرة لعناصر متعدّدة"</string>
+    <string name="continuous_heap_dump_summary" msgid="4581643248161659581">"تسجيل لقطة لأجزاء من الذاكرة مرّة واحدة في كل فاصل محدَّد"</string>
+    <string name="continuous_heap_dump_interval" msgid="842533896492001433">"فاصل تسجيل لقطات لأجزاء من الذاكرة"</string>
+    <string name="five_seconds" msgid="7018465440929299712">"‫٥ ثوانٍ"</string>
+    <string name="ten_seconds" msgid="863416601384309033">"‫١٠ ثوانٍ"</string>
+    <string name="thirty_seconds" msgid="7945396361369598222">"‫٣٠ ثانية"</string>
+    <string name="one_minute" msgid="4182508213840684258">"دقيقة واحدة"</string>
     <string name="applications" msgid="521776761270770549">"التطبيقات"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"لا تتوفر تطبيقات يمكن تصحيح الأخطاء بها"</string>
     <string name="buffer_size" msgid="3944311026715111454">"حجم ذاكرة التخزين المؤقت لكل وحدة معالجة مركزية"</string>
@@ -22,6 +38,8 @@
     <string name="trace_saved" msgid="5869970594780992309">"تم حفظ آثار الأنشطة."</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"حفظ عيّنات التكدس"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"تم حفظ عيّنات التكدس"</string>
+    <string name="saving_heap_dump" msgid="6118616780825771824">"جارٍ حفظ لقطة لأجزاء من الذاكرة"</string>
+    <string name="heap_dump_saved" msgid="6720583137473857098">"تم حفظ لقطة لأجزاء من الذاكرة"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"انقر لمشاركة التسجيل."</string>
     <string name="attaching_to_report" msgid="2629202947947275886">"جارٍ إرفاق آثار الأنشطة إلى تقرير الخطأ."</string>
     <string name="attached_to_report" msgid="5806905349184608870">"تم إرفاق آثار الأنشطة إلى تقرير الخطأ"</string>
@@ -32,6 +50,8 @@
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"انقر لإيقاف التتبّع"</string>
     <string name="stack_samples_are_being_recorded" msgid="8669254939248349583">"جارٍ تسجيل عيّنات التكدس"</string>
     <string name="tap_to_stop_stack_sampling" msgid="5911317684139059415">"انقر لإيقاف جمع عيّنات التكدس."</string>
+    <string name="heap_dump_is_being_recorded" msgid="3789315106110524969">"جارٍ تسجيل لقطة لأجزاء من الذاكرة"</string>
+    <string name="tap_to_stop_heap_dump" msgid="6475699275834526902">"انقر لإيقاف تسجيل لقطة لأجزاء من الذاكرة"</string>
     <string name="clear_saved_files" msgid="9156079311231446825">"محو الملفات المحفوظة"</string>
     <string name="clear_saved_files_summary" msgid="109751867417553670">"يتم محو التسجيلات بعد شهر واحد."</string>
     <string name="clear_saved_files_question" msgid="8586686617760838834">"هل تريد محو الملفات المحفوظة؟"</string>
@@ -72,4 +92,5 @@
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"إعدادات التتبُّع"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"الملفات المحفوظة"</string>
     <string name="pref_category_misc" msgid="6217624054980014683">"خيارات متنوعة"</string>
+    <string name="pref_category_heap_dump_settings" msgid="2234681064312605310">"إعدادات تسجيل لقطات لأجزاء من الذاكرة"</string>
 </resources>
