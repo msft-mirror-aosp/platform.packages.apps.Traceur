@@ -16,6 +16,8 @@
 
 package com.android.traceur;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -197,7 +199,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.traceStart(this, tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
@@ -240,7 +243,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.stackSampleStart(attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
@@ -289,7 +293,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
                 attachToBugreport)) {
@@ -335,7 +340,8 @@ public class TraceService extends IntentService {
                 null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
-        startForeground(SAVING_TRACE_NOTIFICATION, notification.build());
+        startForeground(SAVING_TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
@@ -356,22 +362,6 @@ public class TraceService extends IntentService {
                                 | PendingIntent.FLAG_CANCEL_CURRENT
                                 | PendingIntent.FLAG_IMMUTABLE));
             }
-
-            // Adds an action button to the notification for starting a new trace. This is only
-            // enabled for standard traces.
-            if (type == TraceUtils.RecordingType.TRACE) {
-                Intent restartIntent = new Intent(context, InternalReceiver.class);
-                restartIntent.setAction(InternalReceiver.START_ACTION);
-                PendingIntent restartPendingIntent = PendingIntent.getBroadcast(context, 0,
-                        restartIntent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE);
-                Notification.Action action = new Notification.Action.Builder(
-                        R.drawable.bugfood_icon, context.getString(R.string.start_new_trace),
-                        restartPendingIntent).build();
-                notificationAttached.addAction(action);
-            }
-
             NotificationManager.from(context).notify(0, notificationAttached.build());
         } else {
             Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
