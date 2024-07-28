@@ -17,7 +17,7 @@
     <string name="restore_default_categories" msgid="5090536794637169521">"Ripristina categorie predefinite"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Categorie predefinite ripristinate"</string>
     <string name="default_categories" msgid="2117679794687799407">"Predefinite"</string>
-    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# selezionato}other{# selezionati}}"</string>
+    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# categoria selezionata}other{# categorie selezionate}}"</string>
     <string name="heap_dump_processes" msgid="2500105180344901939">"Processi dump dell\'heap"</string>
     <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Seleziona almeno un processo"</string>
     <string name="clear_heap_dump_processes" msgid="295101454741555286">"Cancella i processi di dump dell\'heap"</string>
