@@ -21,7 +21,7 @@
      android:versionCode="2"
      android:versionName="1.0">
     <uses-sdk android:minSdkVersion="26"
-         android:targetSdkVersion="33"/>
+         android:targetSdkVersion="34"/>
 
     <!--- Used to query for Betterbug. -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
@@ -46,6 +46,7 @@
 
     <!-- Used for brief periods where the trace service is foregrounded. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
 
     <!-- Used to post file-sending notification. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -141,13 +142,12 @@
             </intent-filter>
           </receiver>
 
-        <receiver android:name=".InternalReceiver"
-            androidprv:systemUserOnly="true"
-            android:exported="false">
-        </receiver>
-
         <service android:name=".StopTraceService"
-             android:exported="true"/>
+             android:exported="true"
+             android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                 android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
+        </service>
 
         <service android:name=".BindableTraceService"
             android:permission="android.permission.CONTROL_UI_TRACING"
@@ -155,7 +155,11 @@
             android:exported="true"/>
 
         <service android:name=".TraceService"
-             android:exported="false"/>
+             android:exported="false"
+             android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                 android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
+        </service>
 
         <service android:name=".TracingQsService"
              android:enabled="false"
