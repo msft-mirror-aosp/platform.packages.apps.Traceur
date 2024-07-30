@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"සංච නික්‍ෂේපය වාර්තා කරන්න"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"සංච නික්‍ෂේප ක්‍රියාවලි\" තුළ තෝරා ගත් ක්‍රියාවලිවල සංච නික්‍ෂේපයක් ග්‍රහණය කරයි"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"සංච නික්‍ෂේපය එකතු කිරීමට \"සංච නික්‍ෂේප ක්‍රියාවලි\" තුළ අවම වශයෙන් එක් ක්‍රියාවලියක් තෝරන්න"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"නව හඹා යාම ආරම්භ කරන්න"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope හෝඩුවා එකතු කරන්න"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"සවිස්තරාත්මක UI දුරස්ථමාන දත්ත ඇතුළත් වේ (ජැන්ක් ඇති කළ හැක)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"දෝෂහරණය කළ හැකි යෙදුම් හඹා යන්න"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"දෝෂ වාර්තා සඳහා පටිගත කිරීම නවත්වන්න"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"දෝෂ වාර්තාවක් ආරම්භ කළ විට සක්‍රීය පටිගත කිරීම් අවසන් කරයි"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"දෝෂ වාර්තාවලට පටිගත කිරීම් අමුණන්න"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"දෝෂ වාර්තාවක් එක් කළ විට ප්‍රගතිය පටිගත කිරීම් ස්වයංක්‍රීයව BetterBug වෙත යවන්න"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"දෝෂ වාර්තාවක් එක් කළ විට ප්‍රගතිය පටිගත කිරීම් ස්වයංක්‍රීයව BetterBug වෙත යවන්න. පසුව පටිගත කිරීම් දිගටම කරගෙන යනු ඇත."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"සුරකින ලද ගොනු බලන්න"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"හඹා යාමේ සැකසීම්"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"සුරැකි ගොනු"</string>

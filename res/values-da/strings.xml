@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registrer heap dump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Registrerer et heap dump af de processer, der er valgt i \"Heap dump-processer\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Vælg mindst én proces i \"Heap dump-processer\" for at indsamle heap dumps"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Start ny registrering"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Inkluder sporing af Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Omfatter detaljerede telemetridata for brugerfladen (man medføre hak)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Registrer apps, der kan fejlrettes"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stop registrering til fejlrapporter"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Afslutter aktive registreringer, når en fejlrapport startes"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Vedhæft registreringer i fejlrapporter"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Send automatisk løbende registreringer til BetterBug, når der indhentes en fejlrapport"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Send automatisk løbende registreringer til BetterBug, når der indhentes en fejlrapport. Optagelser fortsætter efterfølgende."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Se gemte filer"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Indstillinger for registrering"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Gemte filer"</string>

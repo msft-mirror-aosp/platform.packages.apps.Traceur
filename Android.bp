@@ -10,16 +10,14 @@ android_app {
         shrink_resources: true,
     },
     static_libs: [
-        "androidx.leanback_leanback",
-        "androidx.leanback_leanback-preference",
-        "androidx.legacy_legacy-preference-v14",
         "androidx.appcompat_appcompat",
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "androidx.legacy_legacy-support-v4",
         "TraceurCommon",
+        "Traceur-res",
     ],
-    resource_dirs: ["res"],
+    resource_dirs: [],
     srcs: ["src/**/*.java"],
     defaults: [
         "SettingsLibDefaults",
@@ -36,4 +34,18 @@ android_library {
     manifest: "AndroidManifest-common.xml",
     resource_dirs: [],
     srcs: ["src_common/**/*.java"],
+}
+
+// Allow other build targets to access Traceur resources
+android_library {
+    name: "Traceur-res",
+    use_resource_processor: true,
+    static_libs: [
+        "androidx.leanback_leanback",
+        "androidx.leanback_leanback-preference",
+        "androidx.legacy_legacy-preference-v14",
+    ],
+    manifest: "AndroidManifest-res.xml",
+    resource_dirs: ["res"],
+    srcs: [],
 }

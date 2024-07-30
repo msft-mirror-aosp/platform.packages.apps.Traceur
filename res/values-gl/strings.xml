@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Gravar baleirado da zona de memoria dinámica"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Captura un baleirado da zona de memoria dinámica dos procesos seleccionados en Procesos de baleirado da zona de memoria dinámica"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Para recompilar baleirados, selecciona polo menos un proceso en Procesos de baleirado da zona de memoria dinámica"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Iniciar novo rastro"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Recompilar rastros de Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inclúe datos telemétricos detallados da IU (pode diminuír a velocidade de resposta)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Gardar rastros de aplicacións que se poidan depurar"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Deixar de gravar ao iniciar informes de erros"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Remata as gravacións activas cando se inicia un informe de erros"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Anexar gravacións aos informes de erros"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Envía automaticamente gravacións en curso a BetterBug cando se recompile un informe de erros"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Envía automaticamente rexistros de gravacións en curso a BetterBug cando se recompile un informe de erros. As gravacións continuarán tendo lugar despois."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Ver ficheiros gardados"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Configuración de rastro"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Ficheiros gardados"</string>
