@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ஹீப் டம்ப்பை ரெக்கார்டு செய்தல்"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\'ஹீப் டம்ப் செயல்முறைகளில்\' தேர்ந்தெடுக்கப்பட்ட செயல்முறைகளின் ஹீப் டம்ப்பைப் பதிவுசெய்கிறது"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ஹீப் டம்ப்களைச் சேகரிக்க \'ஹீப் டம்ப் செயல்முறைகளில்\' குறைந்தது ஒரு செயல்முறையாவது தேர்ந்தெடுங்கள்"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"புதிய டிரேஸைத் தொடங்கு"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"வின்ஸ்கோப் டிரேஸ்களைச் சேகரித்தல்"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"விரிவான UI டெலிமெட்ரி தரவும் அடங்கும் (மந்தமான செயல்பாட்டை உண்டாக்கலாம்)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"பிழை திருத்தக்கூடிய ஆப்ஸை டிரேஸ் செய்"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"பிழை அறிக்கைக்காக ரெக்கார்டிங்கை நிறுத்துதல்"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"பிழை அறிக்கை தொடங்கியதும் செயலிலுள்ள ரெக்கார்டிங்குகளை நிறுத்திவிடும்"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"பிழை அறிக்கைகளில் ரெக்கார்டிங்குகளை இணைத்தல்"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"பிழை அறிக்கை சேகரிக்கப்பட்டதும் செயலிலுள்ள ரெக்கார்டிங்குகள் தானாகவே BetterBug கருவிக்கு அனுப்பப்படும்"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"பிழை அறிக்கை சேகரிக்கப்பட்டதும் செயலிலுள்ள ரெக்கார்டிங்குகள் தானாகவே BetterBug கருவிக்கு அனுப்பப்படும். அதன்பிறகு ரெக்கார்டிங்குகள் தொடரும்."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"சேமிக்கப்பட்ட ஃபைல்களைப் பாருங்கள்"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"அமைப்புகளை டிரேஸ் செய்யுங்கள்"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"சேமித்த ஃபைல்கள்"</string>
