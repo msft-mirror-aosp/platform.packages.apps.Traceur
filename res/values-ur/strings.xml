@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ہیپ ڈمپ ریکارڈ کریں"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ہیپ ڈمپ پروسیسز\" میں سے منتخب کردہ پروسیسز کے ہیپ ڈمپ کو کیپچر کرتا ہے"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ہیپ ڈمپس جمع کرنے کے لیے \"ہیپ ڈمپ کے پروسیسز\" میں کم از کم ایک پروسیس منتخب کریں"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"نیا ٹریس شروع کریں"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"‏Winscope کے ٹریسز جمع کریں"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"‏تفصیلی UI ٹیلی میٹری ڈیٹا پر مشتمل ہے (جنک کا سبب بن سکتی ہے)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ڈیبگ کے لائق ایپلیکیشنز ٹریس کریں"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"بگ رپورٹس کے لیے ریکارڈنگ بند کریں"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"بگ رپورٹس شروع ہونے پر فعال ریکارڈنگز ختم ہو جاتی ہیں"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"بگ رپورٹس کے ساتھ ریکارڈنگز منسلک کریں"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"‏بگ رپورٹ جمع ہونے پر خودکار طور پر جاری ریکارڈنگز BetterBug کو بھیجیں"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏بگ رپورٹ جمع ہونے پر خودکار طور پر جاری ریکارڈنگز BetterBug کو بھیج دی جاتی ہیں۔ اس کے بعد ریکارڈنگز جاری رہیں گی۔"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"محفوظ کردہ فائلز دیکھیں"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ٹریس کی ترتیبات"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"محفوظ کردہ فائلز"</string>
