@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"تسجيل لقطة لأجزاء من الذاكرة"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"عند اختيار إحدى \"العمليات الخاصة بلقطات لأجزاء من الذاكرة\"، يتم تسجيل اللقطة الخاصة بها"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"يجب اختيار عملية واحدة على الأقل من \"العمليات الخاصة بلقطات لأجزاء من الذاكرة\" لجمع هذه اللقطات"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"بدء عملية تتبّع جديدة"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"‏جمْع آثار أنشطة أداة Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"يتم تضمين بيانات تفصيلية للقياس عن بعد لواجهة المستخدم (يمكن أن يتسبّب ذلك في إيقاف مؤقت لعرض واجهة المستخدم)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"تتبّع التطبيقات التي يمكن تصحيح الأخطاء بها"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"إيقاف التسجيل لتقارير الأخطاء"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"لإنهاء التسجيلات النشطة عند بدء تقرير أخطاء"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"إرفاق التسجيلات بتقارير الأخطاء"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"‏يمكنك تلقائيًا إرسال التسجيلات الجاري تسجيلها إلى BetterBug عند جمع تقرير خطأ."</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏يمكنك تلقائيًا إرسال التسجيلات الجاري تسجيلها إلى BetterBug عند جمع تقرير خطأ. بعد ذلك، سيستمر التسجيل."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"عرض الملفات المحفوظة"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"إعدادات التتبُّع"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"الملفات المحفوظة"</string>
