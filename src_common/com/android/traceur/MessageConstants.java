@@ -21,6 +21,7 @@ public final class MessageConstants {
     public static final int START_WHAT = 0;
     public static final int STOP_WHAT = 1;
     public static final int SHARE_WHAT = 2;
+    public static final int TAGS_WHAT = 3;
 
     // Package / Service names so Traceur and SystemUI can interact with each other
     // and grant URI permissions accordingly
@@ -36,4 +37,11 @@ public final class MessageConstants {
     // Trace type is used during trace start to tell Traceur which type of trace the user has
     // selected (battery, performance, ui, thermal, etc.)
     public static final String INTENT_EXTRA_TRACE_TYPE = TRACING_APP_PACKAGE_NAME + ".trace_type";
+
+    // Available tags are only retrievable via Traceur due to SELinux constraints. These are the
+    // Bundle data keys used to pass the data from Traceur to System UI
+    public static final String BUNDLE_KEY_TAGS = TRACING_APP_PACKAGE_NAME
+        + ".tags";
+    public static final String BUNDLE_KEY_TAG_DESCRIPTIONS = TRACING_APP_PACKAGE_NAME
+        + ".tag_descriptions";
 }
