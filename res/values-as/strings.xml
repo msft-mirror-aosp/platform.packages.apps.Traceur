@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"হীপ ডাম্প ৰেকৰ্ড কৰক"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"হীপ ডাম্প প্ৰক্ৰিয়াসমূহ\"ত বাছনি কৰা প্ৰক্ৰিয়াসমূহৰ এটা হিপ ডাম্প কেপচাৰ কৰে"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"হীপ ডাম্প সংগ্ৰহ কৰিবলৈ \"হীপ ডাম্পৰ প্ৰক্ৰিয়াসমূহ\"ত অতি কমেও এটা বাছনি কৰক"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"নতুন ট্ৰে’চ আৰম্ভ কৰক"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscopeৰ ট্ৰে’চ সংগ্ৰহ কৰক"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"বিস্তৃত UIৰ টেলিমেট্ৰী ডেটা অন্তৰ্ভুক্ত কৰে (জাংকৰ সৃষ্টি কৰিব পাৰে)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ডিবাগ কৰিবলগীয়া এপ্লিকেশ্বনসমূহ ট্ৰে\'চ কৰক"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"বাগ ৰিপ’ৰ্টৰ বাবে ৰেকৰ্ড কৰাটো বন্ধ কৰক"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"এটা বাগ ৰিপ’ৰ্ট আৰম্ভ কৰিলে সক্ৰিয় ৰেকৰ্ডিংসমূহৰ অন্ত পৰে"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"বাগ ৰিপ’ৰ্টত ৰেকৰ্ডিংসমূহ সংলগ্ন কৰক"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"যেতিয়া এটা বাগ ৰিপ’ৰ্ট সংগ্ৰহ কৰা হয়, চলি থকা ৰেকৰ্ডিংসমূহ BetterBugলৈ স্বয়ংক্ৰিয়ভাৱে পঠিয়াওক"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"যেতিয়া এটা বাগ ৰিপ’ৰ্ট সংগ্ৰহ কৰা হয়, চলি থকা ৰেকৰ্ডিংসমূহ স্বয়ংক্ৰিয়ভাৱে BetterBugলৈ পঠিয়াওক। তাৰ পাছত ৰেকৰ্ডিং চলি থাকিব।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ছেভ কৰা ফাইলসমূহ চাওক"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ট্ৰে’চৰ ছেটিং"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ছেভ কৰি থোৱা ফাইল"</string>

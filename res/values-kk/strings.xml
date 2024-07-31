@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Дамп файлын жазу"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"Дамп файлы процестері\" бөлімінде таңдалған процестердің дамп файлын суретке түсіреді."</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Дамп файлдарын жинау үшін \"Дамп файлы процестері\" бөлімінде кемінде бір процесті таңдаңыз."</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Жаңа трассаны бастау"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope трассаларын жинау"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Пайдаланушы интерфейсінің толық телеметрия деректері бар (интерфейс жұмысының нашарлауына әкелуі мүмкін)."</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Трассасын түзетуге болатын қолданбалар"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Қате туралы есептерді жазуды тоқтату"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Қате туралы есеп басталғанда, қосулы жазбаларды тоқтатады."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Қате туралы есептерге жазбаларды тіркеу"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Қате туралы есеп жиналған кезде, ағымдағы жазбаларды BetterBug қызметіне автоматты түрде жіберу"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Қате туралы есеп жиналған кезде, ағымдағы жазбаларды BetterBug қызметіне автоматты түрде жіберіңіз. Содан кейін жазба жалғасады."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Сақталған файлдарды көру"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Трассалау параметрлері"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Сақталған файлдар"</string>
