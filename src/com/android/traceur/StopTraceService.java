@@ -44,8 +44,7 @@ public class StopTraceService extends TraceService {
         // Ensures that only intents that pertain to stopping a trace and need to be accessed from
         // outside Traceur are passed to TraceService through StopTraceService.
         String intentAction = intent.getAction();
-        if (!intentAction.equals(TraceService.INTENT_ACTION_NOTIFY_SESSION_STOLEN) &&
-            !intentAction.equals(TraceService.INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
+        if (!intentAction.equals(TraceService.INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
             return;
         }
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
