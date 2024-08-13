@@ -663,8 +663,6 @@ public class PerfettoUtils {
                 .append("      mode: MODE_ACTIVE\n")
                 .append("      trace_flags: TRACE_FLAG_INPUT\n")
                 .append("      trace_flags: TRACE_FLAG_COMPOSITION\n")
-                .append("      trace_flags: TRACE_FLAG_HWC\n")
-                .append("      trace_flags: TRACE_FLAG_BUFFERS\n")
                 .append("      trace_flags: TRACE_FLAG_VIRTUAL_DISPLAYS\n")
                 .append("    }\n")
                 .append("  }\n")
