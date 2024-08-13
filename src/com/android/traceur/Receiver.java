@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
@@ -81,22 +82,24 @@ public class Receiver extends BroadcastReceiver {
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.i(TAG, "Received BOOT_COMPLETE");
+            // USER_FOREGROUND and USER_BACKGROUND can only be received by explicitly registered
+            // receivers; manifest-declared receivers are not sufficient.
+            registerUserSwitchReceiver(context, this);
             createNotificationChannels(context);
             updateDeveloperOptionsWatcher(context, /* fromBootIntent */ true);
             // We know that Perfetto won't be tracing already at boot, so pass the
             // tracingIsOff argument to avoid the Perfetto check.
             updateTracing(context, /* assumeTracingIsOff= */ true);
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
-            boolean developerOptionsEnabled = (1 ==
-                Settings.Global.getInt(context.getContentResolver(),
-                    Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-            UserManager userManager = context.getSystemService(UserManager.class);
-            boolean isAdminUser = userManager.isAdminUser();
-            boolean debuggingDisallowed = userManager.hasUserRestriction(
-                    UserManager.DISALLOW_DEBUGGING_FEATURES);
-            updateStorageProvider(context,
-                    developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
-        } else if (STOP_ACTION.equals(intent.getAction())) {
+            boolean traceurAllowed = isTraceurAllowed(context);
+            updateStorageProvider(context, traceurAllowed);
+            if (!traceurAllowed) {
+                // We don't need to check for ongoing traces to stop because if
+                // ACTION_USER_FOREGROUND is received, there should be no ongoing traces.
+                removeQuickSettingsTiles(context);
+            }
+        } else if (Intent.ACTION_USER_BACKGROUND.equals(intent.getAction()) ||
+                STOP_ACTION.equals(intent.getAction())) {
             // Only one of tracing or stack sampling should be enabled, but because they use the
             // same path for stopping and saving, set both to false.
             prefs.edit().putBoolean(
@@ -228,6 +231,15 @@ public class Receiver extends BroadcastReceiver {
         QsService.updateTile();
     }
 
+    private static void removeQuickSettingsTiles(Context context) {
+        SharedPreferences prefs =
+            PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putBoolean(
+            context.getString(R.string.pref_key_quick_setting), false)
+            .commit();
+        updateQuickSettings(context);
+    }
+
     /*
      * When Developer Options are toggled, also toggle the Storage Provider that
      * shows "System traces" in Files.
@@ -245,24 +257,11 @@ public class Receiver extends BroadcastReceiver {
                     @Override
                     public void onChange(boolean selfChange) {
                         super.onChange(selfChange);
+                        boolean traceurAllowed = isTraceurAllowed(context);
+                        updateStorageProvider(context, traceurAllowed);
 
-                        boolean developerOptionsEnabled = (1 ==
-                            Settings.Global.getInt(context.getContentResolver(),
-                                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED , 0));
-                        UserManager userManager = context.getSystemService(UserManager.class);
-                        boolean isAdminUser = userManager.isAdminUser();
-                        boolean debuggingDisallowed = userManager.hasUserRestriction(
-                                UserManager.DISALLOW_DEBUGGING_FEATURES);
-                        updateStorageProvider(context,
-                                developerOptionsEnabled && isAdminUser && !debuggingDisallowed);
-
-                        if (!developerOptionsEnabled) {
-                            SharedPreferences prefs =
-                                PreferenceManager.getDefaultSharedPreferences(context);
-                            prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_quick_setting), false)
-                                .commit();
-                            updateQuickSettings(context);
+                        if (!traceurAllowed) {
+                            removeQuickSettingsTiles(context);
                             // Stop an ongoing trace if one exists.
                             if (TraceUtils.isTracingOn()) {
                                 TraceService.stopTracingWithoutSaving(context);
@@ -345,6 +344,13 @@ public class Receiver extends BroadcastReceiver {
         notificationManager.createNotificationChannel(saveTraceChannel);
     }
 
+    private static void registerUserSwitchReceiver(Context context, BroadcastReceiver receiver) {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_USER_FOREGROUND);
+        filter.addAction(Intent.ACTION_USER_BACKGROUND);
+        context.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
+    }
+
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
                 getDefaultTagList());
@@ -376,5 +382,18 @@ public class Receiver extends BroadcastReceiver {
         }
 
         return mDefaultTagList;
+    }
+
+    public static boolean isTraceurAllowed(Context context) {
+        boolean developerOptionsEnabled = Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+        UserManager userManager = context.getSystemService(UserManager.class);
+        boolean isAdminUser = userManager.isAdminUser();
+        boolean debuggingDisallowed = userManager.hasUserRestriction(
+                UserManager.DISALLOW_DEBUGGING_FEATURES);
+
+        // For Traceur usage to be allowed, developer options must be enabled, the user must be an
+        // admin, and the user must not have debugging features disallowed.
+        return developerOptionsEnabled && isAdminUser && !debuggingDisallowed;
     }
 }
