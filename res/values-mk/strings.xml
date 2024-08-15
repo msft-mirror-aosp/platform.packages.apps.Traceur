@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Снимање слика од меморијата"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Снима слика од меморијата од процесите избрани во „Процеси на слики од меморијата“"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Изберете најмалку еден процес во „Процеси на слики од меморијата“ за да ги приберете сликите од меморијата"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Започни нова трага"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Собирајте траги од Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Опфаќа детални податоци за телеметрија на корисничкиот интерфејс (може да предизвика заглавување)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Трагај по апликации со грешки за отстранување"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Престани со снимање за извештаите за грешки"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Ги завршува активните снимки кога ќе се започне извештај за грешки"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Прикачете ги снимките во извештаите за грешки"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Автоматски испраќај снимки во тек во BetterBug кога ќе се прибере извештај за грешки"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Автоматски испраќај снимки во тек до BetterBug кога ќе се прибере извештај за грешки. Снимањата ќе продолжат потоа."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Прикажи ги зачуваните датотеки"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Поставки за трага"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Зачувани апликации"</string>

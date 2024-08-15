@@ -17,7 +17,6 @@
 package com.android.traceur;
 
 import android.app.ActivityManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Build;
 import android.os.FileUtils;
@@ -47,8 +46,6 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import perfetto.protos.TraceConfigOuterClass.TraceConfig;
-
 /**
  * Utility functions for tracing.
  */
@@ -72,50 +69,18 @@ public class TraceUtils {
         UNKNOWN, TRACE, STACK_SAMPLES, HEAP_DUMP
     }
 
-    public enum PresetTraceType {
-        UNSET, PERFORMANCE, BATTERY, THERMAL, UI
-    }
-
-    public static boolean presetTraceStart(Context context, PresetTraceType type) {
-        Set<String> tags;
-        PresetTraceConfigs.TraceOptions options;
-        Log.v(TAG, "Using preset of type " + type.toString());
-        switch (type) {
-            case PERFORMANCE:
-                tags = PresetTraceConfigs.getPerformanceTags();
-                options = PresetTraceConfigs.getPerformanceOptions();
-                break;
-            case BATTERY:
-                tags = PresetTraceConfigs.getBatteryTags();
-                options = PresetTraceConfigs.getBatteryOptions();
-                break;
-            case THERMAL:
-                tags = PresetTraceConfigs.getThermalTags();
-                options = PresetTraceConfigs.getThermalOptions();
-                break;
-            case UI:
-                tags = PresetTraceConfigs.getUiTags();
-                options = PresetTraceConfigs.getUiOptions();
-                break;
-            case UNSET:
-            default:
-                tags = PresetTraceConfigs.getDefaultTags();
-                options = PresetTraceConfigs.getDefaultOptions();
-        }
-        return traceStart(context, tags, options.bufferSizeKb, options.winscope,
-                options.apps, options.longTrace, options.attachToBugreport,
-                options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
-    }
-
-    public static boolean traceStart(Context context, TraceConfig config, boolean winscope) {
-        // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
-        // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
-        // available in Perfetto is captured using WinscopeUtils instead.
-        if (!mTraceEngine.traceStart(config)) {
-            return false;
-        }
-        WinscopeUtils.traceStart(context, winscope);
-        return true;
+    public static boolean traceStart(Context context, TraceConfig config) {
+        return traceStart(
+            context,
+            config.getTags(),
+            config.getBufferSizeKb(),
+            config.getWinscope(),
+            config.getApps(),
+            config.getLongTrace(),
+            config.getAttachToBugreport(),
+            config.getMaxLongTraceSizeMb(),
+            config.getMaxLongTraceSizeMb()
+        );
     }
 
     public static boolean traceStart(Context context, Collection<String> tags,
