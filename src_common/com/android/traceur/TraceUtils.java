@@ -76,7 +76,7 @@ public class TraceUtils {
             config.getBufferSizeKb(),
             config.getWinscope(),
             config.getApps(),
-            /* config.getLongTrace() --> b/343538743 */ false,
+            config.getLongTrace(),
             config.getAttachToBugreport(),
             config.getMaxLongTraceSizeMb(),
             config.getMaxLongTraceSizeMb()
