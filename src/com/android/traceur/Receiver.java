@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
@@ -68,6 +69,9 @@ public class Receiver extends BroadcastReceiver {
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.i(TAG, "Received BOOT_COMPLETE");
+            // USER_FOREGROUND and USER_BACKGROUND can only be received by explicitly registered
+            // receivers; manifest-declared receivers are not sufficient.
+            registerUserSwitchReceiver(context, this);
             createNotificationChannels(context);
             updateDeveloperOptionsWatcher(context, /* fromBootIntent */ true);
             // We know that Perfetto won't be tracing already at boot, so pass the
@@ -75,8 +79,15 @@ public class Receiver extends BroadcastReceiver {
             updateTracing(context, /* assumeTracingIsOff= */ true);
             TraceUtils.cleanupOlderFiles();
         } else if (Intent.ACTION_USER_FOREGROUND.equals(intent.getAction())) {
-            updateStorageProvider(context, isTraceurAllowed(context));
-        } else if (STOP_ACTION.equals(intent.getAction())) {
+            boolean traceurAllowed = isTraceurAllowed(context);
+            updateStorageProvider(context, traceurAllowed);
+            if (!traceurAllowed) {
+                // We don't need to check for ongoing traces to stop because if
+                // ACTION_USER_FOREGROUND is received, there should be no ongoing traces.
+                removeQuickSettingsTiles(context);
+            }
+        } else if (Intent.ACTION_USER_BACKGROUND.equals(intent.getAction()) ||
+                STOP_ACTION.equals(intent.getAction())) {
             // Only one of these should be enabled, but they all use the same path for stopping and
             // saving, so set them all to false.
             prefs.edit().putBoolean(
@@ -229,6 +240,20 @@ public class Receiver extends BroadcastReceiver {
         updateQuickSettingsPanel(context, stackSamplingQsEnabled, StackSamplingQsService.class);
     }
 
+    private static void removeQuickSettingsTiles(Context context) {
+        SharedPreferences prefs =
+            PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putBoolean(
+            context.getString(R.string.pref_key_tracing_quick_setting), false)
+            .commit();
+        prefs.edit().putBoolean(
+            context.getString(
+                R.string.pref_key_stack_sampling_quick_setting), false)
+            .commit();
+        updateTracingQuickSettings(context);
+        updateStackSamplingQuickSettings(context);
+    }
+
     /*
      * When Developer Options are toggled, also toggle the Storage Provider that
      * shows "System traces" in Files.
@@ -249,17 +274,7 @@ public class Receiver extends BroadcastReceiver {
                         boolean traceurAllowed = isTraceurAllowed(context);
                         updateStorageProvider(context, traceurAllowed);
                         if (!traceurAllowed) {
-                            SharedPreferences prefs =
-                                PreferenceManager.getDefaultSharedPreferences(context);
-                            prefs.edit().putBoolean(
-                                context.getString(R.string.pref_key_tracing_quick_setting), false)
-                                .commit();
-                            prefs.edit().putBoolean(
-                                context.getString(
-                                    R.string.pref_key_stack_sampling_quick_setting), false)
-                                .commit();
-                            updateTracingQuickSettings(context);
-                            updateStackSamplingQuickSettings(context);
+                            removeQuickSettingsTiles(context);
                             // Stop an ongoing trace if one exists.
                             if (TraceUtils.isTracingOn()) {
                                 TraceService.stopTracingWithoutSaving(context);
@@ -339,6 +354,13 @@ public class Receiver extends BroadcastReceiver {
             context.getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(tracingChannel);
         notificationManager.createNotificationChannel(saveTraceChannel);
+    }
+
+    private static void registerUserSwitchReceiver(Context context, BroadcastReceiver receiver) {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_USER_FOREGROUND);
+        filter.addAction(Intent.ACTION_USER_BACKGROUND);
+        context.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
     }
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
