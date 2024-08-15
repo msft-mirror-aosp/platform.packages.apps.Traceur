@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"హీప్ డంప్‌ను రికార్డ్ చేయండి"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"హీప్ డంప్ ప్రాసెస్‌ల\"లో ఎంచుకున్న ప్రాసెస్‌ల హీప్ డంప్‌ను క్యాప్చర్ చేస్తుంది"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"హీప్ డంప్‌లను సేకరించడానికి \"హీప్ డంప్ ప్రాసెస్‌ల\"లో కనీసం ఒక ప్రాసెస్‌ను ఎంచుకోండి"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"కొత్త ట్రేస్‌ను ప్రారంభించండి"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ట్రేస్‌లను సేకరించండి"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"వివరణాత్మక UI టెలిమెట్రీ డేటా ఉంటుంది (ఈ ప్రాసెస్ జంక్‌ను క్రియేట్ చేయవచ్చు)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"డీబగ్ చేయగల అప్లికేషన్‌ల స్థితిగతి కనుగొనండి"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"బగ్ రిపోర్ట్‌ల కోసం రికార్డింగ్‌ను ఆపివేయండి"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"బగ్ రిపోర్ట్ ప్రాసెస్ ప్రారంభమైనప్పుడు, యాక్టివ్‌గా ఉన్న ట్రేస్ రికార్డింగ్‌లను ఆపివేస్తుంది"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"బగ్ రిపోర్ట్‌లకు రికార్డింగ్‌లను అటాచ్ చేయండి"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"బగ్ రిపోర్ట్ కలెక్ట్ చేయబడినప్పుడు ప్రోగెస్‌లో ఉన్న రికార్డింగ్‌లను ఆటోమేటిక్‌గా BetterBugకు పంపండి"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"బగ్ రిపోర్ట్ కలెక్ట్ చేయబడినప్పుడు ప్రోగెస్‌లో ఉన్న రికార్డింగ్‌లను ఆటోమేటిక్‌గా BetterBugకు పంపండి. సంబంధిత వ్యవధి తర్వాత, రికార్డింగ్‌లు కొనసాగుతాయి."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"సేవ్ చేసిన ఫైల్స్‌ను చూడండి"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ట్రేస్ సెట్టింగ్‌లు"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"సేవ్ చేసిన ఫైల్స్"</string>

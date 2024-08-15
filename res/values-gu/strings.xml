@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"હીપ ડમ્પ રેકોર્ડ કરો"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"હીપ ડમ્પની પ્રક્રિયાઓ\"માંથી પસંદ કરવામાં આવેલી પ્રક્રિયાઓના હીપ ડમ્પને કૅપ્ચર કરે છે"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"હીપ ડમ્પ એકત્રિત કરવા માટે, \"હીપ ડમ્પની પ્રક્રિયાઓ\"માં ઓછામાં ઓછી એક પ્રક્રિયા પસંદ કરો"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"નવેસરથી ટ્રેસ કરો"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ટ્રેસ એકત્રિત કરો"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"વિગતવાર UI ટેલિમિટ્રિ ડેટાનો સમાવેશ થાય છે (જંકનું કારણ બની શકે છે)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ડિબગ કરી શકાય તેવી ઍપ્લિકેશનોને ટ્રેસ કરો"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"બગ રિપોર્ટ માટે રેકોર્ડ કરવાનું રોકો"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"જ્યારે કોઈ બગ રિપોર્ટ શરૂ કરવામાં આવે, ત્યારે સક્રિય રેકોર્ડિંગ સમાપ્ત થાય છે"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"બગ રિપોર્ટમાં રેકોર્ડિંગને જોડો"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"જ્યારે કોઈ બગ રિપોર્ટ એકત્રિત કરવામાં આવે, ત્યારે BetterBugને ઑટોમૅટિક રીતે ચાલુ પ્રક્રિયાના રેકોર્ડિંગ મોકલો"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"જ્યારે કોઈ બગ રિપોર્ટ એકત્રિત કરવામાં આવે, ત્યારે BetterBugને ચાલુ પ્રક્રિયાના રેકોર્ડિંગ ઑટોમૅટિક રીતે મોકલો. રેકોર્ડિંગની પ્રક્રિયા પછીથી ચાલુ રહેશે."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"સાચવેલી ફાઇલો જુઓ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ટ્રેસિંગ સંબંધી સેટિંગ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"સાચવેલી ફાઇલો"</string>

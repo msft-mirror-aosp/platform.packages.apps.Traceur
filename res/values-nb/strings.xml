@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Utfør minnedump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Utfører en minnedump av prosessene som er valgt i «Minnedumpprosesser»"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Velg minst én prosess i «Minnedumpprosesser» for å utføre minnedumper"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Start ny registrering"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samle Winscope-spor"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Inkluderer detaljerte UI-telemetridata (kan forårsake gjengivelsespause)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spor feilsøkbare apper"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stopp opptak for feilrapporter"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Avslutter aktive opptak når en feilrapport er startet"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Legg ved opptak i feilrapporter"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Send automatisk pågående opptak til BetterBug når en feilrapport samles inn"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Send automatisk aktive opptak til BetterBug når det samles inn feilrapporter. Opptakene fortsetter etterpå."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Se lagrede filer"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Innstillinger for sporing"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Lagrede filer"</string>
