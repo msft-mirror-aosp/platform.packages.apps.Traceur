@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Snimi snimak dinamičkog dijela memorije"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Snima snimak dinamičkog dijela memorije procesa odabranih u odjeljku \"Procesi snimka dinamičkog dijela memorije\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Odaberite najmanje jedan proces u odjeljku \"Procesi snimka dinamičkog dijela memorije\" da prikupite snimke dinamičkog dijela memorije"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Pokreni novi trag"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Prikupljaj Winscope tragove"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Uključuje detaljne telemetrijske podatke korisničkog interfejsa (može uzrokovati smetnje)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Pratite aplikacije u načinu rada za otklanjanje grešaka"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Zaustavi snimanje za izvještaje o greškama"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Zaustavlja aktivne snimke kada se pokrene izvještaj o grešci"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Priloži snimke izvještajima o greškama"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automatski šaljite snimke koji su u toku BetterBugu kada se prikupi izvještaj o grešci"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Automatski šaljite snimke koji su u toku BetterBugu kada se prikupi izvještaj o grešci. Snimke će se nastaviti nakon toga."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Prikaži sačuvane fajlove"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Postavke praćenja"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Sačuvani fajlovi"</string>

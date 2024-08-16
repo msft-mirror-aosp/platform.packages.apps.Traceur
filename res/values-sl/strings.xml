@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Zapisuj izvoz kopice"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Zajame izvoz kopice za procese, izbrane v razdelku »Procesi za izvoz kopice«"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Če želite zbirati izvoze kopice, izberite vsaj en proces v razdelku »Procesi za izvoz kopice«"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Začni novo sledenje"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Zbiranje sledov Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Vključuje podrobne telemetrične podatke o uporabniškem vmesniku (lahko povzroči zatikanje)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Sledenje aplikacijam, v katerih je mogoče odpravljati napake"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ustavi zapisovanje za poročila o napakah"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Konča aktivna zapisovanja ob zagonu poročila o napakah."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Zapise priloži poročilom o napakah"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Samodejno pošiljanje vmesnih zapisov v orodje BetterBug ob zbiranju poročila o napakah"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Samodejno pošiljanje posnetkov v teku v orodje BetterBug pri zbiranju poročila o napakah. Snemanje se bo nato nadaljevalo."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Prikaži shranjene datoteke"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nastavitve sledenja"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Shranjene datoteke"</string>

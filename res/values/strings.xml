@@ -24,9 +24,6 @@
     <!-- This is the subtitle for the "Record heap dump" button if heap dumps are disabled. -->
     <string name="record_heap_dump_summary_disabled">Select at least one process in \"Heap dump processes\" to collect heap dumps</string>
 
-    <!-- This is the label for the button to start a new trace from a notification. -->
-    <string name="start_new_trace">Start new trace</string>
-
     <!-- This is the text for a toggle that will let the user choose whether to include Winscope traces in the trace they are collecting. -->
     <string name="winscope_tracing">Collect Winscope traces</string>
     <string name="winscope_tracing_summary">Includes detailed UI telemetry data (can cause jank)</string>
@@ -99,13 +96,6 @@
     <string name="heap_dump_saved">Heap dump saved</string>
     <!-- This is the subtitle for a notification that appears after a recording was saved. Tapping it will open the 'share sheet' that will appear at the bottom of the screen and will allow the user to share the recording, for example to email. -->
     <string name="tap_to_share">Tap to share your recording</string>
-
-    <!-- This is the title for a notification that appears when Traceur is handling saving a trace to a bug report. -->
-    <string name="attaching_to_report">Attaching trace to bug report</string>
-    <!-- This is the title for a notification that appears after a trace was saved to a bug report. -->
-    <string name="attached_to_report">Attached trace to bug report</string>
-    <!-- This is the subtitle for a notification that appears after a trace was saved to a bug report. -->
-    <string name="attached_to_report_summary">Tap to open BetterBug</string>
 
     <!-- This is a message prompting the user to stop tracing. -->
     <string name="stop_tracing">Stop tracing</string>
@@ -204,7 +194,7 @@
 
     <!-- When enabled, the tracing service can take the in-progress recording session and attach it to a bug report. -->
     <string name="attach_to_bug_report">Attach recordings to bug reports</string>
-    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected</string>
+    <string name="attach_to_bug_report_summary">Automatically send in-progress recordings to BetterBug when a bug report is collected. Recordings will continue afterward.</string>
 
     <!-- On click, takes the user to the directory containing on-device Traceur files. -->
     <string name="link_to_traces">View saved files</string>
