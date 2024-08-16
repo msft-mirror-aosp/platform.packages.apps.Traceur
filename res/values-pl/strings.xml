@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Rejestruj zrzut stosu"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Przechwytuje zrzut stosu procesów wybranych w ramach „Procesy zrzutu stosu”."</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Wybierz co najmniej 1 proces w ramach „Procesy zrzutu stosu”, aby zapisywać zrzuty stosu"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Rozpocznij nowe śledzenie"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Zbieraj ślady Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Obejmuje szczegółowe dane telemetryczne interfejsu użytkownika (może powodować zacinanie)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Śledź aplikacje z możliwością debugowania"</string>
@@ -89,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Zatrzymaj nagrywanie na potrzeby raportów o błędach"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Kończy aktywne sesje nagrywania, gdy rozpoczyna się tworzenie raportu o błędzie"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Załączaj nagrania do raportów o błędach"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automatycznie przesyłaj przetwarzanie nagrania do BetterBug podczas tworzenia raportu o błędzie"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Automatycznie przesyłaj przetwarzane nagrania do BetterBug podczas tworzenia raportu o błędzie. Po przesłaniu danych nagranie będzie kontynuowane."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Wyświetl zapisane pliki"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ustawienia monitorowania"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Zapisane pliki"</string>
