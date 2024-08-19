@@ -16,6 +16,8 @@
 
 package com.android.traceur;
 
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE;
+
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -43,9 +45,6 @@ public class TraceService extends IntentService {
      * or limited storage capacity. */
     static String INTENT_ACTION_NOTIFY_SESSION_STOPPED =
             "com.android.traceur.NOTIFY_SESSION_STOPPED";
-    /* Indicates a Traceur-associated tracing session has been attached to a bug report */
-    static String INTENT_ACTION_NOTIFY_SESSION_STOLEN =
-            "com.android.traceur.NOTIFY_SESSION_STOLEN";
     private static String INTENT_ACTION_STOP_TRACING = "com.android.traceur.STOP_TRACING";
     private static String INTENT_ACTION_START_TRACING = "com.android.traceur.START_TRACING";
     private static String INTENT_ACTION_START_STACK_SAMPLING =
@@ -147,12 +146,9 @@ public class TraceService extends IntentService {
             startStackSamplingInternal();
         } else if (intent.getAction().equals(INTENT_ACTION_START_HEAP_DUMP)) {
             startHeapDumpInternal();
-        } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(type), false);
-        } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(type), false);
-        } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOLEN)) {
-            stopTracingInternal("", true);
+        } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING) ||
+                intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
+            stopTracingInternal(TraceUtils.getOutputFilename(type));
         }
     }
 
@@ -197,7 +193,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.traceStart(this, tags, bufferSizeKb, winscopeTracing,
                 appTracing, longTrace, attachToBugreport, maxLongTraceSizeMb,
@@ -240,7 +237,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.stackSampleStart(attachToBugreport)) {
             stopForeground(Service.STOP_FOREGROUND_DETACH);
@@ -289,7 +287,8 @@ public class TraceService extends IntentService {
                 .setContentIntent(PendingIntent.getBroadcast(context, 0, stopIntent,
                           PendingIntent.FLAG_IMMUTABLE));
 
-        startForeground(TRACE_NOTIFICATION, notification.build());
+        startForeground(TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         if (TraceUtils.heapDumpStart(processes, continuousDump, dumpIntervalSeconds,
                 attachToBugreport)) {
@@ -308,7 +307,7 @@ public class TraceService extends IntentService {
                 context.getString(R.string.pref_key_recording_was_stack_samples), false).commit();
     }
 
-    private void stopTracingInternal(String outputFilename, boolean sessionStolen) {
+    private void stopTracingInternal(String outputFilename) {
         Context context = getApplicationContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         NotificationManager notificationManager =
@@ -331,53 +330,17 @@ public class TraceService extends IntentService {
                 break;
         }
         Notification.Builder notification = getTraceurNotification(context.getString(
-                sessionStolen ? R.string.attaching_to_report : savingTextResId),
-                null, Receiver.NOTIFICATION_CHANNEL_OTHER);
+                savingTextResId), null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
-        startForeground(SAVING_TRACE_NOTIFICATION, notification.build());
+        startForeground(SAVING_TRACE_NOTIFICATION, notification.build(),
+                FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
-        if (sessionStolen) {
-            Notification.Builder notificationAttached = getTraceurNotification(
-                    context.getString(R.string.attached_to_report), null,
-                    Receiver.NOTIFICATION_CHANNEL_OTHER);
-            notification.setAutoCancel(true);
-
-            Intent openIntent =
-                    getPackageManager().getLaunchIntentForPackage(BETTERBUG_PACKAGE_NAME);
-            if (openIntent != null) {
-                // Add "Tap to open BetterBug" to notification only if intent is non-null.
-                notificationAttached.setContentText(getString(
-                        R.string.attached_to_report_summary));
-                notificationAttached.setContentIntent(PendingIntent.getActivity(
-                        context, 0, openIntent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE));
-            }
-
-            // Adds an action button to the notification for starting a new trace. This is only
-            // enabled for standard traces.
-            if (type == TraceUtils.RecordingType.TRACE) {
-                Intent restartIntent = new Intent(context, InternalReceiver.class);
-                restartIntent.setAction(InternalReceiver.START_ACTION);
-                PendingIntent restartPendingIntent = PendingIntent.getBroadcast(context, 0,
-                        restartIntent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE);
-                Notification.Action action = new Notification.Action.Builder(
-                        R.drawable.bugfood_icon, context.getString(R.string.start_new_trace),
-                        restartPendingIntent).build();
-                notificationAttached.addAction(action);
-            }
-
-            NotificationManager.from(context).notify(0, notificationAttached.build());
-        } else {
-            Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
-            if (files.isPresent()) {
-                postFileSharingNotification(getApplicationContext(), files.get());
-            }
+        Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
+        if (files.isPresent()) {
+            postFileSharingNotification(getApplicationContext(), files.get());
         }
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
