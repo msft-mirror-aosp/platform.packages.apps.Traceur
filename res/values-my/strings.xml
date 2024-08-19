@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"လျှပ်တစ်ပြက် မှတ်ဉာဏ်ကို သိမ်းနေသည်"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"လျှပ်တစ်ပြက် မှတ်ဉာဏ် သိမ်းလိုက်ပါပြီ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"သင့်မှတ်တမ်းတင်မှုကို မျှဝေရန် တို့ပါ"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် လုပ်ဆောင်ချက်မှတ်တမ်းကို ပူးတွဲနေသည်"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် လုပ်ဆောင်ချက်မှတ်တမ်းကို ပူးတွဲလိုက်သည်"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ကို ဖွင့်ရန် တို့ပါ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"လုပ်ဆောင်ချက်မှတ်တမ်းပြုခြင်းကို ရပ်ရန်"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ပုဂ္ဂိုလ်အကြောင်း သုံးသပ်ပုံဖော်ခြင်းကို ရပ်ပါ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"အချို့ မှတ်တမ်း အမျိုးအစားများ မရရှိနိုင်ပါ-"</string>
