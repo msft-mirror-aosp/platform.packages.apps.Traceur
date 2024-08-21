@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"हीप डंप सेव्ह करत आहे"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"हीप डंप सेव्ह केला आहे"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"तुमचे रेकॉर्डिंग शेअर करण्यासाठी टॅप करा"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"बग रिपोर्टला ट्रेस अटॅच करत आहे"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"बग रिपोर्टला ट्रेस अटॅच करा"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug उघडण्यासाठी टॅप करा"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"माग काढणे थांबवा"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU प्रोफायलिंग थांबवा"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"माग काढण्याच्या काही वर्गवार्‍या अनुपलब्ध आहेत:"</string>
