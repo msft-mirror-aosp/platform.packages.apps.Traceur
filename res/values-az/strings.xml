@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Snepşot saxlanır"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Snepşot saxlandı"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Qeydəalmanı paylaşmaq üçün toxunun"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Baq hesabatına fəaliyyət izi əlavə edilir"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Baq hesabatına fəaliyyət izi əlavə edilib"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Toxunaraq BetterBug\'ı açın"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Fəaliyyəti izləməyi dayandırın"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU təhlilini dayandırın"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Bəzi izləmə kateqaoriyaları əlçatan deyil:"</string>
