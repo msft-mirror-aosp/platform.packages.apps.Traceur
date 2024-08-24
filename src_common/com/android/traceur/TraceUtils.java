@@ -79,7 +79,7 @@ public class TraceUtils {
             config.getLongTrace(),
             config.getAttachToBugreport(),
             config.getMaxLongTraceSizeMb(),
-            config.getMaxLongTraceSizeMb()
+            config.getMaxLongTraceDurationMinutes()
         );
     }
 
