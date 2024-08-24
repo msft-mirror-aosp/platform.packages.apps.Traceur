@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"హీప్ డంప్‌ను సేవ్ చేస్తోంది"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"హీప్ డంప్ సేవ్ చేయబడింది"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"మీ రికార్డింగ్‌ను షేర్ చేయడానికి ట్యాప్ చేయండి"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"బగ్ రిపోర్ట్‌కు ట్రేస్‌ను అటాచ్ చేయడం"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"బగ్ రిపోర్ట్‌కు అటాచ్ చేయబడిన ట్రేస్"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBugను తెరవడానికి ట్యాప్ చేయండి"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"స్థితిగతిని కనుగొనడం ఆపివేయి"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ప్రొఫైలింగ్‌ను ఆపివేయండి"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"కొన్ని స్థితిగతి కేటగిరీలు అందుబాటులో లేవు:"</string>
