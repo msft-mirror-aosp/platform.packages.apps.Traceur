@@ -365,7 +365,7 @@ public class TraceService extends IntentService {
         // the above file-sharing intent.
         final Intent intent = new Intent(context, UserConsentActivityDialog.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
-        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
+        intent.putExtra(Intent.EXTRA_INTENT, Intent.createChooser(sendIntent, null));
 
         TraceUtils.RecordingType type = getRecentTraceType(context);
         int titleResId;
