@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Heap-Dump wird gespeichert"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Heap-Dump gespeichert"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Zum Teilen deiner Aufzeichnung tippen"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Trace wird an Fehlerbericht angehängt"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Trace wurde an den Fehlerbericht angehängt"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Tippen, um BetterBug zu öffnen"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Tracing beenden"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU-Profilerstellung beenden"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Einige Tracing-Kategorien sind nicht verfügbar:"</string>

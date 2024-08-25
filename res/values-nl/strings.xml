@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Heap dump opslaan"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Heap dump opgeslagen"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Tik om je opname te delen"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Tracering bijvoegen bij bugrapport"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Tracering bijgevoegd bij bugrapport"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Tik om BetterBug te openen"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Traceren stoppen"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU-profilering stoppen"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Sommige spoorcategorieën zijn niet beschikbaar:"</string>
