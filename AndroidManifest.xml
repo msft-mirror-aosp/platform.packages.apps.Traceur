@@ -116,6 +116,7 @@
 
         <activity android:name=".MainWearActivity"
                   android:description="@string/record_system_activity"
+                  android:icon="@drawable/bugfood_icon"
                   android:label="@string/system_tracing"
                   android:theme="@style/WearTheme"
                   android:launchMode="singleTask"
@@ -130,7 +131,6 @@
 
         <receiver android:name=".Receiver"
              android:permission="android.permission.DUMP"
-             androidprv:systemUserOnly="true"
              android:exported="true">
             <intent-filter android:priority="2147483647">
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
