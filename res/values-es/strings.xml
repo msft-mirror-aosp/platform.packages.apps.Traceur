@@ -10,13 +10,13 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registrar volcado de montículo"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Captura un volcado de montículo de los procesos seleccionados en \"Procesos de volcado de montículo\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selecciona al menos un proceso en \"Procesos de volcado de montículo\" para recopilar volcados de montículo"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Recoger rastro de Winscope"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Recoger trazas de Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Incluye datos detallados de telemetría de UI (puede causar tirones)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Rastrear aplicaciones que se puedan depurar"</string>
     <string name="categories" msgid="2280163673538611008">"Categorías"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Restaurar categorías predeterminadas"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Se han restaurado las categorías predeterminadas"</string>
-    <string name="default_categories" msgid="2117679794687799407">"Predeterminado"</string>
+    <string name="default_categories" msgid="2117679794687799407">"Predeterminadas"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# seleccionada}other{# seleccionadas}}"</string>
     <string name="heap_dump_processes" msgid="2500105180344901939">"Procesos de volcado de montículo"</string>
     <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Se debe seleccionar al menos un proceso"</string>

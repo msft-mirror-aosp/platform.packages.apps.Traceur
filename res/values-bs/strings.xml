@@ -12,7 +12,7 @@
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Odaberite najmanje jedan proces u odjeljku \"Procesi snimka dinamičkog dijela memorije\" da prikupite snimke dinamičkog dijela memorije"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Prikupljaj Winscope tragove"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Uključuje detaljne telemetrijske podatke korisničkog interfejsa (može uzrokovati smetnje)"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"Pratite aplikacije u načinu rada za otklanjanje grešaka"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"Prati aplikacije u načinu rada za otklanjanje grešaka"</string>
     <string name="categories" msgid="2280163673538611008">"Kategorije"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Vrati zadane kategorije"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Zadane kategorije su vraćene"</string>
