@@ -384,10 +384,9 @@ public class TraceService extends IntentService {
         }
         final Notification.Builder builder = getTraceurNotification(context.getString(titleResId),
                 context.getString(R.string.tap_to_share), Receiver.NOTIFICATION_CHANNEL_OTHER)
-                        .setContentIntent(PendingIntent.getActivity(context,
-                                traceUris.get(0).hashCode(), intent,PendingIntent.FLAG_ONE_SHOT
-                                        | PendingIntent.FLAG_CANCEL_CURRENT
-                                        | PendingIntent.FLAG_IMMUTABLE))
+                        .setContentIntent(PendingIntent.getActivity(
+                                context, traceUris.get(0).hashCode(), intent,
+                                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE))
                         .setAutoCancel(true);
         NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
     }
