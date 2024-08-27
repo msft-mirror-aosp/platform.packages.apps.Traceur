@@ -364,7 +364,7 @@ public class TraceService extends IntentService {
         // the above file-sharing intent.
         final Intent intent = new Intent(context, UserConsentActivityDialog.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
-        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
+        intent.putExtra(Intent.EXTRA_INTENT, Intent.createChooser(sendIntent, null));
 
         TraceUtils.RecordingType type = getRecentTraceType(context);
         int titleResId;
@@ -383,10 +383,9 @@ public class TraceService extends IntentService {
         }
         final Notification.Builder builder = getTraceurNotification(context.getString(titleResId),
                 context.getString(R.string.tap_to_share), Receiver.NOTIFICATION_CHANNEL_OTHER)
-                        .setContentIntent(PendingIntent.getActivity(context,
-                                traceUris.get(0).hashCode(), intent,PendingIntent.FLAG_ONE_SHOT
-                                        | PendingIntent.FLAG_CANCEL_CURRENT
-                                        | PendingIntent.FLAG_IMMUTABLE))
+                        .setContentIntent(PendingIntent.getActivity(
+                                context, traceUris.get(0).hashCode(), intent,
+                                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE))
                         .setAutoCancel(true);
         NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
     }
