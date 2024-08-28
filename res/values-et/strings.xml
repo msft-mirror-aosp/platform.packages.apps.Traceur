@@ -10,7 +10,7 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Salvesta mälutõmmis"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Jäädvustab jaotises „Mälutõmmise protsessid” valitud protsessidest mälutõmmise"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Mälutõmmiste kogumiseks valige jaotises „Mälutõmmise protsessid” vähemalt üks protsess"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Koguge Winscope\'i jälgi"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Kogu Winscope\'i jälgi"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sisaldab üksikasjalikke kasutajaliidese telemeetriaandmeid (võib põhjustada tõrkeid)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Silutavate rakenduste jälgimine"</string>
     <string name="categories" msgid="2280163673538611008">"Kategooriad"</string>

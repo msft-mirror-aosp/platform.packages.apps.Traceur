@@ -61,11 +61,11 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"系统跟踪文件可能包含敏感的系统数据和应用数据（例如应用使用情况信息）。请务必只与您信任的人和应用分享系统跟踪文件。"</string>
     <string name="share" msgid="8443979083706282338">"分享"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"不再显示"</string>
-    <string name="long_traces" msgid="5110949471775966329">"长期轨迹"</string>
+    <string name="long_traces" msgid="5110949471775966329">"长期跟踪记录"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"持续保存到设备存储空间"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"持续保存到设备存储空间（不会自动附加到错误报告）"</string>
-    <string name="max_long_trace_size" msgid="1943788179787181241">"最大长期轨迹大小"</string>
-    <string name="max_long_trace_duration" msgid="8009837944364246785">"最大长期轨迹时长"</string>
+    <string name="max_long_trace_size" msgid="1943788179787181241">"最大长期跟踪记录大小"</string>
+    <string name="max_long_trace_duration" msgid="8009837944364246785">"最大长期跟踪记录时长"</string>
     <string name="two_hundred_mb" msgid="4950018549725084512">"200 MB"</string>
     <string name="one_gb" msgid="590396985168692037">"1 GB"</string>
     <string name="five_gb" msgid="7883941043220621649">"5 GB"</string>
