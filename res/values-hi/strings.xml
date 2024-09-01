@@ -13,7 +13,7 @@
     <string name="winscope_tracing" msgid="5818984791154837458">"WinScope के ट्रेस इकट्ठा करें"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"इसमें यूज़र इंटरफ़ेस से जुड़ा टेलीमेट्री डेटा शामिल है (इससे जैंक होने की संभावना है)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डीबग करने के लिए ऐप्लिकेशन ट्रेस करें"</string>
-    <string name="categories" msgid="2280163673538611008">"ट्रेस श्रेणियां"</string>
+    <string name="categories" msgid="2280163673538611008">"कैटगरी"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"डिफ़ॉल्ट श्रेणियां बहाल करें"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"डिफ़ॉल्ट श्रेणियां बहाल की गईं"</string>
     <string name="default_categories" msgid="2117679794687799407">"डिफ़ॉल्ट"</string>
