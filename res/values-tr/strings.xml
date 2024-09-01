@@ -84,7 +84,7 @@
     <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"65.536 KB"</string>
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Hata raporları için kaydı durdurun"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Hata raporu başlatıldığında etkin izleme kayıtlarını sonlandırır"</string>
-    <string name="attach_to_bug_report" msgid="5388986830016247490">"Hata raporlarına kayıt ekleyin"</string>
+    <string name="attach_to_bug_report" msgid="5388986830016247490">"Hata raporlarına kayıt ekle"</string>
     <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Hata raporu alındığında devam etmekte olan kayıtları otomatik olarak BetterBug\'a gönder Sonrasında kayıtlar devam eder."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Kayıtlı dosyaları göster"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"İzleme ayarları"</string>

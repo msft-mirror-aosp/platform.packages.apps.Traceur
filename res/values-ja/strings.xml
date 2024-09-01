@@ -10,7 +10,7 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ヒープダンプを記録"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"[ヒープダンプ プロセス] で選択されたプロセスのヒープダンプを取得します"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ヒープダンプを収集するには、[ヒープダンプ プロセス] でプロセスを 1 つ以上選択してください"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope トレースの収集"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope トレースを収集する"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"詳細な UI テレメトリー データを含める（ジャンクが発生することがあります）"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"デバッグ可能なアプリをトレース"</string>
     <string name="categories" msgid="2280163673538611008">"カテゴリ"</string>

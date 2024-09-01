@@ -31,7 +31,7 @@
     <string name="one_minute" msgid="4182508213840684258">"1 րոպե"</string>
     <string name="applications" msgid="521776761270770549">"Հավելվածներ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Վրիպազերծման ենթակա հավելվածներ չկան"</string>
-    <string name="buffer_size" msgid="3944311026715111454">"Մեկ CPU-ի պահնակի չափը"</string>
+    <string name="buffer_size" msgid="3944311026715111454">"Մեկ CPU-ի բուֆերի չափսը"</string>
     <string name="show_quick_settings_tile" msgid="3827556161191376500">"Ցույց տալ հետագծման «Արագ կարգավորումներ» սալիկը"</string>
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Ցույց տալ CPU-ի պրոֆիլավորման «Արագ կարգավորումներ» սալիկը"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Հետագծումը պահվում է"</string>
