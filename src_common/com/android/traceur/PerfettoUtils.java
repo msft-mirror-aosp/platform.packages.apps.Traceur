@@ -77,6 +77,7 @@ public class PerfettoUtils {
     private static final String SYS_STATS_TAG = "sys_stats";
     private static final String LOG_TAG = "logs";
     private static final String CPU_TAG = "cpu";
+    public static final String WINDOW_MANAGER_TAG = "wm";
 
     public String getName() {
         return NAME;
@@ -130,10 +131,26 @@ public class PerfettoUtils {
         appendTraceBuffer(config, targetBuffer1Kb);
 
         appendFtraceConfig(config, tags, apps);
+
+        appendSystemPropertyConfig(config, tags);
         appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
         appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
         return startPerfettoWithTextConfig(config.toString());
+    }
+
+    private void appendSystemPropertyConfig(StringBuilder config, Collection<String> tags) {
+        if (tags.contains(WINDOW_MANAGER_TAG)) {
+            config.append("data_sources: {\n")
+                    .append("  config { \n")
+                    .append("    name: \"android.system_property\"\n")
+                    .append("    target_buffer: 0\n")
+                    .append("    android_system_property_config {\n")
+                    .append("      property_name: \"debug.tracing.desktop_mode_visible_tasks\"\n")
+                    .append("    }\n")
+                    .append("  }\n")
+                    .append("}\n");
+        }
     }
 
     public boolean stackSampleStart(boolean attachToBugreport) {
@@ -663,8 +680,6 @@ public class PerfettoUtils {
                 .append("      mode: MODE_ACTIVE\n")
                 .append("      trace_flags: TRACE_FLAG_INPUT\n")
                 .append("      trace_flags: TRACE_FLAG_COMPOSITION\n")
-                .append("      trace_flags: TRACE_FLAG_HWC\n")
-                .append("      trace_flags: TRACE_FLAG_BUFFERS\n")
                 .append("      trace_flags: TRACE_FLAG_VIRTUAL_DISPLAYS\n")
                 .append("    }\n")
                 .append("  }\n")

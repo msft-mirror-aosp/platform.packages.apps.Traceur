@@ -45,9 +45,6 @@ public class TraceService extends IntentService {
      * or limited storage capacity. */
     static String INTENT_ACTION_NOTIFY_SESSION_STOPPED =
             "com.android.traceur.NOTIFY_SESSION_STOPPED";
-    /* Indicates a Traceur-associated tracing session has been attached to a bug report */
-    static String INTENT_ACTION_NOTIFY_SESSION_STOLEN =
-            "com.android.traceur.NOTIFY_SESSION_STOLEN";
     private static String INTENT_ACTION_STOP_TRACING = "com.android.traceur.STOP_TRACING";
     private static String INTENT_ACTION_START_TRACING = "com.android.traceur.START_TRACING";
     private static String INTENT_ACTION_START_STACK_SAMPLING =
@@ -149,12 +146,9 @@ public class TraceService extends IntentService {
             startStackSamplingInternal();
         } else if (intent.getAction().equals(INTENT_ACTION_START_HEAP_DUMP)) {
             startHeapDumpInternal();
-        } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(type), false);
-        } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
-            stopTracingInternal(TraceUtils.getOutputFilename(type), false);
-        } else if (intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOLEN)) {
-            stopTracingInternal("", true);
+        } else if (intent.getAction().equals(INTENT_ACTION_STOP_TRACING) ||
+                intent.getAction().equals(INTENT_ACTION_NOTIFY_SESSION_STOPPED)) {
+            stopTracingInternal(TraceUtils.getOutputFilename(type));
         }
     }
 
@@ -313,7 +307,7 @@ public class TraceService extends IntentService {
                 context.getString(R.string.pref_key_recording_was_stack_samples), false).commit();
     }
 
-    private void stopTracingInternal(String outputFilename, boolean sessionStolen) {
+    private void stopTracingInternal(String outputFilename) {
         Context context = getApplicationContext();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         NotificationManager notificationManager =
@@ -336,8 +330,7 @@ public class TraceService extends IntentService {
                 break;
         }
         Notification.Builder notification = getTraceurNotification(context.getString(
-                sessionStolen ? R.string.attaching_to_report : savingTextResId),
-                null, Receiver.NOTIFICATION_CHANNEL_OTHER);
+                savingTextResId), null, Receiver.NOTIFICATION_CHANNEL_OTHER);
         notification.setProgress(1, 0, true);
 
         startForeground(SAVING_TRACE_NOTIFICATION, notification.build(),
@@ -345,29 +338,9 @@ public class TraceService extends IntentService {
 
         notificationManager.cancel(TRACE_NOTIFICATION);
 
-        if (sessionStolen) {
-            Notification.Builder notificationAttached = getTraceurNotification(
-                    context.getString(R.string.attached_to_report), null,
-                    Receiver.NOTIFICATION_CHANNEL_OTHER);
-            notification.setAutoCancel(true);
-
-            Intent openIntent =
-                    getPackageManager().getLaunchIntentForPackage(BETTERBUG_PACKAGE_NAME);
-            if (openIntent != null) {
-                // Add "Tap to open BetterBug" to notification only if intent is non-null.
-                notificationAttached.setContentText(getString(
-                        R.string.attached_to_report_summary));
-                notificationAttached.setContentIntent(PendingIntent.getActivity(
-                        context, 0, openIntent, PendingIntent.FLAG_ONE_SHOT
-                                | PendingIntent.FLAG_CANCEL_CURRENT
-                                | PendingIntent.FLAG_IMMUTABLE));
-            }
-            NotificationManager.from(context).notify(0, notificationAttached.build());
-        } else {
-            Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
-            if (files.isPresent()) {
-                postFileSharingNotification(getApplicationContext(), files.get());
-            }
+        Optional<List<File>> files = TraceUtils.traceDump(this, outputFilename);
+        if (files.isPresent()) {
+            postFileSharingNotification(getApplicationContext(), files.get());
         }
 
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
@@ -392,7 +365,7 @@ public class TraceService extends IntentService {
         // the above file-sharing intent.
         final Intent intent = new Intent(context, UserConsentActivityDialog.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_RECEIVER_FOREGROUND);
-        intent.putExtra(Intent.EXTRA_INTENT, sendIntent);
+        intent.putExtra(Intent.EXTRA_INTENT, Intent.createChooser(sendIntent, null));
 
         TraceUtils.RecordingType type = getRecentTraceType(context);
         int titleResId;
@@ -411,10 +384,9 @@ public class TraceService extends IntentService {
         }
         final Notification.Builder builder = getTraceurNotification(context.getString(titleResId),
                 context.getString(R.string.tap_to_share), Receiver.NOTIFICATION_CHANNEL_OTHER)
-                        .setContentIntent(PendingIntent.getActivity(context,
-                                traceUris.get(0).hashCode(), intent,PendingIntent.FLAG_ONE_SHOT
-                                        | PendingIntent.FLAG_CANCEL_CURRENT
-                                        | PendingIntent.FLAG_IMMUTABLE))
+                        .setContentIntent(PendingIntent.getActivity(
+                                context, traceUris.get(0).hashCode(), intent,
+                                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE))
                         .setAutoCancel(true);
         NotificationManager.from(context).notify(files.get(0).getName(), 0, builder.build());
     }
