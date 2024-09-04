@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Үймө дампы сакталууда"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Үймө дампы сакталды"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Жаздырууну бөлүшүү үчүн таптап коюңуз"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Мүчүлүштүк тууралуу кабарларга жаздырылган аракеттер тиркелүүдө"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Мүчүлүштүк тууралуу кабарларга жаздырылган аракеттер тиркелди"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug\'ды ачуу үчүн таптаңыз"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Көз салууну токтотуу"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Процессорду профилдөөнү токтотуу"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Телефондо аткарылган аракеттердин айрым категориялары жеткиликсиз:"</string>
@@ -87,7 +84,7 @@
     <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"65536 Кб"</string>
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Мүчүлүштүк тууралуу кабар үчүн жаздырууну токтотуу"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Мүчүлүштүк тууралуу кабарлоо башталганда, жаздыруулар токтотулат"</string>
-    <string name="attach_to_bug_report" msgid="5388986830016247490">"Мүчүлүштүк тууралуу кабарга жаздырууларды тиркеңиз"</string>
+    <string name="attach_to_bug_report" msgid="5388986830016247490">"Мүчүлүштүк тууралуу кабарларга жаздырууларды тиркөө"</string>
     <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Мүчүлүштүк тууралуу кабар чогултулганда, жаздырылган аракеттерди BetterBug кызматына автоматтык түрдө жөнөтүңүз. Андан кийин жаздыруу улантылат."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Сакталган файлдарды көрүү"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Аракеттерди жаздыруу параметрлери"</string>
