@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"A guardar captura da área dinâmica para dados"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Captura da área dinâmica para dados guardada"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Toque para partilhar a sua gravação"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"A anexar o rastreio ao relatório de erro…"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Rastreio anexado ao relatório de erro"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Toque para abrir o BetterBug."</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Parar rastreio"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Pare a criação de perfis da CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Algumas categorias de rastreio não estão disponíveis:"</string>
@@ -87,7 +84,7 @@
     <string name="sixtyfive_thousand_kb" msgid="8168144138598305306">"65 536 kB"</string>
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Pare a gravação de relatórios de erros"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Termina as gravações ativas quando é iniciado um relatório de erro"</string>
-    <string name="attach_to_bug_report" msgid="5388986830016247490">"Anexe gravações aos relatórios de erros"</string>
+    <string name="attach_to_bug_report" msgid="5388986830016247490">"Anexar gravações aos relatórios de erros"</string>
     <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Envie automaticamente gravações em curso para o BetterBug quando é recolhido um relatório de erro. As gravações continuam depois disso."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Veja ficheiros guardados"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Definições de rastreio"</string>
