@@ -36,14 +36,11 @@
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"CPU ಪ್ರೊಫೈಲಿಂಗ್ ತ್ವರಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಟೈಲ್ ಅನ್ನು ತೋರಿಸಿ"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
+    <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗುತ್ತಿದೆ"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="saving_heap_dump" msgid="6118616780825771824">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೇವ್‌ ಮಾಡಲಾಗುತ್ತಿದೆ"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ಬಗ್ ವರದಿಗೆ ಟ್ರೇಸ್ ಅನ್ನು ಲಗತ್ತಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ಬಗ್ ವರದಿಗೆ ಟ್ರೇಸ್ ಅನ್ನು ಲಗತ್ತಿಸಲಾಗಿದೆ"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ತೆರೆಯಲು ಟ್ಯಾಪ್ ಮಾಡಿ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ಟ್ರೇಸಿಂಗ್ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ಪ್ರೊಫೈಲಿಂಗ್ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ಕೆಲವು ಟ್ರೇಸಿಂಗ್ ವಿಭಾಗಗಳು ಲಭ್ಯವಿಲ್ಲ:"</string>
