@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"힙 덤프 기록"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\'힙 덤프 프로세스\'에서 선택한 프로세스의 힙 덤프를 캡처합니다"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"힙 덤프를 수집하려면 \'힙 덤프 프로세스\'에서 프로세스를 하나 이상 선택하세요"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"새 트레이스 시작"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope 트레이스 수집"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"상세한 UI 원격 분석 데이터 포함(버벅거림이 발생할 수 있음)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"디버그 가능한 애플리케이션 추적"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"애플리케이션"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"디버그 가능한 애플리케이션이 없습니다."</string>
     <string name="buffer_size" msgid="3944311026715111454">"CPU별 버퍼 크기"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"빠른 설정 타일 표시"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"빠른 설정 타일 트레이스 표시"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"빠른 설정 타일 CPU 프로파일링 표시"</string>
     <string name="saving_trace" msgid="1468692734770800541">"트레이스 저장 중"</string>
     <string name="trace_saved" msgid="5869970594780992309">"트레이스 저장됨"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"스택 샘플 저장"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"버그 신고에 트레이스 첨부됨"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"탭하여 BetterBug 열기"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"추적 중지"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU 프로파일링 중지"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"일부 추적 카테고리를 사용할 수 없습니다"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"트레이스 기록 중"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"추적을 중지하려면 탭하세요."</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"버그 신고를 위한 기록 중단"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"버그 신고가 시작되면 진행 중인 기록을 종료합니다."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"버그 신고에 녹화 파일 첨부"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"버그 신고 수집 시 진행 중인 녹화 파일을 자동으로 BetterBug에 전송"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"버그 신고 수집 시 진행 중인 녹화 파일을 자동으로 BetterBug에 전송합니다. 이후 녹화는 계속됩니다."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"저장된 파일 보기"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"트레이스 설정"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"저장된 파일"</string>

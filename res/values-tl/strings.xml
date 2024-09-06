@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"I-record ang heap dump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Nagka-capture ng heap dump ng mga prosesong pinili sa \"Mga proseso ng heap dump\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pumili ng kahit isang proseso man lang sa \"Mga proseso ng heap dump\" para mangolekta ng mga heap dump"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Magsimula ng bagong trace"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kolektahin ang mga trace ng Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Kasama ang detalyadong data ng UI telemetry (posibleng magdulot ng jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Mag-trace ng mga nade-debug na application"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Mga Application"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Walang available na nade-debug na application"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Laki ng buffer ng Per-CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Ipakita ang tile ng Mga Mabilisang Setting"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Ipakita tile ng Mga Mabilisang Setting para sa pag-trace"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Ipakita ang tile ng Mga Mabilisang Setting para sa pag-profile ng CPU"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Sine-save ang trace"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Na-save ang trace"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Sine-save ang mga sample ng stack"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Nag-attach ng trace sa ulat ng bug"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"I-tap para buksan ang BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Ihinto ang pag-trace"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Ihinto ang pag-profile ng CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Hindi available ang ilang kategorya ng pag-trace:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Nire-record ang trace"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"I-tap upang ihinto ang pag-trace"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ihinto ang pag-record para sa mga ulat ng bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Wawakasan ang mga aktibong pag-record kapag nagsimula ng ulat ng bug"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"I-attach ang mga recording sa mga ulat ng bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Awtomatikong magpadala ng mga kasalukuyang isinasagawang recording sa BetterBug kapag nangolekta ng ulat ng bug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Awtomatikong magpadala ng mga kasalukuyang pag-record sa BetterBug kapag may nakolektang ulat ng bug. Magpapatuloy ang mga pag-record pagkatapos nito."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Tingnan ang mga naka-save na file"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Mga setting ng pag-trace"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Mga naka-save na file"</string>
