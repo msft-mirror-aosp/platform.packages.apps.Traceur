@@ -12,7 +12,7 @@
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"హీప్ డంప్‌లను సేకరించడానికి \"హీప్ డంప్ ప్రాసెస్‌ల\"లో కనీసం ఒక ప్రాసెస్‌ను ఎంచుకోండి"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ట్రేస్‌లను సేకరించండి"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"వివరణాత్మక UI టెలిమెట్రీ డేటా ఉంటుంది (ఈ ప్రాసెస్ జంక్‌ను క్రియేట్ చేయవచ్చు)"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"డీబగ్ చేయగల అప్లికేషన్‌ల స్థితిగతి కనుగొనండి"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"డీబగ్ చేయగల అప్లికేషన్‌ల స్టేటస్‌ను ట్రేస్ చేయండి"</string>
     <string name="categories" msgid="2280163673538611008">"కేటగిరీలు"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"ఆటోమేటిక్ కేటగిరీలను రీస్టోర్ చేయండి"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"ఆటోమేటిక్ కేటగిరీలు రీస్టోర్ అయ్యాయి"</string>

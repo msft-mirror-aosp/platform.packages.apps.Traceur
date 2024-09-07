@@ -10,7 +10,7 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"হিপ ডাম্প রেকর্ড করুন"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"হিপ ডাম্পের প্রসেসে\" বেছে নেওয়া প্রসেসের হিপ ডাম্প ক্য়াপচার করুন"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"হিপ ডাম্প সংগ্রহ করতে \"হিপ ডাম্পের প্রসেসে\" কমপক্ষে একটি প্রসেস বেছে নিন"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Winscopeএর ট্রেস সংগ্রহ করুন"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-এর ট্রেস সংগ্রহ করুন"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"এর মধ্যে UI সম্পর্কিত টেলিমেট্রি ডেটা অন্তর্ভুক্ত (এর জন্য জ্যাঙ্কের সম্ভাবনা আছে)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ডিবাগযোগ্য অ্যাপ্লিকেশন ট্রেস করুন"</string>
     <string name="categories" msgid="2280163673538611008">"বিভাগ"</string>
@@ -31,7 +31,7 @@
     <string name="one_minute" msgid="4182508213840684258">"১ মিনিট"</string>
     <string name="applications" msgid="521776761270770549">"অ্যাপ্লিকেশন"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"কোনও ডিবাগযোগ্য অ্যাপ্লিকেশন উপলভ্য নেই"</string>
-    <string name="buffer_size" msgid="3944311026715111454">"সিপিইউ পিছু বাফার সাইজ"</string>
+    <string name="buffer_size" msgid="3944311026715111454">"CPU-পিছু বাফার সাইজ"</string>
     <string name="show_quick_settings_tile" msgid="3827556161191376500">"কুইক সেটিংস টাইলে ট্রেস করা দেখুন"</string>
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"কুইক সেটিংস টাইলে সিপিইউ প্রোফাইল করা দেখুন"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ট্রেস সেভ করা হচ্ছে"</string>
