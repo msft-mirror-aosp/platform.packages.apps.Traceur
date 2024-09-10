@@ -12,7 +12,7 @@
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ஹீப் டம்ப்களைச் சேகரிக்க \'ஹீப் டம்ப் செயல்முறைகளில்\' குறைந்தது ஒரு செயல்முறையாவது தேர்ந்தெடுங்கள்"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"வின்ஸ்கோப் டிரேஸ்களைச் சேகரித்தல்"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"விரிவான UI டெலிமெட்ரி தரவும் அடங்கும் (மந்தமான செயல்பாட்டை உண்டாக்கலாம்)"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"பிழை திருத்தக்கூடிய ஆப்ஸை டிரேஸ் செய்"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"பிழை திருத்தக்கூடிய ஆப்ஸை டிரேஸ் செய்தல்"</string>
     <string name="categories" msgid="2280163673538611008">"வகைகள்"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"இயல்புநிலை வகைகளை மீட்டமை"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"இயல்புநிலை வகைகள் மீட்டமைக்கப்பட்டன"</string>
@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"ஹீப் டம்ப்பைச் சேமிக்கிறது"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ஹீப் டம்ப் சேமிக்கப்பட்டது"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"உங்கள் ரெக்கார்டிங்கைப் பகிர தட்டுங்கள்"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"பிழை அறிக்கையுடன் டிரேஸை இணைக்கிறது"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"பிழை அறிக்கையுடன் டிரேஸ் இணைக்கப்பட்டது"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug கருவியைத் திறக்க தட்டவும்"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"டிரேஸ் செய்வதை நிறுத்தவும்"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ப்ரொஃபைலிங்கை நிறுத்தவும்"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"கிடைக்காத டிரேஸ் வகைகள்:"</string>
