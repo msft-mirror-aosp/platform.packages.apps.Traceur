@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.SystemProperties;
+import android.util.Log;
 import android.util.Patterns;
 
 import androidx.core.content.FileProvider;
@@ -37,7 +38,7 @@ import java.util.List;
  * Sends bugreport-y files, adapted from fw/base/packages/Shell's BugreportReceiver.
  */
 public class FileSender {
-
+    private static final String TAG = "Traceur";
     private static final String MIME_TYPE = "application/vnd.android.systrace";
 
     public static List<Uri> getUriForFiles(Context context, List<File> files, String authority) {
@@ -59,12 +60,17 @@ public class FileSender {
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.setType(MIME_TYPE);
 
-        intent.putExtra(Intent.EXTRA_SUBJECT, traceUris.get(0).getLastPathSegment());
-        intent.putExtra(Intent.EXTRA_TEXT, description);
-        intent.putExtra(Intent.EXTRA_STREAM, new ArrayList(traceUris));
+        if (!traceUris.isEmpty()) {
+            intent.putExtra(Intent.EXTRA_SUBJECT, traceUris.get(0).getLastPathSegment());
+            intent.putExtra(Intent.EXTRA_STREAM, new ArrayList(traceUris));
 
-        // Explicitly set the clip data; see b/119399115
-        intent.setClipData(buildClipData(traceUris));
+            // Explicitly set the clip data; see b/119399115
+            intent.setClipData(buildClipData(traceUris));
+        } else {
+            Log.e(TAG, "There are no URIs to attach to this send intent. " +
+                    "An error may have occurred while tracing or retrieving trace files.");
+        }
+        intent.putExtra(Intent.EXTRA_TEXT, description);
 
         final Account sendToAccount = findSendToAccount(context);
         if (sendToAccount != null) {
