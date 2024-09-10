@@ -10,10 +10,9 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"హీప్ డంప్‌ను రికార్డ్ చేయండి"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"హీప్ డంప్ ప్రాసెస్‌ల\"లో ఎంచుకున్న ప్రాసెస్‌ల హీప్ డంప్‌ను క్యాప్చర్ చేస్తుంది"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"హీప్ డంప్‌లను సేకరించడానికి \"హీప్ డంప్ ప్రాసెస్‌ల\"లో కనీసం ఒక ప్రాసెస్‌ను ఎంచుకోండి"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"కొత్త ట్రేస్‌ను ప్రారంభించండి"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ట్రేస్‌లను సేకరించండి"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"వివరణాత్మక UI టెలిమెట్రీ డేటా ఉంటుంది (ఈ ప్రాసెస్ జంక్‌ను క్రియేట్ చేయవచ్చు)"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"డీబగ్ చేయగల అప్లికేషన్‌ల స్థితిగతి కనుగొనండి"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"డీబగ్ చేయగల అప్లికేషన్‌ల స్టేటస్‌ను ట్రేస్ చేయండి"</string>
     <string name="categories" msgid="2280163673538611008">"కేటగిరీలు"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"ఆటోమేటిక్ కేటగిరీలను రీస్టోర్ చేయండి"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"ఆటోమేటిక్ కేటగిరీలు రీస్టోర్ అయ్యాయి"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"హీప్ డంప్‌ను సేవ్ చేస్తోంది"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"హీప్ డంప్ సేవ్ చేయబడింది"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"మీ రికార్డింగ్‌ను షేర్ చేయడానికి ట్యాప్ చేయండి"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"బగ్ రిపోర్ట్‌కు ట్రేస్‌ను అటాచ్ చేయడం"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"బగ్ రిపోర్ట్‌కు అటాచ్ చేయబడిన ట్రేస్"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBugను తెరవడానికి ట్యాప్ చేయండి"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"స్థితిగతిని కనుగొనడం ఆపివేయి"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ప్రొఫైలింగ్‌ను ఆపివేయండి"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"కొన్ని స్థితిగతి కేటగిరీలు అందుబాటులో లేవు:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"బగ్ రిపోర్ట్‌ల కోసం రికార్డింగ్‌ను ఆపివేయండి"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"బగ్ రిపోర్ట్ ప్రాసెస్ ప్రారంభమైనప్పుడు, యాక్టివ్‌గా ఉన్న ట్రేస్ రికార్డింగ్‌లను ఆపివేస్తుంది"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"బగ్ రిపోర్ట్‌లకు రికార్డింగ్‌లను అటాచ్ చేయండి"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"బగ్ రిపోర్ట్ కలెక్ట్ చేయబడినప్పుడు ప్రోగెస్‌లో ఉన్న రికార్డింగ్‌లను ఆటోమేటిక్‌గా BetterBugకు పంపండి"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"బగ్ రిపోర్ట్ కలెక్ట్ చేయబడినప్పుడు ప్రోగెస్‌లో ఉన్న రికార్డింగ్‌లను ఆటోమేటిక్‌గా BetterBugకు పంపండి. సంబంధిత వ్యవధి తర్వాత, రికార్డింగ్‌లు కొనసాగుతాయి."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"సేవ్ చేసిన ఫైల్స్‌ను చూడండి"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ట్రేస్ సెట్టింగ్‌లు"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"సేవ్ చేసిన ఫైల్స్"</string>

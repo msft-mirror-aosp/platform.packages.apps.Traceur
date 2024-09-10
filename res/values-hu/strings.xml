@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Halommemória-pillanatkép rögzítése"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Rögzíti a „Halommemória-pillanatkép folyamatai” lehetőségnél kijelölt folyamatokhoz tartozó halommemória-pillanatképet"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Halommemória-pillanatképek kijelöléséhez válasszon ki legalább egy folyamatot a „Halommemória-pillanatkép folyamatai” lehetőségnél"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Új nyom indítása"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Gyűjtsön Winscope-nyomokat"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Részletes UI telemetriai adatokat tartalmaz (akadozást okozhat)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Hibaelhárítást igénylő alkalmazások nyomon követése"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Halommemória-pillanatkép mentése…"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Halommemória-pillanatkép mentve"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Koppintson a felvétel megosztásához"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Nyom csatolása a hibajelentéshez"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Nyom csatolva a hibajelentéshez"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Koppintson a BetterBug megnyitásához"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Nyomkövetés leállítása"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU-profilalkotás leállítása"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Egyes nyomon követési kategóriák nem állnak rendelkezésre:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Hibajelentésekhez való felvétel leállítása"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Hibajelentés elindítása után az aktív felvételek befejeződnek"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Felvételek csatolása a hibajelentésekhez"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Folyamatban lévő felvételek automatikus küldése a BetterBugnak hibajelentés begyűjtésekor"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Folyamatban lévő felvételek automatikus küldése a BetterBugnak hibajelentés begyűjtésekor. Az elküldést követően folytatódnak a felvételek."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Mentett fájlok megtekintése"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Követési beállítások"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Mentett fájlok"</string>

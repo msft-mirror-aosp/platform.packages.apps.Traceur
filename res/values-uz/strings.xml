@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Hip-dampni yozib olish"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"“Hip-damp jarayonlari”da tanlangan jarayonlarning hip-damplarini oladi"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Hip-damplarni olish uchun “Hip-damp jarayonlari” qismida kamida bitta jarayonni tanlang"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Yangi trassirovkani boshlash"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope trassirovkasini jamlash"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Batafsil UI telemetriya maʼlumotlari bilan birga (kechikishga olib kelishi mumkin)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tuzatishga ruxsati bor ilovalarning harakatlarni yozib olish"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Hip-damp saqlanmoqda"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Hip-damp saqlandi"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Yozuvni ulashish uchun bosing"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Xatolik hisobotiga trassirovka axborotini biriktirish"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Xatolik hisobotiga trassirovka axboroti biriktirilgan"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBugni ochish uchun bosing"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Trassirovkani to‘xtatish"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU profaylingni toʻxtatish"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Ayrim trassirovka turkumlari mavjud emas:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Xatoliklar hisobotida yozib olishlarni toʻxtatish"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Xatoliklar hisobotini boshlanganda faol yozuvlar toʻxtatiladi"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Xatolik hisobotiga yozuvlarni biriktirish"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Xatolik haqidagi axborot jamlansa, BetterBug xizmatiga amaldagi yozuvlar avtomatik yuborilsin"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Xatolik haqidagi axborot jamlansa, BetterBug xizmatiga amaldagi yozuvlar avtomatik yuborilsin. Yozuvlar keyinroq davom etadi."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Saqlangan fayllarni ochish"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Trassirovka sozlamalari"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Saqlangan fayllar"</string>

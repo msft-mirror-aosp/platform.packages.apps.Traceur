@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Regjistro stivën e skedarëve fiktivë"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Regjistron një stivë të skedarëve fiktivë të proceseve të zgjedhura te \"Proceset e stivës së skedarëve fiktivë\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Zgjidh të paktën një proces te \"Proceset e stivës së skedarëve fiktivë\" për të mbledhur stivat e skedarëve fiktivë"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Nis një gjurmim të ri"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Mblidh gjurmët e Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Përfshin të dhëna të detajuara të telemetrisë së ndërfaqes së përdoruesit (mund të shkaktojë defekte)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Gjurmo aplikacionet e gjurmueshme"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Stiva e skedarëve fiktivë po ruhet"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Stiva e skedarëve fiktivë u ruajt"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Trokit për të ndarë regjistrimin tënd"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Po bashkëngjit gjurmimin në raportin e defektit në kod"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"U bashkëngjit gjurmimi në raportin e defektit në kod"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Trokit për të hapur BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Ndalo gjurmimin"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Ndalo profilizimin e CPU-së"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Disa kategori gjurme nuk ofrohen:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ndalon regjistrimin për raporte të defekteve në kod"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Përfundon regjistrimet aktive kur fillon një raport defekti në kod"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Bashkëngjit regjistrimet te raportet e defekteve në kod"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Dërgo automatikisht regjistrimet në vazhdim te BetterBug kur merret një raport defektesh në kod"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Dërgo automatikisht regjistrimet në vazhdim te BetterBug kur merret një raport defektesh në kod. Regjistrimet do të vazhdojnë më pas."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Shiko skedarët e ruajtur"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Gjurmo cilësimet"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Skedarët e ruajtur"</string>

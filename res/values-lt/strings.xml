@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Įrašyti atminties išklotinę"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Fiksuojama procesų, pasirinktų skiltyje „Atminties išklotinės procesai“, atminties išklotinė"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pasirinkite bent vieną procesą skiltyje „Atminties išklotinės procesai“, kad galėtumėte rinkti atminties išklotines"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Pradėti naują pėdsaką"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Rinkti „Winscope“ pėdsakus"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Įtraukiami išsamūs NS telemetrijos duomenys (gali įvykti pateikimo pauzė)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Žymėti derinamas programas"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Išsaugoma atminties išklotinė"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Atminties išklotinė išsaugota"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Jei norite bendrinti įrašą, palieskite"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Pridedamas pėdsakas prie pranešimo apie riktą"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Pridėtas pėdsakas prie pranešimo apie riktą"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Palieskite, kad atidarytumėte „BetterBug“"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Nebežymėti"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Nebeprofiliuoti centrinio procesoriaus"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Kai kurios pėdsakų įrašymo kategorijos nepasiekiamos:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Nebeįrašyti pranešimams apie riktus"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Užbaigiami aktyvūs įrašymo seansai, kai pradedamas generuoti pranešimas apie riktą"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Pridėkite įrašų prie pranešimų apie riktus"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automatiškai siųsti vykdomos veiklos įrašus į sistemą „BetterBug“, kai gaunamas pranešimas apie riktą"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Automatiškai siųsti vykdomos veiklos įrašus į sistemą „BetterBug“, kai gaunamas pranešimas apie riktą. Įrašymas bus tęsiamas vėliau."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Žr. išsaugotus failus"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Sekimo nustatymai"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Išsaugoti failai"</string>

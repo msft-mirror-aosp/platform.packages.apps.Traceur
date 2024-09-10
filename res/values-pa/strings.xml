@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ਹੀਪ ਡੰਪ ਨੂੰ ਰਿਕਾਰਡ ਕਰੋ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ਹੀਪ ਡੰਪ ਪ੍ਰਕਿਰਿਆਵਾਂ\" ਵਿੱਚ ਚੁਣੀਆਂ ਗਈਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ ਦੇ ਹੀਪ ਡੰਪ ਨੂੰ ਕੈਪਚਰ ਕਰਦਾ ਹੈ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ਹੀਪ ਡੰਪ ਇਕੱਤਰ ਕਰਨ ਲਈ \"ਹੀਪ ਡੰਪ ਪ੍ਰਕਿਰਿਆਵਾਂ\" ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਪ੍ਰਕਿਰਿਆ ਚੁਣੋ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ਨਵਾਂ ਟ੍ਰੇਸ ਚਾਲੂ ਕਰੋ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ਟ੍ਰੇਸਾਂ ਨੂੰ ਇਕੱਤਰ ਕਰੋ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ਇਸ ਵਿੱਚ ਵੇਰਵੇ ਸਹਿਤ UI ਟੈਲੀਮੈਟਰੀ ਡਾਟਾ ਸ਼ਾਮਲ ਹੈ (ਇਹ ਜੈਂਕ ਦਾ ਕਾਰਨ ਬਣ ਸਕਦਾ ਹੈ)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ਡੀਬੱਗਯੋਗ ਐਪਲੀਕੇਸ਼ਨਾਂ ਟ੍ਰੇਸ ਕਰੋ"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"ਹੀਪ ਡੰਪ ਨੂੰ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ਹੀਪ ਡੰਪ ਨੂੰ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ਆਪਣੀ ਰਿਕਾਰਡਿੰਗ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ਟ੍ਰੇਸ ਨੂੰ ਬੱਗ ਰਿਪੋਰਟ ਵਿੱਚ ਨੱਥੀ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ਟ੍ਰੇਸ ਨੂੰ ਬੱਗ ਰਿਪੋਰਟ ਵਿੱਚ ਨੱਥੀ ਕੀਤਾ ਗਿਆ"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ ਟੈਪ ਕਰੋ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ਟ੍ਰੇਸਿੰਗ ਬੰਦ ਕਰੋ"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ਪ੍ਰੋਫਾਈਲਿੰਗ ਬੰਦ ਕਰੋ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ਕੁਝ ਟ੍ਰੇਸਿੰਗ ਸ਼੍ਰੇਣੀਆਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ:"</string>
@@ -69,7 +65,7 @@
     <string name="long_traces_summary" msgid="419034282946761469">"ਡੀਵਾਈਸ ਸਟੋਰੇਜ ਵਿੱਚ ਲਗਾਤਾਰ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ਡੀਵਾਈਸ ਸਟੋਰੇਜ ਵਿੱਚ ਲਗਾਤਾਰ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ (ਬੱਗ ਰਿਪੋਰਟਾਂ ਨਾਲ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਨੱਥੀ ਨਹੀਂ ਹੋਵੇਗਾ)"</string>
     <string name="max_long_trace_size" msgid="1943788179787181241">"ਸਭ ਤੋਂ ਲੰਮੀ ਟ੍ਰੇਸ ਦਾ ਆਕਾਰ"</string>
-    <string name="max_long_trace_duration" msgid="8009837944364246785">"ਸਭ ਤੋਂ ਲੰਮੀ ਟ੍ਰੇਸ ਮਿਆਦ"</string>
+    <string name="max_long_trace_duration" msgid="8009837944364246785">"ਸਭ ਤੋਂ ਲੰਮੀ ਟ੍ਰੇਸ ਦੀ ਮਿਆਦ"</string>
     <string name="two_hundred_mb" msgid="4950018549725084512">"200 MB"</string>
     <string name="one_gb" msgid="590396985168692037">"1 GB"</string>
     <string name="five_gb" msgid="7883941043220621649">"5 GB"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਲਈ ਰਿਕਾਰਡਿੰਗਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ਬੱਗ ਰਿਪੋਰਟ ਚਾਲੂ ਹੋਣ \'ਤੇ ਕਿਰਿਆਸ਼ੀਲ ਰਿਕਾਰਡਿੰਗਾਂ ਸਮਾਪਤ ਹੁੰਦੀਆਂ ਹਨ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਨਾਲ ਰਿਕਾਰਡਿੰਗਾਂ ਨੱਥੀ ਕਰੋ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ਬੱਗ ਰਿਪੋਰਟ ਇਕੱਤਰ ਹੋ ਜਾਣ \'ਤੇ ਪ੍ਰਕਿਰਿਆ-ਅਧੀਨ ਰਿਕਾਰਡਿੰਗਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ BetterBug ਨੂੰ ਭੇਜੋ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ਬੱਗ ਰਿਪੋਰਟ ਇਕੱਤਰ ਹੋ ਜਾਣ \'ਤੇ ਪ੍ਰਕਿਰਿਆ-ਅਧੀਨ ਰਿਕਾਰਡਿੰਗਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ BetterBug ਨੂੰ ਭੇਜੋ। ਰਿਕਾਰਡਿੰਗਾਂ ਇਸ ਤੋਂ ਬਾਅਦ ਵੀ ਜਾਰੀ ਰਹਿਣਗੀਆਂ।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਫ਼ਾਈਲਾਂ ਦੇਖੋ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ਟ੍ਰੇਸ ਸੈਟਿੰਗਾਂ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਗਈਆਂ ਫ਼ਾਈਲਾਂ"</string>

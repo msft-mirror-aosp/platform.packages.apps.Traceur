@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Санах ойн агшин зургийг бүртгэх"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"Санах ойн агшин зургийн явцууд\" хэсэгт сонгосон явцуудын санах ойн агшин зургийг авна"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Санах ойн агшин зургуудыг цуглуулахын тулд \"Санах ойн агшин зургийн явцууд\"-аас дор хаяж нэг явц сонгоно уу"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Шинэ ул мөр эхлүүлэх"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-н ул мөрүүдийг цуглуулах"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"UI-н телеметрийн нарийвчилсан өгөгдөл багтана (чанар муудахад хүргэх боломжтой)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Дебаг хийх боломжтой аппуудын ул мөрийг дагах"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Санах ойн агшин зургийг хадгалж байна"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Санах ойн агшин зургийг хадгалсан"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Бичлэгээ хуваалцахын тулд товшино уу"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Алдааны мэдээнд ул мөр хавсаргаж байна"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Алдааны мэдээнд ул мөр хавсаргасан"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug-г нээхийн тулд товшино уу"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Мөрдөхийг зогсоох"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Төв процессорын нэгжийн үнэлгээг зогсоох"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Зарим мөрийн ангилал боломжгүй байна:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Алдааны мэдээнүүдэд зориулж бичихийг зогсоох"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Алдааны мэдээг эхлүүлсэн үед идэвхтэй бичлэгүүдийг зогсооно"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Алдааны мэдээнд бичлэгүүд хавсаргах"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Алдааны мэдээг цуглуулсан үед хийгдэж буй бичлэгүүдийг BetterBug руу автоматаар илгээх"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Алдааны мэдээг цуглуулсан үед хийгдэж буй бичлэгийг BetterBug-д автоматаар илгээнэ үү. Бичлэгийг дараа нь үргэлжлүүлнэ."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Хадгалсан файлуудыг харах"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ул мөрийн тохиргоо"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Хадгалсан файлууд"</string>

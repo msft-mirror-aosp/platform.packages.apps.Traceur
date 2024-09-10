@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Înregistrează datele privind memoria heap"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Surprinde o serie de date privind memoria heap din procesele selectate în Procese de date privind memoria heap"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selectează cel puțin un proces de date privind memoria heap ca să colectezi datele privind memoria heap"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Începe o urmă nouă"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Adună urmele Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Include date de telemetrie IU detaliate (poate cauza jankuri)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Urmărește aplicațiile care pot fi depanate"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Se salvează datele privind memoria heap"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Date privind memoria heap salvate"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Atinge pentru a trimite înregistrarea"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Se atașează urma la raportul de eroare"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Urma a fost atașată la raportul de eroare"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Atinge pentru a deschide BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Oprește urmărirea"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Oprește crearea de profiluri CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Unele categorii de urmărire nu sunt disponibile:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Oprește înregistrarea pentru rapoartele de eroare"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Încheie înregistrările active când este inițiat un raport de eroare"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Atașează înregistrări la rapoartele de eroare"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Activează trimiterea automată a înregistrărilor în desfășurare la BetterBug când se execută un raport de eroare"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Activează trimiterea automată a înregistrărilor în desfășurare la BetterBug când se execută un raport de eroare. Înregistrările vor continua."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Vezi fișierele salvate"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Setări pentru urmărire"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Fișiere salvate"</string>

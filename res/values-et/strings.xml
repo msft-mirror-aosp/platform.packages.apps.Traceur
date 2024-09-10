@@ -10,8 +10,7 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Salvesta mälutõmmis"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Jäädvustab jaotises „Mälutõmmise protsessid” valitud protsessidest mälutõmmise"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Mälutõmmiste kogumiseks valige jaotises „Mälutõmmise protsessid” vähemalt üks protsess"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Alusta uut jälgimist"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Koguge Winscope\'i jälgi"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Kogu Winscope\'i jälgi"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sisaldab üksikasjalikke kasutajaliidese telemeetriaandmeid (võib põhjustada tõrkeid)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Silutavate rakenduste jälgimine"</string>
     <string name="categories" msgid="2280163673538611008">"Kategooriad"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Mälutõmmise salvestamine"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Mälutõmmis on salvestatud"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Salvestise jagamiseks puudutage"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Jälje manustamine veaaruandesse"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Jälg manustati veaaruandesse"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Puudutage laienduse BetterBug avamiseks"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Lõpetage jälgimine"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Lõpetage protsessori profiilimine"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Teatud jälgimiskategooriad ei ole saadaval:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Lõpeta veaaruannete jaoks jäädvustamine"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Lõpetab veaaruande alustamise korral aktiivsed salvestised"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Manusta salvestised veaaruannetele"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Saada pooleliolevad salvestised veaaruande koostamisel automaatselt BetterBugile"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Pooleliolevad salvestised saadetakse veaaruande koostamisel automaatselt BetterBugile. Salvestamine jätkub pärast seda."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Kuva salvestatud failid"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jälgimise seaded"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Salvestatud failid"</string>

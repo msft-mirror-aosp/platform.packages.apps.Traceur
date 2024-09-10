@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Ierakstīt grēdas izrakstu"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Ieraksta sadaļā “Grēdas izrakstu procesi” atlasīto procesu grēdas izrakstu"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Lai vāktu grēdas izrakstus, sadaļā “Grēdas izrakstu procesi” atlasiet vismaz vienu procesu"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Sākt jaunu trasējumu"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Vākt Winscope izsekošanas datus"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Ietver detalizētus lietotāja saskarnes telemetrijas datus (var izraisīt reaģēšanas pauzi)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Izsekot atkļūdošanas lietojumprogrammas"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Notiek grēdas izraksta saglabāšana"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Grēdas izraksts ir saglabāts"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Pieskarieties, lai kopīgotu reģistrētos datus"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Notiek izsekošanas datu pievienošana kļūdas pārskatam…"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Izsekošanas dati ir pievienoti kļūdas pārskatam"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Pieskarieties, lai atvērtu rīku BetterBug."</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Apturiet izsekošanu"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Apturēt centrālā procesora profilēšanu"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Noteiktas izsekošanas kategorijas nav pieejamas:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Apturēt datu reģistrēšanu, sākot kļūdas pārskata izveidi"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Kad tiek sākta kļūdas pārskata izveide, tiek apturēta aktīvā reģistrēšana."</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Kļūdu pārskatiem pievienot reģistrētos datus"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Automātiski sūtīt pašreizējos reģistrētos datus uz rīku BetterBug kopā ar kļūdas pārskatu"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Varat automātiski sūtīt pašreizējos reģistrētos datus uz rīku BetterBug kopā ar kļūdas pārskatu. Reģistrēšana pēc tam tiks turpināta."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Skatīt saglabātos failus"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Izsekošanas iestatījumi"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Saglabātie faili"</string>

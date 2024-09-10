@@ -10,11 +10,10 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"हीप डंप को रिकॉर्ड करें"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"हीप डंप की प्रोसेस\" में चुनी गई प्रोसेस के हीप डंप को कैप्चर करें"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"हीप डंप को इकट्ठा करने के लिए \"हीप डंप की प्रोसेस\" में कम से कम एक प्रोसेस चुनें"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"नया ट्रेस शुरू करें"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"WinScope के ट्रेस इकट्ठा करें"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"इसमें यूज़र इंटरफ़ेस से जुड़ा टेलीमेट्री डेटा शामिल है (इससे जैंक होने की संभावना है)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डीबग करने के लिए ऐप्लिकेशन ट्रेस करें"</string>
-    <string name="categories" msgid="2280163673538611008">"ट्रेस श्रेणियां"</string>
+    <string name="categories" msgid="2280163673538611008">"कैटगरी"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"डिफ़ॉल्ट श्रेणियां बहाल करें"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"डिफ़ॉल्ट श्रेणियां बहाल की गईं"</string>
     <string name="default_categories" msgid="2117679794687799407">"डिफ़ॉल्ट"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"हीप डंप को सेव किया जा रहा है"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"हीप डंप को सेव किया गया"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"अपनी रिकॉर्डिंग शेयर करने के लिए टैप करें"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ट्रेस को गड़बड़ी की रिपोर्ट में अटैच किया जा रहा है"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ट्रेस को गड़बड़ी की रिपोर्ट में अटैच किया गया"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug खोलने के लिए टैप करें"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ट्रेस करना बंद करें"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"सीपीयू प्रोफ़ाइलिंग बंद करें"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ट्रेस करने की कुछ श्रेणियां उपलब्ध नहीं हैं:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"गड़बड़ी की रिपोर्ट के लिए रिकॉर्डिंग करना बंद करें"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"यह मोड चालू होने पर, गड़बड़ी की रिपोर्ट के शुरू होने के बाद, रिकॉर्डिंग बंद हो जाती है"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"रिकॉर्डिंग को गड़बड़ी की रिपोर्ट में अटैच करें"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रही रिकॉर्डिंग की जानकारी अपने-आप भेज दी जाती है"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"गड़बड़ी की रिपोर्ट मिलने पर, BetterBug को पहले से चल रही रिकॉर्डिंग अपने-आप भेजी जाती हैं. रिकॉर्डिंग बाद में भी जारी रहेंगी."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"सेव की गई फ़ाइलें देखें"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ट्रेस करने की सेटिंग"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव की गई फ़ाइलें"</string>

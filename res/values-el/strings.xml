@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Καταγραφή στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Καταγράφει ένα στιγμιότυπο μνήμης των διεργασιών που έχουν επιλεχθεί στη λίστα Διεργασίες στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Επιλέξτε τουλάχιστον μία διεργασία από τη λίστα Διεργασίες στιγμιότυπου μνήμης για να συλλέξετε στιγμιότυπα μνήμης"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Έναρξη νέου ίχνους"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Συγκέντρωση ιχνών Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Συμπεριλαμβάνει λεπτομερή δεδομένα τηλεμετρίας διεπαφής χρήστη (μπορεί να προκαλέσει παύση)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Ανίχνευση εφαρμογών με δυνατότητα εντοπισμού σφαλμάτων"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Αποθήκευση στιγμιότυπου μνήμης"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Το στιγμιότυπο μνήμης αποθηκεύτηκε"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Πατήστε για να μοιραστείτε την εγγραφή σας"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Πραγματοποιείται επισύναψη ίχνους στην αναφορά σφάλματος"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Το ίχνος επισυνάφθηκε στην αναφορά σφάλματος"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Πατήστε για άνοιγμα του BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Διακοπή ανίχνευσης"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Διακοπή δημιουργίας προφίλ CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Ορισμένες κατηγορίες εντοπισμού δεν είναι διαθέσιμες:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Διακοπή εγγραφής για αναφορές σφαλμάτων"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Τερματίζει τις ενεργές εγγραφές κατά την έναρξη μιας αναφοράς σφάλματος"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Επισύναψη εγγραφών σε αναφορές σφαλμάτων"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Αυτόματη αποστολή εγγραφών που βρίσκονται σε εξέλιξη στο BetterBug κατά τη συλλογή μιας αναφοράς σφάλματος"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Αυτόματη αποστολή εγγραφών που βρίσκονται σε εξέλιξη στο BetterBug κατά τη συλλογή μιας αναφοράς σφάλματος. Οι εγγραφές θα συνεχίσουν αμέσως μετά."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Προβολή αποθηκευμένων αρχείων"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ρυθμίσεις ίχνους"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Αποθηκευμένα αρχεία"</string>

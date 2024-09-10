@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"हीप डंप रेकॉर्ड करा"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"हीप डंप प्रक्रिया\" यामध्ये निवडलेल्या प्रक्रियांचा हीप डंप कॅप्चर करते"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"हीप डंप गोळा करण्यासाठी \"हीप डंपसंबंधित प्रक्रिया\" यामधून किमान एक प्रक्रिया निवडा"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"नवीन ट्रेस सुरू करा"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ट्रेस गोळा करा"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"तपशीलवार UI टेलीमेट्री डेटाचा समावेश आहे (जॅंक होऊ शकते)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"डीबग करण्यायोग्य ॲप्लिकेशन ट्रेस करा"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"हीप डंप सेव्ह करत आहे"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"हीप डंप सेव्ह केला आहे"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"तुमचे रेकॉर्डिंग शेअर करण्यासाठी टॅप करा"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"बग रिपोर्टला ट्रेस अटॅच करत आहे"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"बग रिपोर्टला ट्रेस अटॅच करा"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug उघडण्यासाठी टॅप करा"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"माग काढणे थांबवा"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU प्रोफायलिंग थांबवा"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"माग काढण्याच्या काही वर्गवार्‍या अनुपलब्ध आहेत:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"बग रिपोर्टसाठी रेकॉर्ड करणे बंद करा"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"बगरिपोर्ट सुरू झाल्यावर अ‍ॅक्टिव्ह असलेली रेकॉर्डिंग बंद करते"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"बग रिपोर्टना रेकॉर्डिंग जोडा"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"बग रिपोर्ट गोळा केला जातो, तेव्हा प्रगतीपथावरील रेकॉर्डिंग BetterBug ला आपोआप पाठवा"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"बग रिपोर्ट गोळा केला जातो, तेव्हा सुरू असलेल्या रेकॉर्डिंग BetterBug ला आपोआप पाठवा. रेकॉर्डिंग नंतर सुरू राहतील."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"सेव्ह केलेल्या फाइल पहा"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"सेटिंग्जचा माग ठेवा"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"सेव्ह केलेल्या फाइल"</string>

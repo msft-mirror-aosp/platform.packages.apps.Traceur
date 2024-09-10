@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"记录堆转储"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"根据“堆转储进程”部分中的所选进程捕获堆转储"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"在“堆转储进程”部分中选择至少 1 个进程后才能收集堆转储"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"开始新的轨迹"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"收集 Winscope 跟踪记录"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"包括详细的界面遥测数据（可能会导致卡顿）"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"跟踪可调试的应用"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"正在保存堆转储"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"已保存堆转储"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"点按即可分享录制内容"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"正在将跟踪记录附加到错误报告"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"已将跟踪记录附加到错误报告"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"点按即可打开 BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"停止跟踪"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"停止分析 CPU 性能"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"某些跟踪记录类别不可用："</string>
@@ -65,11 +61,11 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"系统跟踪文件可能包含敏感的系统数据和应用数据（例如应用使用情况信息）。请务必只与您信任的人和应用分享系统跟踪文件。"</string>
     <string name="share" msgid="8443979083706282338">"分享"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"不再显示"</string>
-    <string name="long_traces" msgid="5110949471775966329">"长期轨迹"</string>
+    <string name="long_traces" msgid="5110949471775966329">"长期跟踪记录"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"持续保存到设备存储空间"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"持续保存到设备存储空间（不会自动附加到错误报告）"</string>
-    <string name="max_long_trace_size" msgid="1943788179787181241">"最大长期轨迹大小"</string>
-    <string name="max_long_trace_duration" msgid="8009837944364246785">"最大长期轨迹时长"</string>
+    <string name="max_long_trace_size" msgid="1943788179787181241">"最大长期跟踪记录大小"</string>
+    <string name="max_long_trace_duration" msgid="8009837944364246785">"最大长期跟踪记录时长"</string>
     <string name="two_hundred_mb" msgid="4950018549725084512">"200 MB"</string>
     <string name="one_gb" msgid="590396985168692037">"1 GB"</string>
     <string name="five_gb" msgid="7883941043220621649">"5 GB"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"停止记录错误报告"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"启动错误报告时结束进行中的录制内容"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"在错误报告中附加录制内容"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"收集错误报告后，自动将处理中的录制内容发送到 BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"收集错误报告后，自动将处理中的录制内容发送到 BetterBug。之后，系统将继续录制。"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"查看已保存的文件"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"跟踪设置"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"已保存的文件"</string>

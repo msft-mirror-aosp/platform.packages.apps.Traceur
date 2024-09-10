@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Գրանցել գործընթացի դինամիկ հիշողության տվյալները"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Գրանցում է գործընթացների դինամիկ հիշողության տվյալները, որոնք ընտրվել են «Դինամիկ հիշողության տվյալների գործընթացներ» բաժնում"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Գործընթացի դինամիկ հիշողության տվյալները հավաքելու համար ընտրեք առնվազն մեկ գործընթաց «Դինամիկ հիշողության տվյալների գործընթացներ» բաժնում"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Սկսել նոր հետագծում"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Հավաքել Winscope-ի հետագծումները"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Ներառում է հեռուստամետրիայի միջերեսային մանրամասն տվյալներ (կարող է աղբ ավելացնել)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Հետագծել վրիպազերծման ենթակա հավելվածները"</string>
@@ -32,7 +31,7 @@
     <string name="one_minute" msgid="4182508213840684258">"1 րոպե"</string>
     <string name="applications" msgid="521776761270770549">"Հավելվածներ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Վրիպազերծման ենթակա հավելվածներ չկան"</string>
-    <string name="buffer_size" msgid="3944311026715111454">"Մեկ CPU-ի պահնակի չափը"</string>
+    <string name="buffer_size" msgid="3944311026715111454">"Մեկ CPU-ի բուֆերի չափսը"</string>
     <string name="show_quick_settings_tile" msgid="3827556161191376500">"Ցույց տալ հետագծման «Արագ կարգավորումներ» սալիկը"</string>
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Ցույց տալ CPU-ի պրոֆիլավորման «Արագ կարգավորումներ» սալիկը"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Հետագծումը պահվում է"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Գործընթացի դինամիկ հիշողության տվյալները պահվում են"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Գործընթացի դինամիկ հիշողության տվյալները պահվել են"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Հպեք՝ գրանցումով կիսվելու համար"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Հետագծման ֆայլը կցվում է վրիպակի մասին զեկույցին"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Հետագծման ֆայլը կցվեց վրիպակի մասին զեկույցին"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Հպեք՝ BetterBug-ը բացելու համար"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Դադարեցրեք հետագծումը"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Կանգնեցնել CPU-ի պրոֆիլավորումը"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Հետագծման հետևյալ կատեգորիաներն անհասանելի են`"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Կանգնեցնել գրանցումները, երբ ստեղծվում են վրիպակների մասին հաղորդումներ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Ավարտում է ակտիվ գրանցումները, երբ մեկնարկում է վրիպակների մասին հաղորդումների ստեղծումը"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Գրանցումները կցել վրիպակների մասին հաղորդումներին"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Ավտոմատ ուղարկել ընթացիկ գրանցումների տվյալները BetterBug-ին, երբ վրիպակի մասին հաղորդում է ստեղծվում"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Ավտոմատ ուղարկել ընթացիկ ձայնագրությունները BetterBug-ին, երբ վրիպակի մասին հաղորդում է ստեղծվում։ Որից հետո ձայնագրությունները կշարունակվեն։"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Դիտել պահված ֆայլերը"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Հետագծման կարգավորումներ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Պահված ֆայլեր"</string>

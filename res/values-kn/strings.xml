@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಿ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ಹೀಪ್ ಡಂಪ್ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ\" ಆಯ್ಕೆಮಾಡಿದ ಪ್ರಕ್ರಿಯೆಗಳ ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ಹೀಪ್ ಡಂಪ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಲು \"ಹೀಪ್ ಡಂಪ್ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ\" ಕನಿಷ್ಠ ಒಂದು ಪ್ರಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ಹೊಸ ಟ್ರೇಸ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಿ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"ವಿನ್ಸ್‌ಕೋಪ್‌ ಟ್ರೇಸ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ವಿವರವಾದ UI ಟೆಲಿಮೆಟ್ರಿ ಡೇಟಾವನ್ನು ಒಳಗೊಂಡಿದೆ (ಜಂಕ್ ಮಾಡಬಹುದು)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ಡೀಬಗ್‌ ಮಾಡುವಂತಹ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಜಾಡು ಹಿಡಿಯಿರಿ"</string>
@@ -37,14 +36,11 @@
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"CPU ಪ್ರೊಫೈಲಿಂಗ್ ತ್ವರಿತ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಟೈಲ್ ಅನ್ನು ತೋರಿಸಿ"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ಟ್ರೇಸ್ ಅನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="trace_saved" msgid="5869970594780992309">"ಟ್ರೇಸ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಉಳಿಸಲಾಗುತ್ತಿದೆ"</string>
+    <string name="saving_stack_samples" msgid="8174915522390525221">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗುತ್ತಿದೆ"</string>
     <string name="stack_samples_saved" msgid="8863295751647724616">"ಸ್ಟ್ಯಾಕ್‌ ಮಾದರಿಗಳನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="saving_heap_dump" msgid="6118616780825771824">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೇವ್‌ ಮಾಡಲಾಗುತ್ತಿದೆ"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ಹೀಪ್ ಡಂಪ್ ಅನ್ನು ಸೇವ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ನಿಮ್ಮ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ಬಗ್ ವರದಿಗೆ ಟ್ರೇಸ್ ಅನ್ನು ಲಗತ್ತಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ಬಗ್ ವರದಿಗೆ ಟ್ರೇಸ್ ಅನ್ನು ಲಗತ್ತಿಸಲಾಗಿದೆ"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ತೆರೆಯಲು ಟ್ಯಾಪ್ ಮಾಡಿ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ಟ್ರೇಸಿಂಗ್ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ಪ್ರೊಫೈಲಿಂಗ್ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ಕೆಲವು ಟ್ರೇಸಿಂಗ್ ವಿಭಾಗಗಳು ಲಭ್ಯವಿಲ್ಲ:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ಬಗ್ ವರದಿಗಳಿಗಾಗಿ ರೆಕಾರ್ಡಿಂಗ್‌ ಅನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ಬಗ್ ವರದಿಮಾಡುವಿಕೆ ಪ್ರಾರಂಭವಾದಾಗ ಸಕ್ರಿಯವಾಗಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು ಕೊನೆಗೊಳಿಸುತ್ತದೆ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ಬಗ್ ವರದಿಗಳಿಗೆ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು ಲಗತ್ತಿಸಿ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ಬಗ್ ವರದಿಯನ್ನು ಸಂಗ್ರಹಿಸಿದ ನಂತರ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಗತಿಯಲ್ಲಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು BetterBug ಗೆ ಕಳುಹಿಸಿ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ಬಗ್ ವರದಿ ಮಾಡುವಿಕೆಯನ್ನು ಸಂಗ್ರಹಿಸಿದಾಗ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪ್ರಗತಿಯಲ್ಲಿರುವ ರೆಕಾರ್ಡಿಂಗ್‌ಗಳನ್ನು BetterBug ಗೆ ಕಳುಹಿಸಿ. ರೆಕಾರ್ಡಿಂಗ್‌ಗಳು ನಂತರ ಮುಂದುವರಿಯುತ್ತವೆ."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ಉಳಿಸಿದ ಫೈಲ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ಜಾಡು ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ಉಳಿಸಲಾದ ಫೈಲ್‌ಗಳು"</string>

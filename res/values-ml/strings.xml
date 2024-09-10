@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ഹീപ്പ് ഡംപ് റെക്കോർഡ് ചെയ്യുക"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ഹീപ്പ് ഡംപ് പ്രോസസുകളിൽ\" തിരഞ്ഞെടുത്ത പ്രോസസുകളുടെ ഒരു ഹീപ്പ് ഡംപ് ക്യാപ്ചർ ചെയ്യുന്നു"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ഹീപ്പ് ഡംപുകൾ ശേഖരിക്കാൻ \"ഹീപ്പ് ഡംപ് പ്രോസസുകളിൽ\" ഒരു പ്രോസസ് എങ്കിലും തിരഞ്ഞെടുക്കുക"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"പുതിയ ട്രെയ്‌സ് ആരംഭിക്കുക"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"വിൻസ്‌കോപ്പ് അടയാളങ്ങൾ ശേഖരിക്കുക"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"വിശദമായ UI ടെലിമെട്രി ഡാറ്റ ഉൾപ്പെടുന്നു (ജങ്ക് ഉണ്ടാക്കാം)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ഡീബഗ്ഗ് ചെയ്യാവുന്ന അപ്ലിക്കേഷനുകള്‍ ഫോളോ ചെയ്യുക"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"ഹീപ്പ് ഡംപ് സംരക്ഷിക്കുന്നു"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ഹീപ്പ് ഡംപ് സംരക്ഷിച്ചു"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"നിങ്ങളുടെ റെക്കോർഡിഗ് പങ്കിടാൻ ടാപ്പ് ചെയ്യുക"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്യുന്നു"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്‌തു"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug തുറക്കാൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ട്രെയ്‌സിംഗ് നിർത്തുക"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU പ്രൊഫെെലിംഗ് നിർത്തുക"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ചില ട്രെയ്‌സിംഗ് വിഭാഗങ്ങൾ ലഭ്യമല്ല:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ബഗ് റിപ്പോർട്ടുകൾക്കായി, റെക്കോർഡ് ചെയ്യുന്നത് അവസാനിപ്പിക്കുക"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ബഗ് റിപ്പോർട്ട് ആരംഭിക്കുമ്പോൾ, സജീവമായ റെക്കോർഡിംഗുകൾ അവസാനിപ്പിക്കുന്നു"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ബഗ് റിപ്പോർട്ടുകളിലേക്ക് റെക്കോർഡിംഗുകൾ അറ്റാച്ച് ചെയ്യുക"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ബഗ് റിപ്പോർട്ട് ശേഖരിച്ചാൽ, പുരോഗതിയിലുള്ള റെക്കോർഡിംഗുകൾ BetterBug-ലേക്ക് സ്വയമേവ അയയ്ക്കുക"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ബഗ് റിപ്പോർട്ട് ശേഖരിച്ചാൽ, പുരോഗതിയിലുള്ള റെക്കോർഡിംഗുകൾ BetterBug-ലേക്ക് സ്വയമേവ അയയ്ക്കുക. റെക്കോർഡ് ചെയ്യലുകൾ പിന്നീട് തുടരും."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"സംരക്ഷിച്ച ഫയലുകൾ കാണുക"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ട്രേസ് ചെയ്യൽ ക്രമീകരണം"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"സംരക്ഷിച്ച ഫയലുകൾ"</string>

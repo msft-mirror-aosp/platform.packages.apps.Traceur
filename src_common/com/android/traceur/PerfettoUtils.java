@@ -77,6 +77,7 @@ public class PerfettoUtils {
     private static final String SYS_STATS_TAG = "sys_stats";
     private static final String LOG_TAG = "logs";
     private static final String CPU_TAG = "cpu";
+    public static final String WINDOW_MANAGER_TAG = "wm";
 
     public String getName() {
         return NAME;
@@ -130,10 +131,26 @@ public class PerfettoUtils {
         appendTraceBuffer(config, targetBuffer1Kb);
 
         appendFtraceConfig(config, tags, apps);
+
+        appendSystemPropertyConfig(config, tags);
         appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
         appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
         return startPerfettoWithTextConfig(config.toString());
+    }
+
+    private void appendSystemPropertyConfig(StringBuilder config, Collection<String> tags) {
+        if (tags.contains(WINDOW_MANAGER_TAG)) {
+            config.append("data_sources: {\n")
+                    .append("  config { \n")
+                    .append("    name: \"android.system_property\"\n")
+                    .append("    target_buffer: 0\n")
+                    .append("    android_system_property_config {\n")
+                    .append("      property_name: \"debug.tracing.desktop_mode_visible_tasks\"\n")
+                    .append("    }\n")
+                    .append("  }\n")
+                    .append("}\n");
+        }
     }
 
     public boolean stackSampleStart(boolean attachToBugreport) {
@@ -663,8 +680,6 @@ public class PerfettoUtils {
                 .append("      mode: MODE_ACTIVE\n")
                 .append("      trace_flags: TRACE_FLAG_INPUT\n")
                 .append("      trace_flags: TRACE_FLAG_COMPOSITION\n")
-                .append("      trace_flags: TRACE_FLAG_HWC\n")
-                .append("      trace_flags: TRACE_FLAG_BUFFERS\n")
                 .append("      trace_flags: TRACE_FLAG_VIRTUAL_DISPLAYS\n")
                 .append("    }\n")
                 .append("  }\n")
@@ -708,6 +723,33 @@ public class PerfettoUtils {
                 .append("  config {\n")
                 .append("    name: \"android.windowmanager\"\n")
                 .append("    target_buffer: " + targetBuffer + "\n")
+                .append("  }\n")
+                .append("}\n");
+
+            config.append("data_sources {\n")
+                .append("  config {\n")
+                .append("    name: \"android.input.inputevent\"\n")
+                .append("    target_buffer: 1\n")
+                .append("    android_input_event_config {\n")
+                .append("      mode: TRACE_MODE_USE_RULES\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_NONE\n")
+                .append("        match_secure: true\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_COMPLETE\n")
+                .append("        match_all_packages: \"com.android.shell\"\n")
+                .append("        match_all_packages: \"com.android.systemui\"\n")
+                .append("        match_all_packages: \"com.android.launcher3\"\n")
+                .append("        match_all_packages: \"com.android.settings\"\n")
+                .append("        match_ime_connection_active: false\n")
+                .append("      }\n")
+                .append("      rules {\n")
+                .append("        trace_level: TRACE_LEVEL_REDACTED\n")
+                .append("      }\n")
+                .append("      trace_dispatcher_input_events: true\n")
+                .append("      trace_dispatcher_window_dispatch: true\n")
+                .append("    }\n")
                 .append("  }\n")
                 .append("}\n");
         }

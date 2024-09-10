@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Снимај динамички део меморије за процес"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Снима динамички део меморије за процесе изабране у делу Процеси за снимање динамичког дела меморије"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Да бисте прикупљали снимке динамичког дела меморије за процесе, изаберите бар један процес у делу Процеси за снимање динамичког дела меморије"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Покрени ново праћење"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Прикупљај Winscope трагове"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Обухвата детаљне телеметријске податке о корисничком интерфејсу (може да изазове сецкање)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Прати апликације са функцијом за отклањање грешака"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Чува се снимак динамичког дела меморије за процес"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Снимак динамичког дела меморије за процес је сачуван"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Додирните да бисте делили снимак"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Праћење се прилаже извештају о грешци"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Праћење је приложено извештају о грешци"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Додирните да бисте отворили BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Зауставите трагање"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Зауставите профилисање процесора"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Неке категорије праћења нису доступне:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Заустави снимање за извештаје о грешци"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Зауставља активна снимања кад се започне извештај о грешци"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Приложите снимке у извештаје о грешци"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Аутоматски шаљи снимке у току на BetterBug по добијању извештаја о грешци"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Аутоматски шаљите BetterBug-у снимке док је снимање у току када се прикупи извештај о грешци. Снимање ће се затим наставити."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Прикажи сачуване фајлове"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Подешавања праћења"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Сачувани фајлови"</string>

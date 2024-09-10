@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Zaznamenat výpis haldy"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Pořídí výpis haldy pro procesy vybrané v sekci Procesy pro výpisy haldy"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pokud chcete shromažďovat výpisy haldy, vyberte alespoň jeden proces v sekci Procesy pro výpisy haldy"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Spustit nové trasování"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Shromažďovat trasování Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Zahrnuje podrobná telemetrická data uživatelského rozhraní (může vést k zasekávání)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Trasovat aplikace k ladění"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Ukládání výpisu haldy"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Výpis haldy byl uložen"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Klepnutím sdílejte nahrávku"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Připojování záznamu aktivity ke zprávě o chybě"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Ke zprávě o chybě byl přidán záznam aktivity"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Klepnutím otevřete BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Ukončit trasování"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Zastavte profilování procesoru"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Některé kategorie zaznamenávání nejsou k dispozici:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Ukončit nahrávání pro zprávy o chybách"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Ukončí aktivní nahrávky, když je vytvořena chybová zpráva"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Přikládat ke zprávám o chybách nahrávky"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Při záznamu chyby automaticky odesílat probíhající nahrávky do nástroje BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Při získávání zprávy o chybě automaticky odesílat probíhající nahrávky do nástroje BetterBug. Nahrávání bude pokračovat."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Zobrazit uložené soubory"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nastavení trasování"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Uložené soubory"</string>

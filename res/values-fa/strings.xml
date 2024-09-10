@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ضبط رونوشت پشته"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"رونوشت پشته را برای پردازش‌های انتخاب‌شده در «پردازش‌های رونوشت پشته» را ضبط می‌کند"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"برای جمع‌آوری رونوشت‌های پشته، حداقل یک پردازش را در «پردازش‌های رونوشت پشته» انتخاب کنید"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"شروع ردیابی جدید"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"‏جمع‌آوری ردپاهای Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"شامل داده‌های دورسنجی دقیق واسط کاربر می‌شود (ممکن است باعث قطع اتصال شود)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"برنامه‌هایی با قابلیت اشکال‌زدایی ردیابی"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"درحال ذخیره کردن رونوشت پشته"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"رونوشت پشته ذخیره شد"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"برای هم‌رسانی قطعه ضبط‌شده، تک‌ضرب بزنید"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"درحال پیوست کردن رد به گزارش اشکال"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"رد به گزارش اشکال پیوست شد"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"‏برای باز کردن BetterBug تک‌ضرب بزنید"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"پایان ردیابی"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"توقف تحلیل واحد پردازش مرکزی"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"بعضی از دسته‌های ردیابی دردسترس نیستند:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"توقف ضبط برای گزارش‌های اشکال"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"وقتی گزارش اشکال شروع می‌شود، ضبط‌های فعال به‌پایان می‌رسند"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"پیوست کردن قطعه‌های ضبط‌شده به گزارش اشکال"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درحال انجام به‌طور خودکار به BetterBug ارسال می‌شود"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"‏هنگام جمع‌آوری گزارش اشکال، ضبط‌های درجریان به‌طور خودکار به BetterBug ارسال می‌شود. پس‌از آن، ضبط ادامه پیدا خواهد کرد."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"مشاهده فایل‌های ذخیره‌شده"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"تنظیمات ردیابی"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"فایل‌های ذخیره‌شده"</string>

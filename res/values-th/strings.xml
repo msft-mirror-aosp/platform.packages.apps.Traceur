@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"บันทึกฮีปดัมป์"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"บันทึกฮีปดัมป์ของกระบวนการที่เลือกใน \"กระบวนการฮีปดัมป์\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"เลือกอย่างน้อย 1 กระบวนการใน \"กระบวนการฮีปดัมป์\" เพื่อรวบรวมฮีปดัมป์"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"เริ่มการติดตามใหม่"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"รวบรวมการติดตาม Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"รวมข้อมูลจากระยะไกลของ UI โดยละเอียด (อาจทำให้เกิดการกระตุกได้)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ติดตามแอปพลิเคชันที่แก้ไขข้อบกพร่องได้"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"กำลังบันทึกฮีปดัมป์"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"บันทึกฮีปดัมป์แล้ว"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"แตะเพื่อแชร์การบันทึก"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"กำลังแนบการติดตามในรายงานข้อบกพร่อง"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"แนบการติดตามในรายงานข้อบกพร่องแล้ว"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"แตะเพื่อเปิด BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"หยุดติดตาม"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"หยุดทำโปรไฟล์ CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"การติดตามบางหมวดหมู่ไม่พร้อมใช้งาน:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"หยุดการบันทึกสำหรับรายงานข้อบกพร่อง"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ยุติการบันทึกที่ทำงานอยู่เมื่อเริ่มรายงานข้อบกพร่อง"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"แนบการบันทึกในรายงานข้อบกพร่อง"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ส่งการบันทึกที่กำลังดำเนินการไปยัง BetterBug โดยอัตโนมัติเมื่อรวบรวมรายงานข้อบกพร่อง"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ส่งการบันทึกที่กำลังดำเนินการไปยัง BetterBug โดยอัตโนมัติเมื่อรวบรวมรายงานข้อบกพร่อง การบันทึกจะดำเนินการต่อหลังจากนั้น"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ดูไฟล์ที่บันทึกไว้"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"การตั้งค่าการติดตาม"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ไฟล์ที่บันทึกไว้"</string>

@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Tallenna keon vedos"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Tallentaa kohdasta \"Keon vedos ‑prosessit\" valitun vedoksen"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Valitse ainakin yksi keon vedos ‑prosessi, jotta voit kerätä vedoksia"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Aloita uusi jälki"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kerää Winscope-jälkiä"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sisällyttää yksityiskohtaista UI-telemetriadataa (voi aiheuttaa katkoja)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Tallenna viankorjausta tukevien sovellusten jäljet"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Keon vedosta tallennetaan"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Keon vedos tallennettu"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Jaa tallenne napauttamalla"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Jäljitystä liitetään virheraporttiin"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Jäljitys liitetty virheraporttiin"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Avaa BetterBug napauttamalla"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Lopeta jälkien tallentaminen"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Lopeta CPU-profilointi"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Osa jälkiluokista ei ole käytettävissä:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Lopeta tallennus virheraporttien aikana"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Lopettaa aktiiviset tallenteet, kun virheraportti luodaan"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Liitä tallenteet virheraportteihin"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Lähetä keskeneräiset tallenteet BetterBugille automaattisesti virheraportin keräyksen yhteydessä"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Lähetä keskeneräiset tallenteet BetterBugille automaattisesti virheraportin keräyksen yhteydessä. Tallenteet jatkuvat sen jälkeen."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Katso tallennetut tiedostot"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Jäljittämisasetukset"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Tallennetut tiedostot"</string>

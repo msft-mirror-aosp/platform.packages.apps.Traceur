@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Rekam heap dump"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Merekam proses heap dump yang dipilih di \"Proses heap dump\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pilih minimal satu proses di \"Proses heap dump\" untuk mengumpulkan heap dump"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Mulai rekaman aktivitas baru"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kumpulkan rekaman aktivitas Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Menyertakan data telemetri UI yang mendetail (dapat menyebabkan jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Lacak aplikasi yang dapat di-debug"</string>
@@ -42,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Menyimpan heap dump"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Heap dump disimpan"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Ketuk untuk membagikan rekaman Anda"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Melampirkan rekaman aktivitas ke laporan bug"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Rekaman aktivitas dilampirkan ke laporan bug"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Ketuk untuk membuka BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Hentikan pelacakan"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Hentikan pembuatan profil CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Beberapa kategori pelacakan tidak tersedia:"</string>
@@ -89,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Berhenti merekam untuk laporan bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Mengakhiri perekaman yang aktif saat laporan bug dimulai"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Lampirkan rekaman ke laporan bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Otomatis mengirim rekaman yang sedang berlangsung ke BetterBug saat laporan bug dikumpulkan"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Otomatis mengirim rekaman yang sedang berlangsung ke BetterBug saat laporan bug dikumpulkan. Rekaman akan dilanjutkan setelahnya."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Lihat file tersimpan"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Setelan perekaman aktivitas"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"File tersimpan"</string>
