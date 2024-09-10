@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ヒープダンプを記録"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"[ヒープダンプ プロセス] で選択されたプロセスのヒープダンプを取得します"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ヒープダンプを収集するには、[ヒープダンプ プロセス] でプロセスを 1 つ以上選択してください"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"新しいトレースを開始"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope トレースの収集"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"詳細な UI テレメトリー データを含める（ジャンクが発生することがあります）"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"デバッグ可能なアプリをトレース"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"アプリ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"デバッグ可能なアプリはありません"</string>
     <string name="buffer_size" msgid="3944311026715111454">"CPU あたりのバッファサイズ"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"[クイック設定] タイルの表示"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"トレースのクイック設定タイルを表示"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"CPU プロファイリングのクイック設定タイルを表示"</string>
     <string name="saving_trace" msgid="1468692734770800541">"トレースを保存しています"</string>
     <string name="trace_saved" msgid="5869970594780992309">"トレースを保存しました"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"スタック サンプルを保存しています"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"トレースをバグレポートに添付しました"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"タップすると、BetterBug が開きます"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"トレースを停止します"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU プロファイリングを停止"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"利用できないトレース カテゴリがあります。"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"トレースの記録中"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"タップするとトレースが停止します"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"バグレポートの間は記録を停止する"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"バグレポートを開始したら、有効な記録を終了します"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"バグレポートに記録を添付する"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"バグレポートの収集時に、処理中の記録を BetterBug に自動的に送信します"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"バグレポートの収集時に、処理中の記録を BetterBug に自動的に送信します。その後も記録は継続されます。"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"保存したファイルを表示"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"トレース設定"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"保存したファイル"</string>

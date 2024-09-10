@@ -76,7 +76,7 @@ public class TraceUtils {
         UNSET, PERFORMANCE, BATTERY, THERMAL, UI
     }
 
-    public static boolean presetTraceStart(ContentResolver contentResolver, PresetTraceType type) {
+    public static boolean presetTraceStart(Context context, PresetTraceType type) {
         Set<String> tags;
         PresetTraceConfigs.TraceOptions options;
         Log.v(TAG, "Using preset of type " + type.toString());
@@ -102,31 +102,30 @@ public class TraceUtils {
                 tags = PresetTraceConfigs.getDefaultTags();
                 options = PresetTraceConfigs.getDefaultOptions();
         }
-        return traceStart(contentResolver, tags, options.bufferSizeKb, options.winscope,
-                options.apps, options.longTrace, options.attachToBugreport,
-                options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
+        return traceStart(context, tags, options.bufferSizeKb, options.winscope,
+            options.apps, /* options.longTrace --> b/343538743 */ false, options.attachToBugreport,
+            options.maxLongTraceSizeMb, options.maxLongTraceDurationMinutes);
     }
 
-    public static boolean traceStart(ContentResolver contentResolver, TraceConfig config,
-            boolean winscope) {
+    public static boolean traceStart(Context context, TraceConfig config, boolean winscope) {
         // 'winscope' isn't passed to traceStart because the TraceConfig should specify any
         // winscope-related data sources to be recorded using Perfetto. Winscope data that isn't yet
         // available in Perfetto is captured using WinscopeUtils instead.
         if (!mTraceEngine.traceStart(config)) {
             return false;
         }
-        WinscopeUtils.traceStart(contentResolver, winscope);
+        WinscopeUtils.traceStart(context, winscope);
         return true;
     }
 
-    public static boolean traceStart(ContentResolver contentResolver, Collection<String> tags,
+    public static boolean traceStart(Context context, Collection<String> tags,
             int bufferSizeKb, boolean winscope, boolean apps, boolean longTrace,
             boolean attachToBugreport, int maxLongTraceSizeMb, int maxLongTraceDurationMinutes) {
         if (!mTraceEngine.traceStart(tags, bufferSizeKb, winscope, apps, longTrace,
                 attachToBugreport, maxLongTraceSizeMb, maxLongTraceDurationMinutes)) {
             return false;
         }
-        WinscopeUtils.traceStart(contentResolver, winscope);
+        WinscopeUtils.traceStart(context, winscope);
         return true;
     }
 
@@ -140,13 +139,12 @@ public class TraceUtils {
                 attachToBugreport);
     }
 
-    public static void traceStop(ContentResolver contentResolver) {
+    public static void traceStop(Context context) {
         mTraceEngine.traceStop();
-        WinscopeUtils.traceStop(contentResolver);
+        WinscopeUtils.traceStop(context);
     }
 
-    public static Optional<List<File>> traceDump(ContentResolver contentResolver,
-            String outFilename) {
+    public static Optional<List<File>> traceDump(Context context, String outFilename) {
         File outFile = TraceUtils.getOutputFile(outFilename);
         if (!mTraceEngine.traceDump(outFile)) {
             return Optional.empty();
@@ -155,7 +153,7 @@ public class TraceUtils {
         List<File> outFiles = new ArrayList();
         outFiles.add(outFile);
 
-        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(contentResolver, outFilename);
+        List<File> outLegacyWinscopeFiles = WinscopeUtils.traceDump(context, outFilename);
         outFiles.addAll(outLegacyWinscopeFiles);
 
         return Optional.of(outFiles);

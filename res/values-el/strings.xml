@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Καταγραφή στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Καταγράφει ένα στιγμιότυπο μνήμης των διεργασιών που έχουν επιλεχθεί στη λίστα Διεργασίες στιγμιότυπου μνήμης"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Επιλέξτε τουλάχιστον μία διεργασία από τη λίστα Διεργασίες στιγμιότυπου μνήμης για να συλλέξετε στιγμιότυπα μνήμης"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Έναρξη νέου ίχνους"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Συγκέντρωση ιχνών Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Συμπεριλαμβάνει λεπτομερή δεδομένα τηλεμετρίας διεπαφής χρήστη (μπορεί να προκαλέσει παύση)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Ανίχνευση εφαρμογών με δυνατότητα εντοπισμού σφαλμάτων"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Εφαρμογές"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Δεν διατίθενται εφαρμογές με δυνατότητα εντοπισμού σφαλμάτων"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Μέγεθος προσωρινής μνήμης ανά CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Εμφάνιση πλακιδίου Γρήγορων ρυθμίσεων"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Εμφάνιση πλακακιού Γρήγορων ρυθμίσεων ανίχνευσης"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Εμφάνιση πλακακιού Γρήγορων ρυθμίσεων δημιουργίας προφίλ CPU"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Αποθήκευση ίχνους"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Το ίχνος αποθηκεύτηκε"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Αποθήκευση δειγμάτων στοίβας"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Το ίχνος επισυνάφθηκε στην αναφορά σφάλματος"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Πατήστε για άνοιγμα του BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Διακοπή ανίχνευσης"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Διακοπή δημιουργίας προφίλ CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Ορισμένες κατηγορίες εντοπισμού δεν είναι διαθέσιμες:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Γίνεται εγγραφή του ίχνους"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Πατήστε για να σταματήσει η ανίχνευση"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Διακοπή εγγραφής για αναφορές σφαλμάτων"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Τερματίζει τις ενεργές εγγραφές κατά την έναρξη μιας αναφοράς σφάλματος"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Επισύναψη εγγραφών σε αναφορές σφαλμάτων"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Αυτόματη αποστολή εγγραφών που βρίσκονται σε εξέλιξη στο BetterBug κατά τη συλλογή μιας αναφοράς σφάλματος"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Αυτόματη αποστολή εγγραφών που βρίσκονται σε εξέλιξη στο BetterBug κατά τη συλλογή μιας αναφοράς σφάλματος. Οι εγγραφές θα συνεχίσουν αμέσως μετά."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Προβολή αποθηκευμένων αρχείων"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Ρυθμίσεις ίχνους"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Αποθηκευμένα αρχεία"</string>

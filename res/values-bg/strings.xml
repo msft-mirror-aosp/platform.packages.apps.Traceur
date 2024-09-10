@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Създаване на моментна снимка на паметта"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Създава моментна снимка на паметта за процесите, посочени в „Процеси с моментна снимка на паметта“"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Изберете поне един процес в „Процеси с моментна снимка на паметта“, за да извличате моментни снимки на паметта"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Стартиране на ново трасиране"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Събиране на трасирания в Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Включва подробни телеметрични данни за ПИ (може да доведе до прекъсвания на изобразяването)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Трасиране на приложенията с възможност за отстраняване на грешки"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Приложения"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Няма налични приложения с възможност за отстраняване на грешки"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Размер на буферната памет според процесора"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Показване на плочката за бързи настройки"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Показване на панел за проследяване в бързите настройки"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Показване на панел за профилиране на процесора в бързите настройки"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Трасирането се запазва"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Трасирането бе запазено"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Запазват се извадки от стека"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Прикачено трасиране към сигнала за програмна грешка"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Докоснете за отваряне на BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Спиране на трасирането"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Спиране на профилирането на процесора"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Някои категории трасирания не са налични:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Трасирането се записва"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Докоснете, за да спрете трасирането"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Спиране на записването за сигнали за програмни грешки"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Прекратява активните записвания при стартиране на сигнал за програмна грешка"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Прикачване на записите към сигналите за програмни грешки"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Автоматично изпращане до BetterBug на записите в ход при създаването на сигнал за програмна грешка"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Автоматично изпращане до BetterBug на текущите записи при създаването на сигнал за програмна грешка. Записите ще продължат след това."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Преглед на запазените файлове"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Настройки за трасирането"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Запазени файлове"</string>

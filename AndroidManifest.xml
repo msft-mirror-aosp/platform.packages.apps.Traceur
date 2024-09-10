@@ -26,6 +26,9 @@
     <!--- Used to query for Betterbug. -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
 
+    <!--- Used to save ViewCapture data via LauncherAppsService. -->
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"/>
+
     <!-- Used to trigger the trace start/stop service. -->
     <uses-permission android:name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND"/>
 
@@ -145,6 +148,11 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                  android:value="Used for ensuring that Traceur isn't killed while starting or stopping traces."/>
         </service>
+
+        <service android:name=".BindableTraceService"
+            android:permission="android.permission.CONTROL_UI_TRACING"
+            androidprv:systemUserOnly="true"
+            android:exported="true"/>
 
         <service android:name=".TraceService"
              android:exported="false"

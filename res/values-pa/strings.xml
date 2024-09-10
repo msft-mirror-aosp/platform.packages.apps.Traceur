@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ਹੀਪ ਡੰਪ ਨੂੰ ਰਿਕਾਰਡ ਕਰੋ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ਹੀਪ ਡੰਪ ਪ੍ਰਕਿਰਿਆਵਾਂ\" ਵਿੱਚ ਚੁਣੀਆਂ ਗਈਆਂ ਪ੍ਰਕਿਰਿਆਵਾਂ ਦੇ ਹੀਪ ਡੰਪ ਨੂੰ ਕੈਪਚਰ ਕਰਦਾ ਹੈ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ਹੀਪ ਡੰਪ ਇਕੱਤਰ ਕਰਨ ਲਈ \"ਹੀਪ ਡੰਪ ਪ੍ਰਕਿਰਿਆਵਾਂ\" ਵਿੱਚ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਪ੍ਰਕਿਰਿਆ ਚੁਣੋ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ਨਵਾਂ ਟ੍ਰੇਸ ਚਾਲੂ ਕਰੋ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ਟ੍ਰੇਸਾਂ ਨੂੰ ਇਕੱਤਰ ਕਰੋ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ਇਸ ਵਿੱਚ ਵੇਰਵੇ ਸਹਿਤ UI ਟੈਲੀਮੈਟਰੀ ਡਾਟਾ ਸ਼ਾਮਲ ਹੈ (ਇਹ ਜੈਂਕ ਦਾ ਕਾਰਨ ਬਣ ਸਕਦਾ ਹੈ)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"ਡੀਬੱਗਯੋਗ ਐਪਲੀਕੇਸ਼ਨਾਂ ਟ੍ਰੇਸ ਕਰੋ"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"ਐਪਲੀਕੇਸ਼ਨਾਂ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"ਕੋਈ ਡੀਬੱਗਯੋਗ ਐਪਲੀਕੇਸ਼ਨਾਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"</string>
     <string name="buffer_size" msgid="3944311026715111454">"ਪ੍ਰਤੀ-CPU ਬਫ਼ਰ ਆਕਾਰ"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"ਤਤਕਾਲ ਸੈਟਿੰਗਾਂ ਟਾਇਲ ਦਿਖਾਓ"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"ਟ੍ਰੇਸਿੰਗ ਲਈ ਤਤਕਾਲ ਸੈਟਿੰਗਾਂ ਟਾਇਲ ਦਿਖਾਓ"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"CPU ਪ੍ਰੋਫਾਈਲਿੰਗ ਲਈ ਤਤਕਾਲ ਸੈਟਿੰਗਾਂ ਟਾਇਲ ਦਿਖਾਓ"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ਟ੍ਰੇਸ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
     <string name="trace_saved" msgid="5869970594780992309">"ਟ੍ਰੇਸ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"ਸਟੈਕ ਨਮੂਨਿਆਂ ਨੂੰ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"ਟ੍ਰੇਸ ਨੂੰ ਬੱਗ ਰਿਪੋਰਟ ਵਿੱਚ ਨੱਥੀ ਕੀਤਾ ਗਿਆ"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ ਟੈਪ ਕਰੋ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ਟ੍ਰੇਸਿੰਗ ਬੰਦ ਕਰੋ"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ਪ੍ਰੋਫਾਈਲਿੰਗ ਬੰਦ ਕਰੋ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ਕੁਝ ਟ੍ਰੇਸਿੰਗ ਸ਼੍ਰੇਣੀਆਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"ਟ੍ਰੇਸ ਨੂੰ ਰਿਕਾਰਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"ਟ੍ਰੇਸਿੰਗ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਲਈ ਰਿਕਾਰਡਿੰਗਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ਬੱਗ ਰਿਪੋਰਟ ਚਾਲੂ ਹੋਣ \'ਤੇ ਕਿਰਿਆਸ਼ੀਲ ਰਿਕਾਰਡਿੰਗਾਂ ਸਮਾਪਤ ਹੁੰਦੀਆਂ ਹਨ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ਬੱਗ ਰਿਪੋਰਟਾਂ ਨਾਲ ਰਿਕਾਰਡਿੰਗਾਂ ਨੱਥੀ ਕਰੋ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ਬੱਗ ਰਿਪੋਰਟ ਇਕੱਤਰ ਹੋ ਜਾਣ \'ਤੇ ਪ੍ਰਕਿਰਿਆ-ਅਧੀਨ ਰਿਕਾਰਡਿੰਗਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ BetterBug ਨੂੰ ਭੇਜੋ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ਬੱਗ ਰਿਪੋਰਟ ਇਕੱਤਰ ਹੋ ਜਾਣ \'ਤੇ ਪ੍ਰਕਿਰਿਆ-ਅਧੀਨ ਰਿਕਾਰਡਿੰਗਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ BetterBug ਨੂੰ ਭੇਜੋ। ਰਿਕਾਰਡਿੰਗਾਂ ਇਸ ਤੋਂ ਬਾਅਦ ਵੀ ਜਾਰੀ ਰਹਿਣਗੀਆਂ।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਫ਼ਾਈਲਾਂ ਦੇਖੋ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ਟ੍ਰੇਸ ਸੈਟਿੰਗਾਂ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ਰੱਖਿਅਤ ਕੀਤੀਆਂ ਗਈਆਂ ਫ਼ਾਈਲਾਂ"</string>

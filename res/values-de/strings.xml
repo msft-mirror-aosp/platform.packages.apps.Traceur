@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Heap-Dump aufzeichnen"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Ein Heap-Dump der in „Heap-Dump-Prozesse“ ausgewählten Prozesse wird aufgezeichnet"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Wähle mindestens einen Prozess in „Heap-Dump-Prozesse“ aus, um Heap-Dumps aufzuzeichnen"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Neuen Trace starten"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope-Traces erfassen"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Enthält detaillierte UI-Telemetriedaten (kann zu Verzögerung führen)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Debug-fähige Anwendungen in Trace aufnehmen"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Anwendungen"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Es sind keine Anwendungen für das Debugging verfügbar"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Puffergröße je CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Kachel \"Schnelleinstellungen\" anzeigen"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Schnelleinstellungen-Kachel für das Tracing anzeigen"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Schnelleinstellungen-Kachel für die CPU-Profilerstellung anzeigen"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Trace wird gespeichert"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Trace wurde gespeichert"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Stackproben werden gespeichert"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Trace wurde an den Fehlerbericht angehängt"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Tippen, um BetterBug zu öffnen"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Tracing beenden"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU-Profilerstellung beenden"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Einige Tracing-Kategorien sind nicht verfügbar:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Trace wird aufgezeichnet"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tippen, um das Tracing zu beenden"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Aufzeichnen für Fehlerberichte beenden"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Aktive Aufzeichnungen werden beendet, wenn ein Fehlerbericht gestartet wird"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Aufzeichnungen an Fehlerberichte anhängen"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Laufende Aufzeichnungen automatisch an BetterBug senden, wenn ein Fehlerbericht abgerufen wird"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Laufende Aufzeichnungen automatisch an BetterBug senden, wenn ein Fehlerbericht erfasst wird. Die Aufzeichnung wird anschließend fortgesetzt."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Gespeicherte Dateien ansehen"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Trace-Einstellungen"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Gespeicherte Dateien"</string>

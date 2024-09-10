@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registra dump dell\'heap"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Acquisisce un dump dell\'heap dei processi selezionati in \"Processi dump dell\'heap\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Seleziona almeno un processo in \"Processi dump dell\'heap\" per raccogliere i dump dell\'heap"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Avvia nuova traccia"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Raccogli tracce Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Include dati di telemetria dell\'UI dettagliati (può causare jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Monitora app di cui è possibile eseguire il debug"</string>
@@ -18,7 +17,7 @@
     <string name="restore_default_categories" msgid="5090536794637169521">"Ripristina categorie predefinite"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Categorie predefinite ripristinate"</string>
     <string name="default_categories" msgid="2117679794687799407">"Predefinite"</string>
-    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# selezionato}other{# selezionati}}"</string>
+    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# categoria selezionata}other{# categorie selezionate}}"</string>
     <string name="heap_dump_processes" msgid="2500105180344901939">"Processi dump dell\'heap"</string>
     <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Seleziona almeno un processo"</string>
     <string name="clear_heap_dump_processes" msgid="295101454741555286">"Cancella i processi di dump dell\'heap"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"App"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Nessuna app disponibile di cui è possibile eseguire il debug"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Dimensione del buffer per CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Mostra il riquadro Impostazioni rapide"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Mostra il riquadro Impostazioni rapide di tracciamento"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Mostra il riquadro Impostazioni rapide di profilazione CPU"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Salvataggio della traccia"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Traccia salvata"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Salvataggio degli stack di esempio"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"Traccia aggiunta alla segnalazione di bug"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"Tocca per aprire BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Interrompi tracciamento"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Interrompi profilazione CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Alcune categorie di traccia non sono disponibili:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Registrazione traccia"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tocca per interrompere il tracciamento"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Interrompi la registrazione per le segnalazioni di bug"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Consente di interrompere le registrazioni attive quando viene iniziata una segnalazione di bug"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Allega le registrazioni alle segnalazioni di bug"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Invia automaticamente le registrazioni in corso a BetterBug quando viene raccolta una segnalazione di bug. Le registrazioni continueranno in seguito."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Visualizza i file salvati"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Impostazioni monitoraggio"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"File salvati"</string>

@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"လျှပ်တစ်ပြက် မှတ်ဉာဏ်ကို ရိုက်ကူးရန်"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"“လျှပ်တစ်ပြက် မှတ်ဉာဏ် လုပ်ငန်းစဉ်များ” တွင် ရွေးထားသည့် လုပ်ငန်းစဉ်များ၏ လျှပ်တစ်ပြက် မှတ်ဉာဏ်ကို ရိုက်ကူးပါ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"လျှပ်တစ်ပြက် မှတ်ဉာဏ်များ စုဆောင်းရန် “လျှပ်တစ်ပြက် မှတ်ဉာဏ် လုပ်ငန်းစဉ်များ” တွင် အနည်းဆုံး လုပ်ငန်းစဉ်တစ်ခုကို ရွေးပါ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"လုပ်ဆောင်ချက်မှတ်တမ်းသစ် စတင်ရန်"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope လုပ်ဆောင်ချက်မှတ်တမ်းများကို စုစည်းရန်"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"အသေးစိတ်ကျသော UI တယ်လီတိုင်းတာမှု ဒေတာပါဝင်သည် (ရပ်တန့်စေနိုင်သည်)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"အမှားရှာပြင်နိုင်သည့် အပလီကေးရှင်းများကို မှတ်တမ်းတင်ရန်"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"အပလီကေးရှင်းများ"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"အမှားရှာပြင်နိုင်သည့် အပလီကေးရှင်းများ မရနိုင်ပါ"</string>
     <string name="buffer_size" msgid="3944311026715111454">"CPU တစ်ခုစာ ကြားခံ အရွယ်အစား"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"အမြန် ဆက်တင်အကွက်ကို ပြရန်"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"ခြေရာခံခြင်း အမြန်ဆက်တင်များ အကွက်ငယ်ကို ပြပါ"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"CPU ပုဂ္ဂိုလ်အကြောင်း သုံးသပ်ပုံဖော်ခြင်း အမြန်ဆက်တင်များ အကွက်ငယ်ကို ပြပါ"</string>
     <string name="saving_trace" msgid="1468692734770800541">"မှတ်တမ်းကို သိမ်းနေသည်"</string>
     <string name="trace_saved" msgid="5869970594780992309">"မှတ်တမ်းကို သိမ်းပြီးပါပြီ"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"အထပ်နမူနာများကို သိမ်းနေသည်"</string>
@@ -45,6 +45,7 @@
     <string name="attached_to_report" msgid="5806905349184608870">"ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် လုပ်ဆောင်ချက်မှတ်တမ်းကို ပူးတွဲလိုက်သည်"</string>
     <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ကို ဖွင့်ရန် တို့ပါ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"လုပ်ဆောင်ချက်မှတ်တမ်းပြုခြင်းကို ရပ်ရန်"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ပုဂ္ဂိုလ်အကြောင်း သုံးသပ်ပုံဖော်ခြင်းကို ရပ်ပါ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"အချို့ မှတ်တမ်း အမျိုးအစားများ မရရှိနိုင်ပါ-"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"လုပ်ဆောင်ချက်ကို မှတ်တမ်းတင်ထားသည်"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"လုပ်ဆောင်ချက်မှတ်တမ်းပြုခြင်းကို ရပ်ရန် တို့ပါ"</string>
@@ -87,7 +88,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ချွတ်ယွင်းချက်အစီရင်ခံစာများကို မှတ်တမ်းတင်ခြင်း ရပ်ရန်"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ချွတ်ယွင်းချက်အစီရင်ခံစာကို စတင်ချိန်တွင် လက်ရှိ မှတ်တမ်းတင်မှုများကို ရပ်သည်"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"မှတ်တမ်းများကို ချွတ်ယွင်းချက်အစီရင်ခံစာတွင် ပူးတွဲရန်"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ချွတ်ယွင်းချက်အစီရင်ခံစာကို စုစည်းရာတွင် ဆောင်ရွက်နေဆဲ မှတ်တမ်းများကို BetterBug သို့ အလိုအလျောက်ပို့သည်"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ချွတ်ယွင်းမှုအစီရင်ခံစာကို စုစည်းသောအခါ ဆောင်ရွက်နေဆဲ အသံဖမ်းချက်များကို BetterBug သို့ အလိုအလျောက် ပို့နိုင်သည်။ ထို့နောက် အသံဖမ်းချက်များကို ဆက်လုပ်မည်။"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"သိမ်းထားသောဖိုင်များ ကြည့်ရန်"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"လုပ်ဆောင်ချက်မှတ်တမ်း ဆက်တင်များ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"သိမ်းထားသော ဖိုင်များ"</string>
