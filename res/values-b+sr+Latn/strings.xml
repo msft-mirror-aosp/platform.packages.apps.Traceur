@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Čuva se snimak dinamičkog dela memorije za proces"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Snimak dinamičkog dela memorije za proces je sačuvan"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Dodirnite da biste delili snimak"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Praćenje se prilaže izveštaju o grešci"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Praćenje je priloženo izveštaju o grešci"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Dodirnite da biste otvorili BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Zaustavite traganje"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Zaustavite profilisanje procesora"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Neke kategorije praćenja nisu dostupne:"</string>

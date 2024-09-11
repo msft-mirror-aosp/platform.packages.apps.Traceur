@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"ഹീപ്പ് ഡംപ് സംരക്ഷിക്കുന്നു"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ഹീപ്പ് ഡംപ് സംരക്ഷിച്ചു"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"നിങ്ങളുടെ റെക്കോർഡിഗ് പങ്കിടാൻ ടാപ്പ് ചെയ്യുക"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്യുന്നു"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ബഗ് റിപ്പോർട്ടിന് അടയാളം അറ്റാച്ച് ചെയ്‌തു"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug തുറക്കാൻ ടാപ്പ് ചെയ്യുക"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ട്രെയ്‌സിംഗ് നിർത്തുക"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"CPU പ്രൊഫെെലിംഗ് നിർത്തുക"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ചില ട്രെയ്‌സിംഗ് വിഭാഗങ്ങൾ ലഭ്യമല്ല:"</string>
