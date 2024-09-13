@@ -17,7 +17,7 @@
     <string name="restore_default_categories" msgid="5090536794637169521">"Ripristina categorie predefinite"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Categorie predefinite ripristinate"</string>
     <string name="default_categories" msgid="2117679794687799407">"Predefinite"</string>
-    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# selezionato}other{# selezionati}}"</string>
+    <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# categoria selezionata}other{# categorie selezionate}}"</string>
     <string name="heap_dump_processes" msgid="2500105180344901939">"Processi dump dell\'heap"</string>
     <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Seleziona almeno un processo"</string>
     <string name="clear_heap_dump_processes" msgid="295101454741555286">"Cancella i processi di dump dell\'heap"</string>
@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Salvataggio dump dell\'heap in corso…"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Dump dell\'heap salvato"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Tocca per condividere la tua registrazione"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Aggiunta della traccia alla segnalazione di bug in corso…"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Traccia aggiunta alla segnalazione di bug"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Tocca per aprire BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Interrompi tracciamento"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Interrompi profilazione CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Alcune categorie di traccia non sono disponibili:"</string>

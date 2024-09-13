@@ -10,13 +10,13 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Registrar volcado de montículo"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Captura un volcado de montículo de los procesos seleccionados en \"Procesos de volcado de montículo\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Selecciona al menos un proceso en \"Procesos de volcado de montículo\" para recopilar volcados de montículo"</string>
-    <string name="winscope_tracing" msgid="5818984791154837458">"Recoger rastro de Winscope"</string>
+    <string name="winscope_tracing" msgid="5818984791154837458">"Recoger trazas de Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Incluye datos detallados de telemetría de UI (puede causar tirones)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Rastrear aplicaciones que se puedan depurar"</string>
     <string name="categories" msgid="2280163673538611008">"Categorías"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"Restaurar categorías predeterminadas"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"Se han restaurado las categorías predeterminadas"</string>
-    <string name="default_categories" msgid="2117679794687799407">"Predeterminado"</string>
+    <string name="default_categories" msgid="2117679794687799407">"Predeterminadas"</string>
     <string name="num_categories_selected" msgid="5772630335027553995">"{count,plural, =1{# seleccionada}other{# seleccionadas}}"</string>
     <string name="heap_dump_processes" msgid="2500105180344901939">"Procesos de volcado de montículo"</string>
     <string name="heap_dump_processes_summary" msgid="4570434268024622765">"Se debe seleccionar al menos un proceso"</string>
@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Guardando volcado de montículo"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Volcado de montículo guardado"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Toca para compartir tu grabación"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Adjuntando traza al informe de errores"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Traza adjunta al informe de errores"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Toca para abrir BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Deja de guardar rastros"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"Dejar de elaborar perfiles de CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Algunas categorías de captura no están disponibles:"</string>
@@ -61,7 +58,7 @@
     <string name="system_traces_storage_title" msgid="8294090839883366871">"Trazas del sistema"</string>
     <string name="keywords" msgid="736547007949049535">"systrace, traza, rendimiento"</string>
     <string name="share_file" msgid="1982029143280382271">"¿Compartir archivo?"</string>
-    <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Es posible que los archivos de Trazado del sistema incluyan datos sensibles del sistema y de aplicaciones (como (como información sobre el uso de las aplicaciones). Comparte las trazas del sistema únicamente con usuarios y aplicaciones en los que confíes."</string>
+    <string name="system_trace_sensitive_data" msgid="3069389866696009549">"Es posible que los archivos de Trazado del sistema incluyan datos sensibles del sistema y de aplicaciones (como información sobre el uso de las aplicaciones). Comparte las trazas del sistema únicamente con usuarios y aplicaciones en los que confíes."</string>
     <string name="share" msgid="8443979083706282338">"Compartir"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"No volver a mostrar"</string>
     <string name="long_traces" msgid="5110949471775966329">"Trazas largas"</string>

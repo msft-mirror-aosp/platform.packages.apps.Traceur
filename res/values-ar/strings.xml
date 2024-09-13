@@ -41,9 +41,6 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"جارٍ حفظ لقطة لأجزاء من الذاكرة"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"تم حفظ لقطة لأجزاء من الذاكرة"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"انقر لمشاركة التسجيل."</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"جارٍ إرفاق آثار الأنشطة إلى تقرير الخطأ."</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"تم إرفاق آثار الأنشطة إلى تقرير الخطأ"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"‏انقر لفتح BetterBug."</string>
     <string name="stop_tracing" msgid="8916938308534164152">"أوقف التتبّع"</string>
     <string name="stop_stack_sampling" msgid="848558393878357485">"‏إيقاف تحليل وحدة المعالجة المركزية (CPU)"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"بعض فئات التتبّع غير متاحة:"</string>
@@ -75,7 +72,7 @@
     <string name="ten_gb" msgid="4150452462544299276">"10 غيغابايت"</string>
     <string name="twenty_gb" msgid="5717308686812140465">"20 غيغابايت"</string>
     <string name="ten_minutes" msgid="7039181194343961324">"10 دقائق"</string>
-    <string name="thirty_minutes" msgid="2575810799813531395">"30 دقائق"</string>
+    <string name="thirty_minutes" msgid="2575810799813531395">"30 دقيقة"</string>
     <string name="one_hour" msgid="5219232935307966891">"ساعة واحدة"</string>
     <string name="eight_hours" msgid="3207620892104451552">"8 ساعات"</string>
     <string name="twelve_hours" msgid="4647143276394563496">"12 ساعة"</string>
