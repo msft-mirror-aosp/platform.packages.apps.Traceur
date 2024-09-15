@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"記錄堆轉儲"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"擷取「堆轉儲程序」中所選程序的堆轉儲"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"請至少選取「堆轉儲程序」中的其中一個程序以收集堆轉儲"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"開始新的追蹤"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"收集 Winscope 追蹤記錄"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"加入詳細的使用者介面遙測資料 (可能會造成資源浪費)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"追蹤可偵錯的應用程式"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"應用程式"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"沒有可偵錯的應用程式"</string>
     <string name="buffer_size" msgid="3944311026715111454">"每個 CPU 的緩衝區大小"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"顯示「快速設定」圖塊"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"顯示追蹤「快速設定」圖塊"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"顯示 CPU 資料剖析「快速設定」圖塊"</string>
     <string name="saving_trace" msgid="1468692734770800541">"正在儲存追蹤記錄"</string>
     <string name="trace_saved" msgid="5869970594780992309">"追蹤記錄已儲存"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"正在儲存堆疊樣本"</string>
@@ -41,10 +41,8 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"正在儲存堆轉儲"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"已儲存堆轉儲"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"輕按即可分享記錄"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"正在將追蹤記錄附加至錯誤報告"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"已將追蹤記錄附加至錯誤報告"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"輕按即可開啟 BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"停止追蹤"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"停止 CPU 資料剖析"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"無法使用部分追蹤記錄類別："</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"已錄製追蹤記錄"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"輕按即可停止追蹤"</string>
@@ -87,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"停止用於錯誤報告的記錄"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"錯誤報告開始後結束進行中的記錄"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"在錯誤報告中附加記錄"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"收集到錯誤報告後，自動將處理中的記錄傳送到 BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"收集到錯誤報告後，自動將處理中的記錄傳送到 BetterBug。系統之後會繼續記錄內容。"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"查看已儲存的檔案"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"追蹤記錄設定"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"已儲存的檔案"</string>
