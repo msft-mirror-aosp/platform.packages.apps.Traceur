@@ -119,6 +119,7 @@
 
         <activity android:name=".MainWearActivity"
                   android:description="@string/record_system_activity"
+                  android:icon="@drawable/bugfood_icon"
                   android:label="@string/system_tracing"
                   android:theme="@style/WearTheme"
                   android:launchMode="singleTask"
@@ -150,7 +151,6 @@
 
         <service android:name=".BindableTraceService"
             android:permission="android.permission.CONTROL_UI_TRACING"
-            androidprv:systemUserOnly="true"
             android:exported="true"/>
 
         <service android:name=".TraceService"

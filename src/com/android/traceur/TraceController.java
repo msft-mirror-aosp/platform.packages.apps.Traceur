@@ -33,6 +33,7 @@ import android.util.Log;
 
 import androidx.core.content.FileProvider;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,6 +48,10 @@ public class TraceController extends Handler {
     private static final String TAG = "TraceController";
     private static final String PERFETTO_SUFFIX = ".perfetto-trace";
     private static final String WINSCOPE_SUFFIX = "_winscope_traces.zip";
+    private static final int GRANT_ACCESS_FLAGS =
+        Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION |
+            Intent.FLAG_GRANT_READ_URI_PERMISSION |
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
 
     private final Context mContext;
 
@@ -56,6 +61,7 @@ public class TraceController extends Handler {
 
     @Override
     public void handleMessage(Message msg) {
+        Log.d(TAG, "handling message " + msg.what + " in TraceController");
         switch (msg.what) {
             case MessageConstants.START_WHAT:
                 startTracingSafely(mContext, msg.getData());
@@ -108,33 +114,27 @@ public class TraceController extends Handler {
     // Files are kept on private storage, so turn into Uris that we can
     // grant temporary permissions for. We then share them, usually with BetterBug, via Intents
     private static void shareFiles(Context context, Messenger replyTo) {
+        Bundle data = new Bundle();
         String perfettoFileName = TraceUtils.getOutputFilename(TraceUtils.RecordingType.TRACE);
         TraceUtils.traceDump(context, perfettoFileName).ifPresent(files -> {
-            int grantAccessFlags =
-                Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION |
-                    Intent.FLAG_GRANT_READ_URI_PERMISSION |
-                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
-            Bundle data = new Bundle();
-
             // Perfetto traces have their own viewer so it makes sense to move them out of the zip.
             files.stream().filter(it ->
                 it.getName().endsWith(PERFETTO_SUFFIX)
             ).findFirst().ifPresent(it -> {
                 Uri perfettoUri = FileProvider.getUriForFile(context, AUTHORITY, it);
                 files.remove(it);
-                context.grantUriPermission(SYSTEM_UI_PACKAGE_NAME, perfettoUri, grantAccessFlags);
+                context.grantUriPermission(SYSTEM_UI_PACKAGE_NAME, perfettoUri, GRANT_ACCESS_FLAGS);
                 data.putParcelable(MessageConstants.EXTRA_PERFETTO, perfettoUri);
             });
 
             String winscopeFileName = perfettoFileName.replace(PERFETTO_SUFFIX, WINSCOPE_SUFFIX);
             Uri winscopeUri = zipFileListIntoOneUri(context, files, winscopeFileName);
             if (winscopeUri != null) {
-                context.grantUriPermission(SYSTEM_UI_PACKAGE_NAME, winscopeUri, grantAccessFlags);
+                context.grantUriPermission(SYSTEM_UI_PACKAGE_NAME, winscopeUri, GRANT_ACCESS_FLAGS);
                 data.putParcelable(MessageConstants.EXTRA_WINSCOPE, winscopeUri);
             }
-
-            replyToClient(replyTo, MessageConstants.SHARE_WHAT, data);
         });
+        replyToClient(replyTo, MessageConstants.SHARE_WHAT, data);
     }
 
     @Nullable
@@ -151,7 +151,8 @@ public class TraceController extends Handler {
             Log.e(TAG, "Failed to create zip file for files.", e);
             return null;
         }
-        try (ZipOutputStream os = new ZipOutputStream(new FileOutputStream(outZip))) {
+        try (ZipOutputStream os = new ZipOutputStream(
+                new BufferedOutputStream(new FileOutputStream(outZip)))) {
             files.forEach(file -> {
                 try {
                     os.putNextEntry(new ZipEntry(file.getName()));
