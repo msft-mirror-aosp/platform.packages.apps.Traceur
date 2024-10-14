@@ -63,7 +63,7 @@ public class PerfettoUtils {
 
     // The total amount of memory allocated to the two target buffers will be divided according to a
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
-    private static final int BUFFER_SIZE_RATIO = 32;
+    private static final int BUFFER_SIZE_RATIO = 8;
 
     private static final int SYSTEM_INFO_BUFFER_SIZE_KB = 512;
 
