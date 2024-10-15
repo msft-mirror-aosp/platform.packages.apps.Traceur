@@ -22,6 +22,7 @@ import android.util.Log;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
@@ -74,12 +75,17 @@ public class PerfettoUtils {
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
+    private static final String WINDOW_MANAGER_TAG = "wm";
 
     // Custom trace categories.
     private static final String SYS_STATS_TAG = "sys_stats";
     private static final String LOG_TAG = "logs";
     private static final String CPU_TAG = "cpu";
-    public static final String WINDOW_MANAGER_TAG = "wm";
+
+    // Statsd atoms. Values should be aligned with frameworks/proto_logging/stats/atoms.proto.
+    private static final int DESKTOP_MODE_UI_CHANGED = 818;
+    private static final int DESKTOP_MODE_SESSION_TASK_UPDATE = 819;
+    private static final int DESKTOP_MODE_TASK_SIZE_UPDATED = 935;
 
     public String getName() {
         return NAME;
@@ -141,6 +147,7 @@ public class PerfettoUtils {
 
         appendSystemPropertyConfig(config, tags);
         appendPackagesListConfig(config);
+        appendStatsdConfig(config, tags);
         appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
         appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
@@ -169,6 +176,32 @@ public class PerfettoUtils {
                     .append("}\n");
         }
     }
+
+    private void appendStatsdConfig(StringBuilder config, Collection<String> tags) {
+        List<Integer> rawPushAtomIds = new ArrayList<>();
+        if (tags.contains(WINDOW_MANAGER_TAG)) {
+            rawPushAtomIds.add(DESKTOP_MODE_UI_CHANGED);
+            rawPushAtomIds.add(DESKTOP_MODE_SESSION_TASK_UPDATE);
+            rawPushAtomIds.add(DESKTOP_MODE_TASK_SIZE_UPDATED);
+        }
+
+        if (rawPushAtomIds.size() > 0) {
+            config.append("data_sources: {\n")
+                    .append("  config { \n")
+                    .append("    name: \"android.statsd\"\n")
+                    .append("    target_buffer: 1\n")
+                    .append("    statsd_tracing_config {\n");
+
+            for (int id : rawPushAtomIds) {
+                config.append("      raw_push_atom_id: " + id + "\n");
+            }
+
+            config.append("    }\n")
+                    .append("  }\n")
+                    .append("}\n");
+        }
+    }
+
 
     public boolean stackSampleStart(boolean attachToBugreport) {
         if (isTracingOn()) {
