@@ -22,6 +22,7 @@ import android.util.Log;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeMap;
@@ -62,7 +63,9 @@ public class PerfettoUtils {
 
     // The total amount of memory allocated to the two target buffers will be divided according to a
     // ratio of (BUFFER_SIZE_RATIO - 1) to 1.
-    private static final int BUFFER_SIZE_RATIO = 32;
+    private static final int BUFFER_SIZE_RATIO = 8;
+
+    private static final int SYSTEM_INFO_BUFFER_SIZE_KB = 512;
 
     // atrace trace categories that will result in added data sources in the Perfetto config.
     private static final String CAMERA_TAG = "camera";
@@ -72,12 +75,17 @@ public class PerfettoUtils {
     private static final String POWER_TAG = "power";
     private static final String SCHED_TAG = "sched";
     private static final String WEBVIEW_TAG = "webview";
+    private static final String WINDOW_MANAGER_TAG = "wm";
 
     // Custom trace categories.
     private static final String SYS_STATS_TAG = "sys_stats";
     private static final String LOG_TAG = "logs";
     private static final String CPU_TAG = "cpu";
-    public static final String WINDOW_MANAGER_TAG = "wm";
+
+    // Statsd atoms. Values should be aligned with frameworks/proto_logging/stats/atoms.proto.
+    private static final int DESKTOP_MODE_UI_CHANGED = 818;
+    private static final int DESKTOP_MODE_SESSION_TASK_UPDATE = 819;
+    private static final int DESKTOP_MODE_TASK_SIZE_UPDATED = 935;
 
     public String getName() {
         return NAME;
@@ -118,8 +126,9 @@ public class PerfettoUtils {
         // So we use this to ensure that we reserve the correctly-sized buffer.
         int numCpus = Runtime.getRuntime().availableProcessors();
 
-        // Allots 1 / BUFFER_SIZE_RATIO to the small buffer and the remainder to the large buffer.
-        int totalBufferSizeKb = numCpus * bufferSizeKb;
+        // Allots 1 / BUFFER_SIZE_RATIO to the small buffer and the remainder to the large buffer,
+        // (less the size of the buffer reserved for unchanging system information).
+        int totalBufferSizeKb = numCpus * bufferSizeKb - SYSTEM_INFO_BUFFER_SIZE_KB;
         int targetBuffer1Kb = totalBufferSizeKb / BUFFER_SIZE_RATIO;
         int targetBuffer0Kb = totalBufferSizeKb - targetBuffer1Kb;
 
@@ -130,13 +139,28 @@ public class PerfettoUtils {
         // This is target_buffer: 1, which is used for additional data sources.
         appendTraceBuffer(config, targetBuffer1Kb);
 
+        // This is target_buffer: 2, used for unchanging system information like the packages
+        // list.
+        appendTraceBuffer(config, SYSTEM_INFO_BUFFER_SIZE_KB);
+
         appendFtraceConfig(config, tags, apps);
 
         appendSystemPropertyConfig(config, tags);
+        appendPackagesListConfig(config);
+        appendStatsdConfig(config, tags);
         appendProcStatsConfig(config, tags, /* targetBuffer = */ 1);
         appendAdditionalDataSources(config, tags, winscope, longTrace, /* targetBuffer = */ 1);
 
         return startPerfettoWithTextConfig(config.toString());
+    }
+
+    private void appendPackagesListConfig(StringBuilder config) {
+            config.append("data_sources: {\n")
+                .append("  config { \n")
+                .append("    name: \"android.packages_list\"\n")
+                .append("    target_buffer: 2\n")
+                .append("  }\n")
+                .append("}\n");
     }
 
     private void appendSystemPropertyConfig(StringBuilder config, Collection<String> tags) {
@@ -152,6 +176,32 @@ public class PerfettoUtils {
                     .append("}\n");
         }
     }
+
+    private void appendStatsdConfig(StringBuilder config, Collection<String> tags) {
+        List<Integer> rawPushAtomIds = new ArrayList<>();
+        if (tags.contains(WINDOW_MANAGER_TAG)) {
+            rawPushAtomIds.add(DESKTOP_MODE_UI_CHANGED);
+            rawPushAtomIds.add(DESKTOP_MODE_SESSION_TASK_UPDATE);
+            rawPushAtomIds.add(DESKTOP_MODE_TASK_SIZE_UPDATED);
+        }
+
+        if (rawPushAtomIds.size() > 0) {
+            config.append("data_sources: {\n")
+                    .append("  config { \n")
+                    .append("    name: \"android.statsd\"\n")
+                    .append("    target_buffer: 1\n")
+                    .append("    statsd_tracing_config {\n");
+
+            for (int id : rawPushAtomIds) {
+                config.append("      raw_push_atom_id: " + id + "\n");
+            }
+
+            config.append("    }\n")
+                    .append("  }\n")
+                    .append("}\n");
+        }
+    }
+
 
     public boolean stackSampleStart(boolean attachToBugreport) {
         if (isTracingOn()) {
@@ -620,15 +670,7 @@ public class PerfettoUtils {
                 .append("    }\n")
                 .append("  }\n")
                 .append("}\n");
-            // Include the packages_list data source so that we can map UIDs
-            // from Network Tracing to the corresponding package name.
-            config.append("data_sources: {\n")
-                .append("  config { \n")
-                .append("    name: \"android.packages_list\"\n")
-                .append("    target_buffer: " + targetBuffer + "\n")
-                .append("  }\n")
-                .append("}\n");
-        }
+       }
 
         // Also enable Chrome events when the WebView tag is enabled.
         if (tags.contains(WEBVIEW_TAG)) {
