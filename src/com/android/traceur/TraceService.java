@@ -343,6 +343,7 @@ public class TraceService extends IntentService {
             postFileSharingNotification(getApplicationContext(), files.get());
         }
 
+        notificationManager.cancel(SAVING_TRACE_NOTIFICATION);
         stopForeground(Service.STOP_FOREGROUND_REMOVE);
 
         TraceUtils.cleanupOlderFiles();
