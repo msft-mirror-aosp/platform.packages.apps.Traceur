@@ -31,7 +31,7 @@
     <string name="one_minute" msgid="4182508213840684258">"1 minut"</string>
     <string name="applications" msgid="521776761270770549">"Aplicacions"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"No hi ha cap aplicació que es pugui depurar disponible"</string>
-    <string name="buffer_size" msgid="3944311026715111454">"Mida de la memòria cau per cada CPU"</string>
+    <string name="buffer_size" msgid="3944311026715111454">"Mida de la memòria cau per CPU"</string>
     <string name="show_quick_settings_tile" msgid="3827556161191376500">"Mostra la icona de configuració ràpida del rastreig"</string>
     <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Mostra la icona de configuració ràpida de l\'elaboració de perfils de CPU"</string>
     <string name="saving_trace" msgid="1468692734770800541">"S\'està desant la traça"</string>
