@@ -33,11 +33,14 @@ import android.util.Log;
 
 import androidx.core.content.FileProvider;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -56,8 +59,7 @@ public class TraceController extends Handler {
     public void handleMessage(Message msg) {
         switch (msg.what) {
             case MessageConstants.START_WHAT:
-                TraceUtils.presetTraceStart(mContext, msg.getData().getSerializable(
-                    INTENT_EXTRA_TRACE_TYPE, TraceUtils.PresetTraceType.class));
+                startTracingSafely(mContext, msg.getData());
                 break;
             case MessageConstants.STOP_WHAT:
                 TraceUtils.traceStop(mContext);
@@ -65,8 +67,42 @@ public class TraceController extends Handler {
             case MessageConstants.SHARE_WHAT:
                 shareFiles(mContext, msg.replyTo);
                 break;
+            case MessageConstants.TAGS_WHAT:
+                provideTags(msg.replyTo);
+                break;
             default:
                 throw new IllegalArgumentException("received unknown msg.what: " + msg.what);
+        }
+    }
+
+    private static void startTracingSafely(Context context, @Nullable Bundle data) {
+        TraceConfig config;
+        if (data == null) {
+            Log.w(TAG, "bundle containing Input trace config is not present, using default "
+                + "trace configuration.");
+            config = PresetTraceConfigs.getDefaultConfig();
+        } else {
+            data.setClassLoader(TraceConfig.class.getClassLoader());
+            config = data.getParcelable(INTENT_EXTRA_TRACE_TYPE, TraceConfig.class);
+            if (config == null) {
+                Log.w(TAG, "Input trace config could not be read, using default trace "
+                    + "configuration.");
+                config = PresetTraceConfigs.getDefaultConfig();
+            }
+        }
+        TraceUtils.traceStart(context, config);
+    }
+
+    private static void replyToClient(Messenger replyTo, int what, Bundle data) {
+        Message msg = Message.obtain();
+        msg.what = what;
+        msg.setData(data);
+
+        try {
+            replyTo.send(msg);
+        } catch (RemoteException e) {
+            Log.e(TAG, "failed to send msg back to client", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -98,16 +134,7 @@ public class TraceController extends Handler {
                 data.putParcelable(MessageConstants.EXTRA_WINSCOPE, winscopeUri);
             }
 
-            Message msg = Message.obtain();
-            msg.what = MessageConstants.SHARE_WHAT;
-            msg.setData(data);
-
-            try {
-                replyTo.send(msg);
-            } catch (RemoteException e) {
-                Log.e(TAG, "failed to send msg back to client", e);
-                throw new RuntimeException(e);
-            }
+            replyToClient(replyTo, MessageConstants.SHARE_WHAT, data);
         });
     }
 
@@ -125,7 +152,8 @@ public class TraceController extends Handler {
             Log.e(TAG, "Failed to create zip file for files.", e);
             return null;
         }
-        try (ZipOutputStream os = new ZipOutputStream(new FileOutputStream(outZip))) {
+        try (ZipOutputStream os = new ZipOutputStream(
+                new BufferedOutputStream(new FileOutputStream(outZip)))) {
             files.forEach(file -> {
                 try {
                     os.putNextEntry(new ZipEntry(file.getName()));
@@ -140,5 +168,15 @@ public class TraceController extends Handler {
             Log.e(TAG, "Failed to zip and package files. Cannot share.", e);
             return null;
         }
+    }
+
+    private static void provideTags(Messenger replyTo) {
+        Map<String, String> categoryMap = TraceUtils.listCategories();
+        Bundle data = new Bundle();
+        data.putStringArrayList(MessageConstants.BUNDLE_KEY_TAGS,
+            new ArrayList<>(categoryMap.keySet()));
+        data.putStringArrayList(MessageConstants.BUNDLE_KEY_TAG_DESCRIPTIONS,
+            new ArrayList<>(categoryMap.values()));
+        replyToClient(replyTo, MessageConstants.TAGS_WHAT, data);
     }
 }
