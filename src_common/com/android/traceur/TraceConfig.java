@@ -119,7 +119,7 @@ public class TraceConfig implements Parcelable {
         parcel.writeStringArray(tags.toArray(String[]::new));
     }
 
-    public static Parcelable.Creator<TraceConfig> CREATOR = new Creator<>() {
+    public static final Parcelable.Creator<TraceConfig> CREATOR = new Creator<>() {
         @Override
         public TraceConfig createFromParcel(Parcel parcel) {
             return new TraceConfig(
