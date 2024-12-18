@@ -10,10 +10,9 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"ହିପ ଡମ୍ପ ରେକର୍ଡ କରନ୍ତୁ"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"\"ହିପ ଡମ୍ପ ପ୍ରକ୍ରିୟା\"ରେ ଚୟନିତ ପ୍ରକ୍ରିୟାଗୁଡ଼ିକର ଏକ ହିପ ଡମ୍ପକୁ କେପଚର କରେ"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"ହିପ ଡମ୍ପ ସଂଗ୍ରହ କରିବାକୁ \"ହିପ ଡମ୍ପ ପ୍ରକ୍ରିୟାଗୁଡ଼ିକ\"ରୁ ଅତି କମରେ ଗୋଟିଏ ପ୍ରକ୍ରିୟା ଚୟନ କରନ୍ତୁ"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"ନୂଆ ଟ୍ରେସ୍ ଆରମ୍ଭ କରନ୍ତୁ"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Winscope ଟ୍ରେସ ସଂଗ୍ରହ କରନ୍ତୁ"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"ସବିଶେଷ UI ଟେଲିମେଟ୍ରି ଡାଟା ଅନ୍ତର୍ଭୁକ୍ତ କରେ (ଜଙ୍କ ସୃଷ୍ଟି କରିପାରେ)"</string>
-    <string name="trace_debuggable_applications" msgid="7957069895298887899">"ଡିବଗ୍‌ଯୋଗ୍ୟ ଆପ୍‌ଗୁଡ଼ିକୁ ଟ୍ରେସ୍ କରନ୍ତୁ"</string>
+    <string name="trace_debuggable_applications" msgid="7957069895298887899">"ଡିବଗଯୋଗ୍ୟ ଆପ୍ଲିକେସନକୁ ଟ୍ରେସ କରନ୍ତୁ"</string>
     <string name="categories" msgid="2280163673538611008">"ବର୍ଗ"</string>
     <string name="restore_default_categories" msgid="5090536794637169521">"ଡିଫଲ୍ଟ ବର୍ଗଗୁଡ଼ିକୁ ରିଷ୍ଟୋର୍ କରନ୍ତୁ"</string>
     <string name="default_categories_restored" msgid="6861683793680564181">"ଡିଫଲ୍ଟ ବର୍ଗଗୁଡ଼ିକ ରିଷ୍ଟୋର୍ ହୋଇଛି"</string>
@@ -32,8 +31,9 @@
     <string name="one_minute" msgid="4182508213840684258">"1 ମିନିଟ"</string>
     <string name="applications" msgid="521776761270770549">"ଆପ୍ଲିକେଶନ୍‌"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"କୌଣସି ଡିବଗ୍‌ଯୋଗ୍ୟ ଆପ୍‌ ଉପଲବ୍ଧ ନାହିଁ"</string>
-    <string name="buffer_size" msgid="3944311026715111454">"ପ୍ରତି CPU ପିଛା ବଫର୍‍ର ଆକାର"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"କ୍ଵିକ୍ ସେଟିଂସ ଟାଇଲ ଦେଖାନ୍ତୁ"</string>
+    <string name="buffer_size" msgid="3944311026715111454">"ପ୍ରତି CPU ପିଛା ବଫରର ଆକାର"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"କୁଇକ ସେଟିଂସ ଟାଇଲ ପାଇଁ ଟ୍ରେସିଂ ଦେଖାନ୍ତୁ"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"କୁଇକ ସେଟିଂସ ଟାଇଲ ପାଇଁ CPU ପ୍ରୋଫାଇଲିଂ ଦେଖାନ୍ତୁ"</string>
     <string name="saving_trace" msgid="1468692734770800541">"ଟ୍ରେସ୍‌କୁ ସେଭ୍ କରନ୍ତୁ"</string>
     <string name="trace_saved" msgid="5869970594780992309">"ଟ୍ରେସ୍ ସେଭ୍ ହୋଇଛି"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"ଷ୍ଟାକ ନମୁନାଗୁଡ଼ିକୁ ସେଭ କରାଯାଉଛି"</string>
@@ -41,10 +41,8 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"ହିପ ଡମ୍ପ ସେଭ କରାଯାଉଛି"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"ହିପ ଡମ୍ପ ସେଭ କରାଯାଇଛି"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"ଆପଣଙ୍କ ରେକର୍ଡିଂ ସେୟାର କରିବାକୁ ଟାପ କରନ୍ତୁ"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"ବଗ୍ ରିପୋର୍ଟ ସହିତ ଟ୍ରେସ୍ ଆଟାଚ୍ କରାଯାଉଛି"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"ବଗ୍ ରିପୋର୍ଟ ସହିତ ଟ୍ରେସ୍ ଆଟାଚ୍ କରାଯାଇଛି"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"BetterBug ଖୋଲିବାକୁ ଟାପ୍ କରନ୍ତୁ"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"ଟ୍ରେସିଙ୍ଗ ବନ୍ଦ କରନ୍ତୁ"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"CPU ପ୍ରୋଫାଇଲିଂ ବନ୍ଦ କରନ୍ତୁ"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"ଟ୍ରେସିଙ୍ଗର କିଛି ବର୍ଗ ଉପଲବ୍ଧ ନାହିଁ:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"ଟ୍ରେସ୍ ରେକର୍ଡ ହେଉଛି"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"ଟ୍ରେସିଙ୍ଗ ବନ୍ଦ କରିବା ପାଇଁ ଟାପ୍ କରନ୍ତୁ"</string>
@@ -63,7 +61,7 @@
     <string name="system_trace_sensitive_data" msgid="3069389866696009549">"ସିଷ୍ଟମ୍‍ ଟ୍ରେସିଂ ଫାଇଲ୍‍ଗୁଡିକ ହୁଏତ ସମ୍ବେଦନଶୀଳ ସିଷ୍ଟମ୍‍ ଏବଂ ଆପ୍‍ ଡାଟା (ଯେପରି କି ଆପ୍‍ ବ୍ୟବହାର) ଅନ୍ତର୍ଭୁକ୍ତ କରିପାରେ। ସିଷ୍ଟମ୍‍ ଟ୍ରେସ୍‍ କେବଳ ଆପଣ ବିଶ୍ବାସ କରୁଥିବା ଲୋକ ଏବଂ ଆପ୍ସ ସହ ସେୟାର୍‍ କରନ୍ତୁ।"</string>
     <string name="share" msgid="8443979083706282338">"ସେୟାର୍‍ କରନ୍ତୁ"</string>
     <string name="dont_show_again" msgid="6662492041164390600">"ପୁଣି ଦେଖାନ୍ତୁ ନାହିଁ"</string>
-    <string name="long_traces" msgid="5110949471775966329">"ଲମ୍ବା ଟ୍ରେସ୍"</string>
+    <string name="long_traces" msgid="5110949471775966329">"ଲମ୍ବା ଟ୍ରେସ"</string>
     <string name="long_traces_summary" msgid="419034282946761469">"ଡିଭାଇସ୍ ଷ୍ଟୋରେଜ୍ ପାଇଁ ବାରମ୍ବାର ସେଭ୍ କରନ୍ତୁ"</string>
     <string name="long_traces_summary_betterbug" msgid="445546400875135624">"ଡିଭାଇସ୍ ଷ୍ଟୋରେଜରେ କ୍ରମାଗତ ଭାବେ ସେଭ୍ କରାଯାଏ (ବଗ୍ ରିପୋର୍ଟରେ ସ୍ୱଚାଳିତ ଭାବେ ଆଟାଚ୍ ହେବ ନାହିଁ)"</string>
     <string name="max_long_trace_size" msgid="1943788179787181241">"ସର୍ବାଧିକ ଲମ୍ବା ଟ୍ରେସ୍ ଆକାର"</string>
@@ -87,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"ବଗ ରିପୋର୍ଟଗୁଡ଼ିକ ପାଇଁ ରେକର୍ଡିଂକୁ ବନ୍ଦ କରନ୍ତୁ"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"ଏକ ବଗରିପୋର୍ଟ ଆରମ୍ଭ ହେଲେ ସକ୍ରିୟ ରେକର୍ଡିଂଗୁଡ଼ିକ ସମାପ୍ତ ହୁଏ"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"ବଗ ରିପୋର୍ଟଗୁଡ଼ିକରେ ରେକର୍ଡିଂ ଆଟାଚ କରନ୍ତୁ"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"ଯେତେବେଳେ ଏକ ବଗ ରିପୋର୍ଟ ସଂଗ୍ରହ କରାଯାଏ ସେତେବେଳେ BetterBugକୁ ପ୍ରଗତିରେ-ଥିବା ରେକର୍ଡିଂ ସ୍ୱତଃ ପଠାନ୍ତୁ"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"ଏକ ବଗ ରିପୋର୍ଟ ସଂଗ୍ରହ ହେଲେ BetterBugକୁ ରେକର୍ଡିଂ ସ୍ୱତଃ ପଠାଯାଏ। ଏହାପରେ ରେକର୍ଡିଂ ଜାରି ରହିବ।"</string>
     <string name="link_to_traces" msgid="1404687523304348490">"ସେଭ କରାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"ଟ୍ରେସ ସେଟିଂସ"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"ସେଭ କରାଯାଇଥିବା ଫାଇଲଗୁଡ଼ିକ"</string>

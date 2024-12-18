@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Rakam longgokan timbunan"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Menangkap longgokan timbunan untuk proses yang dipilih dalam \"Proses longgokan timbunan\""</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Pilih sekurang-kurangnya satu proses dalam \"Proses longgokan timbunan\" untuk mengumpulkan longgokan timbunan"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Mulakan surih baharu"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Kumpulkan surih Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Termasuk data telemetri UI terperinci (boleh menyebabkan jank)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Surih aplikasi yang boleh dinyahpepijat"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Aplikasi"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Tiada aplikasi yang boleh dinyahpepijat tersedia"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Saiz penimbal Per CPU"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Tunjukkan jubin Tetapan Pantas"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Paparkan penyurihan jubin Tetapan Pantas"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Paparkan pemprofilan CPU jubin Tetapan Pantas"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Menyimpan surih"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Surih disimpan"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Menyimpan sampel tindanan"</string>
@@ -41,10 +41,8 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Menyimpan longgokan timbunan"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Longgokan timbunan disimpan"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Ketik untuk berkongsi rakaman anda"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Melampirkan surih pada laporan pepijat"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Surih dilampirkan pada laporan pepijat"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Ketik untuk membuka BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Berhenti menyurih"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Hentikan pemprofilan CPU"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Sesetengah kategori surihan tidak tersedia"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Surih sedang dirakam"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Ketik untuk berhenti menyurih"</string>
@@ -87,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Hentikan rakaman untuk laporan pepijat"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Menamatkan rakaman aktif apabila laporan pepijat dimulakan"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Lampirkan rakaman pada laporan pepijat"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Hantar rakaman dalam proses kepada BetterBug secara automatik apabila laporan pepijat dikumpulkan"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Hantar rakaman yang sedang diproses kepada BetterBug secara automatik apabila laporan pepijat dikumpulkan. Rakan akan diteruskan selepas itu."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Lihat fail yang disimpan"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Tetapan surih"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Fail yang disimpan"</string>

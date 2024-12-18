@@ -29,7 +29,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -37,13 +36,10 @@ import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.internal.statusbar.IStatusBarService;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 public class Receiver extends BroadcastReceiver {
@@ -365,7 +361,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveTags(Context context, SharedPreferences prefs, boolean onlyAvailable) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                PresetTraceConfigs.getDefaultTags());
+                PresetTraceConfigs.getDefaultConfig().getTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         if (onlyAvailable) {
@@ -378,7 +374,7 @@ public class Receiver extends BroadcastReceiver {
 
     public static Set<String> getActiveUnavailableTags(Context context, SharedPreferences prefs) {
         Set<String> tags = prefs.getStringSet(context.getString(R.string.pref_key_tags),
-                PresetTraceConfigs.getDefaultTags());
+                PresetTraceConfigs.getDefaultConfig().getTags());
         Set<String> available = TraceUtils.listCategories().keySet();
 
         tags.removeAll(available);

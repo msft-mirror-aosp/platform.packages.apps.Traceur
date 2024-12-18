@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Neem hoopstorting op"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Dit vang ’n hoopstorting vas van die prosesse wat in \"Hoopstortingprosesse\" gekies is"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Kies minstens een proses in die \"Hoopstortingprosesse\" om hoopstortings te versamel"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Begin nuwe spoor"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Samel Winscope-spore in"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Sluit gedetailleerde UI-telemetriedata in (kan oponthoud veroorsaak)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Spoor ontfoutbare programme na"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Apps"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Geen ontfoutbare programme is beskikbaar nie"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Per-CPU-buffergrootte"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Wys Kitsinstellings-teël"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Wys Kitsinstellingsteël vir nasporing"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Wys Kitsinstellingsteël vir CPU-profielbepaling"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Stoor tans spoor"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Spoor is gestoor"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Stoor tans stapelvoorbeelde"</string>
@@ -41,10 +41,8 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Stoor tans hoopstorting"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Hoopstorting is gestoor"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Tik om jou opname te deel"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"Heg tans spoor aan foutverslag"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"Heg spoor aan foutverslag"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Tik om BetterBug oop te maak"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Stop nasporing"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Stop CPU-profielbepaling"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Sommige sporingkategorieë is onbeskikbaar"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Spoor word tans aangeteken"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Tik om nasporing te stop"</string>
@@ -87,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Stop opnames vir foutverslae"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Beëindig aktiewe opnames wanneer ’n foutverslag begin word"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Heg opnames by foutverslae aan"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Stuur opnames wat besig is outomaties na BetterBug toe wanneer ’n foutverslag opgehaal word"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Stuur opnames wat besig is outomaties na BetterBug toe wanneer ’n foutverslag opgehaal word. Opnames sal daarna voortgesit word."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Bekyk gestoorde lêers"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nasporinginstellings"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Gestoorde lêers"</string>

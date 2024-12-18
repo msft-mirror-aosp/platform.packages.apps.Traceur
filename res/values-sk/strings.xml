@@ -10,7 +10,6 @@
     <string name="record_heap_dump" msgid="1688550222066812696">"Zaznamenávať výpis haldy"</string>
     <string name="record_heap_dump_summary_enabled" msgid="5038675257021221777">"Budú sa zaznamenávať procesy výpisu haldy vybrané v sekcii Procesy výpisu haldy"</string>
     <string name="record_heap_dump_summary_disabled" msgid="4640319333930345311">"Ak chcete zhromažďovať výpisy haldy, vyberte aspoň jeden proces v sekcii Procesy výpisu haldy"</string>
-    <string name="start_new_trace" msgid="8177130420802170353">"Spustiť nové trasovanie"</string>
     <string name="winscope_tracing" msgid="5818984791154837458">"Zhromažďovať stopy Winscope"</string>
     <string name="winscope_tracing_summary" msgid="7040550156722395894">"Zahŕňa podrobné údaje o telemetrii používateľského rozhrania (môže spôsobiť spomalené vykresľovanie)"</string>
     <string name="trace_debuggable_applications" msgid="7957069895298887899">"Sledovať aplikácie na ladenie"</string>
@@ -33,7 +32,8 @@
     <string name="applications" msgid="521776761270770549">"Aplikácie"</string>
     <string name="no_debuggable_apps" msgid="4386209254520471208">"Nie sú k dispozícii žiadne aplikácie na ladenie"</string>
     <string name="buffer_size" msgid="3944311026715111454">"Veľkosť vyrovnávacej pamäte jednotlivých procesorov"</string>
-    <string name="show_quick_settings_tile" msgid="4971147332635291585">"Zobraziť dlaždicu rýchlych nastavení"</string>
+    <string name="show_quick_settings_tile" msgid="3827556161191376500">"Zobrazovať kartu rýchlych nastavení sledovania"</string>
+    <string name="show_stack_sampling_quick_settings_tile" msgid="2142507886797788822">"Zobrazovať kartu rýchlych nastavení profilovania procesora"</string>
     <string name="saving_trace" msgid="1468692734770800541">"Stopa sa ukladá"</string>
     <string name="trace_saved" msgid="5869970594780992309">"Stopa bola uložená"</string>
     <string name="saving_stack_samples" msgid="8174915522390525221">"Vzorky zásobníka sa ukladajú"</string>
@@ -41,10 +41,8 @@
     <string name="saving_heap_dump" msgid="6118616780825771824">"Výpis haldy sa ukladá"</string>
     <string name="heap_dump_saved" msgid="6720583137473857098">"Výpis haldy bol uložený"</string>
     <string name="tap_to_share" msgid="4440713575852187545">"Nahrávku zdieľajte klepnutím"</string>
-    <string name="attaching_to_report" msgid="2629202947947275886">"K hláseniu chyby sa prikladá stopa"</string>
-    <string name="attached_to_report" msgid="5806905349184608870">"K hláseniu chyby bola priložená stopa"</string>
-    <string name="attached_to_report_summary" msgid="7665675771190391355">"Klepnutím otvorte BetterBug"</string>
     <string name="stop_tracing" msgid="8916938308534164152">"Zastaviť trasovanie"</string>
+    <string name="stop_stack_sampling" msgid="848558393878357485">"Zastavte profilovanie procesora"</string>
     <string name="tracing_categories_unavailable" msgid="5609076391417077752">"Niektoré kategórie trasovania nie sú k dispozícii:"</string>
     <string name="trace_is_being_recorded" msgid="5947378146009337469">"Stopa sa zaznamenáva"</string>
     <string name="tap_to_stop_tracing" msgid="6533282719573871806">"Klepnutím zastavíte trasovanie"</string>
@@ -87,7 +85,7 @@
     <string name="stop_on_bugreport" msgid="4591832600597126422">"Zastaviť nahrávanie hlásení chýb"</string>
     <string name="stop_on_bugreport_summary" msgid="1601834864982891381">"Aktívne nahrávania sa ukončia po spustení hlásení chyby"</string>
     <string name="attach_to_bug_report" msgid="5388986830016247490">"Prikladať nahrávky k hláseniam chýb"</string>
-    <string name="attach_to_bug_report_summary" msgid="4213730623971240002">"Pri zhromažďovaní hlásení chýb automaticky odosielať prebiehajúce nahrávky do služby BetterBug"</string>
+    <string name="attach_to_bug_report_summary" msgid="5289287574947339086">"Pri zhromažďovaní hlásení chýb automaticky odosielať prebiehajúce nahrávky službe BetterBug. Nahrávky budú následne pokračovať."</string>
     <string name="link_to_traces" msgid="1404687523304348490">"Zobraziť uložené súbory"</string>
     <string name="pref_category_trace_settings" msgid="6507535407023329628">"Nastavenia stopy"</string>
     <string name="pref_category_saved_files" msgid="1477491400970413291">"Uložené súbory"</string>
