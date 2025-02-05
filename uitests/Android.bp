@@ -22,6 +22,7 @@ android_test {
         "androidx.test.rules",
         "platform-test-annotations",
         "androidx.test.uiautomator_uiautomator",
+        "collector-device-lib",
     ],
     sdk_version: "current",
     test_suites: ["device-tests"],
