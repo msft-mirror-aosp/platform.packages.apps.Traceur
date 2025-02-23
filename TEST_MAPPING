@@ -1,10 +1,11 @@
 // for packages/apps/Traceur
 {
-    "presubmit": [
-        {
-            "name": "TraceurUiTests"
-        }
-    ],
+// TODO(b/397511281)
+//    "presubmit": [
+//        {
+//            "name": "TraceurUiTests"
+//        }
+//    ],
     "hwasan-postsubmit": [
         {
             "name": "TraceurUiTests"
